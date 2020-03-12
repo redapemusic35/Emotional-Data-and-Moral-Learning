@@ -8,7 +8,7 @@ weight = 10  # Order that this section will appear.
 title = "Emotional Data and Moral Learning"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-# hero_media = "hero-academic.png"
+# hero_media = "happyface.jpeg"
 
 [design.background]
   # Apply a background color, gradient, or image.
