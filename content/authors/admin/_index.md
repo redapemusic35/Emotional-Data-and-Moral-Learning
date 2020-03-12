@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Nelson Bighetti
+name: Montaque Reynolds
 
 # Username (this should match the folder name)
 authors:
@@ -10,32 +10,32 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Phd Student, Philosophy
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
+- name: Saint Louis University
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Hi and welcome to my project. 
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Virtue Epistemology
+- Philosophy of Religion
+- Moral Psychology
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: PhD in Philosophy
+    institution: Saint Louis University
+    year: 2023
+  - course: MA in Philosophy
+    institution: Oklahoma State University
+    year: 2017
+  - course: BA in Philosophy
+    institution: Seattle Pacific University
+    year: 2015
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -53,7 +53,7 @@ social:
   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/redapemusic35
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -70,6 +70,9 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I am a first year Doctoral student in the department of Philosophy at
+Saint Louis University. My research interests include Epistemology (mostly
+virtue), Philosophy of Religion and Philosophy of Mind and philosophy of
+Music. However, my primary focuses currently are characteristic virtues of agents and how these are developed. Presently, I am researching ways in which music and narratives can influence the development of human virtues in each of the above areas. Two methods that I am researching in this area are those of topic modeling and sentiment analysis using Stanford's NLP (Natural Language Processing). When I am not reading about or writing about virtue, I
+enjoy spending my free time with my wife Amanda and our two darling children.
+ 
