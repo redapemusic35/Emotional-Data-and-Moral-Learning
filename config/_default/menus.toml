@@ -34,9 +34,14 @@
   weight = 60
 
 [[main]]
+  name = "Posts"
+  url = "#posts"
+  weight = 80
+
+[[main]]
   name = "Rabbit Hole"
   url = "#contact"
-  weight = 70
+  weight = 80
 
 
 
