@@ -10,7 +10,7 @@ subtitle = "Sentiment Analysis"
 
 [content]
   # Page type to display. E.g. project.
-  page_type = "project3"
+  page_type = "courses/example"
   
   # Filter toolbar (optional).
   # Add or remove as many filters (`[[content.filter_button]]` instances) as you like.
