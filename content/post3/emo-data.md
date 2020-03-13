@@ -5,7 +5,7 @@ draft: false
 link:
   - name: 
     - Methods
-  url: 
+  - url: 
     - courses/example
 ---
 
