@@ -24,14 +24,19 @@
   weight = 40
 
 [[main]]
+  name = "Docs"
+  url = "courses/"
+  weight = 50
+
+[[main]]
   name = "Bio"
   url = "#home"
-  weight = 50
+  weight = 60
 
 [[main]]
   name = "Rabbit Hole"
   url = "#contact"
-  weight = 60
+  weight = 70
 
 
 
