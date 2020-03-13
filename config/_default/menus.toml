@@ -10,17 +10,17 @@
 
 [[main]]
   name = "NLP"
-  url = "#posts"
+  url = "#projects1"
   weight = 20
 
 [[main]]
   name = "TM"
-  url = "#projects"
+  url = "#projects2"
   weight = 30
 
 [[main]]
   name = "SA"
-  url = "#featured"
+  url = "#projects3"
   weight = 40
 
 [[main]]

@@ -53,4 +53,8 @@ hero_media = "happyface.jpeg"
 
 Philosophers have argued in favor of narrative as a source for moral knowledge. Assuming that music may represent a kind of narrative, what means are available to us which might help us understand what kinds of moral knowledge is represented by various popular music styles.
 
-<span style="text-shadow: none;"><a class="github-button" href="https://github.com/gcushen/hugo-academic" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span>
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/redapemusic35/Emotional-Data-and-Moral-Learning/generate" data-icon="octicon-repo-template" aria-label="Use this template redapemusic35/Emotional-Data-and-Moral-Learning on GitHub">Use this template</a>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
