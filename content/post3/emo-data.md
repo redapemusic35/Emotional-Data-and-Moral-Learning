@@ -2,11 +2,10 @@
 title: "Emo Data 3"
 date: 2020-03-13T14:19:53-05:00
 draft: false
-link:
-  - name: 
-    - Methods
-  - url: 
-    - courses/example
+name: 
+  - Methods
+url: 
+  - courses/example
 ---
 
 ```mermaid 
