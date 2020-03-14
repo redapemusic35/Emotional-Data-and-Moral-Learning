@@ -3,19 +3,19 @@
 name: Montaque Reynolds
 
 # Username (this should match the folder name)
-authors:
-- admin
+# authors:
+# - admin
 
 # Is this the primary user of the site?
-superuser: true
+# superuser: true
 
 # Role/position
-role: Phd Student, Philosophy
+# role: Phd Student, Philosophy
 
 # Organizations/Affiliations
-organizations:
-- name: Saint Louis University
-  url: ""
+# organizations:
+# - name: Saint Louis University
+#   url: ""
 
 # Short bio (displayed in user profile at end of posts)
 bio: Hi and welcome to my project. 
