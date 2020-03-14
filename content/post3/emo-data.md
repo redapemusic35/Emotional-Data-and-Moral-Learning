@@ -8,7 +8,7 @@ links:
     url: courses/example3
 ---
 
-```mermaid 
+```mermaid
 graph TD;
     A-->B;
     B-->C;
