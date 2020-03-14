@@ -5,7 +5,7 @@ draft: false
 links:
   - icon_pack: fab
     name: Methods
-    url: courses/example
+    url: courses/example3
 ---
 
 ```mermaid graph TD;
