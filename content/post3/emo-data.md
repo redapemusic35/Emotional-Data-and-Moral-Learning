@@ -9,9 +9,9 @@ links:
 ---
 
 ```mermaid 
-graph TD:
-  A-->B:
-  B-->C:
-  B-->D:
-  C-->D:
+graph TD;
+    A-->B;
+    B-->C;
+    B-->D;
+    C-->D;
 ```
