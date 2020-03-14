@@ -20,22 +20,22 @@ organizations:
 # Short bio (displayed in user profile at end of posts)
 bio: Hi and welcome to my project. 
 
-interests:
-- Virtue Epistemology
-- Philosophy of Religion
-- Moral Psychology
+# interests:
+# - Virtue Epistemology
+# - Philosophy of Religion
+# - Moral Psychology
 
-education:
-  courses:
-  - course: PhD in Philosophy
-    institution: Saint Louis University
-    year: 2023
-  - course: MA in Philosophy
-    institution: Oklahoma State University
-    year: 2017
-  - course: BA in Philosophy
-    institution: Seattle Pacific University
-    year: 2015
+# education:
+#   courses:
+#   - course: PhD in Philosophy
+#     institution: Saint Louis University
+#     year: 2023
+#   - course: MA in Philosophy
+#     institution: Oklahoma State University
+#     year: 2017
+#   - course: BA in Philosophy
+#     institution: Seattle Pacific University
+#     year: 2015
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -61,18 +61,43 @@ social:
 #   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: ""
+# email: ""
 
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
-user_groups:
-- Researchers
-- Visitors
+# user_groups:
+# - Researchers
+# - Visitors
 ---
 
-I am a first year Doctoral student in the department of Philosophy at
-Saint Louis University. My research interests include Epistemology (mostly
-virtue), Philosophy of Religion and Philosophy of Mind and philosophy of
-Music. However, my primary focuses currently are characteristic virtues of agents and how these are developed. Presently, I am researching ways in which music and narratives can influence the development of human virtues in each of the above areas. Two methods that I am researching in this area are those of topic modeling and sentiment analysis using Stanford's NLP (Natural Language Processing). When I am not reading about or writing about virtue, I
-enjoy spending my free time with my wife Amanda and our two darling children.
- 
+In her book “Wandering in
+Darkness,” Eleonore @stum10 argues that
+narrative can be a source of knowledge.
+However, it is not immediately clear to me
+just how this might work. One intuition is
+that narrative can be thought of as a kind of
+testimony which relies on more than just our
+cognitive faculties, but our conative ones as
+well. Looking at literature in the philosophy
+of music, particularly at the phenomenons of
+emotional expression and contagion, I believe
+that a case can be made which shows just how
+this might work, that narratives are a source
+of knowledge. I begin by developing what
+I believe to be the best version of Stump’s
+argument. I then explain conation and the
+importance of it in moral motivation. In the
+remainder of the paper, I look at various
+aspects of emotional expression and the
+accompanying phenomenon of emotional contagion
+in the philosophy of music. Relying on these
+two important concepts, I argue that these
+should provide an important way for us to
+understand how narratives may provide some
+kind of moral instruction not available to us
+by moral testimony alone. I conclude by
+arguing that what Stump calls 'Fransican
+knowledge', is merely that which is developed
+via our conative faculties.
+
+

@@ -53,6 +53,24 @@ hero_media = "happyface.jpeg"
 
 Philosophers have argued in favor of narrative as a source for moral knowledge. Assuming that music may represent a kind of narrative, what means are available to us which might help us understand what kinds of moral knowledge is represented by various popular music styles.
 
+In her book “Wandering in Darkness,” Eleonore @stum10 argues that narrative
+can be a source of knowledge. However, it is not immediately clear to me just
+how this might work. One intuition is that narrative can be thought of as
+a kind of testimony which relies on more than just our cognitive faculties,
+but our conative ones as well. Looking at literature in the philosophy of
+music, particularly at the phenomenons of emotional expression and contagion,
+I believe that a case can be made which shows just how this might work, that
+narratives are a source of knowledge. I begin by developing what I believe to
+be the best version of Stump’s argument. I then explain conation and the
+importance of it in moral motivation. In the remainder of the paper, I look
+at various aspects of emotional expression and the accompanying phenomenon of
+emotional contagion in the philosophy of music. Relying on these two
+important concepts, I argue that these should provide an important way for us
+to understand how narratives may provide some kind of moral instruction not
+available to us by moral testimony alone. I conclude by arguing that what
+Stump calls 'Fransican knowledge', is merely that which is developed via our
+conative faculties.
+
 <!-- Place this tag where you want the button to render. -->
 <a class="github-button" href="https://github.com/redapemusic35/Emotional-Data-and-Moral-Learning/generate" data-icon="octicon-repo-template" aria-label="Use this template redapemusic35/Emotional-Data-and-Moral-Learning on GitHub">Use this template</a>
 
