@@ -74,15 +74,23 @@ In her book “Wandering in
 Darkness,” Eleonore Stump (2010) argues that
 narrative can be a source of knowledge.
 However, it is not immediately clear to me
-just how this might work. One intuition is
+just how this might work. One intuition that I have is
 that narrative can be thought of as a kind of
 testimony which relies on more than just our
 cognitive faculties, but our conative ones as
-well. Looking at literature in the philosophy
+well. For me, this sounds awfully similar to how music might be described. Therefore, looking at literature in the philosophy
 of music, particularly at the phenomenons of
 emotional expression and contagion, I believe
 that a case can be made which shows just how
 this might work, that narratives are a source
 of knowledge.
+
+There are three methods which I think can be useful in this regard:
+
+1. Natural Language Processing
+2. Topic Modeling
+3. Sentiment Analysis
+
+Ultimately, I do not think that I will have reached any definitive conclusions regarding moral sources and music lyrics. What I hope to have done however, is offer some reflections on how we might use big data to determine moral knowledge sources.
 
 
