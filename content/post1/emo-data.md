@@ -24,10 +24,10 @@ links:
 </body>
 </html>
 
-$$mermaid
-  graph LR
+```mermaid
+graph LR
      A-->B;
      A-->C;
      B-->D;
      C-->D;
-$$
+```
