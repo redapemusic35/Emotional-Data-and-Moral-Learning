@@ -11,9 +11,9 @@ links:
 
 <html lang="en"> 
 <head>   
-<meta charset="utf-8"> <
-/head> 
-<body>   
+<meta charset="utf-8"> 
+</head> 
+<body>
   <div class="mermaid">
   graph LR
      A --- B
@@ -24,10 +24,10 @@ links:
 </body>
 </html>
 
-```mermaid
+$$mermaid
   graph LR
      A-->B;
      A-->C;
      B-->D;
      C-->D;
-```
+$$
