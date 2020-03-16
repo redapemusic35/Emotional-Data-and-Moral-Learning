@@ -23,3 +23,11 @@ links:
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
+
+mermaid
+  graph LR
+     A-->B;
+     A-->C;
+     B-->D;
+     C-->D;
+     
