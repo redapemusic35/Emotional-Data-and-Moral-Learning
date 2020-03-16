@@ -1,7 +1,7 @@
 ---
 # Course title, summary, and position.
-linktitle: An Example Course
-summary: Learn how to use Academic's docs layout for publishing online courses, software documentation, and tutorials.
+linktitle: Topic Modeling
+summary: Looking at various topics in data sets (music lyrics).
 weight: 1
 
 # Page metadata.
@@ -21,9 +21,20 @@ menu:
     weight: 1
 ---
 
-## Flexibility
+## What It Is
 
-This feature can be used for publishing content such as:
+The first method that I will use is called topic modeling. There are a number of ways to model topics. I will be looking at a program called *Mallet*. Mallet was developed by Andrew McCallum at the University of Massachusetts, Amherst.
+
+A topic is a group of words likely to appear together in the same document. What a topic modeling program does, is identify clusters of those words which are likely to appear in that document.
+
+{{% alert warning %}}
+Please note that topic modeling does not *merely* count the number of times a word appears in a text. Rather, it attempts to determine which words are *likely* to appear in a document. This is important because some topics may not appear in the document at all.
+{{% /alert %}}
+
+```mermaid
+graph TD
+    A-->B;
+```
 
 * **Online courses**
 * **Project or software documentation**
