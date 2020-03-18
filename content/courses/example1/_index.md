@@ -27,14 +27,13 @@ The first method that I will use is called topic modeling. There are a number of
 
 A topic is a group of words likely to appear together in the same document. What a topic modeling program does, is identify clusters of those words which are likely to appear in that document.
 
-{{% alert warning %}}
-Please note that topic modeling does not *merely* count the number of times a word appears in a text. Rather, it attempts to determine which words are *likely* to appear in a document. This is important because some topics may not appear in the document at all.
-{{% /alert %}}
-
-```mermaid
-graph TD
-    A-->B;
-```
+{{% alert warning %}} Please note that
+topic modeling does not *merely* count the
+number of times a word appears in a text,
+which is something that may be said of
+text mining. Rather, it attempts to
+determine which words are *likely* to
+appear in a document. {{% /alert %}}
 
 * **Online courses**
 * **Project or software documentation**
