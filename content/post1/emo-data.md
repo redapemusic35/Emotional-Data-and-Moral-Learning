@@ -6,8 +6,9 @@ links:
   - icon_pack: fab
     name: Methods
     url: courses/example1
-project1: internal-project
-slides: example
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
 ---
 
 Moral knowledge is knowledge about right and wrong. Sources of moral knowledge may include moral testimony. Consider an ethics professional giving a public address to the American public; “lying is wrong” she says. Assuming that the American public comes to believe that lying is wrong on the basis of this professional’s testimony, and it turns out, that in fact it is true that “lying is wrong,” then the American public now have moral knowledge on the basis of this moral testimony. However, this kind of moral knowledge only speaks to one kind of approach which epistemologists may take in understanding sources of moral knowledge. For instance, moral testimony may not be the most salient source of moral knowledge. 

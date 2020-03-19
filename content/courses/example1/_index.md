@@ -35,38 +35,36 @@ text mining. Rather, it attempts to
 determine which words are *likely* to
 appear in a document. {{% /alert %}}
 
-* **Online courses**
-* **Project or software documentation**
-* **Tutorials**
+### Some Initial Steps
 
-The `courses` folder may be renamed. For example, we can rename it to `docs` for software/project documentation or `tutorials` for creating an online course.
+1. Import the Data
 
-## Delete tutorials
+As I have mentioned, for topic modeling I will be using Mallet. After installing Mallet and being confident that it works, use this command to import your data set. In my case, this is a txt file with a single song on it:
 
-**To remove these pages, delete the `courses` folder and see below to delete the associated menu link.**
-
-## Update site menu
-
-After renaming or deleting the `courses` folder, you may wish to update any `[[main]]` menu links to it by editing your menu configuration at `config/_default/menus.toml`.
-
-For example, if you delete this folder, you can remove the following from your menu configuration:
-
-```toml
-[[main]]
-  name = "Courses"
-  url = "courses/"
-  weight = 50
+```/bin/mallet import-dir --input sample-data/web/en --output tutorial.mallet --keep-sequence --remove-stopwords
 ```
 
-Or, if you are creating a software documentation site, you can rename the `courses` folder to `docs` and update the associated *Courses* menu configuration to:
+Briefly, I will point out what each point in the command refers to... 
 
-```toml
-[[main]]
-  name = "Docs"
-  url = "docs/"
-  weight = 50
+```/bin/mallet
 ```
 
-## Update the docs menu
+is where all of the important command scripts are.
 
-If you use the *docs* layout, note that the name of the menu in the front matter should be in the form `[menu.X]` where `X` is the folder name. Hence, if you rename the `courses/example/` folder, you should also rename the menu definitions in the front matter of files within `courses/example/` from `[menu.example]` to `[menu.<NewFolderName>]`.
+with 
+
+```import-dir
+```
+
+you are telling the program to enter the sample data which in this case is located in a folder in mallet entitle `sample-data/web/en`. 
+
+```
+--output tutorial.mallet
+```
+
+will be the name of the output file. 
+
+```
+--keep-sequence --remove-stopwords
+```
+
