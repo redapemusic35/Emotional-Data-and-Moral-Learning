@@ -33,7 +33,7 @@ While we might consider it to have been a good thing that Sam did save the child
 
 Analytic philosophy, long thought to be a method used by epistemologists to understand varying kinds of knowledge, rests on a habit of categorizing by means of sets of abstract properties and labels. But according to @stum10a, there is another method available to epistemologists attempting to understand moral knowledge. This other method involves moral knowledge that we can get from moral narratives.
 
-```{r}
+```r
 library(ggplot2)
 setwd("~/mallet/")
 country <- read.csv("country40_keys.csv")
