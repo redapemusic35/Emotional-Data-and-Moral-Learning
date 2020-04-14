@@ -29,4 +29,6 @@ plot(country7$Hope, xlab = "Topics")
 country7$Homemade
 pie3D(country7$Homemade)
 View(country7$Homesick)
+
+plot(x = country6$Words, y = country6$percentage, pch = 16, frame = FALSE, xlab = "Words", ylab = "The Percentages", col = "#2E9FDF")
 ```
