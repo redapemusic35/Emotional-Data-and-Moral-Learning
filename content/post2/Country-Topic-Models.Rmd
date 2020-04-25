@@ -10,9 +10,6 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
-Using Andrew @mcca02 Mallet software, I will conduct some topic analysis on several country songs from Billboard's Top100 March 13, 2020.
-
-
 ```{r}
 require(graphics)
 library(ggrepel)
