@@ -30,3 +30,85 @@ hext5 <- list.files(path = "sample-data/top100/Country/")
 
 head(hext5)
 ```
+
+```{r}
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+hext <- read.csv("Country_keys.csv")
+hext4 <- read.csv("Country_word_topics.csv")
+list_of_files <- list.files(path = "sample-data/top100/Country/", recursive = TRUE,
+			    pattern = "\\.csv$",
+			    full.names = TRUE)
+df <- list_of_files %>%
+  purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
+  purrr::map_df(read_csv,
+		col_names = FALSE,
+		skip = 1,
+		.id = "FileName")
+
+
+str(df)
+head(df)
+tail(df)
+
+(dfsentiment <- with(
+		     df,
+		     sentiment_by(
+				  get_sentences(X1),
+				  list(FileName)
+				  )
+		     ))
+
+plot(dfsentiment)
+```
+
+```{r}
+library(magrittr)
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+list_of_files2 <- list.files(path = "sample-data/top100/Rap/", recursive = TRUE,
+			    pattern = "\\.csv$",
+			    full.names = TRUE)
+df2 <- list_of_files2 %>%
+  purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
+  purrr::map_df(read_csv,
+		col_names = FALSE,
+		skip = 1,
+		.id = "FileName2")
+
+str(df2)
+head(df2)
+tail(df2)
+
+(dfsentiment2 <- with(
+		     df2,
+		     sentiment_by(
+				  get_sentences(X1),
+				  list(FileName2)
+				  )
+		     ))
+
+plot(dfsentiment2)
+
+df3 <- df2 %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  sentiment_by(X1_split, list(FileName2))
+
+plot(df3)
+```
