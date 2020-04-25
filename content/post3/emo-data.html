@@ -1,0 +1,320 @@
+---
+title: "Natural Language Processing"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(tidytext)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.3.0     ✔ purrr   0.3.3
+## ✔ tibble  2.1.3     ✔ stringr 1.4.0
+## ✔ tidyr   1.0.2     ✔ forcats 0.5.0
+## ✔ readr   1.3.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(graphics)
+library(ggplot2)
+setwd(&quot;~/mallet/&quot;)
+hext &lt;- read.csv(&quot;Country_keys.csv&quot;)
+hext4 &lt;- read.csv(&quot;Country_word_topics.csv&quot;)
+hext5 &lt;- list.files(path = &quot;sample-data/top100/Country/&quot;)
+
+head(hext5)</code></pre>
+<pre><code>## [1] &quot;bones.csv&quot;    &quot;bones.txt&quot;    &quot;Catch.csv&quot;    &quot;Catch.txt&quot;    &quot;Homemade.csv&quot;
+## [6] &quot;Homemade.txt&quot;</code></pre>
+<pre class="r"><code>library(sentimentr)
+require(data.table)</code></pre>
+<pre><code>## Loading required package: data.table</code></pre>
+<pre><code>## 
+## Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     transpose</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     between, first, last</code></pre>
+<pre class="r"><code>library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd(&quot;~/mallet/&quot;)
+hext &lt;- read.csv(&quot;Country_keys.csv&quot;)
+hext4 &lt;- read.csv(&quot;Country_word_topics.csv&quot;)
+list_of_files &lt;- list.files(path = &quot;sample-data/top100/Country/&quot;, recursive = TRUE,
+                pattern = &quot;\\.csv$&quot;,
+                full.names = TRUE)
+df &lt;- list_of_files %&gt;%
+  purrr::set_names(nm = (basename(.) %&gt;% tools::file_path_sans_ext())) %&gt;%
+  purrr::map_df(read_csv,
+        col_names = FALSE,
+        skip = 1,
+        .id = &quot;FileName&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )</code></pre>
+<pre class="r"><code>str(df)</code></pre>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 313 obs. of  2 variables:
+##  $ FileName: chr  &quot;bones&quot; &quot;bones&quot; &quot;bones&quot; &quot;bones&quot; ...
+##  $ X1      : chr  &quot;When the bones are good  the rest don‘t matter Yeah  the paint could peel  the glass could shatter Let it rain &quot;| __truncated__ &quot;Call it dumb luck  but baby  you and I Can‘t even mess it up  although we both try No  it don‘t always go the w&quot;| __truncated__ &quot;When the bones are good  the rest don‘t matter Yeah  the paint could peel  the glass could shatter Let it rain &quot;| __truncated__ &quot;Bones are good  the rest  the rest don‘t matter (baby  it don’t really matter) Paint could peel  the glass coul&quot;| __truncated__ ...</code></pre>
+<pre class="r"><code>head(df)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   FileName X1                                                                   
+##   &lt;chr&gt;    &lt;chr&gt;                                                                
+## 1 bones    When the bones are good  the rest don‘t matter Yeah  the paint could…
+## 2 bones    Call it dumb luck  but baby  you and I Can‘t even mess it up  althou…
+## 3 bones    When the bones are good  the rest don‘t matter Yeah  the paint could…
+## 4 bones    Bones are good  the rest  the rest don‘t matter (baby  it don’t real…
+## 5 bones    When the bones are good  the rest don‘t matter Yeah  the paint could…
+## 6 bones    Yeah  ooh</code></pre>
+<pre class="r"><code>tail(df)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   FileName              X1                                                      
+##   &lt;chr&gt;                 &lt;chr&gt;                                                   
+## 1 Wish-Grandpas-Never-… never got sold And I wish even cars had truck beds And …
+## 2 Wish-Grandpas-Never-… named Copperhead And coolers never run out of cold Bud …
+## 3 Wish-Grandpas-Never-… school home teams never lost And back road drinking kid…
+## 4 Wish-Grandpas-Never-… I wish the price of gas was low and cotton was high I w…
+## 5 Wish-Grandpas-Never-… didn&#39;t have no closing time And I wish grandpas never d…
+## 6 Wish-Grandpas-Never-… never died</code></pre>
+<pre class="r"><code>(dfsentiment &lt;- with(
+             df,
+             sentiment_by(
+                  get_sentences(X1),
+                  list(FileName)
+                  )
+             ))</code></pre>
+<pre><code>##                     FileName word_count         sd ave_sentiment
+##  1:                    Catch        363 0.13566774    0.14241942
+##  2:                 Homemade        265 0.17208540    0.11016212
+##  3:     Hope-Youre-Happy-Now        208 0.34239805    0.20356317
+##  4:                   I-Hope        452 0.18937447    0.14704509
+##  5:                 Kinfolks        334 0.27901835    0.19164162
+##  6:              More-Hearts        293 0.27851366   -0.17603473
+##  7:           Nobody-But-You        452 0.18106702    0.13077462
+##  8:                   OneMan        304 0.14134781   -0.06241856
+##  9:               Slow-Dance        264 0.17216306   -0.02121040
+## 10:            Wants-Tonight        365 0.07900684    0.00669603
+## 11:                  We-Back        386 0.21174447   -0.06803546
+## 12: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
+## 13:                    bones        300 0.14610191    0.14119901
+## 14:                 homesick        259 0.23792616   -0.07044142</code></pre>
+<pre class="r"><code>plot(dfsentiment)</code></pre>
+<p><img src="/post3/emo-data_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>library(magrittr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;magrittr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     set_names</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     extract</code></pre>
+<pre class="r"><code>library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd(&quot;~/mallet/&quot;)
+list_of_files2 &lt;- list.files(path = &quot;sample-data/top100/Rap/&quot;, recursive = TRUE,
+                pattern = &quot;\\.csv$&quot;,
+                full.names = TRUE)
+df2 &lt;- list_of_files2 %&gt;%
+  purrr::set_names(nm = (basename(.) %&gt;% tools::file_path_sans_ext())) %&gt;%
+  purrr::map_df(read_csv,
+        col_names = FALSE,
+        skip = 1,
+        .id = &quot;FileName2&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )
+## Parsed with column specification:
+## cols(
+##   X1 = col_character()
+## )</code></pre>
+<pre class="r"><code>str(df2)</code></pre>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 576 obs. of  2 variables:
+##  $ FileName2: chr  &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; ...
+##  $ X1       : chr  &quot;I put the new Forgi&#39;s on the G I trap until the bloody bottoms is&quot; &quot;underneath &#39;Cause all my niggas got it out the streets I keep a hunnid&quot; &quot;racks  inside my jeans&quot; &quot;I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t answer&quot; ...</code></pre>
+<pre class="r"><code>head(df2)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   FileName2 X1                                                                  
+##   &lt;chr&gt;     &lt;chr&gt;                                                               
+## 1 Ballin    I put the new Forgi&#39;s on the G I trap until the bloody bottoms is   
+## 2 Ballin    underneath &#39;Cause all my niggas got it out the streets I keep a hun…
+## 3 Ballin    racks  inside my jeans                                              
+## 4 Ballin    I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t a…
+## 5 Ballin    calls &#39;cause I&#39;m ballin&#39; I was wakin&#39; up gettin&#39; racks in the morni…
+## 6 Ballin    I was broke now I&#39;m rich  these niggas salty</code></pre>
+<pre class="r"><code>tail(df2)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   FileName2 X1                                                         
+##   &lt;chr&gt;     &lt;chr&gt;                                                      
+## 1 Woah      See me and get nervous  I damn near did it perfect         
+## 2 Woah      Work hard and determine  it&#39;s safe to say I earned it  whoa
+## 3 Woah      Yeah  none of you guys get fly as me  whoa                 
+## 4 Woah      Matter of fact  none of you guys get high as me  whoa      
+## 5 Woah      Post my drip up daily just so they can see  whoa           
+## 6 Woah      Turn me up some more so my haters can hear it  whoa</code></pre>
+<pre class="r"><code>(dfsentiment2 &lt;- with(
+             df2,
+             sentiment_by(
+                  get_sentences(X1),
+                  list(FileName2)
+                  )
+             ))</code></pre>
+<pre><code>##              FileName2 word_count        sd ave_sentiment
+##  1:             Ballin        572 0.1918181  0.0389249158
+##  2:         Commerical        888 0.2738402  0.0694408104
+##  3: EmotionallyScarred        482 0.2060759  0.0287720756
+##  4:           HeatinUp        686 0.2004120  0.1088084398
+##  5:        HighFashion        627 0.1689924  0.1123666534
+##  6:       Life-is-good        720 0.3382555  0.0275426738
+##  7:    LiveOffMyCloset        818 0.3400008 -0.2498786117
+##  8:             MyOhMy        432 0.1636354 -0.0271772146
+##  9:               PTSD        631 0.2451725 -0.1035358715
+## 10:            Roxanne        332 0.2559432  0.0361194921
+## 11:          Sum2Prove        899 0.1560923 -0.0002338933
+## 12:               Woah        679 0.2611224  0.0543196846
+## 13:             dababy        706 0.2066512 -0.0737457818
+## 14:             thebox        529 0.2065956 -0.0815764396</code></pre>
+<pre class="r"><code>plot(dfsentiment2)</code></pre>
+<p><img src="/post3/emo-data_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>df3 &lt;- df2 %&gt;%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  sentiment_by(X1_split, list(FileName2))
+
+plot(df3)</code></pre>
+<p><img src="/post3/emo-data_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
