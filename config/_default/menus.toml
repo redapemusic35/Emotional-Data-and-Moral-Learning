@@ -9,18 +9,18 @@
   weight = 10
 
 [[main]]
-  name = "Bio"
-  url = "#home"
+  name = "Abstract"
+  url = "authors/admin/"
   weight = 20
 
 [[main]]
   name = "NLP"
-  url = "#post"
+  url = "post1"
   weight = 30
 
 [[main]]
   name = "TM"
-  url = "#posts2"
+  url = "post2"
   weight = 40
 
 [[main]]
@@ -34,14 +34,9 @@
   weight = 60
 
 [[main]]
-  name = "Posts"
-  url = "#posts"
-  weight = 70
-
-[[main]]
   name = "Rabbit Hole"
   url = "#contact"
-  weight = 80
+  weight = 70
 
 
 

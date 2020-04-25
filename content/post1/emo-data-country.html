@@ -1,0 +1,379 @@
+---
+title: "2 - Country Music"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+
+<p>I used a variety of sources to determine what data I should use to analyze. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music. I could be wrong, but that remains to be seen. Over at <a href="https://www.kaggle.com/">Kaggle.com</a>, there exists an incredibly large source for various data sets, for everything one can think of.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> One that I have made use of in this project is <span class="citation">Mishra (2017)</span>’s <a href="https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data">380,000+ lyrics from MetroLyrics</a>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. <span class="citation">Mishra (2017)</span> compiled the data using a python script from <a href="https://www.metrolyrics.com/">MetroLyrics</a>. He does include a link to the script, which unfortunately is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.</p>
+<p>Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than <span class="citation">Mishra (2017)</span>’s MetroLyrics data set. As such, On March 13, I went over to <a href="https://www.billboard.com/charts/hot-100/2020-03-14">BillBoard.com</a>, and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with <a href="https://www.kaggle.com/">Kaggle</a> as soon as I get a chance.</p>
+<p>Here, I merely show the raw data. What this includes are raw text files which I created by copy pasting texts from the sources cited into a .txt and then using R programming language, read those into a data set.</p>
+<p>During the week of March 13, 2020, Sam Hunt’s <a href="https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics">Kinfolks</a> stood at number 46 of Billboard’s <a href="https://www.billboard.com/charts/hot-100/2020-03-14?rank=46">Hot 100</a>. As a country song, it was the first that I ran across.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<pre class="r"><code>Kinfolks &lt;- read.csv(&quot;/home/redapemusic35/mallet/sample-data/top100/Country/Kinfolks.csv&quot;, header = FALSE)
+
+
+str(Kinfolks)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    23 obs. of  1 variable:
+##  $ V1: Factor w/ 23 levels &quot;(damn) And I know we just met  but I wanna introduce you to my kinfolks          &quot;,..: 10 6 13 9 1 20 18 8 16 12 ...</code></pre>
+<pre class="r"><code>head(Kinfolks)</code></pre>
+<pre><code>##                                                                                    V1
+## 1       I saw you going by  I had to say hello I don&#39;t mean to pry  but girl         
+## 2 I gotta know What is your name? How come I ain&#39;t seen you around before?           
+## 3 Tell me Now you know I ain&#39;t ever had a type  having a type takes two But          
+## 4  I know what I like  and you&#39;re the only one of you You&#39;re something else          
+## 5   (damn) And I know we just met  but I wanna introduce you to my kinfolks          
+## 6 to my old friends To the house in the pines where the road ends Take you</code></pre>
+<pre class="r"><code>tail(Kinfolks)</code></pre>
+<pre><code>##                                                                                       V1
+## 18      introduce you to my kinfolks I want you tonight I don&#39;t ever wanna be           
+## 19 without I don&#39;t wanna wait around for the right time I wanna introduce you           
+## 20  to my kinfolks  to my old friends To the house in the pines where the road          
+## 21     ends Take you to my hometown  where I grew up Where I thought I knew it          
+## 22   all before I knew what love was Gave up on it  but honey  you got my hopes         
+## 23              up And I&#39;m thinking that I wanna introduce you to my kinfolks</code></pre>
+<p>The section beginning with ‘str()’ shows what we are looking at. In this case, what we are looking at is a ‘data.frame’. Further, it shows us that the data frame consists of 23 obs each have 4 variables. In this case, our variables are ‘V1: Factor w/23 levels’, ‘V2: Factor with 23 levels’ etc. The data here, initially a csv file, has V1, V2 etc as columns while factors are rows of data. Of course however, this is wrong. What’s happened is that ‘read.csv’ is attempting to read this data as though it were a comma deliminated file, in other words, as though it has columns and rows, which of course it does not. Not matter though, that can be fixed.</p>
+<p>I will next do some initial data preparation…</p>
+<pre class="r"><code>library(magrittr)
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:gridExtra&#39;:
+## 
+##     combine</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(readr)
+Kinfolks2 &lt;- read_tsv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt&quot;, col_types = cols(x = &quot;i&quot;, treatment = &quot;c&quot;))</code></pre>
+<pre><code>## Warning: The following named parsers don&#39;t match the column names: x, treatment</code></pre>
+<pre class="r"><code>Kinfolks3 &lt;- read_lines(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt&quot;)
+
+# Show column names
+names(Kinfolks2)</code></pre>
+<pre><code>## [1] &quot;I saw you going by, I had to say hello I don&#39;t mean to pry, but girl,&quot;</code></pre>
+<pre class="r"><code># Make it easy to look at data
+glimpse(Kinfolks2)</code></pre>
+<pre><code>## Observations: 22
+## Variables: 1
+## $ `I saw you going by, I had to say hello I don&#39;t mean to pry, but girl,` &lt;chr&gt; …</code></pre>
+<pre class="r"><code>fix.contractions &lt;- function(doc) {
+  doc &lt;- gsub(&quot;won&#39;t&quot;, &quot;will not&quot;, doc)
+  doc &lt;- gsub(&quot;can&#39;t&quot;, &quot;can not&quot;, doc)
+  doc &lt;- gsub(&quot;n&#39;t&quot;, &quot; not&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;re&quot;, &quot; are&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;ve&quot;, &quot; have&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;m&quot;, &quot; am&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;d&quot;, &quot; would&quot;, doc)
+  doc &lt;- gsub(&quot;flyin&#39;&quot;, &quot;flying&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;s&quot;, &quot;&quot;, doc)
+  doc &lt;- gsub(&quot;Puttin&#39;&quot;, &quot;Putting&quot;, doc)
+  doc &lt;- gsub(&quot;I&#39;ll&quot;, &quot;I will&quot;, doc)
+  doc &lt;- gsub(&quot;payin&#39;&quot;, &quot;paying&quot;, doc)
+  doc &lt;- gsub(&quot;we&#39;ll&quot;, &quot;we will&quot;, doc)
+  doc &lt;- gsub(&quot;We&#39;ll&quot;, &quot;We will&quot;, doc)
+  doc &lt;- gsub(&quot;singin&#39;&quot;, &quot;singing&quot;, doc)
+  doc &lt;- gsub(&quot;you&#39;ll&quot;, &quot;you will&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;em&quot;, &quot;them&quot;, doc)
+  doc &lt;- gsub(&quot;dancin&#39;&quot;, &quot;dancing&quot;, doc)
+  doc &lt;- gsub(&quot;playin&#39;&quot;, &quot;playing&quot;, doc)
+  doc &lt;- gsub(&quot;ain&#39;t&quot;, &quot;have not&quot;, doc)
+  doc &lt;- gsub(&quot;Ain&#39;t&quot;, &quot;Have not&quot;, doc)
+  doc &lt;- gsub(&quot;They&#39;ll&quot;, &quot;They will&quot;, doc)
+  doc &lt;- gsub(&quot;they&#39;ll&quot;, &quot;they will&quot;, doc)
+
+
+  return(doc)
+}
+
+Kinfolks2 &lt;- sapply(Kinfolks2, fix.contractions)
+
+
+# Show how many observations and columns there are
+dim(Kinfolks2)</code></pre>
+<pre><code>## [1] 22  1</code></pre>
+<pre class="r"><code># Other details of the created data file.
+str(Kinfolks2)</code></pre>
+<pre><code>##  chr [1:22, 1] &quot;I gotta know What is your name? How come I ai not seen you around before?&quot; ...
+##  - attr(*, &quot;dimnames&quot;)=List of 2
+##   ..$ : NULL
+##   ..$ : chr &quot;I saw you going by, I had to say hello I don&#39;t mean to pry, but girl,&quot;</code></pre>
+<pre class="r"><code># function to remove special characters
+removeSpecialChars &lt;- function(x) gsub(&quot;[^a-zA-Z0-9 ]&quot;, &quot; &quot;, x)
+
+# remove special characters
+Kinfolks &lt;- sapply(Kinfolks2, removeSpecialChars)
+
+# convert everything to lower case
+Kinfolks2 &lt;- sapply(Kinfolks2, tolower)
+
+str(Kinfolks2)</code></pre>
+<pre><code>##  Named chr [1:22] &quot;i gotta know what is your name? how come i ai not seen you around before?&quot; ...
+##  - attr(*, &quot;names&quot;)= chr [1:22] &quot;I gotta know What is your name? How come I ai not seen you around before?&quot; &quot;Tell me Now you know I ai not ever had a type, having a type takes two But&quot; &quot;I know what I like, and you are the only one of you You are something else&quot; &quot;(damn) And I know we just met, but I wanna introduce you to my kinfolks,&quot; ...</code></pre>
+<pre class="r"><code>summary(Kinfolks2)</code></pre>
+<pre><code>##    Length     Class      Mode 
+##        22 character character</code></pre>
+<pre class="r"><code>Kinfolks2</code></pre>
+<pre><code>##     I gotta know What is your name? How come I ai not seen you around before? 
+##   &quot;i gotta know what is your name? how come i ai not seen you around before?&quot; 
+##    Tell me Now you know I ai not ever had a type, having a type takes two But 
+##  &quot;tell me now you know i ai not ever had a type, having a type takes two but&quot; 
+##    I know what I like, and you are the only one of you You are something else 
+##  &quot;i know what i like, and you are the only one of you you are something else&quot; 
+##      (damn) And I know we just met, but I wanna introduce you to my kinfolks, 
+##    &quot;(damn) and i know we just met, but i wanna introduce you to my kinfolks,&quot; 
+##      to my old friends To the house in the pines where the road ends Take you 
+##    &quot;to my old friends to the house in the pines where the road ends take you&quot; 
+##          to my hometown, where I grew up Where I thought I knew it all before 
+##        &quot;to my hometown, where i grew up where i thought i knew it all before&quot; 
+##   I knew what love was Gave up on it, but honey, you got my hopes up And I am 
+## &quot;i knew what love was gave up on it, but honey, you got my hopes up and i am&quot; 
+##     thinking that I wanna introduce you to my kinfolks I wanna take you home, 
+##   &quot;thinking that i wanna introduce you to my kinfolks i wanna take you home,&quot; 
+##    not just take you home tonight Get Joanie on the phone, she&#39;ll leave us on 
+##  &quot;not just take you home tonight get joanie on the phone, she&#39;ll leave us on&quot; 
+##       a light I wanna see the way you look up under all those stars, yeah You 
+##     &quot;a light i wanna see the way you look up under all those stars, yeah you&quot; 
+##        do not need to talk, word gonna get around They will tell you how they 
+##      &quot;do not need to talk, word gonna get around they will tell you how they&quot; 
+##   thought I would never settle down Out on the porch, ai not it funny the way 
+## &quot;thought i would never settle down out on the porch, ai not it funny the way&quot; 
+##     things change? I wanna introduce you to my kinfolks, to my old friends To 
+##   &quot;things change? i wanna introduce you to my kinfolks, to my old friends to&quot; 
+##     the house in the pines where the road ends Take you to my hometown, where 
+##   &quot;the house in the pines where the road ends take you to my hometown, where&quot; 
+##      I grew up Where I thought I knew it all before I knew what love was Gave 
+##    &quot;i grew up where i thought i knew it all before i knew what love was gave&quot; 
+##       up on it, but honey, you got my hopes up And I am thinking that I wanna 
+##     &quot;up on it, but honey, you got my hopes up and i am thinking that i wanna&quot; 
+##        introduce you to my kinfolks I want you tonight I do not ever wanna be 
+##      &quot;introduce you to my kinfolks i want you tonight i do not ever wanna be&quot; 
+##   without I do not wanna wait around for the right time I wanna introduce you 
+## &quot;without i do not wanna wait around for the right time i wanna introduce you&quot; 
+##    to my kinfolks, to my old friends To the house in the pines where the road 
+##  &quot;to my kinfolks, to my old friends to the house in the pines where the road&quot; 
+##       ends Take you to my hometown, where I grew up Where I thought I knew it 
+##     &quot;ends take you to my hometown, where i grew up where i thought i knew it&quot; 
+##    all before I knew what love was Gave up on it, but honey, you got my hopes 
+##  &quot;all before i knew what love was gave up on it, but honey, you got my hopes&quot; 
+##                up And I am thinking that I wanna introduce you to my kinfolks 
+##              &quot;up and i am thinking that i wanna introduce you to my kinfolks&quot;</code></pre>
+<div id="old-dominion" class="section level3">
+<h3>Old Dominion</h3>
+<p>Next up, at number 51, we have <a href="https://www.billboard.com/articles/news/lyrics/8532123/old-dominion-one-man-band-lyrics">Old Dominion’s “One Man Band”</a>.</p>
+<pre class="r"><code>library(magrittr)
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+library(dplyr)
+library(readr)
+OneMan &lt;- read_tsv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/OldDom/OneMan.txt&quot;, col_types = cols(x = &quot;i&quot;, treatment = &quot;c&quot;))</code></pre>
+<pre><code>## Warning: The following named parsers don&#39;t match the column names: x, treatment</code></pre>
+<pre class="r"><code>OneMan1 &lt;- read_lines(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/OldDom/OneMan.txt&quot;)
+
+# Show column names
+names(OneMan)</code></pre>
+<pre><code>## [1] &quot;One Man Band&quot;</code></pre>
+<pre class="r"><code># Make it easy to look at data
+glimpse(OneMan)</code></pre>
+<pre><code>## Observations: 25
+## Variables: 1
+## $ `One Man Band` &lt;chr&gt; &quot;Been flyin&#39; solo for so long Nobody&#39;s singin&#39; the har…</code></pre>
+<pre class="r"><code>fix.contractions &lt;- function(doc) {
+  doc &lt;- gsub(&quot;won&#39;t&quot;, &quot;will not&quot;, doc)
+  doc &lt;- gsub(&quot;can&#39;t&quot;, &quot;can not&quot;, doc)
+  doc &lt;- gsub(&quot;n&#39;t&quot;, &quot; not&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;re&quot;, &quot; are&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;ve&quot;, &quot; have&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;m&quot;, &quot; am&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;d&quot;, &quot; would&quot;, doc)
+  doc &lt;- gsub(&quot;flyin&#39;&quot;, &quot;flying&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;s&quot;, &quot;&quot;, doc)
+  doc &lt;- gsub(&quot;Puttin&#39;&quot;, &quot;Putting&quot;, doc)
+  doc &lt;- gsub(&quot;I&#39;ll&quot;, &quot;I will&quot;, doc)
+  doc &lt;- gsub(&quot;payin&#39;&quot;, &quot;paying&quot;, doc)
+  doc &lt;- gsub(&quot;we&#39;ll&quot;, &quot;we will&quot;, doc)
+  doc &lt;- gsub(&quot;We&#39;ll&quot;, &quot;We will&quot;, doc)
+  doc &lt;- gsub(&quot;singin&#39;&quot;, &quot;singing&quot;, doc)
+  doc &lt;- gsub(&quot;you&#39;ll&quot;, &quot;you will&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;em&quot;, &quot;them&quot;, doc)
+  doc &lt;- gsub(&quot;dancin&#39;&quot;, &quot;dancing&quot;, doc)
+  doc &lt;- gsub(&quot;playin&#39;&quot;, &quot;playing&quot;, doc)
+  return(doc)
+}
+
+OneMan &lt;- sapply(OneMan, fix.contractions)
+OneMan</code></pre>
+<pre><code>##       One Man Band                                                                        
+##  [1,] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot;          
+##  [2,] &quot;and my shadow No bass, no guitar, no tambourine&quot;                                   
+##  [3,] &quot;And I found you like a melody You were singing in the same key as me We&quot;           
+##  [4,] &quot;had them dancing in the streets&quot;                                                   
+##  [5,] &quot;I do not wanna be a one man band I do not wanna be a rolling stone, alone&quot;         
+##  [6,] &quot;Putting miles on a run-down van Baby, we can take our own show on the road&quot;        
+##  [7,] &quot;I will lay down the beat, you will carry the tune We will get tattoos, and we will&quot;
+##  [8,] &quot;trash hotel rooms Baby, take my hand I do not wanna be a one man band No&quot;          
+##  [9,] &quot;I wanna run down your wild dreams And I wanna chase every high with you&quot;           
+## [10,] &quot;Count every rip in these old jeans We will never learn how to sing the blues&quot;      
+## [11,] &quot;If I am gonna be famous Girl, I wanna be famous with you We got our own&quot;           
+## [12,] &quot;little groove&quot;                                                                     
+## [13,] &quot;I do not wanna be a one man band I do not wanna be a rolling stone, alone&quot;         
+## [14,] &quot;Putting miles on a run-down van Baby, we can take our own show on the road&quot;        
+## [15,] &quot;I will lay down the beat, you will carry the tune We will get tattoos, and we will&quot;
+## [16,] &quot;trash hotel rooms Baby, take my hand &#39;Cause I do not wanna be a one man&quot;           
+## [17,] &quot;band&quot;                                                                              
+## [18,] &quot;When the spotlight goes cold, and the curtains come down The chairs are&quot;           
+## [19,] &quot;all stacked, and there no one around And nobody paying, we will still be&quot;          
+## [20,] &quot;playing&quot;                                                                           
+## [21,] &quot;I do not wanna be a one man band I do not wanna be a rolling stone, alone&quot;         
+## [22,] &quot;Putting miles on a run-down van Baby, we can take our own show on the road&quot;        
+## [23,] &quot;I will lay down the beat, you will carry the tune We will get tattoos, and we will&quot;
+## [24,] &quot;trash hotel rooms Baby, take my hand &#39;Cause I do not wanna be a one man&quot;           
+## [25,] &quot;band I do not wanna be a one man band&quot;</code></pre>
+<pre class="r"><code># Show how many observations and columns there are
+dim(OneMan)</code></pre>
+<pre><code>## [1] 25  1</code></pre>
+<pre class="r"><code># Other details of the created data file.
+str(OneMan)</code></pre>
+<pre><code>##  chr [1:25, 1] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot; ...
+##  - attr(*, &quot;dimnames&quot;)=List of 2
+##   ..$ : NULL
+##   ..$ : chr &quot;One Man Band&quot;</code></pre>
+<pre class="r"><code># function to remove special characters
+removeSpecialChars &lt;- function(x) gsub(&quot;[^a-zA-Z0-9 ]&quot;, &quot; &quot;, x)
+
+# remove special characters
+OneMan &lt;- sapply(OneMan, removeSpecialChars)
+
+# convert everything to lower case
+OneMan &lt;- sapply(OneMan, tolower)
+
+str(OneMan)</code></pre>
+<pre><code>##  Named chr [1:25] &quot;been flying solo for so long nobody singing the harmony up there just me&quot; ...
+##  - attr(*, &quot;names&quot;)= chr [1:25] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot; &quot;and my shadow No bass, no guitar, no tambourine&quot; &quot;And I found you like a melody You were singing in the same key as me We&quot; &quot;had them dancing in the streets&quot; ...</code></pre>
+<pre class="r"><code>summary(OneMan)</code></pre>
+<pre><code>##    Length     Class      Mode 
+##        25 character character</code></pre>
+<p>Finally, we have Gabby Barrett’s “I Hope.”<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> But we will see I guess.</p>
+<pre class="r"><code>IHope &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Barret/I-Hope.txt&quot;, header = FALSE)
+
+str(IHope)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    31 obs. of  2 variables:
+##  $ V1: Factor w/ 31 levels &quot;a phone In the middle of a highway driving alone&quot;,..: 14 1 21 29 16 25 26 6 11 31 ...
+##  $ V2: Factor w/ 5 levels &quot;&quot;,&quot; and you just ain&#39;t him&quot;,..: 1 1 1 5 1 1 1 1 1 1 ...</code></pre>
+<pre class="r"><code>head(IHope)</code></pre>
+<pre><code>##                                                                           V1
+## 1    I hope she makes you smile The way it made me smile On the other end of
+## 2                           a phone In the middle of a highway driving alone
+## 3    Oh baby I I hope you hear a song That makes you sing along and gets you
+## 4           thinking &#39;bout her Then the last several miles turns into a blur
+## 5    I hope you both feel the sparks by the end of the drive I hope you know
+## 6 she&#39;s the one by the end of the night I hope you never ever felt more free
+##      V2
+## 1      
+## 2      
+## 3      
+## 4  yeah
+## 5      
+## 6</code></pre>
+<pre class="r"><code>tail(IHope)</code></pre>
+<pre><code>##                                                                           V1 V2
+## 26 you know she&#39;s the one by the end of the night I hope you never ever felt   
+## 27   more free Tell your friends that you&#39;re so happy I hope she comes along   
+## 28 and wrecks every one of your plans I hope you spend your last dime to put   
+## 29     a rock on her hand I hope she&#39;s wilder than your wildest dreams She&#39;s   
+## 30 everything you&#39;re ever gonna need And then I hope she cheats Like you did   
+## 31    on me And then I hope she cheats Like you did on me Like you did on me</code></pre>
+<p>Another concern that I have initially, is the quality of the lyrics as I paste them. It appears that there might be a quite a bit of clean up work they will require.</p>
+<p>As I have already mentioned, because I am only looking at possible methods, I will attempt several, but my concern is not the results. In addition to the individual song lyrics, I am also going to try my hand at analyzing a larger set of data.</p>
+<pre class="r"><code>metro &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/lyrics.csv&quot;, header = FALSE)
+
+str(metro)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    362238 obs. of  6 variables:
+##  $ V1: Factor w/ 362238 levels &quot;0&quot;,&quot;1&quot;,&quot;10&quot;,&quot;100&quot;,..: 362238 1 2 111113 222224 295572 306683 317794 328905 340016 ...
+##  $ V2: Factor w/ 250473 levels &quot;0-0&quot;,&quot;0-0-0&quot;,..: 191464 59590 216948 90249 246454 24807 9377 155307 232346 188182 ...
+##  $ V3: Factor w/ 53 levels &quot;112&quot;,&quot;1968&quot;,&quot;1970&quot;,..: 53 42 42 42 42 42 42 42 42 42 ...
+##  $ V4: Factor w/ 18232 levels &quot;009-sound-system&quot;,..: 3082 4787 4787 4787 4787 4787 4787 4787 4787 4787 ...
+##  $ V5: Factor w/ 13 levels &quot;Country&quot;,&quot;Electronic&quot;,..: 4 11 11 11 11 11 11 11 11 11 ...
+##  $ V6: Factor w/ 244875 levels &quot;&quot;,&quot;\n-I just like it, let me have this dance,\nYa your jumping, had a crazy sound,\nAn it&#39;ll start running,to look&quot;| __truncated__,..: 137894 151023 160965 115533 152017 159629 89882 199633 210058 17795 ...</code></pre>
+<pre class="r"><code>head(metro)</code></pre>
+<pre><code>##      V1              V2   V3              V4    V5
+## 1 index            song year          artist genre
+## 2     0       ego-remix 2009 beyonce-knowles   Pop
+## 3     1    then-tell-me 2009 beyonce-knowles   Pop
+## 4     2         honesty 2009 beyonce-knowles   Pop
+## 5     3 you-are-my-rock 2009 beyonce-knowles   Pop
+## 6     4   black-culture 2009 beyonce-knowles   Pop
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               V6
+## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         lyrics
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                     Oh baby, how you doing?\nYou know I&#39;m gonna cut right to the chase\nSome women were made but me, myself\nI like to think that I was created for a special purpose\nYou know, what&#39;s more special than you? You feel me\nIt&#39;s on baby, let&#39;s get lost\nYou don&#39;t need to call into work &#39;cause you&#39;re the boss\nFor real, want you to show me how you feel\nI consider myself lucky, that&#39;s a big deal\nWhy? Well, you got the key to my heart\nBut you ain&#39;t gonna need it, I&#39;d rather you open up my body\nAnd show me secrets, you didn&#39;t know was inside\nNo need for me to lie\nIt&#39;s too big, it&#39;s too wide\nIt&#39;s too strong, it won&#39;t fit\nIt&#39;s too much, it&#39;s too tough\nHe talk like this &#39;cause he can back it up\nHe got a big ego, such a huge ego\nI love his big ego, it&#39;s too much\nHe walk like this &#39;cause he can back it up\nUsually I&#39;m humble, right now I don&#39;t choose\nYou can leave with me or you could have the blues\nSome call it arrogant, I call it confident\nYou decide when you find on what I&#39;m working with\nDamn I know I&#39;m killing you with them legs\nBetter yet them thighs\nMatter a fact it&#39;s my smile or maybe my eyes\nBoy you a site to see, kind of something like me\nIt&#39;s too big, it&#39;s too wide\nIt&#39;s too strong, it won&#39;t fit\nIt&#39;s too much, it&#39;s too tough\nI talk like this &#39;cause I can back it up\nI got a big ego, such a huge ego\nBut he love my big ego, it&#39;s too much\nI walk like this &#39;cause I can back it up\nI, I walk like this &#39;cause I can back it up\nI, I talk like this &#39;cause I can back it up\nI, I can back it up, I can back it up\nI walk like this &#39;cause I can back it up\nIt&#39;s too big, it&#39;s too wide\nIt&#39;s too strong, it won&#39;t fit\nIt&#39;s too much, it&#39;s too tough\nHe talk like this &#39;cause he can back it up\nHe got a big ego, such a huge ego, such a huge ego\nI love his big ego, it&#39;s too much\nHe walk like this &#39;cause he can back it up\nEgo so big, you must admit\nI got every reason to feel like I&#39;m that bitch\nEgo so strong, if you ain&#39;t know\nI don&#39;t need no beat, I can sing it with piano
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   playin&#39; everything so easy,\nit&#39;s like you seem so sure.\nstill your ways, you dont see\ni&#39;m not sure if they&#39;re for me.\nthen things come right along our way, though we didn&#39;t truly ask.\nit seems as if they&#39;re gonna linger\nwith every delight they bring,\njust like what you have truly seemed.\ni&#39;m trying to think of what you really want to say,\neven through my darkest day.\nyou might want to leave me,\nfeeling strange about you\nlike you&#39;re gonna let me know,\nwhen words then slipped out of you.\nwhen words dont come so easy to say\nyou just leave me feeling, come what may\nthough i want things coming from your way.\ni say to you, you bore me all the time\nwhen you seem to hold back all in you,\nall that you want to let me know.\nwhy dont you have the courage?\nspeak up and i&#39;ll listen,\nif you truly want me to know, then tell me.\nis there something wrong with you\nand you seem fastened there.\nit sounds as if there&#39;ll be a melody\nif things in you are let out\nand then i will feel alright.\nwhen you sleep, do you feel the same,\nexactly as i do?\ni really want to hear things from you,\nthough i&#39;ve felt something new\neversince you acted that way.\nif i go,\nwould you still mind telling me?\nif i stay,\nyou seem to let the days go by.\nif you truly want to let me know,\nthen tell me.
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              If you search\nFor tenderness\nIt isn&#39;t hard to find\nYou can have the love\nYou need to live\nBut if you look\nFor truthfulness\nYou might just\nAs well be blind\nIt always seems to be\nSo hard to give\nChorus:\nHonesty\nIs such a lonely word\nEveryone is so untrue\nHonesty\nIs hardly ever heard\nAnd mostly\nWhat I need from you\nI can always\nFind someone\nTo say\nThey sympathize\nIf I wear my heart\nOut on my sleeve\nBut I don&#39;t want\nSome pretty face\nTo tell me\nPretty lies\nAll I want\nIs someone\nTo believe\n(Chorus)\nI can find a lover\nI can find a friend\nI can have security\nUntil the bitter end\nAnyone can comfort me\nWith promises again\nI know, I know\nWhen I&#39;m deep\nInside of me\nDon&#39;t be\nToo concerned\nI won&#39;t ask\nFor nothin&#39;\nWhile I&#39;m gone\nBut when I want\nSincerity\nTell me where else\nCan I turn\nWhen\nYou&#39;re the one\nThat I depend upon\n(Chorus)
+## 5 Oh oh oh I, oh oh oh I\n[Verse 1:]\nIf I wrote a book about where we stand\nThen the title of my book would be &quot;Life with Superman&quot;\nThat&#39;s how you make me feel I count you as a privilege\nThis love is so ideal\nI&#39;m honored to be in it\nI know you feel the same I see it everyday\nIn all the things you do\nIn all the things you say\n[Chorus:]\nYou are my rock\nBaby you&#39;re the truth\nYou are my rock\nI love to rock with you\nYou are my rock\nYou&#39;re everything I need\nYou are my rock\nSo baby rock with me\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI love to rock with you\nOh oh oh I\n[Verse 2:]\nIf I were to try to count the ways\nYou make me smile\nI&#39;d run out of fingers\nBefore I run out of timeless things to talk about\nSugar you keeps it going on\nMake me wanna keep my lovin strong\nMake me wanna try my best\nTo give you what you want and what you need\nGive you my whole heart, not just a little piece\nMore than a minimum,\nI&#39;m talking everything\nMore than a single wish,\nI&#39;m talking every dream\n[Chorus:]\nYou are my rock\nBaby you&#39;re the truth\nYou are my rock\nI love to rock with you\nYou are my rock\nYou&#39;re everything I need\nYou are my rock\nSo baby rock with me\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI wanna rock with you\n[Bridge:]\nIf there&#39;s options I don&#39;t want them\nThey&#39;re not worth my time\nCause if it&#39;s not you, oh no thank you I like us just fine\nYou&#39;re a rock in the sand\nYou&#39;re a smile in a cry\nYou&#39;re my joy through the pain\nYou&#39;re the truth through the lies\nNo matter what I do I know that I can count on you\nOh oh oh I, oh oh oh I\n[Chorus:]\nYou are my rock\nBaby you&#39;re the truth\nYou are my rock\nI love to rock with you\nYou are my rock\nYou&#39;re everything I need\nYou are my rock\nSo baby rock with me\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI love to rock with you\nOh oh oh I, oh oh oh I\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI wanna rock with you
+## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Party the people, the people the party it&#39;s popping no sitting around,\nI see you looking you looking I see you I look at what you started now\nLet&#39;s hook up little one on one up come on give some of the that stuff,\nLet me freshin&#39; it with no ruff (let&#39;s go)\nLet&#39;s hook up when we start we won&#39;t stop,\nBaby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nI am, Black Culture\nI am, Black Culture\nI am, Black Culture\nI am, Black Culture\nParty the people, the people the party, it&#39;s popping no sitting around,\nI see you looking you looking I see you I look at what you started now\nLet&#39;s hook up come one give some of the that stuff,\nLet me freshin&#39; it up little one on one with no ruff (let&#39;s go)\nLet&#39;s hook up, when we start we won&#39;t stop,\nBaby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nYou are, Black Culture\nYou are, Black Culture\nYou are, Black Culture\nYou are, Black Culture\nLet&#39;s hook up come on give some of the that stuff,\nLet me freshin&#39; it up little one on one with no ruff (let&#39;s go)\nLet&#39;s hook up, when we start we won&#39;t stop,\nBaby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nLet&#39;s hook up come on give some of the that stuff, Let me freshin&#39; it up little one on one with no ruff (let&#39;s go) Let&#39;s hook up, when we start we won&#39;t stop, Baby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture</code></pre>
+<pre class="r"><code>tail(metro)</code></pre>
+<pre><code>##            V1                          V2   V3         V4      V5
+## 362233 362231                swingin-door 2012 edens-edge Country
+## 362234 362232   who-am-i-drinking-tonight 2012 edens-edge Country
+## 362235 362233                        liar 2012 edens-edge Country
+## 362236 362234                 last-supper 2012 edens-edge Country
+## 362237 362235 christ-alone-live-in-studio 2012 edens-edge Country
+## 362238 362236                        amen 2012 edens-edge Country
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   V6
+## 362233                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              You&#39;ve got your Texas way of walking,\nYou&#39;ve got your sexy way of talking,\nI let you get all under my skin,\nBut now your welcome has worn off and\nSo next time you go, don&#39;t come back again,\nCause your train don&#39;t stop here anymore,\nI ain&#39;t your gas-up rest stop, swinging door,\nYou can&#39;t just walk in,\nWalk out like so many times before,\nI ain&#39;t your swinging door,\nYou&#39;ve got a girl in every cow-town,\nYou think I don&#39;t know how you cat around,\nI let your sweet talk get my guard down,\nTook me a while to figure you out,\nBut I&#39;ve got you figured all out now,\nAnd your train don&#39;t stop here anymore,\nI ain&#39;t your gas-up rest stop, swinging door,\nYou can&#39;t just walk in,\nWalk out like so many time before,\nI ain&#39;t your swinging door,\nYou&#39;d best make up your mind,\nCause if you go you ain&#39;t coming back this time,\nYour train don&#39;t stop here anymore,\nI ain&#39;t your quick stop, walk up, open 24\nYou can&#39;t just walk in, walk out,\nTreat me like your candy store,\nYour train don&#39;t stop here anymore,\nI ain&#39;t your gas-up rest stop, swinging door,\nYou can&#39;t just walk in,\nWalk out like so many times before,\nI ain&#39;t your swinging door,\nI ain&#39;t your swinging door.
+## 362234 I gotta say\nBoy, after only just a couple of dates\nYou&#39;re hands down, outright blowing my mind\nIn nearly every single way\nYou&#39;re amazing and yet\nThere&#39;s only so much I can get\nFrom picnics, long walks, flowers and talks\nBaby here&#39;s what I suggest\nIt&#39;s time I see ya belly-up to a bar\nHow &#39;bout ya show me what kind of cowboy you are?\nAre you a Kenny tequila, Buffet margarita\nOr an Alan Jackson hurricane?\nAre you a good time, flask of moonshine\nGoing George Strait to my brain?\nA girl can tell a lot about a boy in one shot\nI gotta know you&#39;ve got a Bocephus side\nSo what&#39;s in the cup, order it up\nWho am I drinking tonight?\nYou might not have guessed\nJudging by my heels and lacy dress\nI&#39;m a wide-neck Gretchen, Loretta Lynn\nI&#39;ve learned from the best\nWomen like that know how to throw a few back\nWe gotta have a man who can keep up with all that\nAre you a Kenny tequila, Buffet margarita\nOr an Alan Jackson hurricane?\nAre you a good time, flask of moonshine\nGoing George Strait to my brain?\nA girl can tell a lot about a boy in one shot\nI gotta know you&#39;ve got a Bocephus side\nSo what&#39;s in the cup, order it up\nWho am I drinking tonight?\nOh yeah\nSo pick your poison and make it two\nWhat kinda trouble are we gettin&#39; into?\nAre you a Kenny tequila, Buffet margarita\nOr an Alan Jackson hurricane?\nAre you a good time, flask of moonshine\nGoing George Strait to my brain?\nA girl can tell a lot about a boy in one shot\nI gotta know you&#39;ve got a Bocephus side\nSo what&#39;s in the cup, order it up\nWho am I drinking?\nAnother round, throwing &#39;em down\nBoy, what ya thinking?\nWhat&#39;s in the cup, order it up\nWho am I drinking tonight?\nOh yeah
+## 362235                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          I helped you find her diamond ring\nYou made me try it on and everything\nTomorrow you&#39;ll both say I do\nAnd I&#39;ll be there &#39;cause that&#39;s what best friends do\nI should win an Oscar\nBest actress in a show\nYou always see me smiling\nLittle do you know\nI&#39;m a liar\nI&#39;m a liar, the biggest liar in the world\nI&#39;m crying\nI&#39;m crying like I&#39;ve never cried before\nI know you always heard me say\nYou&#39;ll meet the perfect girl one day\nThe night you called and told me the news\nI said I couldn&#39;t be more thrilled for you\nThis might be funny timing\nProbably doesn&#39;t matter now\nI never thought I&#39;d say this but I just figured out\nI&#39;m a liar\nI&#39;m a liar, the biggest liar in the world\nI&#39;m crying\nI&#39;m crying like I&#39;ve never cried before\nIf I ever tell you that I&#39;ve found the perfect man\nThat he&#39;s everything I&#39;ve ever wanted just as I had planned\nI&#39;m a liar\nI&#39;m a liar, the biggest liar in the world\n&#39;Cause I&#39;ll be crying\nI&#39;ll be crying like I&#39;ve never cried before\nI helped you find her diamond ring\nYou made me try it on and everything
+## 362236                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Look at the couple in the corner booth\nLooks a lot like me and you\nShe&#39;s looking out at the window\nHe&#39;s staring down at his shoes\nShe gets another glass of Cabernet\nShe&#39;s searching hard for something to say\nHe&#39;s got that little too late look on his already gone face\nLook through each other like a piece of glass\nIs that what happens when the years fly past?\nLately I&#39;ve been feeling like that\nIs it time for a coming to Jesus\nBaby tell me that won&#39;t be us, us\nIs that all we are to each other?\nCould it be our last supper?\nTell me you&#39;re uncomfortably numb\nI can&#39;t imagine I&#39;m the only one\nIs goodbye on the tip of your tongue\nAny love left, gotta be some\nWhy&#39;d you bring me to my favorite place?\nA little wine and everything&#39;s OK\nAre we really gonna end this way?\nIs it time for a coming to Jesus\nBaby tell me that won&#39;t be us, us\nIs that all we are to each other?\nCould it be our last supper?\nYou break the bread and you break my heart\nYou raise the glass as we fall apart\nGuess it&#39;s time for a coming to Jesus\nLooks like that just might be us, us\nIs that all we are to each other?\nLooks like it&#39;s out last supper\nLook at the couple in the corner booth\nLooks a lot like me and you
+## 362237                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                When I fly off this mortal earth\nAnd I&#39;m measured up by depth and girth\nThe Father says now what&#39;s he worth\nMay he see Jesus death and birth\nDon&#39;t measure me by dollar signs\nOr bricks and mortar you may find\nBy Christ alone will I be found\nWorthy of that golden crown\nWorthy of that golden crown\nThe value of this life I&#39;ve lived\nHow did I love, did I forgive\nWhere did my treasure truly lay\nHow did I start and end each day\nDon&#39;t measure me by battles won\nOr some good deed that I have done\nBy Christ alone will I be found\nWorthy of that golden crown\nWorthy of that golden crown\nMay be a pauper or a king\nHave nothing or have everything\nThe question begs, do you belong\nDo you sing a resurrection song\nMeasured by the master&#39;s hand\nOn only one truth can we stand\nBy Christ alone will we be found\nWorthy of that golden crown\nWorthy of that golden crown
+## 362238                                                                              I heard from a friend of a friend of a friend that\nYou finally got rid of that girlfriend\nYou finally came out of that love coma boy\nI heard Mary Jane at the powder-puff beauty shop\nSayin&#39; that blond in her tube top\nShe left our Jimmy for a boy in Illinois\nSomeone give me an amen,\nSomeone give me an amen.\nCan I get a thank God Hallelujah\nYou finally saw what she was doing to ya\nYour mama called it, she was right\nGlad to see you saw the light.\nWhole town yeah we hooped and hollered.\nShe drove away nobody stopped her\nNa na na na na, I&#39;ll say it again\nSomeone give me an amen.\nYeah right, like I really coulda said something\nYou wouldn&#39;t heard it if the train was coming\nYou had your head so high in the clouds\nOh I, I had a really good reason\nFor hiding my feelings but now I can finally spit it out\nSomeone give me an amen.\nSomeone give me an amen.\nCan I get a thank God Hallelujah\nYou finally saw what she was doing to ya\nYour mama called it, she was right\nGlad to see you saw the light.\nWhole town yeah we hooped and hollered.\nShe drove away nobody stopped her\nNa na na na na, I&#39;ll say it again\nSomeone give me an amen.\nI&#39;m standing right here in front of you\nI think I love you too\nCan I get a thank God Hallelujah\nBaby do you believe it, do you?\nYour mama called it, she was right\nGlad to see you saw the light.\nWhole town yeah they hooped and hollered.\nThe preacher&#39;s son and the farmer&#39;s daughter.\nNa na na na na, I&#39;ll say it again\nSomeone give me an amen,\nSomeone give me an amen\nNa na na na na na na na na na na\nNa na na na na na na na na na na</code></pre>
+</div>
+<div id="works-cited" class="section level1 unnumbered">
+<h1>Works Cited</h1>
+<div id="refs" class="references">
+<div id="ref-barr19">
+<p>Barrett, Gabby. 2019. “Gabby Barrett’s ’I Hope’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549839/gabby-barrett-i-hope-lyrics.</p>
+</div>
+<div id="ref-hunt19">
+<p>Hunt, Sam. 2019. “Sam Hunt’s ’Kinfolks’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics.</p>
+</div>
+<div id="ref-kagg20">
+<p>Kaggle. 2020. “Kaggle: Your Home for Data Science.” https://www.kaggle.com/.</p>
+</div>
+<div id="ref-lyri20">
+<p>Lyrics, Metro. 2020. “Song Lyrics | MetroLyrics.” https://www.metrolyrics.com/.</p>
+</div>
+<div id="ref-mish17">
+<p>Mishra, Gyanendra. 2017. “380,000+ Lyrics from MetroLyrics.” Data Analytics. <em>Kaggle</em>. https://kaggle.com/gyani95/380000-lyrics-from-metrolyrics.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>See, <span class="citation">Kaggle (2020)</span><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>See, <span class="citation">Lyrics (2020)</span><a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>See, <span class="citation">Hunt (2019)</span><a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>See, <span class="citation">Barrett (2019)</span><a href="#fnref4" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

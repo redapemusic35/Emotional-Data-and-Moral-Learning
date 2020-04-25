@@ -1,0 +1,124 @@
+---
+title: "3 - Hip Hop Music"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/default.bib
+---
+
+Moral knowledge is knowledge about right and wrong. Sources of moral knowledge may include moral testimony. Consider an ethics professional giving a public address to the American public; “lying is wrong” she says. Assuming that the American public comes to believe that lying is wrong on the basis of this professional’s testimony, and it turns out, that in fact it is true that “lying is wrong,” then the American public now have moral knowledge on the basis of this moral testimony. However, this kind of moral knowledge only speaks to one kind of approach which epistemologists may take in understanding sources of moral knowledge. For instance, moral testimony may not be the most salient source of moral knowledge. 
+
+@hill09, argues that while it is plausible to get moral knowledge from moral testimony, she does not think that we have any reason to trust it. Regarding moral knowledge, Hills thinks that what we care about is moral understanding and not moral knowledge. 
+
+Hill's critique against moral knowledge via moral testimony is not unique. However there are many reasons to reject this view. Rather than defend this rejection, my purpose will be to work on an assumption that we have reason to believe that moral testimonies can contribute to moral knowledge. I go a step further than this however. Eleonore Stump, as mentioned previously, makes a distinction between what she calls Fransican Knowledge and Dominican Knowledge. Briefly, Fransican knowledge is that moral knowledge which can be transmitted via narratives. Using this idea as an assumption, I will argue that if it is true, then there are maybe certain patterns which we may uncover in narratives which give us clues as to the moral content that they possess. Further, rather than laboriously reading over large sets of data ourselves, we might be able to harness the power of technology and conduct what has become known as techniques in natural language processing. 
+
+First, to show how this is possible, I point out that Hills argues that what we care about truly is not only whether someone can reliably do the right thing, but whether they justify their actions in doing the right thing, and whether someone will be disposed to do the right thing. All of this is explained by someone’s character, and moral testimony is not sufficient for building someone’s moral character. Briefly, to understand the difference between moral understanding and moral knowledge, consider the following example by Paulina Sliwa:
+
+> Suit: Sam is standing at the shore of a lake when he sees a child beginning to drown. He believes that saving the child would be a good thing to do but it would involve ruining his new expensive suit. He cannot decide what to do and there is no one else at the lake, so he decides to call a friend whom he takes to be reliable. His friend tells him that he should save the child, and he believes him and saves the child.
+
+Topic Modelling is a method of natural language processing which "attempts to find words that frequently appear together within a text and then group them into clusters" ([Cameron Blevins's - "Topic Modeling Martha Ballard's Diary"](http://www.cameronblevins.org/posts/topic-modeling-martha-ballards-diary/)).
+
+What I do here, includes conducting a series of topic analyses on sets of country music and Hip-Hop music lyrics. I compare the results and suggest that some of the results might show us that there is a way to understand how we might find contents in lyrics consisting of moral knowledge. The program languages that I use primarily here, consist of [R](https://www.r-project.org/) which is a statistical analysis software, and [markdown](https://daringfireball.net/projects/markdown/), which is a lightweight markup language.
+
+```{r}
+library(ggplot2)
+
+library(readtext)
+
+lyrics <- read.csv("~/mallet/sample-data/top100/Country/More-Hearts.csv")
+
+lyrics
+```
+I first point R to the file I intend on using and read it into a data set called 'lyrics'.
+
+While we might consider it to have been a good thing that Sam did save the child, there is something unsettling about his approach for doing so. We might expect that Sam should not need to rely on testimony in this case, that he should already know what the moral facts in this situation are. By the time that Sam is old enough to be concerned with the money he paid, he should already have enough knowledge regarding the facts in this situation. For instance, there is a fact about the right course of action, and Sam should know what this fact is. This is a question about his character, and what he understands.
+
+Analytic philosophy, long thought to be a method used by epistemologists to understand varying kinds of knowledge, rests on a habit of categorizing by means of sets of abstract properties and labels. But according to @stum10, there is another method available to epistemologists attempting to understand moral knowledge. This other method involves moral knowledge that we can get from moral narratives. But this justs might mean that through narratives, we are able to associate sets of abstract properties.
+
+
+### Initial Country Music Analysis
+
+```{r}
+library(ggplot2)
+
+country <- read.csv("~/mallet/Country_keys.csv")
+str(country)
+ggplot(country, aes(x = Topic, y = Order)) +
+  geom_point()
+
+
+```
+
+First, we see that upon reading in our data frame, that it consists of 20 objects, here each object being a unique topic understood as a cluster of words. Further, each topic is assigned a percentage representing its relationship to the overall document. For instance, 'you're kiss forget forgive calls ain't' has a relationship of just under .25 percent of the document while "home made ice crave love good store didn't christ shirt" comprises almost 50%. However, because the scale here goes to 2, it is more like almost 25% while the former is around 10% or so.
+
+```{r}
+library(ggplot2)
+library(plotrix)
+
+country <- read.csv("/home/redapemusic35/mallet/Country_keys.csv")
+
+```
+
+
+```{r}
+library(ggplot2)
+
+country <- read.csv("/home/redapemusic35/mallet/Country_keys.csv")
+str(country)
+plot(country)
+```
+
+### Initial Hip-Hop Topic Analysis
+
+Next, we do a similar analysis on Hip-Hop lyrics. Our data frame is structured the same.
+
+```{r}
+library(gridExtra)
+library(ggplot2)
+library(ggrepel)
+HipHop2 <- read.csv("/home/redapemusic35/mallet/Rap_keys.csv", header = TRUE, sep = ",")
+HipHop2
+ggplot(HipHop2, aes(x = Id, y = Label)) +
+  geom_point(color = "red") +
+  geom_text_repel(data = subset(HipHop2, Label > 0.045),
+  segment.size = 0.15,
+  segment.alpha = 1.0,
+  aes(
+  color = factor(Label),
+  label = Words,
+  ))
+
+```
+I had to do things a bit differently here. The first Hip-Hop chart I turned on its side. This is because, as you'll no doubt notice upon looking at the second chart, is that the topics push the scatter plot off the page.
+
+```{r}
+library(ggplot2)
+
+HipHop <- read.csv("/home/redapemusic35/mallet/Rap_keys.csv")
+str(HipHop)
+ggplot(HipHop, aes(x = Id, y = Label)) +
+  geom_point()
+```
+The second chart consists solely of the topic models themselves.
+
+```{r}
+library(ggplot2)
+
+HipHop <- read.csv("/home/redapemusic35/mallet/Rap_keys.csv")
+str(HipHop)
+ggplot(HipHop, aes(x = Id, y = Label)) +
+  geom_point()
+```
+
+Like the country music chart, each grouping of words, or topic, lines up with each point on the first chart starting from top to bottom.
+
+# Works Cited

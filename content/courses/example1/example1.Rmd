@@ -1,0 +1,180 @@
+---
+title: Example Page 1
+linktitle: Tips 1-2
+toc: true
+type: docs
+date: "2019-05-05T00:00:00+01:00"
+draft: false
+menu:
+  example:
+    parent: Example Topic
+    weight: 1
+
+# Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
+weight: 1
+---
+
+```{r}
+library(magrittr)
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+library(dplyr)
+library(readr)
+metro_orig <- read.csv("/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/lyrics.csv", stringsAsFactors = FALSE)
+
+names(metro_orig)
+
+
+glimpse(metro_orig[4000,])
+dim(metro_orig)
+
+str(metro_orig[4000, ]$lyrics, nchar.max = 300)
+dim(metro_orig)
+
+fix.contractions <- function(doc) {
+  doc <- gsub("won't", "will not", doc)
+  doc <- gsub("can't", "can not", doc)
+  doc <- gsub("n't", " not", doc)
+  doc <- gsub("'re", " are", doc)
+  doc <- gsub("'ve", " have", doc)
+  doc <- gsub("'m", " am", doc)
+  doc <- gsub("'d", " would", doc)
+  doc <- gsub("flyin'", "flying", doc)
+  doc <- gsub("'s", "", doc)
+  doc <- gsub("Puttin'", "Putting", doc)
+  doc <- gsub("I'll", "I will", doc)
+  doc <- gsub("payin'", "paying", doc)
+  doc <- gsub("we'll", "we will", doc)
+  doc <- gsub("We'll", "We will", doc)
+  doc <- gsub("singin'", "singing", doc)
+  doc <- gsub("you'll", "you will", doc)
+  doc <- gsub("'em", "them", doc)
+  doc <- gsub("dancin'", "dancing", doc)
+  doc <- gsub("playin'", "playing", doc)
+  doc <- gsub("it's", "it is", doc)
+  return(doc)
+}
+
+# Six (expand) contractions
+
+metro_orig$lyrics <- sapply(metro_orig$lyrics, fix.contractions)
+
+# function to remove special characters
+
+removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
+
+# remove special characters
+
+metro_orig$lyrics <- sapply(metro_orig$lyrics, removeSpecialChars)
+
+# convert everything to lower case
+
+metro_orig$lyrics <- sapply(metro_orig$lyrics, tolower)
+
+str(metro_orig[362000, ]$lyrics, nchar.max = 300)
+
+summary(metro_orig)
+```
+
+## Sources
+
+```{r}
+
+library(dplyr) 
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+Prince1 <- read.csv("/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/prince_raw_data.csv", stringsAsFactors = FALSE)
+
+names(Prince1)
+str(Prince1)
+head(Prince1)
+tail(Prince1)
+
+Prince1 <- Prince1 %>%
+select(lyrics = text, song, year, album, peak, us_pop = US.Pop, us_rnb = US.R.B)
+
+glimpse(Prince1[139,])
+
+# How many observations and columns
+
+dim(Prince1)
+
+# and the structure
+
+str(Prince1[139, ]$lyrics, nchar.max = 300)
+
+# Conditioning the data
+
+## expand contractions
+
+fix.contractions <- function(doc) {
+  doc <- gsub("won't", "will not", doc)
+  doc <- gsub("can't", "can not", doc)
+  doc <- gsub("n't", " not", doc)
+  doc <- gsub("'re", " are", doc)
+  doc <- gsub("'ve", " have", doc)
+  doc <- gsub("'m", " am", doc)
+  doc <- gsub("'d", " would", doc)
+  doc <- gsub("flyin'", "flying", doc)
+  doc <- gsub("'s", "", doc)
+  doc <- gsub("Puttin'", "Putting", doc)
+  doc <- gsub("I'll", "I will", doc)
+  doc <- gsub("payin'", "paying", doc)
+  doc <- gsub("we'll", "we will", doc)
+  doc <- gsub("We'll", "We will", doc)
+  doc <- gsub("singin'", "singing", doc)
+  doc <- gsub("you'll", "you will", doc)
+  doc <- gsub("'em", "them", doc)
+  doc <- gsub("dancin'", "dancing", doc)
+  doc <- gsub("playin'", "playing", doc)
+  doc <- gsub("it's", "it is", doc)
+  return(doc)
+}
+
+# fix contractions
+
+Prince1$lyrics <- sapply(Prince1$lyrics, fix.contractions)
+
+# remove special characters
+
+removeSpecialChars <- sapply(Prince1$lyrics, removeSpecialChars)
+
+# convert everything to lower case
+
+Prince1$lyrics <- sapply(Prince1$lyrics, tolower)
+
+# Cleaner output than original
+
+str(Prince1[139, ]$lyrics, nchar.max = 300)
+
+# Because we love facts
+
+summary(Prince1)
+
+# Create decade column
+
+Prince1 <- Prince1 %>%
+  mutate(decade =
+	ifelse(Prince1$year %in% 1978:1979, "1970s",
+	ifelse(Prince1$year %in% 1980:1989, "1989s",
+	ifelse(Prince1$year %in% 1990:1999, "1990s",
+        ifelse(Prince1$year %in% 2000:2009, "2000s",
+               "NA")))))
+
+# Create chart level column
+
+Prince1 <- Prince1 %>%
+  mutate(chart_level =
+	 ifelse(Prince1$peak %in% 1:10, "Top 10",
+ 	 ifelse(Prince1$peak %in% 11:100, "Top 100", "Uncharted")))
+
+
+```
+
+# Works Cited

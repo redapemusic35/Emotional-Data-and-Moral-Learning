@@ -1,0 +1,223 @@
+---
+title: "3 - Hip Hop Music"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/default.bib
+---
+
+
+
+<p>Moral knowledge is knowledge about right and wrong. Sources of moral knowledge may include moral testimony. Consider an ethics professional giving a public address to the American public; “lying is wrong” she says. Assuming that the American public comes to believe that lying is wrong on the basis of this professional’s testimony, and it turns out, that in fact it is true that “lying is wrong,” then the American public now have moral knowledge on the basis of this moral testimony. However, this kind of moral knowledge only speaks to one kind of approach which epistemologists may take in understanding sources of moral knowledge. For instance, moral testimony may not be the most salient source of moral knowledge.</p>
+<p><span class="citation">Hills (2009)</span>, argues that while it is plausible to get moral knowledge from moral testimony, she does not think that we have any reason to trust it. Regarding moral knowledge, Hills thinks that what we care about is moral understanding and not moral knowledge.</p>
+<p>Hill’s critique against moral knowledge via moral testimony is not unique. However there are many reasons to reject this view. Rather than defend this rejection, my purpose will be to work on an assumption that we have reason to believe that moral testimonies can contribute to moral knowledge. I go a step further than this however. Eleonore Stump, as mentioned previously, makes a distinction between what she calls Fransican Knowledge and Dominican Knowledge. Briefly, Fransican knowledge is that moral knowledge which can be transmitted via narratives. Using this idea as an assumption, I will argue that if it is true, then there are maybe certain patterns which we may uncover in narratives which give us clues as to the moral content that they possess. Further, rather than laboriously reading over large sets of data ourselves, we might be able to harness the power of technology and conduct what has become known as techniques in natural language processing.</p>
+<p>First, to show how this is possible, I point out that Hills argues that what we care about truly is not only whether someone can reliably do the right thing, but whether they justify their actions in doing the right thing, and whether someone will be disposed to do the right thing. All of this is explained by someone’s character, and moral testimony is not sufficient for building someone’s moral character. Briefly, to understand the difference between moral understanding and moral knowledge, consider the following example by Paulina Sliwa:</p>
+<blockquote>
+<p>Suit: Sam is standing at the shore of a lake when he sees a child beginning to drown. He believes that saving the child would be a good thing to do but it would involve ruining his new expensive suit. He cannot decide what to do and there is no one else at the lake, so he decides to call a friend whom he takes to be reliable. His friend tells him that he should save the child, and he believes him and saves the child.</p>
+</blockquote>
+<p>Topic Modelling is a method of natural language processing which “attempts to find words that frequently appear together within a text and then group them into clusters” (<a href="http://www.cameronblevins.org/posts/topic-modeling-martha-ballards-diary/">Cameron Blevins’s - “Topic Modeling Martha Ballard’s Diary”</a>).</p>
+<p>What I do here, includes conducting a series of topic analyses on sets of country music and Hip-Hop music lyrics. I compare the results and suggest that some of the results might show us that there is a way to understand how we might find contents in lyrics consisting of moral knowledge. The program languages that I use primarily here, consist of <a href="https://www.r-project.org/">R</a> which is a statistical analysis software, and <a href="https://daringfireball.net/projects/markdown/">markdown</a>, which is a lightweight markup language.</p>
+<pre class="r"><code>library(ggplot2)
+
+library(readtext)
+
+lyrics &lt;- read.csv(&quot;~/mallet/sample-data/top100/Country/More-Hearts.csv&quot;)
+
+lyrics</code></pre>
+<pre><code>##                I.can.t.wait.to.show.you.where.I.grew.up.Walk.you..round.the.foothills.of
+## 1   my town Probably feel like you&#39;ve been there before After hearing all the           
+## 2     stories I&#39;ve been telling you For six months now We&#39;ll probably have to           
+## 3     sleep in separate bedrooms Pack a shirt for church because we&#39;ll go I&#39;m           
+## 4    not trying to scare you off but I just thought that we should talk a few           
+## 5   things out Before we hit the road If I bring you home to mama I guess I&#39;d           
+## 6  better warn ya She falls in love a little faster than I do And my dad will           
+## 7         check your tires Pour you whiskey over ice and Take you fishing but           
+## 8    pretend that he don&#39;t like you Oh  if we break up  I&#39;ll be fine But you&#39;ll         
+## 9           be breaking more hearts than mine My sister&#39;s gonna ask a million           
+## 10   questions Say anything she can to turn you red And when you meet my high           
+## 11     school friends They&#39;ll buy you drinks and fill you in On all the crazy           
+## 12   nights I can&#39;t outlive So if I bring you home to mama I guess I&#39;d better           
+## 13  warn ya She falls in love a little faster than I do And my dad will check           
+## 14   your tires Pour you whiskey over ice and Buy you dinner but pretend that           
+## 15    he don&#39;t like you Oh  if we break up  I&#39;ll be fine But you&#39;ll be breaking         
+## 16  more hearts than mine If I bring you home to mama I guess I&#39;d better warn           
+## 17     ya She feels every heartache I go through And if my dad sees me crying           
+## 18    He&#39;ll pour some whiskey over ice and Tell a lie and say he never really           
+## 19       liked you Oh  if we break up  I&#39;ll be fine But you&#39;ll be breaking more         
+## 20                  hearts than mine You&#39;ll be breaking more hearts than mine</code></pre>
+<p>I first point R to the file I intend on using and read it into a data set called ‘lyrics’.</p>
+<p>While we might consider it to have been a good thing that Sam did save the child, there is something unsettling about his approach for doing so. We might expect that Sam should not need to rely on testimony in this case, that he should already know what the moral facts in this situation are. By the time that Sam is old enough to be concerned with the money he paid, he should already have enough knowledge regarding the facts in this situation. For instance, there is a fact about the right course of action, and Sam should know what this fact is. This is a question about his character, and what he understands.</p>
+<p>Analytic philosophy, long thought to be a method used by epistemologists to understand varying kinds of knowledge, rests on a habit of categorizing by means of sets of abstract properties and labels. But according to <span class="citation">Stump (2010)</span>, there is another method available to epistemologists attempting to understand moral knowledge. This other method involves moral knowledge that we can get from moral narratives. But this justs might mean that through narratives, we are able to associate sets of abstract properties.</p>
+<div id="initial-country-music-analysis" class="section level3">
+<h3>Initial Country Music Analysis</h3>
+<pre class="r"><code>library(ggplot2)
+
+country &lt;- read.csv(&quot;~/mallet/Country_keys.csv&quot;)
+str(country)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    40 obs. of  2 variables:
+##  $ Topic: int  0 1 2 3 4 5 6 7 8 9 ...
+##  $ Order: num  0.01 0.04 0.02 0.04 0.02 0.02 0.02 0.01 0.02 0.01 ...</code></pre>
+<pre class="r"><code>ggplot(country, aes(x = Topic, y = Order)) +
+  geom_point()</code></pre>
+<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>First, we see that upon reading in our data frame, that it consists of 20 objects, here each object being a unique topic understood as a cluster of words. Further, each topic is assigned a percentage representing its relationship to the overall document. For instance, ‘you’re kiss forget forgive calls ain’t’ has a relationship of just under .25 percent of the document while “home made ice crave love good store didn’t christ shirt” comprises almost 50%. However, because the scale here goes to 2, it is more like almost 25% while the former is around 10% or so.</p>
+<pre class="r"><code>library(ggplot2)
+library(plotrix)
+
+country &lt;- read.csv(&quot;/home/redapemusic35/mallet/Country_keys.csv&quot;)</code></pre>
+<pre class="r"><code>library(ggplot2)
+
+country &lt;- read.csv(&quot;/home/redapemusic35/mallet/Country_keys.csv&quot;)
+str(country)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    40 obs. of  2 variables:
+##  $ Topic: int  0 1 2 3 4 5 6 7 8 9 ...
+##  $ Order: num  0.01 0.04 0.02 0.04 0.02 0.02 0.02 0.01 0.02 0.01 ...</code></pre>
+<pre class="r"><code>plot(country)</code></pre>
+<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="initial-hip-hop-topic-analysis" class="section level3">
+<h3>Initial Hip-Hop Topic Analysis</h3>
+<p>Next, we do a similar analysis on Hip-Hop lyrics. Our data frame is structured the same.</p>
+<pre class="r"><code>library(gridExtra)
+library(ggplot2)
+library(ggrepel)
+HipHop2 &lt;- read.csv(&quot;/home/redapemusic35/mallet/Rap_keys.csv&quot;, header = TRUE, sep = &quot;,&quot;)
+HipHop2</code></pre>
+<pre><code>##                                                                                                                                                  Words
+## 1                       dead red wrong open uh-huh energy drainin vert sex life dan fanned bleeding weight gamestop bankshot caught stop ahead hands  
+## 2              watch calls mall underneath bloody ballin broke streets hittin big ball sky business royce dojo bentayga lemonade yellow black swerve  
+## 3                                                                        slow snakes rat jump paper balmains quarterback relate found head            
+## 4                                                                     put pluto make bando trenches wine hard don party bout pray front messy         
+## 5                         ptsd smell news mama affected shorter ryan fans forgot conceal shawl things andreas tank hanging blank park train home fun  
+## 6                                      hot whip let&#39;s hah milli mouth bop good shits legit-ly hop finish cross fly woo cop swervin blunt flew needed  
+## 7                  wave ears emotionally wasn&#39;t saved section stage school weed forever long harden scoring joy tear toys dreaming bosses paint blew  
+## 8                    doin days good sleep kitty pinky blood high-class taliban fame texts manor deep appetite opps paranoid leaving peace flyin evil  
+## 9                        bout talking n---a crowd coupes rock knock speed speakin vegan heat handlin doubted bank bottles reach wild mile race mamas  
+## 10 control bro yeah digits knee leavin vouch chaser skraight forty-two peep breathin finally squat girls technical sisters notice dollar businessman  
+## 11                               bae shawty gotta woah bottom top lot heart applause floor-floor cold ice goyard high clap drop ride wanna shoe baes  
+## 12                                   box told soul put coupe wanna bales bustin pullin stick trappin sell cash i&#39;ma won&#39;t lot movin carter city wipe  
+## 13                                                             sell richard fifty bmf fn&#39;s tourist half pack maintained stayed kid month it&#39;s         
+## 14                                                                                                                      christian                     
+## 15                          stick feel applyin presi check ready spare hoes treat findin we&#39;re mega glocks honey partners play ridin trappin bought   
+## 16                                              jail uzi sobriety f---ing we&#39;ve point raindrops runnin loyalty keys bought real brodie yelling        
+## 17         paid salt listen fault scarred heartless learned tired haters ballin people won&#39;t greats great blue nipsey trackhawk remember screws lose  
+## 18                         ain&#39;t position comin play racks hood vibe sayin guess fore start paper tee grown michael microwave mix heavy stabbed push  
+## 19                                   bitch nigga niggas shit fuck lil hunnid baby patek pussy dropped huh cocaine ass dick man ride london draco cut  
+## 20                                                                        domain birkin maniac quarter cost murk fettuccini percocet lick             
+## 21                                                                                                                                                    
+## 22                      racks wakin gettin whoa inside ball salty answer jeans forgi&#39;s remember trap bottoms mornin niggas team y&#39;all sip forget bad  
+## 23                                     hah racks gonna big gettin empty wifin swag bad lit count bro ride fast rate spit cuzzo fifty jubilee countin  
+## 24                                sum&#39;n vvs lose prove news nah street rid beats walkin literally extortion dues pray kids hearin paid city huh stop  
+## 25           roxanne wanna malibu party night brr foreign running asshole alright goddamn gram player pay ooh attitude daddy&#39;s spending laugh shorty  
+## 26                              cars kid doubt dior super feet throw gas york mil worried passport coming whores judo kick daddy callin mula jeweler  
+## 27                   bands doin fans people table roll nothin lotta run million dawg backwood thousand ready can&#39;t back ventador upgrade loud tellin  
+## 28                                     i&#39;m ain&#39;t yeah don&#39;t it&#39;s can&#39;t made money back hit tryna diamonds run gotta n---as call rich put love that&#39;s  
+## 29           woo ring wrist serving trap finger cheapest flew thousand truck bentley loop fact lighting rosewood house slipping turnt haven&#39;t passed  
+## 30                  block active pipin tonka test killer millie strapped designer shelf stackin problems suckin times guns makin bun type drive sold  
+## 31                     truck lil pipe slimes car hide thousand fetti watch bucks sun rulers pounds period barely motherf---er girbaud main ovo loads  
+## 32                          drip cap typin bust flame milk skydweller trust tire wear stones step baba roof barry light rules rolls followin clothes  
+## 33                   slatt nose app sucked mojo-deals lazy damn pour swat lick seal key crisco pick gangsta zimmerman candidate traffic chances wood  
+## 34                             head close n---a member i&#39;ve inside warzone stand don&#39;t air death turn order homie world showed fast fall i&#39;d eternal  
+## 35                                                        card follow flippin pluto law mama&#39;s month bruh hair decimals deals soda women tesla        
+## 36                    goin spendin full haters hold telly celly murder told pay proud clear credit dripper december betty crock-pot kobe bring pokin  
+## 37             back store commercial swear put school chevy&#39;s corner aries flights attention savage band shows rockin fan part wouldn&#39;t stayin pants  
+## 38                        usual call audemar&#39;d spain virgil dollars nuts taxes workin lil caught cat alien worth bird working fiji ton penthouse die  
+## 39                             yeah ain&#39;t boat choke note broke buy closet coats moncler walk heater bro rodeo buyin slick store drivin syrup chains  
+## 40                           big gon told young tryna forest move leave i&#39;ll chiefin age foreign ridin lead fill countries biggest forget baby world  
+##    Id   Label
+## 1   0 0.02773
+## 2   1 0.03546
+## 3   2 0.03850
+## 4   3 0.02533
+## 5   4 0.02509
+## 6   5 0.02308
+## 7   6 0.02645
+## 8   7 0.02995
+## 9   8 0.02919
+## 10  9 0.02568
+## 11 10 0.02651
+## 12 11 0.02646
+## 13 12 0.03487
+## 14 13 0.02317
+## 15 14 0.01858
+## 16 15 0.03087
+## 17 16 0.02090
+## 18 17 0.04515
+## 19 18 0.19741
+## 20 19 0.01936
+## 21 20 0.03012
+## 22 21 0.03473
+## 23 22 0.03121
+## 24 23 0.02351
+## 25 24 0.02697
+## 26 25 0.02858
+## 27 26 0.04388
+## 28 27 0.67511
+## 29 28 0.02997
+## 30 29 0.03240
+## 31 30 0.03083
+## 32 31 0.02678
+## 33 32 0.02809
+## 34 33 0.02800
+## 35 34 0.02925
+## 36 35 0.02230
+## 37 36 0.04122
+## 38 37 0.02323
+## 39 38 0.02166
+## 40 39 0.07668</code></pre>
+<pre class="r"><code>ggplot(HipHop2, aes(x = Id, y = Label)) +
+  geom_point(color = &quot;red&quot;) +
+  geom_text_repel(data = subset(HipHop2, Label &gt; 0.045),
+  segment.size = 0.15,
+  segment.alpha = 1.0,
+  aes(
+  color = factor(Label),
+  label = Words,
+  ))</code></pre>
+<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+I had to do things a bit differently here. The first Hip-Hop chart I turned on its side. This is because, as you’ll no doubt notice upon looking at the second chart, is that the topics push the scatter plot off the page.</p>
+<pre class="r"><code>library(ggplot2)
+
+HipHop &lt;- read.csv(&quot;/home/redapemusic35/mallet/Rap_keys.csv&quot;)
+str(HipHop)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    40 obs. of  3 variables:
+##  $ Words: Factor w/ 40 levels &quot;                     &quot;,..: 15 37 32 27 26 22 38 16 9 14 ...
+##  $ Id   : int  0 1 2 3 4 5 6 7 8 9 ...
+##  $ Label: num  0.0277 0.0355 0.0385 0.0253 0.0251 ...</code></pre>
+<pre class="r"><code>ggplot(HipHop, aes(x = Id, y = Label)) +
+  geom_point()</code></pre>
+<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+The second chart consists solely of the topic models themselves.</p>
+<pre class="r"><code>library(ggplot2)
+
+HipHop &lt;- read.csv(&quot;/home/redapemusic35/mallet/Rap_keys.csv&quot;)
+str(HipHop)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    40 obs. of  3 variables:
+##  $ Words: Factor w/ 40 levels &quot;                     &quot;,..: 15 37 32 27 26 22 38 16 9 14 ...
+##  $ Id   : int  0 1 2 3 4 5 6 7 8 9 ...
+##  $ Label: num  0.0277 0.0355 0.0385 0.0253 0.0251 ...</code></pre>
+<pre class="r"><code>ggplot(HipHop, aes(x = Id, y = Label)) +
+  geom_point()</code></pre>
+<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Like the country music chart, each grouping of words, or topic, lines up with each point on the first chart starting from top to bottom.</p>
+</div>
+<div id="works-cited" class="section level1 unnumbered">
+<h1>Works Cited</h1>
+<div id="refs" class="references">
+<div id="ref-hill09">
+<p>Hills, Alison. 2009. “Moral Testimony and Moral Epistemology.” <em>Ethics</em> 120 (1): 94–127. <a href="https://doi.org/10.1086/648610" class="uri">https://doi.org/10.1086/648610</a>.</p>
+</div>
+<div id="ref-stum10">
+<p>Stump, Eleonore. 2010. <em>Wandering in Darkness: Narrative and the Problem of Suffering</em>. Oxford, New York: Oxford University Press.</p>
+</div>
+</div>
+</div>

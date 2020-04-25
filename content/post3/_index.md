@@ -1,5 +1,5 @@
 ---
-title: Posts
+title: Sentiment Analysis
 
 # View.
 #   1 = List

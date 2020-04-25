@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "Emotional Data and Moral Learning"
+title = "NLP and Sources of Moral Knowledge"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
 hero_media = "happyface.jpeg"

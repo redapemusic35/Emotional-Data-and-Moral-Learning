@@ -1,0 +1,315 @@
+---
+title: Example Page 1
+linktitle: Tips 1-2
+toc: true
+type: docs
+date: "2019-05-05T00:00:00+01:00"
+draft: false
+menu:
+  example:
+    parent: Example Topic
+    weight: 1
+
+# Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
+weight: 1
+---
+
+
+<div id="TOC">
+true
+</div>
+
+<pre class="r"><code>library(magrittr)
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:gridExtra&#39;:
+## 
+##     combine</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(readr)
+metro_orig &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/lyrics.csv&quot;, stringsAsFactors = FALSE)
+
+names(metro_orig)</code></pre>
+<pre><code>## [1] &quot;index&quot;  &quot;song&quot;   &quot;year&quot;   &quot;artist&quot; &quot;genre&quot;  &quot;lyrics&quot;</code></pre>
+<pre class="r"><code>glimpse(metro_orig[4000,])</code></pre>
+<pre><code>## Observations: 1
+## Variables: 6
+## $ index  &lt;int&gt; 3999
+## $ song   &lt;chr&gt; &quot;j-veux-du-soleil&quot;
+## $ year   &lt;int&gt; 2016
+## $ artist &lt;chr&gt; &quot;au-petit-bonheur&quot;
+## $ genre  &lt;chr&gt; &quot;Other&quot;
+## $ lyrics &lt;chr&gt; &quot;Je suis restÃ© qu&#39;un enfant\nQu&#39;aurait grandi trop vite\nDans…</code></pre>
+<pre class="r"><code>dim(metro_orig)</code></pre>
+<pre><code>## [1] 362237      6</code></pre>
+<pre class="r"><code>str(metro_orig[4000, ]$lyrics, nchar.max = 300)</code></pre>
+<pre><code>##  chr &quot;Je suis restÃ© qu&#39;un enfant\nQu&#39;aurait grandi trop vite\nDans un monde en super plastique\nMoi j&#39;veux retrouver... Maman !\nQu&#39;elle me raconte des histoires\nDe Jane et de Tarzan\nDe princesses et de cerfs-volants\nJ&#39;veux du soleil dans ma mÃ©moire.\nJ&#39;veux du soleil (x4)\nJ&#39;veux tr&quot;| __truncated__</code></pre>
+<pre class="r"><code>dim(metro_orig)</code></pre>
+<pre><code>## [1] 362237      6</code></pre>
+<pre class="r"><code>fix.contractions &lt;- function(doc) {
+  doc &lt;- gsub(&quot;won&#39;t&quot;, &quot;will not&quot;, doc)
+  doc &lt;- gsub(&quot;can&#39;t&quot;, &quot;can not&quot;, doc)
+  doc &lt;- gsub(&quot;n&#39;t&quot;, &quot; not&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;re&quot;, &quot; are&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;ve&quot;, &quot; have&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;m&quot;, &quot; am&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;d&quot;, &quot; would&quot;, doc)
+  doc &lt;- gsub(&quot;flyin&#39;&quot;, &quot;flying&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;s&quot;, &quot;&quot;, doc)
+  doc &lt;- gsub(&quot;Puttin&#39;&quot;, &quot;Putting&quot;, doc)
+  doc &lt;- gsub(&quot;I&#39;ll&quot;, &quot;I will&quot;, doc)
+  doc &lt;- gsub(&quot;payin&#39;&quot;, &quot;paying&quot;, doc)
+  doc &lt;- gsub(&quot;we&#39;ll&quot;, &quot;we will&quot;, doc)
+  doc &lt;- gsub(&quot;We&#39;ll&quot;, &quot;We will&quot;, doc)
+  doc &lt;- gsub(&quot;singin&#39;&quot;, &quot;singing&quot;, doc)
+  doc &lt;- gsub(&quot;you&#39;ll&quot;, &quot;you will&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;em&quot;, &quot;them&quot;, doc)
+  doc &lt;- gsub(&quot;dancin&#39;&quot;, &quot;dancing&quot;, doc)
+  doc &lt;- gsub(&quot;playin&#39;&quot;, &quot;playing&quot;, doc)
+  doc &lt;- gsub(&quot;it&#39;s&quot;, &quot;it is&quot;, doc)
+  return(doc)
+}
+
+# Six (expand) contractions
+
+metro_orig$lyrics &lt;- sapply(metro_orig$lyrics, fix.contractions)
+
+# function to remove special characters
+
+removeSpecialChars &lt;- function(x) gsub(&quot;[^a-zA-Z0-9 ]&quot;, &quot; &quot;, x)
+
+# remove special characters
+
+metro_orig$lyrics &lt;- sapply(metro_orig$lyrics, removeSpecialChars)
+
+# convert everything to lower case
+
+metro_orig$lyrics &lt;- sapply(metro_orig$lyrics, tolower)
+
+str(metro_orig[362000, ]$lyrics, nchar.max = 300)</code></pre>
+<pre><code>##  chr &quot;if he brings you happiness then i wish you all the best it your happiness that matters most of all but if he ever breaks your heart if the teardrops ever start i will be there before the next teardrop falls si te quire de verdad y te da felicidad te deseo lo mas bueno pa  los dos pe&quot;| __truncated__</code></pre>
+<pre class="r"><code>summary(metro_orig)</code></pre>
+<pre><code>##      index            song                year         artist         
+##  Min.   :     0   Length:362237      Min.   :  67   Length:362237     
+##  1st Qu.: 90559   Class :character   1st Qu.:2006   Class :character  
+##  Median :181118   Mode  :character   Median :2008   Mode  :character  
+##  Mean   :181118                      Mean   :2009                     
+##  3rd Qu.:271677                      3rd Qu.:2014                     
+##  Max.   :362236                      Max.   :2038                     
+##     genre              lyrics         
+##  Length:362237      Length:362237     
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+## </code></pre>
+<div id="sources" class="section level2">
+<h2>Sources</h2>
+<pre class="r"><code>library(dplyr) 
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+Prince1 &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/prince_raw_data.csv&quot;, stringsAsFactors = FALSE)
+
+names(Prince1)</code></pre>
+<pre><code>##  [1] &quot;X&quot;            &quot;text&quot;         &quot;artist&quot;       &quot;song&quot;         &quot;year&quot;        
+##  [6] &quot;album&quot;        &quot;Release.Date&quot; &quot;US.Pop&quot;       &quot;US.R.B&quot;       &quot;CA&quot;          
+## [11] &quot;UK&quot;           &quot;IR&quot;           &quot;NL&quot;           &quot;DE&quot;           &quot;AT&quot;          
+## [16] &quot;FR&quot;           &quot;JP&quot;           &quot;AU&quot;           &quot;NZ&quot;           &quot;peak&quot;</code></pre>
+<pre class="r"><code>str(Prince1)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    824 obs. of  20 variables:
+##  $ X           : int  49 669 78 475 811 478 208 397 714 898 ...
+##  $ text        : chr  &quot;All 7 and we&#39;ll watch them fall\nThey stand in the way of love and we will smoke them all\nWith an intellect an&quot;| __truncated__ &quot;319, &#39;bout time, come in, ow, 319\nTake off your clothes, 319 bet you got a body\nBy God, come on, let me see, &quot;| __truncated__ &quot;Don&#39;t worry, I won&#39;t hurt you\nI only want you to have some fun\nI was dreamin&#39; when I wrote this\nForgive me i&quot;| __truncated__ &quot;Prince\nMiscellaneous\n2020\nThe year is 2020 \nAnd in the club - Love4OneAnother \nStudents dance 2 the heartb&quot;| __truncated__ ...
+##  $ artist      : chr  &quot;prince&quot; &quot;prince&quot; &quot;prince&quot; &quot;prince&quot; ...
+##  $ song        : chr  &quot;7&quot; &quot;319&quot; &quot;1999&quot; &quot;2020&quot; ...
+##  $ year        : int  1992 NA 1982 NA 2006 NA NA NA NA NA ...
+##  $ album       : chr  &quot;Symbol&quot; NA &quot;1999&quot; &quot;Other Songs&quot; ...
+##  $ Release.Date: chr  &quot;17 Nov. 1992&quot; NA &quot;24 Sep. 1982&quot; NA ...
+##  $ US.Pop      : chr  &quot;7&quot; NA &quot;12&quot; NA ...
+##  $ US.R.B      : chr  &quot;61&quot; NA &quot;4&quot; NA ...
+##  $ CA          : chr  &quot;3&quot; NA &quot;6&quot; NA ...
+##  $ UK          : chr  &quot;27&quot; NA &quot;25&quot; NA ...
+##  $ IR          : chr  &quot;-&quot; NA &quot;21&quot; NA ...
+##  $ NL          : chr  &quot;28&quot; NA &quot;13&quot; NA ...
+##  $ DE          : chr  &quot;77&quot; NA &quot;86&quot; NA ...
+##  $ AT          : chr  &quot;-&quot; NA &quot;-&quot; NA ...
+##  $ FR          : chr  &quot;53&quot; NA &quot;-&quot; NA ...
+##  $ JP          : chr  &quot;-&quot; NA &quot;-&quot; NA ...
+##  $ AU          : chr  &quot;25&quot; NA &quot;2&quot; NA ...
+##  $ NZ          : chr  &quot;12&quot; NA &quot;4&quot; NA ...
+##  $ peak        : int  3 NA 2 NA 1 NA NA NA NA NA ...</code></pre>
+<pre class="r"><code>head(Prince1)</code></pre>
+<pre><code>##     X
+## 1  49
+## 2 669
+## 3  78
+## 4 475
+## 5 811
+## 6 478
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        text
+## 1                                                                                                                                                                                                                                    All 7 and we&#39;ll watch them fall\nThey stand in the way of love and we will smoke them all\nWith an intellect and a savior-faire\nNo one in the whole universe will ever compare\nI am yours now and you are mine\nAnd together we&#39;ll love through\nAll space and time, so don&#39;t cry\nOne day all 7 will die\nAll 7 and we&#39;ll watch them fall\nThey stand in the way of love and we will smoke them all\nWith an intellect and a savior-faire\nNo one in the whole universe will ever compare\nI am yours now and you are mine\nAnd together we&#39;ll love through\nAll space and time, so don&#39;t cry\nOne day all 7 will die\nAnd I saw an Angel come down unto me\nIn her hand she holds the very key\nWords of compassion, words of peace\nAnd in the distance an army&#39;s marching feet\n  (1 2 3 4 - 1 2 3 4)\nBut behold, we will watch them fall\nAnd we lay down on the sand of the sea\nAnd before us animosity will stand and decree\nThat we speak not of love only blasphemy\nAnd in the distance, 6 others will curse me\nBut that&#39;s alright\n(That&#39;s alright)\n4 I will watch them fall\n(1 2 3 4 5 6 7)\nAll 7 and we&#39;ll watch them fall\nThey stand in the way of love and we will smoke them all\nWith an intellect and a savior-faire\nNo one in the whole universe will ever compare\nI am yours now and you are mine\nAnd together we&#39;ll love through\nAll space and time, so don&#39;t cry\nOne day all 7 will die\n(Just how old)\nAnd we will see a plague and a river of blood\nAnd every evil soul will surely die in spite of\nTheir 7 tears, but do not fear\n4 in the distance, 12 souls from now\nYou and me will still be here, we will still be here\nThere will be a new city with streets of gold\nThe young so educated they never grow old\nAnd a there will be no death for with every breath\nThe voice of many colors sings a song\nThat&#39;s so bold\nSing it while we watch them fall\nAll 7 and we&#39;ll watch them fall\nThey stand in the way of love and we will smoke them all\nWith an intellect and a savior-faire\nNo one in the whole universe will ever compare\nI am yours now and you are mine\nAnd together we&#39;ll love through\nAll space and time, so don&#39;t cry\nOne day all 7 will die\nJust how old\nJust how old\nJust how old
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           319, &#39;bout time, come in, ow, 319\nTake off your clothes, 319 bet you got a body\nBy God, come on, let me see, you oughta\nMy camera&#39;s gonna get you when you get it good and wet\nYou oughta let me come and pet you so it lasts, baby 319\nCan I see it, baby? Mm, ow\nI got a good shot, put your leg on the chair, like that?\nYou know you&#39;re too hot when you play with your hair, I like it\nI just wanna holler, s  and shout when you let\nYour fingers do the walkin&#39; in and out and all about, 319\nAh hoochie, don&#39;t do that, you, you\nYou make me wanna dance, now watch this\nLock the door and kill the phone, my camera, you and me alone\nWill make a picture, all will see and go, ow, 319\nOh baby, how&#39;d you get your legs to do that? Ooh  \n319, 319, 319, you&#39;re just too mean, 319, 319, 319\nYeah, yeah, go on girl, 319, 319, ain&#39;t gotta tell you\n&#39;Cuz you already know, 319, girl, you in the house\nSo keep runnin&#39; that show, go on girl, 319\nYeah, 319, come here, 319, have you ever kissed\nAnother woman on the dance floor? Come here\n319, where you goin&#39;? Come here, 319, 319, 319, oh
+## 3 Don&#39;t worry, I won&#39;t hurt you\nI only want you to have some fun\nI was dreamin&#39; when I wrote this\nForgive me if it goes astray\nBut when I woke up this mornin&#39;\nCould&#39;ve sworn it was Judgment Day\nThe sky was all purple\nThere were people runnin&#39; everywhere\nTryin&#39; to run from the destruction\nYou know I didn&#39;t even care\n&#39;Cuz they say 2000 zero zero party over, oops, out of time!\nSo tonight I&#39;m gonna party like it&#39;s 1999\nI was dreamin&#39; when I wrote this\nSo sue me if I go too fast\nBut life is just a party\nAnd parties weren&#39;t meant to last\nWar is all around us, my mind says, &#39;Prepare to fight&#39;\nSo if I gotta die, I&#39;m gonna listen to my body tonight\nYeah, they say 2000 zero zero party over, oops, out of time!\nSo tonight I&#39;m gonna party like it&#39;s 1999!\n(Yeah, yeah)\nPeople, let me tell you somethin&#39;\nIf you didn&#39;t come to party\nDon&#39;t bother knockin&#39; on my door\nI got a lion in my pocket and, baby, he&#39;s ready to roar\n(Yeah)\nEverybody&#39;s got a bomb, we could all die any day\n(Oh)\nBut before I let that happen, I&#39;ll dance my life away\nOh, they say 2000 zero zero party over, oops, out of time!\n(We&#39;re runnin&#39; out of time)\nSo tonight I&#39;m gonna party like it&#39;s 1999!\n(We gonna, we gonna, oh!)\nSay it one more time\n2000 zero zero party over, oops, out of time!\n(No, no)\nSo tonight I&#39;m gonna party like it&#39;s 1999!\n(We&#39;re gonna, we gonna)\nAlright, 1999, you say it, 1999, 1999\n(1999)\nDon&#39;t stop, don&#39;t stop, say it one more time\n2000 zero zero party over, oops, out of time!\n(Yeah, yeah)\nSo tonight I&#39;m gonna party like it&#39;s 1999!\n(We gonna, we&#39;re gonna)\nYeah, 1999\n(1999)\nDon&#39;t you wanna go?\n(1999)\nDon&#39;t you wanna go?\n(1999)\nWe could all die any day\n(1999)\nI don&#39;t wanna die, I&#39;d rather dance my life away\n(1999)\nListen to what I&#39;m tryin&#39; to say\nEverybody, everybody say party\nCome on now, you say it\n(Party!)\nThat&#39;s right, everybody say\n(Party!) [unverified]\nCan&#39;t run from revelation, no\nSing it for your nation, y&#39;all\nDreamin&#39; when you&#39;re singin&#39;, baby\nSay the telephone a-ringin&#39;, mama, now\nCome on, come on, you say\nEverybody, two times\nWork it down to the ground, I&#39;m sayin&#39;\n(Oh baby, say it again)\n(Oh, shake your body, baby!)\nThat&#39;s right, come on, sing the song\nThat&#39;s right, everybody say\nGot a lion in my pocket mama, say\nAh, and he&#39;s ready to roar, yeah\nMommy, why does everybody have a bomb?\nMommy, why does everybody have a bomb?
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Prince\nMiscellaneous\n2020\nThe year is 2020 \nAnd in the club - Love4OneAnother \nStudents dance 2 the heartbeat of the drum \n3000 or more dance on the dance floor \nSame aesthetics - everyone \nTaste the color, smell the fun \nThe force of nature is what brought us here \nThe walls between us soon all disappear \nThe year is 2020 and there&#39;s no more fear \nCan U see this? (Mm hmm) \nPeace and happy people \n(Mm hmm)
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               One mix, one mix, one mix, one mix\nOne mix, one mix, one mix, one mix\nDJ, turn it up, turn it up\nLet&#39;s go, 3121\nHey mommy, it&#39;s loco right?\n3121, come on\nThrough the gates, knock on the door\nPut your clothes in a pile, on the floor\nTake your pick from the Japaneses robes and sandals\nDrink champagne from a glass, with chocolate handles\nDon&#39;t you wanna come? 3121\nGonna be so much fun, 3121\nThat&#39;s where the party be, 3121\nYou can come if you want to, but you can never leave\nLook over there, there&#39;s another turn-on\n(Look over there)\nButterflies scared that they&#39;re gonna be awake all night long\n(All night long)\nDancing in your belly, like a ballerina\nIn spite of your efforts to calm them down\nDon&#39;t you wanna come? 3121\nGonna be so much fun, 3121\nThat&#39;s where the party be, 3121\nYou can come if you want to, but you can never leave\nBounce party y&#39;all\nIt&#39;s going down people\nLike the wall of Berlin\nLock the door\n(Lock the door)\nTil you see the sun\n(Til you see it)\nWe gonna party, like there ain&#39;t going be, another one\nFuturistic, fantasy, this is where the purple party people be\nYeah, this is where the party be, 3121\nThis is where the party be, 3121\nBreakdown, guitar\nDon&#39;t you wanna come? 3121\nIt&#39;s gonna be so much fun, 3121\n(Yes it is)\nThat&#39;s where the party be, 3121\nYou can come if you want to, but y&#39;all can&#39;t never leave\n(Not ever)\nIt&#39;s going down y&#39;all\nLike the wall of Berlin
+## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Prince\nMiscellaneous\n777-9311\nBaby, what&#39;s your phone number? \nI know I&#39;m kinda fast, but I hate 2 waste time \nBaby, what&#39;s your phone number? \nGirl, I have 2 ask cuz U&#39;re so fine \nCHORUS: \n777-9311 \nI wanna spend the night with U if that&#39;s alright \n777-9311 \nOoh baby, please can I come 2 night? \nBaby, what&#39;s your phone number? \nHow can U be reached on a lonely night? \nBaby, what&#39;s your phone number? \nHow can I get into U when I&#39;m feeling right? \nCHORUS \nJellybean \nAin&#39;t nothin&#39; worse than rejection \nI&#39;d feel a little better if U slapped my face \nHey, what&#39;s your phone number? \nCan&#39;t U see the agony I&#39;m goin&#39; through? \nBaby, what&#39;s your phone number? \nGirl, it&#39;s getting hard baby, won&#39;t U let me love U, love U? \nCHORUS \nYeah, ooh \nHey baby,what&#39;s your phone number? \nI know it sounds fast, but I ain&#39;t got all night \nCome on baby, what&#39;s your phone number? \nU know I got 2 be cooler than this cat U&#39;re sittin&#39; with \nI&#39;ll do U right, baby \nCome on! {x3} \nOh no, come on! \nOh, hey \nCHORUS \nCome 2 night if it&#39;s alright (777-9311) \nHoney, please can I come 2 night? \nCan&#39;t U see what I&#39;m gonna do? (777-9311) \nI wanna do it 2 night, baby, I wanna do it 2 U \nIt&#39;s on fire, U burn me out (777-9311) \nIt&#39;s getting higher, U know what I&#39;m talkin&#39; about \nHelp me out good Lord above (777-9311) \nMarry me girl, give me some of that love \nTerry \n777-9311 {x13}
+##   artist    song year       album Release.Date US.Pop US.R.B   CA   UK   IR
+## 1 prince       7 1992      Symbol 17 Nov. 1992      7     61    3   27    -
+## 2 prince     319   NA        &lt;NA&gt;         &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+## 3 prince    1999 1982        1999 24 Sep. 1982     12      4    6   25   21
+## 4 prince    2020   NA Other Songs         &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+## 5 prince    3121 2006        3121 21 Mar. 2006      1      1    5    9   23
+## 6 prince 7779311   NA        &lt;NA&gt;         &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+##     NL   DE   AT   FR   JP   AU   NZ peak
+## 1   28   77    -   53    -   25   12    3
+## 2 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 3   13   86    -    -    -    2    4    2
+## 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 5    3    4   15    8    ?   18    -    1
+## 6 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA</code></pre>
+<pre class="r"><code>tail(Prince1)</code></pre>
+<pre><code>##       X
+## 819 261
+## 820 814
+## 821 340
+## 822 637
+## 823  61
+## 824 358
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    text
+## 819                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Prince\nMiscellaneous\nYou\nU, U got a sexy way about U baby, U\nU, U get so hard I don&#39;t know what to do \nCHORUS:\nU\nU\nU, U drive my girls 2 rape U now, U\nU, all the girls they go ape over U (Yeah!)\nCHORUS\nU!\nU, if I should die it&#39;d be because of U\nIt&#39;s true, I&#39;d kill myself if I didn&#39;t make-up 2 U (Yeah!)\nCHORUS\n(Yeah!)
+## 820                                                                                                                                                                                                                                                                                                                                                                                                                          Here we are folks, the dream we all dream of\nBoy versus girl in the World Series of love\nTell me, have you got the look?\nYou walked in, I woke up\nI&#39;ve never seen a pretty girl look so tough\nBaby, you got that look\nColor you peach and black\nColor me takin&#39; aback\nCrucial, I think I want ya\nYou&#39;ve got the look, you&#39;ve got the hook\nSho&#39;nuff do be cookin&#39;, in my book\nYour face is jammin&#39;, your body&#39;s heck-a-slammin&#39;\nIf love is good, let&#39;s get to rammin&#39;\nYou got the look, you got the look\nLooka here\nYou got the look\n(You got the look)\nYou musta took\n(You musta took)\nA whole hour\nJust to make up your face, baby\nClosin&#39; time, ugly lights\nEverybody&#39;s inspected\n(Everybody&#39;s inspected)\nBut you are a natural beauty unaffected\n(Unaffected)\nDid I say an hour? My face is red\nI stand corrected\n(I stand corrected)\nYou&#39;ve got the look\n(You&#39;ve got the look)\nYou sho&#39;nuff do be cookin&#39; in my book\n(Slammin&#39;)\nYour face is jammin&#39;, your body&#39;s heck-a-slammin&#39;\nIf love is good, let&#39;s get to rammin&#39;\nYou got the look, you got the look\nThere&#39;s no jokin you well, here we are\nLadies and gentlemen the dream we all dream of\n(Oh, please)\nBoy versus girl in the World Series of love\nSlammin&#39;\nYou walked in, I woke up\n(I walked in, you woke up)\nI never seen such a pretty girl look so tough\nBaby, you got that look\n(Baby you got that look)\nColor you peach and black\nColor me takin&#39; aback, baby\nCrucial, I think I wantcha\nYou&#39;ve got the look, you&#39;ve got the hook\nYou sho&#39;nuff do be cookin&#39; in my book\nYour face is jammin&#39;, your body&#39;s heck-a-slammin&#39;\nIf your love is good, let&#39;s get to rammin&#39; now\nYou got the look, you got the look\nHere we are folks\nThe dream we all dream of\nYou got the look\nYou got the look\nYou got the look\nYou got the look\nYou got the look
+## 821                                                                                                                                                                                                              You will be moved\nWhen the baby lets out his very first cry\nYou will be moved\nWhen you think of how hard he&#39;ll have to try\nHe&#39;ll grow up on an empty stomach\nBut he&#39;ll try his best to listen\nTo the teacher readin&#39; from a school book\nWith half the pages missin&#39;\nSurely when the rain comes, you will be moved\nLa da da da da, see the video\nYou will be moved\nAnd you will be when the baby makes all the grades\nYou will be moved\nAnd you will be when they still don&#39;t hire him anyway\nMoved by a system\nWithout one single guarantee\nThat an education is the answer\nAnd love will set us free\nSurely when the rain comes, you will be moved\nLa da da da da, see the video\nOh, you will be moved when the rain comes\nOh yes, you  will be moved\nWhen the streets overflow with angry souls\nThat&#39;s when you  see the truth\nWhen the pain that you&#39;ve inflicted\nComes back on your door for roost\n(Back on your door for roost)\nThat&#39;s when you&#39;ll see the future\n(Future)\nBut you won&#39;t see you\nSurely when the rain comes, you will be moved\nLa da da da da, see the video\nYou will be moved\nWhen the whip comes down on the back of one of your own\nYou will be moved\nWhen you look for compassion but you find you&#39;re all alone\nMoved and you will be when you are\nThat&#39;s when you&#39;ll know\nThat the bread you share is better\nThan the blood that your deeds have caused for flow\n(That the bread is better than the blood)\nSurely when the rain comes, you will be moved\nLa da da da da, see the video\nHey, you will be moved when the rain comes\nOh yes, you will be moved\nWhen the streets all flow with angry souls\nThat&#39;s when you&#39;ll see the truth\nWhen the pain that you&#39;ve inflicted\nComes back on your door for roost\n(Back on your door for roost)\nThat&#39;s when you&#39;ll see the future\n(Future)\nBut you won&#39;t see you\nI said surely when the rain comes, you will be moved\nLa da da da da\n(La da da da da)\nSee the video\nHey, surely, surely, surely\n(When the rain comes)\nSurely y&#39;all ow, la da da da da
+## 822                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Prince\nOne Nite Alone\nYoung And Beautiful\nSo young and beautiful\nSo young and beautiful\nU&#39;re so young and beautiful\nU&#39;re so full of life - everybody knows\nThat&#39;s why they try 2 take advantage of u...\nbut u don&#39;t have 2 do what the other ones do\nU&#39;re so cool - the world at your feet,\nthey only want ur virginity\nKeep ur clothes on and ur chastity\nuntil u find the one that&#39;s worth it baby\nSo young and beautiful\nSo young and beautiful\nU&#39;re so fine my heart&#39;s just pounding\nIf I had the chance 2 lay u down,\nI&#39;d probably take a rain check &#39;til next summer\ncuz I don&#39;t wanna b like all ur other lovers\nyoung and beautiful\nyoung and beautiful\nSo young and beautiful\nI&#39;m hippin&#39; u 2 the game darlin&#39;\nso that u&#39;ll always remain\nyoung and beautiful\nyoung and beautiful\noh yeah
+## 823 Prince\nMiscellaneous\nYour Love Is So Hard\nDate line: 1989 \nI thought I was your lover wild \nBut U treat me like a step-child \nI waited by the telephone \nI knew U weren&#39;t alone \nU wait until it&#39;s Friday night \nAnd U call me up and start a fight \nSay U and me ain&#39;t workin&#39; out \nBut U&#39;ll be free on Sunday, what&#39;s this all about? \nI don&#39;t know, baby, who U think I am \nI&#39;m not your average every day simple Sam \nI could have a dozen others if I choose \nBut no other mama will do \nYour love is so hard \nYour love, your love is so hard \nBaby, I like it \nI thought we were the perfect match \nU were so fine, such a catch \nNights were nasty, days were hot \nI gave it all and in return, dogged is what I got \nI don&#39;t know, baby, who U think I am \nI&#39;m not your average every day simple Sam \nI could have a dozen others if I choose \nBut no other mama will do \nYour love is so hard \nYour love, your love is so hard \nBaby, I like it \nDate line: 1989 \nCome here baby, it&#39;s time \nHey girl, U&#39;ve been hurt before \nGimme a chance, don&#39;t slam the door \nBrown lover, funky M \nI come 2 play, not 2 swim \nOK, roll over \n(1989) \nDon&#39;t be so hard \nSugar, U&#39;d be missin&#39; everything in life \nDon&#39;t be so hard \nOoh baby, maybe U could be my wife \nNow say it again... uh, hard \nI don&#39;t know, baby, who U think I am (Believe me, U be) \nI&#39;m not your average everyday simple Sam (Uh, ooh, hard) \nI could have a dozen others if I choose (Ooh baby) \nNo other mama will do \nYour love is so hard \nYour love, your love is so hard \nBaby, I like it \nEnough \nFunky M \nI don&#39;t know, baby, who U think I am \nI&#39;m not your average everyday simple Sam \nI could have a dozen others if I choose (Date line: 1989) \nNo other mama will do (It&#39;s time) \nYour love is so hard \nDate line: 1989 \n(I don&#39;t, I don&#39;t know) \nIt&#39;s time U get enough \nIt&#39;s time U get, it&#39;s time U get, time U get, time U get enough \nAnd U&#39;ll be beggin&#39; &quot;Please, don&#39;t be so hard&quot; \n(1989) \nYour love is, your love is so hard (19.. 19.. 19..) \nYour love is so hard (1989) \nPlease don&#39;t waste precious time (1989) \nYour love, your love, your is so hard (19.. 19.. 19..) \nYour love is so hard (1989) \nYour love is so hard
+## 824                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Yeah, Sarge, we just received a call\nWe got a disturbance on Galpin\nAlright, go on&#39;n check it out\nReally? Oh, geez\nWell, her name is Zannalee\nI like what she do to me\nHer name is Zannalee\nI like what she do to me\nShe got a sister named Fendi\nAnd they like to do me double team\nTo get &#39;em in the mood\nI give &#39;em some cherry wine\nTo get &#39;em in the mood\nI give &#39;em some cherry wine\nThen we play some pool\nAnd they watch me bank\nThe six and the nine\nWatch me bank it, baby\n(Woo)\nYeah, Sarge, we&#39;re outside the house now\nI can see &#39;em through the window there\n(Hey, there)\nWhat&#39;s it look like?\nAll I can see, oh geez, look at that, ah, ah\nWhat&#39;s going on?\nUh, nothing, Sarge, 10-4\nIf you wanna headline\nYou gotta be all you can be\nWell, if you wanna headline\nYou gotta be all you can be\n&#39;Cuz you got a strong act to follow\nAnd her name is Zannalee\nSee you tomorrow, big ass
+##     artist                 song year              album Release.Date US.Pop
+## 819 prince                  you   NA        Other Songs         &lt;NA&gt;   &lt;NA&gt;
+## 820 prince     you got the look   NA               &lt;NA&gt;         &lt;NA&gt;   &lt;NA&gt;
+## 821 prince    you will be moved   NA        Other Songs         &lt;NA&gt;   &lt;NA&gt;
+## 822 prince  young and beautiful 2002     One Nite Alone         &lt;NA&gt;   &lt;NA&gt;
+## 823 prince your love is so hard   NA        Other Songs         &lt;NA&gt;   &lt;NA&gt;
+## 824 prince             zannalee 1996 Chaos and Disorder         &lt;NA&gt;   &lt;NA&gt;
+##     US.R.B   CA   UK   IR   NL   DE   AT   FR   JP   AU   NZ peak
+## 819   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 820   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 821   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 822   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 823   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA
+## 824   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA</code></pre>
+<pre class="r"><code>Prince1 &lt;- Prince1 %&gt;%
+select(lyrics = text, song, year, album, peak, us_pop = US.Pop, us_rnb = US.R.B)
+
+glimpse(Prince1[139,])</code></pre>
+<pre><code>## Observations: 1
+## Variables: 7
+## $ lyrics &lt;chr&gt; &quot;I just can&#39;t believe all the things people say, controversy\n…
+## $ song   &lt;chr&gt; &quot;controversy&quot;
+## $ year   &lt;int&gt; 1981
+## $ album  &lt;chr&gt; &quot;Controversy&quot;
+## $ peak   &lt;int&gt; 3
+## $ us_pop &lt;chr&gt; &quot;70&quot;
+## $ us_rnb &lt;chr&gt; &quot;3&quot;</code></pre>
+<pre class="r"><code># How many observations and columns
+
+dim(Prince1)</code></pre>
+<pre><code>## [1] 824   7</code></pre>
+<pre class="r"><code># and the structure
+
+str(Prince1[139, ]$lyrics, nchar.max = 300)</code></pre>
+<pre><code>##  chr &quot;I just can&#39;t believe all the things people say, controversy\nAm I Black or White? Am I straight or gay? Controversy\nDo I believe in God? Do I believe in me? Controversy\nControversy, controversy\nI can&#39;t understand human curiosity, controversy\nWas it good for you? Was I what you w&quot;| __truncated__</code></pre>
+<pre class="r"><code># Conditioning the data
+
+## expand contractions
+
+fix.contractions &lt;- function(doc) {
+  doc &lt;- gsub(&quot;won&#39;t&quot;, &quot;will not&quot;, doc)
+  doc &lt;- gsub(&quot;can&#39;t&quot;, &quot;can not&quot;, doc)
+  doc &lt;- gsub(&quot;n&#39;t&quot;, &quot; not&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;re&quot;, &quot; are&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;ve&quot;, &quot; have&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;m&quot;, &quot; am&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;d&quot;, &quot; would&quot;, doc)
+  doc &lt;- gsub(&quot;flyin&#39;&quot;, &quot;flying&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;s&quot;, &quot;&quot;, doc)
+  doc &lt;- gsub(&quot;Puttin&#39;&quot;, &quot;Putting&quot;, doc)
+  doc &lt;- gsub(&quot;I&#39;ll&quot;, &quot;I will&quot;, doc)
+  doc &lt;- gsub(&quot;payin&#39;&quot;, &quot;paying&quot;, doc)
+  doc &lt;- gsub(&quot;we&#39;ll&quot;, &quot;we will&quot;, doc)
+  doc &lt;- gsub(&quot;We&#39;ll&quot;, &quot;We will&quot;, doc)
+  doc &lt;- gsub(&quot;singin&#39;&quot;, &quot;singing&quot;, doc)
+  doc &lt;- gsub(&quot;you&#39;ll&quot;, &quot;you will&quot;, doc)
+  doc &lt;- gsub(&quot;&#39;em&quot;, &quot;them&quot;, doc)
+  doc &lt;- gsub(&quot;dancin&#39;&quot;, &quot;dancing&quot;, doc)
+  doc &lt;- gsub(&quot;playin&#39;&quot;, &quot;playing&quot;, doc)
+  doc &lt;- gsub(&quot;it&#39;s&quot;, &quot;it is&quot;, doc)
+  return(doc)
+}
+
+# fix contractions
+
+Prince1$lyrics &lt;- sapply(Prince1$lyrics, fix.contractions)
+
+# remove special characters
+
+removeSpecialChars &lt;- sapply(Prince1$lyrics, removeSpecialChars)
+
+# convert everything to lower case
+
+Prince1$lyrics &lt;- sapply(Prince1$lyrics, tolower)
+
+# Cleaner output than original
+
+str(Prince1[139, ]$lyrics, nchar.max = 300)</code></pre>
+<pre><code>##  chr &quot;i just can not believe all the things people say, controversy\nam i black or white? am i straight or gay? controversy\ndo i believe in god? do i believe in me? controversy\ncontroversy, controversy\ni can not understand human curiosity, controversy\nwas it good for you? was i what y&quot;| __truncated__</code></pre>
+<pre class="r"><code># Because we love facts
+
+summary(Prince1)</code></pre>
+<pre><code>##     lyrics              song                year         album          
+##  Length:824         Length:824         Min.   :1978   Length:824        
+##  Class :character   Class :character   1st Qu.:1989   Class :character  
+##  Mode  :character   Mode  :character   Median :1996   Mode  :character  
+##                                        Mean   :1995                     
+##                                        3rd Qu.:1999                     
+##                                        Max.   :2015                     
+##                                        NA&#39;s   :495                      
+##       peak          us_pop             us_rnb         
+##  Min.   : 0.00   Length:824         Length:824        
+##  1st Qu.: 2.00   Class :character   Class :character  
+##  Median : 7.00   Mode  :character   Mode  :character  
+##  Mean   :15.48                                        
+##  3rd Qu.:19.00                                        
+##  Max.   :88.00                                        
+##  NA&#39;s   :751</code></pre>
+<pre class="r"><code># Create decade column
+
+Prince1 &lt;- Prince1 %&gt;%
+  mutate(decade =
+    ifelse(Prince1$year %in% 1978:1979, &quot;1970s&quot;,
+    ifelse(Prince1$year %in% 1980:1989, &quot;1989s&quot;,
+    ifelse(Prince1$year %in% 1990:1999, &quot;1990s&quot;,
+        ifelse(Prince1$year %in% 2000:2009, &quot;2000s&quot;,
+               &quot;NA&quot;)))))
+
+# Create chart level column
+
+Prince1 &lt;- Prince1 %&gt;%
+  mutate(chart_level =
+     ifelse(Prince1$peak %in% 1:10, &quot;Top 10&quot;,
+     ifelse(Prince1$peak %in% 11:100, &quot;Top 100&quot;, &quot;Uncharted&quot;)))</code></pre>
+</div>
+<div id="works-cited" class="section level1">
+<h1>Works Cited</h1>
+</div>

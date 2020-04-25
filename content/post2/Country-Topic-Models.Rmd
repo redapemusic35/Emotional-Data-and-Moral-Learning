@@ -1,0 +1,156 @@
+---
+title: "Country Topic Models"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+diagram: true
+links:
+  - icon_pack: fab
+    name: Methods
+    url: courses/example2
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+Using Andrew @mcca02 Mallet software, I will conduct some topic analysis on several country songs from Billboard's Top100 March 13, 2020.
+
+
+```{r}
+require(graphics)
+library(ggrepel)
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd("~/mallet/")
+keys3 <- read.csv("Rap_keys1.csv", header = TRUE, sep = ",")
+Edges3 <- read.csv("Edges.csv", header = TRUE, sep = ",")
+all3 <- merge(keys3, Edges3, by = "Topics")
+
+with(all3, scatter.smooth(Topics, Order, lpars =
+  list(col = "red", lwd = 3, lty = 3)))
+
+```
+```{r}
+library(ggrepel)
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd("~/mallet/")
+keys <- read.csv("Rap_keys1.csv", header = TRUE, sep = ",")
+Edges <- read.csv("Edges.csv", header = TRUE, sep = ",")
+all <- merge(keys, Edges, by = "Topics")
+
+ggplot(all, aes(Topics, Order)) +
+  geom_point(color = "red") +
+  geom_text_repel(data = subset(all, Order > 0.04),
+ segment.size = 0.15,
+segment.alpha = 1.0,
+aes(
+color = factor(Topics),
+label = Words,
+))
+```
+Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.
+
+```{r}
+library(ggrepel)
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd("~/mallet/")
+keys1 <- read.csv("Country_keys.csv", header = TRUE, sep = ",")
+Edges1 <- read.csv("Country_word_topics.csv", header = TRUE, sep = ",")
+all1 <- merge(x = keys1, y = Edges1, by = "Topic")
+
+ggplot(all1, aes(Topic, Order)) +
+  geom_point(color = "red") +
+  geom_text_repel(data = subset(all1, Order > 0.02),
+ segment.size = 0.15,
+segment.alpha = 1.0,
+aes(
+color = factor(Topic),
+label = Words,
+))
+```
+The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words.
+
+```{r}
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+hext <- read.csv("Country_keys.csv")
+hext4 <- read.csv("Country_word_topics.csv")
+list_of_files <- list.files(path = "sample-data/top100/Country/", recursive = TRUE,
+			    pattern = "\\.csv$",
+			    full.names = TRUE)
+df <- list_of_files %>%
+  purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
+  purrr::map_df(read_csv,
+		col_names = FALSE,
+		skip = 1,
+		.id = "FileName")
+
+
+str(df)
+head(df)
+tail(df)
+
+(dfsentiment <- with(
+		     df,
+		     sentiment_by(
+				  get_sentences(X1),
+				  list(FileName)
+				  )
+		     ))
+
+plot(dfsentiment)
+```
+
+```{r}
+library(magrittr)
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+list_of_files2 <- list.files(path = "sample-data/top100/Rap/", recursive = TRUE,
+			    pattern = "\\.csv$",
+			    full.names = TRUE)
+df2 <- list_of_files2 %>%
+  purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
+  purrr::map_df(read_csv,
+		col_names = FALSE,
+		skip = 1,
+		.id = "FileName2")
+
+str(df2)
+head(df2)
+tail(df2)
+
+(dfsentiment2 <- with(
+		     df2,
+		     sentiment_by(
+				  get_sentences(X1),
+				  list(FileName2)
+				  )
+		     ))
+
+plot(dfsentiment2)
+
+df3 <- df2 %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  sentiment_by(X1_split, list(FileName2))
+
+plot(df3)
+```
+# Notes

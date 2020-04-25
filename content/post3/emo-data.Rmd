@@ -1,0 +1,32 @@
+---
+title: "Natural Language Processing"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+
+```{r}
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+hext <- read.csv("Country_keys.csv")
+hext4 <- read.csv("Country_word_topics.csv")
+hext5 <- list.files(path = "sample-data/top100/Country/")
+
+head(hext5)
+```

@@ -1,6 +1,6 @@
 ---
 # Display name
-# name: Montaque Reynolds
+name: Project Abstract
 
 # Username (this should match the folder name)
 # authors:
@@ -73,7 +73,7 @@ bio: Hi and welcome to my project.
 Philosophers have argued in favor of narrative as a source for moral knowledge. Assuming that music may represent a kind of narrative, what means are available to us which might help us understand what kinds of moral knowledge is represented by various popular music styles.
 
 In her book “Wandering in
-Darkness,” Eleonore Stump (2010) argues that
+Darkness,” Eleonore @stum10a argues that
 narrative can be a source of knowledge.
 However, it is not immediately clear to me
 just how this might work. One intuition that I have is
