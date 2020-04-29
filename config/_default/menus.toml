@@ -3,33 +3,38 @@
 #     desired widget in your `content/home/` folder.
 #   The weight parameter defines the order that the links will appear in.
 
-[[main]]
-  name = "Home"
-  url = "#hero"
-  weight = 10
+# [[main]]
+# name = "Home"
+#  url = "#hero"
+#  weight = 10
+
+# [[main]]
+#  name = "Abstract"
+#  url = "authors/admin/"
+#  weight = 20
 
 [[main]]
-  name = "Abstract"
-  url = "authors/admin/"
+  name = "Introduction"
+  url = "post"
   weight = 20
 
 [[main]]
-  name = "NLP"
+  name = "Data Sources"
   url = "post1"
   weight = 30
 
 [[main]]
-  name = "TM"
+  name = "Topic Modeling"
   url = "post2"
   weight = 40
 
 [[main]]
-  name = "SA"
+  name = "Sentiment Analysis"
   url = "#posts3"
   weight = 50
 
 [[main]]
-  name = "Docs"
+  name = "Additional Documents"
   url = "courses/"
   weight = 60
 

@@ -1,0 +1,61 @@
+---
+title: "Rap Topic Models"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+diagram: true
+links:
+  - icon_pack: fab
+    name: Methods
+    url: courses/example2
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+
+<p>Using Andrew <span class="citation">McCallum (2002)</span> Mallet software, I will conduct some topic analysis on several country songs from Billboard’s Top100 March 13, 2020.</p>
+<p><code>r Country, echo = FALSE} library(ggrepel)</code></p>
+<p>```r Country, echo = FALSE}
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd(“~/mallet/”)
+keys &lt;- read.csv(“Rap_keys1.csv”, header = TRUE, sep = “,”)
+Edges &lt;- read.csv(“Edges.csv”, header = TRUE, sep = “,”)
+all &lt;- merge(keys, Edges, by = “Topics”)</p>
+<p>ggplot(all, aes(Topics, Order)) +
+geom_point(color = “red”) +
+geom_text_repel(data = subset(all, Order &gt; 0.04),
+segment.size = 0.15,
+segment.alpha = 1.0,
+aes(
+color = factor(Topics),
+label = Words,
+))
+```</p>
+<p><img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.</p>
+<p>```r Country, echo = FALSE}
+library(ggrepel)
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd(“~/mallet/”)
+keys1 &lt;- read.csv(“Country_keys.csv”, header = TRUE, sep = “,”)
+Edges1 &lt;- read.csv(“Country_word_topics.csv”, header = TRUE, sep = “,”)
+all1 &lt;- merge(x = keys1, y = Edges1, by = “Topic”)</p>
+<p>ggplot(all1, aes(Topic, Order)) +
+geom_point(color = “red”) +
+geom_text_repel(data = subset(all1, Order &gt; 0.04),
+segment.size = 0.15,
+segment.alpha = 1.0,
+aes(
+color = factor(Topic),
+label = Words,
+))
+```</p>
+<p><img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="refs" class="references">
+<div id="ref-mcca02">
+<p>McCallum, Andrew Kachites. 2002. “MALLET: A Machine Learning for Language Toolkit.”</p>
+</div>
+</div>

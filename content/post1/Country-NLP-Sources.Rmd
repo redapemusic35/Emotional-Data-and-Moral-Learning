@@ -1,0 +1,239 @@
+---
+title: "Country Music Topic Sources"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+I used a variety of sources to determine what data I should use to analyze. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music. 
+
+Over at [Kaggle.com](https://www.kaggle.com/), there exists an incredibly large source for various data sets, for everything one can think of [^2]. One that I have made use of in this project is @mish17's [380,000+ lyrics from MetroLyrics](https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data) [^3]. This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. @mish17 compiled the data using a python script from [MetroLyrics](https://www.metrolyrics.com/). He does include a link to the script, which unfortunately is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.
+
+Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than @mish17's MetroLyrics data set. As such, On March 13, I went over to [BillBoard.com](https://www.billboard.com/charts/hot-100/2020-03-14), and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with [Kaggle](https://www.kaggle.com/) as soon as I get a chance.[^1]
+
+[^1]: I will point out that I have recently expanded this selection to include the top 14 of the top 100 for the Country and Hip Hop music categories.
+
+Here, I merely show the raw data. What this includes are raw text files which I created by copy pasting texts from the sources cited into a .txt 
+and then using R programming language, read those into a data set.
+
+##### Country Music Files
+
+```{r List Files, echo = FALSE}
+
+Files <- list.files(path = "/home/redapemusic35/mallet/sample-data/top100/Country/", pattern = NULL, all.files = FALSE, full.names = FALSE, recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE)
+
+Files
+```
+1. Marin Morris' [The Bones](https://www.youtube.com/watch?v=gvPMVKUI9go), @bones19a
+2. Jake Owen's [Homemade](https://www.youtube.com/watch?v=NiFCN66k7Cs), @homemade19a
+3. Kane Brown's [Homesike](https://www.youtube.com/watch?v=ukHikH_10CA), @homesick19a
+4. Gabby Barrett's [I Hope She Cheats](https://www.youtube.com/watch?v=qcCH6JpcK5w), @ihope19a
+5. Sam Hunt's [Kinfolks](https://www.youtube.com/watch?v=Wk7ITw2Bl8s), @kinfolks19a
+6. Ingrid Andress' [More Hearts Than Mine](https://www.youtube.com/watch?v=Wpl3uG05Lk), @morehearts19a
+7. Blake Shelton's [Nobody But You](https://www.youtube.com/watch?v=4h9o0Gujuoc), @nobody19a
+8. Old Dominion's [One Man Band](https://www.youtube.com/watch?v=0lxA1FXOiv0), @oneman19a
+9. Jordan Davis' [Slow Dance in a Parking Lot](https://www.youtube.com/watch?v=0D3V4s4zzxc), @slowdance19a
+10. Luke Bryan's [What She Wants Tonight](https://www.youtube.com/watch?v=q4webhCu8bY), @wantstonight19a
+11. Jason Aldean's [We Back](https://www.youtube.com/watch?v=23nlI9t4TlM), @weback19a
+12. Riley Green's [I Wish Grandpas Never Died](https://www.youtube.com/watch?v=XE9lhjfbCJo), @iwish19a
+
+During the week of March 13, 2020, Sam Hunt's [Kinfolks](https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics) stood at number 46 of Billboard's [Hot 100](https://www.billboard.com/charts/hot-100/2020-03-14?rank=46). As a country song, it was the first that I ran across.[^2]
+
+```{r}
+Kinfolks <- read.csv("/home/redapemusic35/mallet/sample-data/top100/Country/Kinfolks.csv", header = FALSE)
+
+
+str(Kinfolks)
+head(Kinfolks)
+tail(Kinfolks)
+```
+Purely for the sake of clarity, I have revealed some of the lines that I would normally hide. For instance, 'str(Kinfolks)' shows that the document contains 23 objects with each object being a row in a csv file. Further, you might notice the 'variable' instance. What this says is that there is only one column of information.
+
+Next, 'head(Kinfolks)' and tail(Kinfolks)' respectively, print the first and last 6 rows of data. Here, it would probably be wise to separate the rows according to the song's standard sentence structure. As such, I will add doing so, to my TODO list.
+
+The section beginning with 'str()' shows what we are looking at. In this case, what we are looking at is a 'data.frame'. Further, it shows us that the data frame consists of 23 obs each have 1 variables. In this case, our variables are 'V1: Factor w/23 levels'. The data here, initially a csv file, has V1, etc as columns while factors are rows of data.
+I will next do some initial data preparation...
+
+```{r , echo = FALSE}
+library(magrittr)
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+library(dplyr)
+library(readr)
+Kinfolks2 <- read_tsv("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt", col_types = cols(x = "i", treatment = "c"))
+
+Kinfolks3 <- read_lines("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt")
+
+# Show column names
+names(Kinfolks2)
+
+# Make it easy to look at data
+glimpse(Kinfolks2)
+
+fix.contractions <- function(doc) {
+  doc <- gsub("won't", "will not", doc)
+  doc <- gsub("can't", "can not", doc)
+  doc <- gsub("n't", " not", doc)
+  doc <- gsub("'re", " are", doc)
+  doc <- gsub("'ve", " have", doc)
+  doc <- gsub("'m", " am", doc)
+  doc <- gsub("'d", " would", doc)
+  doc <- gsub("flyin'", "flying", doc)
+  doc <- gsub("'s", "", doc)
+  doc <- gsub("Puttin'", "Putting", doc)
+  doc <- gsub("I'll", "I will", doc)
+  doc <- gsub("payin'", "paying", doc)
+  doc <- gsub("we'll", "we will", doc)
+  doc <- gsub("We'll", "We will", doc)
+  doc <- gsub("singin'", "singing", doc)
+  doc <- gsub("you'll", "you will", doc)
+  doc <- gsub("'em", "them", doc)
+  doc <- gsub("dancin'", "dancing", doc)
+  doc <- gsub("playin'", "playing", doc)
+  doc <- gsub("ain't", "have not", doc)
+  doc <- gsub("Ain't", "Have not", doc)
+  doc <- gsub("They'll", "They will", doc)
+  doc <- gsub("they'll", "they will", doc)
+  doc <- gsub("gettin'", "getting", doc)
+  doc <- gsub("ain't", "am not", doc)
+  doc <- gsub("Gettin'", "getting", doc)
+  return(doc)
+}
+
+Kinfolks2 <- sapply(Kinfolks2, fix.contractions)
+
+
+# Show how many observations and columns there are
+dim(Kinfolks2)
+
+# Other details of the created data file.
+str(Kinfolks2)
+
+# function to remove special characters
+removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
+
+# remove special characters
+Kinfolks <- sapply(Kinfolks2, removeSpecialChars)
+
+# convert everything to lower case
+Kinfolks2 <- sapply(Kinfolks2, tolower)
+
+str(Kinfolks2)
+summary(Kinfolks2)
+Kinfolks2
+```
+
+### Old Dominion
+
+Next up, at number 51, we have [Old Dominion's "One Man Band"](https://www.billboard.com/articles/news/lyrics/8532123/old-dominion-one-man-band-lyrics).
+
+```{r , echo = FALSE}
+library(magrittr)
+library(ggplot2) 
+library(gridExtra) 
+library(tidytext) 
+library(wordcloud2) 
+
+library(dplyr)
+library(readr)
+OneMan <- read_tsv("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/OldDom/OneMan.txt", col_types = cols(x = "i", treatment = "c"))
+
+OneMan1 <- read_lines("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/OldDom/OneMan.txt")
+
+# Show column names
+names(OneMan)
+
+# Make it easy to look at data
+glimpse(OneMan)
+
+fix.contractions <- function(doc) {
+  doc <- gsub("won't", "will not", doc)
+  doc <- gsub("can't", "can not", doc)
+  doc <- gsub("n't", " not", doc)
+  doc <- gsub("'re", " are", doc)
+  doc <- gsub("'ve", " have", doc)
+  doc <- gsub("'m", " am", doc)
+  doc <- gsub("'d", " would", doc)
+  doc <- gsub("flyin'", "flying", doc)
+  doc <- gsub("'s", "", doc)
+  doc <- gsub("Puttin'", "Putting", doc)
+  doc <- gsub("I'll", "I will", doc)
+  doc <- gsub("payin'", "paying", doc)
+  doc <- gsub("we'll", "we will", doc)
+  doc <- gsub("We'll", "We will", doc)
+  doc <- gsub("singin'", "singing", doc)
+  doc <- gsub("you'll", "you will", doc)
+  doc <- gsub("'em", "them", doc)
+  doc <- gsub("dancin'", "dancing", doc)
+  doc <- gsub("playin'", "playing", doc)
+  doc <- gsub("ain't", "am not", doc)
+  return(doc)
+}
+
+OneMan <- sapply(OneMan, fix.contractions)
+OneMan
+
+# Show how many observations and columns there are
+dim(OneMan)
+
+# Other details of the created data file.
+str(OneMan)
+
+# function to remove special characters
+removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
+
+# remove special characters
+OneMan <- sapply(OneMan, removeSpecialChars)
+
+# convert everything to lower case
+OneMan <- sapply(OneMan, tolower)
+
+str(OneMan)
+summary(OneMan)
+```
+
+Finally, we have Gabby Barrett's "I Hope."[^4] But we will see I guess.
+
+```{r}
+IHope <- read.csv("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Barret/I-Hope.txt", header = FALSE)
+
+str(IHope)
+head(IHope)
+tail(IHope)
+```
+
+Another concern that I have initially, is the quality of the lyrics as I paste them. It appears that there might be a quite a bit of clean up work they will require. 
+
+As I have already mentioned, because I am only looking at possible methods, I will attempt several, but my concern is not the results. In addition to the individual song lyrics, I am also going to try my hand at analyzing a larger set of data. 
+
+```{r}
+metro <- read.csv("/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/lyrics.csv", header = FALSE)
+
+str(metro)
+head(metro)
+tail(metro)
+```
+
+Another way that all of the above material could be organized, is by placing each set of lyrics in their own cell in the csv file. Then we would add rows denoting important information about the song, such as title, author, genre etc.
+
+[^1]: See, @weback19a
+[^2]: See, @kagg20
+[^3]: See, @lyri20
+[^4]: See, @barr19
+ 
+
+
+# Works Cited

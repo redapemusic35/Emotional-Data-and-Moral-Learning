@@ -12,61 +12,66 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 
 
-<pre class="r"><code>require(graphics)
-library(ggrepel)</code></pre>
+<p>Here, we have a range of topics denoted in factors from 0 to 40.</p>
+<p><code>r chunk_blame, echo = TRUE} setwd(&quot;/home/redapemusic35/mallet&quot;) words &lt;- read.csv(&quot;Country_keys.csv&quot;, header = TRUE, sep = &quot;,&quot;) head(words) tail(words)</code></p>
+<p>I graph them below. Along the y access is shown the percentage of probability that the set of words corresponding with one of the topics 0 through 40. Along the x axis is show the topic number.</p>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<pre class="r"><code>library(gridExtra)
-data(mtcars)
-library(ggplot2)
-setwd(&quot;~/mallet/&quot;)
-keys3 &lt;- read.csv(&quot;Rap_keys1.csv&quot;, header = TRUE, sep = &quot;,&quot;)
-Edges3 &lt;- read.csv(&quot;Edges.csv&quot;, header = TRUE, sep = &quot;,&quot;)
-all3 &lt;- merge(keys3, Edges3, by = &quot;Topics&quot;)
-
-with(all3, scatter.smooth(Topics, Order, lpars =
-  list(col = &quot;red&quot;, lwd = 3, lty = 3)))</code></pre>
-<p><img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>library(ggrepel)
+<p><img src="/post2/Country-Topic-Models_files/figure-html/chunk_name-1.png" width="672" /></p>
+<p>Next I will combine the two graphs by inserting the individual terms making up a particular topic.</p>
+<p>```r combined words and topics, echo = FALSE}
+library(ggrepel)
 library(gridExtra)
 data(mtcars)
 library(ggplot2)
-setwd(&quot;~/mallet/&quot;)
-keys &lt;- read.csv(&quot;Rap_keys1.csv&quot;, header = TRUE, sep = &quot;,&quot;)
-Edges &lt;- read.csv(&quot;Edges.csv&quot;, header = TRUE, sep = &quot;,&quot;)
-all &lt;- merge(keys, Edges, by = &quot;Topics&quot;)
-
-ggplot(all, aes(Topics, Order)) +
-  geom_point(color = &quot;red&quot;) +
-  geom_text_repel(data = subset(all, Order &gt; 0.04),
- segment.size = 0.15,
+setwd(“~/mallet/”)
+keys &lt;- read.csv(“Rap_keys1.csv”, header = TRUE, sep = “,”)
+Edges &lt;- read.csv(“Edges.csv”, header = TRUE, sep = “,”)
+all &lt;- merge(keys, Edges, by = “Topics”)</p>
+<p>ggplot(all, aes(Topics, Order)) +
+geom_point(color = “red”) +
+geom_text_repel(data = subset(all, Order &gt; 0.04),
+segment.size = 0.15,
 segment.alpha = 1.0,
 aes(
 color = factor(Topics),
 label = Words,
-))</code></pre>
-<p><img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-2-1.png" width="672" />
-Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.</p>
-<pre class="r"><code>library(ggrepel)
+))
+```</p>
+<p>Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.</p>
+<p>Below I do the same with the top 14 country songs from the billboard top 100. Some interesting features to note include possibly the kinds of terms making up the topic. But also, what is interesting is the distribution of the topics. There is a much tighter clustering than in the Hip Hip set. However I am not sure what the significance of the distribution is. One possibility I think might be the substance of the topic and the fact that there does seem to be a much higher chance the what the document is about, can be seen in the cluster of terms comprising the dominant topic.</p>
+<p>First, the keys themselves:</p>
+<p>```r Country Keys, echo = FALSE}</p>
+<p>setwd(“~/mallet/”)
+keys11 &lt;- read.csv(“Edge.csv”, header = TRUE, sep = “,”)</p>
+<p>head(keys11<span class="math inline">\(Type) tail(keys11\)</span>Type)
+```</p>
+<p>```r country words, echo = FALSE}
+library(ggrepel)
 library(gridExtra)
 data(mtcars)
 library(ggplot2)
-setwd(&quot;~/mallet/&quot;)
-keys1 &lt;- read.csv(&quot;Country_keys.csv&quot;, header = TRUE, sep = &quot;,&quot;)
-Edges1 &lt;- read.csv(&quot;Country_word_topics.csv&quot;, header = TRUE, sep = &quot;,&quot;)
-all1 &lt;- merge(x = keys1, y = Edges1, by = &quot;Topic&quot;)
-
-ggplot(all1, aes(Topic, Order)) +
-  geom_point(color = &quot;red&quot;) +
-  geom_text_repel(data = subset(all1, Order &gt; 0.02),
- segment.size = 0.15,
+setwd(“~/mallet/”)
+keys1 &lt;- read.csv(“Country_keys.csv”, header = TRUE, sep = “,”)
+Edges1 &lt;- read.csv(“Country_word_topics.csv”, header = TRUE, sep = “,”)
+all1 &lt;- merge(x = keys1, y = Edges1, by = “Topic”)</p>
+<p>ggplot(all1, aes(Topic, Order)) +
+geom_point(color = “red”) +
+geom_text_repel(data = subset(all1, Order &gt; 0.02),
+segment.size = 0.15,
 segment.alpha = 1.0,
 aes(
 color = factor(Topic),
 label = Words,
-))</code></pre>
-<p><img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words.</p>
+))
+```</p>
+<p>I should point out that in HH, I suppressed any and all terms which constituted less than 5% percentage of the topic distribution. As such, in HH only shows 4 topics overall while Country shows considerably more. Additionally, you will notice that on the right side of the graph just above is a graph which is titled “factor(Topic).” These are those topics which are denoted by the terms on the graph. For HH, all topics with greater than 5% percentage and for Country greater than 2%.</p>
+<p>The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words.</p>
 <p>In the next section, SA in the menu, I will show some preliminary sentiment analysis on these texts.</p>
+<p>```r Morris echo = FALSE}</p>
+<p>setwd(“/home/redapemusic35/”)</p>
+<p>Morris &lt;- read.csv(“/VimWiki/subjects/digital-humanities/stanford-output-dir/Country/Morris/Morris/bones.txt”, header = FALSE, sep = “,”)
+head(Morris)</p>
+<p>```</p>
 <div id="notes" class="section level1">
 <h1>Notes</h1>
 </div>

@@ -1,5 +1,5 @@
 ---
-title: "2 - Country Music"
+title: "Country Music Topic Sources"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 links:
@@ -17,10 +17,43 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 
 
-<p>I used a variety of sources to determine what data I should use to analyze. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music. I could be wrong, but that remains to be seen. Over at <a href="https://www.kaggle.com/">Kaggle.com</a>, there exists an incredibly large source for various data sets, for everything one can think of.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> One that I have made use of in this project is <span class="citation">Mishra (2017)</span>’s <a href="https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data">380,000+ lyrics from MetroLyrics</a>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. <span class="citation">Mishra (2017)</span> compiled the data using a python script from <a href="https://www.metrolyrics.com/">MetroLyrics</a>. He does include a link to the script, which unfortunately is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.</p>
-<p>Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than <span class="citation">Mishra (2017)</span>’s MetroLyrics data set. As such, On March 13, I went over to <a href="https://www.billboard.com/charts/hot-100/2020-03-14">BillBoard.com</a>, and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with <a href="https://www.kaggle.com/">Kaggle</a> as soon as I get a chance.</p>
-<p>Here, I merely show the raw data. What this includes are raw text files which I created by copy pasting texts from the sources cited into a .txt and then using R programming language, read those into a data set.</p>
-<p>During the week of March 13, 2020, Sam Hunt’s <a href="https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics">Kinfolks</a> stood at number 46 of Billboard’s <a href="https://www.billboard.com/charts/hot-100/2020-03-14?rank=46">Hot 100</a>. As a country song, it was the first that I ran across.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>I used a variety of sources to determine what data I should use to analyze. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music.</p>
+<p>Over at <a href="https://www.kaggle.com/">Kaggle.com</a>, there exists an incredibly large source for various data sets, for everything one can think of.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> One that I have made use of in this project is <span class="citation">Mishra (2017)</span>’s <a href="https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data">380,000+ lyrics from MetroLyrics</a>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. <span class="citation">Mishra (2017)</span> compiled the data using a python script from <a href="https://www.metrolyrics.com/">MetroLyrics</a>. He does include a link to the script, which unfortunately is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.</p>
+<p>Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than <span class="citation">Mishra (2017)</span>’s MetroLyrics data set. As such, On March 13, I went over to <a href="https://www.billboard.com/charts/hot-100/2020-03-14">BillBoard.com</a>, and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with <a href="https://www.kaggle.com/">Kaggle</a> as soon as I get a chance.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>Here, I merely show the raw data. What this includes are raw text files which I created by copy pasting texts from the sources cited into a .txt
+and then using R programming language, read those into a data set.</p>
+<div id="country-music-files" class="section level5">
+<h5>Country Music Files</h5>
+<pre><code>##  [1] &quot;bones.txt&quot;                    &quot;Catch.csv&quot;                   
+##  [3] &quot;Catch.txt&quot;                    &quot;combined_csv.csv&quot;            
+##  [5] &quot;Homemade.csv&quot;                 &quot;Homemade.txt&quot;                
+##  [7] &quot;homesick.csv&quot;                 &quot;homesick.txt&quot;                
+##  [9] &quot;Hope-Youre-Happy-Now.csv&quot;     &quot;Hope-Youre-Happy-Now.txt&quot;    
+## [11] &quot;I-Hope.csv&quot;                   &quot;I-Hope.txt&quot;                  
+## [13] &quot;Kinfolks.csv&quot;                 &quot;Kinfolks.txt&quot;                
+## [15] &quot;Marin Morris Bones.csv&quot;       &quot;More-Hearts.csv&quot;             
+## [17] &quot;More-Hearts.txt&quot;              &quot;Nobody-But-You.csv&quot;          
+## [19] &quot;Nobody-But-You.txt&quot;           &quot;OneMan.csv&quot;                  
+## [21] &quot;OneMan.txt&quot;                   &quot;Slow-Dance.csv&quot;              
+## [23] &quot;Slow-Dance.txt&quot;               &quot;Wants-Tonight.csv&quot;           
+## [25] &quot;Wants-Tonight.txt&quot;            &quot;We-Back.csv&quot;                 
+## [27] &quot;We-Back.txt&quot;                  &quot;Wish-Grandpas-Never-Died.csv&quot;
+## [29] &quot;Wish-Grandpas-Never-Died.txt&quot;</code></pre>
+<ol style="list-style-type: decimal">
+<li>Marin Morris’ <a href="https://www.youtube.com/watch?v=gvPMVKUI9go">The Bones</a>, <span class="citation">Morris, Robbins, and Veltz (2019)</span></li>
+<li>Jake Owen’s <a href="https://www.youtube.com/watch?v=NiFCN66k7Cs">Homemade</a>, <span class="citation">Goldsmith et al. (2019)</span></li>
+<li>Kane Brown’s <a href="https://www.youtube.com/watch?v=ukHikH_10CA">Homesike</a>, <span class="citation">Brown et al. (2019)</span></li>
+<li>Gabby Barrett’s <a href="https://www.youtube.com/watch?v=qcCH6JpcK5w">I Hope She Cheats</a>, <span class="citation">Gabrielle Barrett, Nite, and Kale (2019)</span></li>
+<li>Sam Hunt’s <a href="https://www.youtube.com/watch?v=Wk7ITw2Bl8s">Kinfolks</a>, <span class="citation">Flowers et al. (2019)</span></li>
+<li>Ingrid Andress’ <a href="https://www.youtube.com/watch?v=Wpl3uG05Lk">More Hearts Than Mine</a>, <span class="citation">Southerland, Andress, and Ellis (2019)</span></li>
+<li>Blake Shelton’s <a href="https://www.youtube.com/watch?v=4h9o0Gujuoc">Nobody But You</a>, <span class="citation">Osborne et al. (2019)</span></li>
+<li>Old Dominion’s <a href="https://www.youtube.com/watch?v=0lxA1FXOiv0">One Man Band</a>, <span class="citation">Tursi et al. (2019)</span></li>
+<li>Jordan Davis’ <a href="https://www.youtube.com/watch?v=0D3V4s4zzxc">Slow Dance in a Parking Lot</a>, <span class="citation">Davis and Fowler (2019)</span></li>
+<li>Luke Bryan’s <a href="https://www.youtube.com/watch?v=q4webhCu8bY">What She Wants Tonight</a>, <span class="citation">Bryan et al. (2019)</span></li>
+<li>Jason Aldean’s <a href="https://www.youtube.com/watch?v=23nlI9t4TlM">We Back</a>, <span class="citation">Warren et al. (2019)</span></li>
+<li>Riley Green’s <a href="https://www.youtube.com/watch?v=XE9lhjfbCJo">I Wish Grandpas Never Died</a>, <span class="citation">Green, Breen, and Bonds (2019)</span></li>
+</ol>
+<p>During the week of March 13, 2020, Sam Hunt’s <a href="https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics">Kinfolks</a> stood at number 46 of Billboard’s <a href="https://www.billboard.com/charts/hot-100/2020-03-14?rank=46">Hot 100</a>. As a country song, it was the first that I ran across.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <pre class="r"><code>Kinfolks &lt;- read.csv(&quot;/home/redapemusic35/mallet/sample-data/top100/Country/Kinfolks.csv&quot;, header = FALSE)
 
 
@@ -43,15 +76,10 @@ str(Kinfolks)</code></pre>
 ## 21     ends Take you to my hometown  where I grew up Where I thought I knew it          
 ## 22   all before I knew what love was Gave up on it  but honey  you got my hopes         
 ## 23              up And I&#39;m thinking that I wanna introduce you to my kinfolks</code></pre>
-<p>The section beginning with ‘str()’ shows what we are looking at. In this case, what we are looking at is a ‘data.frame’. Further, it shows us that the data frame consists of 23 obs each have 4 variables. In this case, our variables are ‘V1: Factor w/23 levels’, ‘V2: Factor with 23 levels’ etc. The data here, initially a csv file, has V1, V2 etc as columns while factors are rows of data. Of course however, this is wrong. What’s happened is that ‘read.csv’ is attempting to read this data as though it were a comma deliminated file, in other words, as though it has columns and rows, which of course it does not. Not matter though, that can be fixed.</p>
-<p>I will next do some initial data preparation…</p>
-<pre class="r"><code>library(magrittr)
-library(ggplot2) 
-library(gridExtra) 
-library(tidytext) 
-library(wordcloud2) 
-
-library(dplyr)</code></pre>
+<p>Purely for the sake of clarity, I shown some lines that I would normally hide. For instance, ‘str(Kinfolks)’ shows that the document contains 23 objects with each object being a row in a csv file. Further, you might notice the ‘variable’ instance. What this says is that there is only one column of information.</p>
+<p>Next, ‘head(Kinfolks)’ and tail(Kinfolks)’ respectively, print the first and last 6 rows of data. Here, it would probably be wise to separate the rows according to the song’s standard sentence structure. As such, I will add doing so, to my TODO list.</p>
+<p>The section beginning with ‘str()’ shows what we are looking at. In this case, what we are looking at is a ‘data.frame’. Further, it shows us that the data frame consists of 23 obs each have 1 variables. In this case, our variables are ‘V1: Factor w/23 levels’. The data here, initially a csv file, has V1, etc as columns while factors are rows of data.
+I will next do some initial data preparation…</p>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:gridExtra&#39;:
@@ -63,76 +91,20 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(readr)
-Kinfolks2 &lt;- read_tsv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt&quot;, col_types = cols(x = &quot;i&quot;, treatment = &quot;c&quot;))</code></pre>
 <pre><code>## Warning: The following named parsers don&#39;t match the column names: x, treatment</code></pre>
-<pre class="r"><code>Kinfolks3 &lt;- read_lines(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt&quot;)
-
-# Show column names
-names(Kinfolks2)</code></pre>
 <pre><code>## [1] &quot;I saw you going by, I had to say hello I don&#39;t mean to pry, but girl,&quot;</code></pre>
-<pre class="r"><code># Make it easy to look at data
-glimpse(Kinfolks2)</code></pre>
 <pre><code>## Observations: 22
 ## Variables: 1
 ## $ `I saw you going by, I had to say hello I don&#39;t mean to pry, but girl,` &lt;chr&gt; …</code></pre>
-<pre class="r"><code>fix.contractions &lt;- function(doc) {
-  doc &lt;- gsub(&quot;won&#39;t&quot;, &quot;will not&quot;, doc)
-  doc &lt;- gsub(&quot;can&#39;t&quot;, &quot;can not&quot;, doc)
-  doc &lt;- gsub(&quot;n&#39;t&quot;, &quot; not&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;re&quot;, &quot; are&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;ve&quot;, &quot; have&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;m&quot;, &quot; am&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;d&quot;, &quot; would&quot;, doc)
-  doc &lt;- gsub(&quot;flyin&#39;&quot;, &quot;flying&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;s&quot;, &quot;&quot;, doc)
-  doc &lt;- gsub(&quot;Puttin&#39;&quot;, &quot;Putting&quot;, doc)
-  doc &lt;- gsub(&quot;I&#39;ll&quot;, &quot;I will&quot;, doc)
-  doc &lt;- gsub(&quot;payin&#39;&quot;, &quot;paying&quot;, doc)
-  doc &lt;- gsub(&quot;we&#39;ll&quot;, &quot;we will&quot;, doc)
-  doc &lt;- gsub(&quot;We&#39;ll&quot;, &quot;We will&quot;, doc)
-  doc &lt;- gsub(&quot;singin&#39;&quot;, &quot;singing&quot;, doc)
-  doc &lt;- gsub(&quot;you&#39;ll&quot;, &quot;you will&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;em&quot;, &quot;them&quot;, doc)
-  doc &lt;- gsub(&quot;dancin&#39;&quot;, &quot;dancing&quot;, doc)
-  doc &lt;- gsub(&quot;playin&#39;&quot;, &quot;playing&quot;, doc)
-  doc &lt;- gsub(&quot;ain&#39;t&quot;, &quot;have not&quot;, doc)
-  doc &lt;- gsub(&quot;Ain&#39;t&quot;, &quot;Have not&quot;, doc)
-  doc &lt;- gsub(&quot;They&#39;ll&quot;, &quot;They will&quot;, doc)
-  doc &lt;- gsub(&quot;they&#39;ll&quot;, &quot;they will&quot;, doc)
-
-
-  return(doc)
-}
-
-Kinfolks2 &lt;- sapply(Kinfolks2, fix.contractions)
-
-
-# Show how many observations and columns there are
-dim(Kinfolks2)</code></pre>
 <pre><code>## [1] 22  1</code></pre>
-<pre class="r"><code># Other details of the created data file.
-str(Kinfolks2)</code></pre>
 <pre><code>##  chr [1:22, 1] &quot;I gotta know What is your name? How come I ai not seen you around before?&quot; ...
 ##  - attr(*, &quot;dimnames&quot;)=List of 2
 ##   ..$ : NULL
 ##   ..$ : chr &quot;I saw you going by, I had to say hello I don&#39;t mean to pry, but girl,&quot;</code></pre>
-<pre class="r"><code># function to remove special characters
-removeSpecialChars &lt;- function(x) gsub(&quot;[^a-zA-Z0-9 ]&quot;, &quot; &quot;, x)
-
-# remove special characters
-Kinfolks &lt;- sapply(Kinfolks2, removeSpecialChars)
-
-# convert everything to lower case
-Kinfolks2 &lt;- sapply(Kinfolks2, tolower)
-
-str(Kinfolks2)</code></pre>
 <pre><code>##  Named chr [1:22] &quot;i gotta know what is your name? how come i ai not seen you around before?&quot; ...
 ##  - attr(*, &quot;names&quot;)= chr [1:22] &quot;I gotta know What is your name? How come I ai not seen you around before?&quot; &quot;Tell me Now you know I ai not ever had a type, having a type takes two But&quot; &quot;I know what I like, and you are the only one of you You are something else&quot; &quot;(damn) And I know we just met, but I wanna introduce you to my kinfolks,&quot; ...</code></pre>
-<pre class="r"><code>summary(Kinfolks2)</code></pre>
 <pre><code>##    Length     Class      Mode 
 ##        22 character character</code></pre>
-<pre class="r"><code>Kinfolks2</code></pre>
 <pre><code>##     I gotta know What is your name? How come I ai not seen you around before? 
 ##   &quot;i gotta know what is your name? how come i ai not seen you around before?&quot; 
 ##    Tell me Now you know I ai not ever had a type, having a type takes two But 
@@ -177,54 +149,15 @@ str(Kinfolks2)</code></pre>
 ##  &quot;all before i knew what love was gave up on it, but honey, you got my hopes&quot; 
 ##                up And I am thinking that I wanna introduce you to my kinfolks 
 ##              &quot;up and i am thinking that i wanna introduce you to my kinfolks&quot;</code></pre>
+</div>
 <div id="old-dominion" class="section level3">
 <h3>Old Dominion</h3>
 <p>Next up, at number 51, we have <a href="https://www.billboard.com/articles/news/lyrics/8532123/old-dominion-one-man-band-lyrics">Old Dominion’s “One Man Band”</a>.</p>
-<pre class="r"><code>library(magrittr)
-library(ggplot2) 
-library(gridExtra) 
-library(tidytext) 
-library(wordcloud2) 
-
-library(dplyr)
-library(readr)
-OneMan &lt;- read_tsv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/OldDom/OneMan.txt&quot;, col_types = cols(x = &quot;i&quot;, treatment = &quot;c&quot;))</code></pre>
 <pre><code>## Warning: The following named parsers don&#39;t match the column names: x, treatment</code></pre>
-<pre class="r"><code>OneMan1 &lt;- read_lines(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/OldDom/OneMan.txt&quot;)
-
-# Show column names
-names(OneMan)</code></pre>
 <pre><code>## [1] &quot;One Man Band&quot;</code></pre>
-<pre class="r"><code># Make it easy to look at data
-glimpse(OneMan)</code></pre>
 <pre><code>## Observations: 25
 ## Variables: 1
 ## $ `One Man Band` &lt;chr&gt; &quot;Been flyin&#39; solo for so long Nobody&#39;s singin&#39; the har…</code></pre>
-<pre class="r"><code>fix.contractions &lt;- function(doc) {
-  doc &lt;- gsub(&quot;won&#39;t&quot;, &quot;will not&quot;, doc)
-  doc &lt;- gsub(&quot;can&#39;t&quot;, &quot;can not&quot;, doc)
-  doc &lt;- gsub(&quot;n&#39;t&quot;, &quot; not&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;re&quot;, &quot; are&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;ve&quot;, &quot; have&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;m&quot;, &quot; am&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;d&quot;, &quot; would&quot;, doc)
-  doc &lt;- gsub(&quot;flyin&#39;&quot;, &quot;flying&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;s&quot;, &quot;&quot;, doc)
-  doc &lt;- gsub(&quot;Puttin&#39;&quot;, &quot;Putting&quot;, doc)
-  doc &lt;- gsub(&quot;I&#39;ll&quot;, &quot;I will&quot;, doc)
-  doc &lt;- gsub(&quot;payin&#39;&quot;, &quot;paying&quot;, doc)
-  doc &lt;- gsub(&quot;we&#39;ll&quot;, &quot;we will&quot;, doc)
-  doc &lt;- gsub(&quot;We&#39;ll&quot;, &quot;We will&quot;, doc)
-  doc &lt;- gsub(&quot;singin&#39;&quot;, &quot;singing&quot;, doc)
-  doc &lt;- gsub(&quot;you&#39;ll&quot;, &quot;you will&quot;, doc)
-  doc &lt;- gsub(&quot;&#39;em&quot;, &quot;them&quot;, doc)
-  doc &lt;- gsub(&quot;dancin&#39;&quot;, &quot;dancing&quot;, doc)
-  doc &lt;- gsub(&quot;playin&#39;&quot;, &quot;playing&quot;, doc)
-  return(doc)
-}
-
-OneMan &lt;- sapply(OneMan, fix.contractions)
-OneMan</code></pre>
 <pre><code>##       One Man Band                                                                        
 ##  [1,] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot;          
 ##  [2,] &quot;and my shadow No bass, no guitar, no tambourine&quot;                                   
@@ -251,31 +184,16 @@ OneMan</code></pre>
 ## [23,] &quot;I will lay down the beat, you will carry the tune We will get tattoos, and we will&quot;
 ## [24,] &quot;trash hotel rooms Baby, take my hand &#39;Cause I do not wanna be a one man&quot;           
 ## [25,] &quot;band I do not wanna be a one man band&quot;</code></pre>
-<pre class="r"><code># Show how many observations and columns there are
-dim(OneMan)</code></pre>
 <pre><code>## [1] 25  1</code></pre>
-<pre class="r"><code># Other details of the created data file.
-str(OneMan)</code></pre>
 <pre><code>##  chr [1:25, 1] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot; ...
 ##  - attr(*, &quot;dimnames&quot;)=List of 2
 ##   ..$ : NULL
 ##   ..$ : chr &quot;One Man Band&quot;</code></pre>
-<pre class="r"><code># function to remove special characters
-removeSpecialChars &lt;- function(x) gsub(&quot;[^a-zA-Z0-9 ]&quot;, &quot; &quot;, x)
-
-# remove special characters
-OneMan &lt;- sapply(OneMan, removeSpecialChars)
-
-# convert everything to lower case
-OneMan &lt;- sapply(OneMan, tolower)
-
-str(OneMan)</code></pre>
 <pre><code>##  Named chr [1:25] &quot;been flying solo for so long nobody singing the harmony up there just me&quot; ...
 ##  - attr(*, &quot;names&quot;)= chr [1:25] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot; &quot;and my shadow No bass, no guitar, no tambourine&quot; &quot;And I found you like a melody You were singing in the same key as me We&quot; &quot;had them dancing in the streets&quot; ...</code></pre>
-<pre class="r"><code>summary(OneMan)</code></pre>
 <pre><code>##    Length     Class      Mode 
 ##        25 character character</code></pre>
-<p>Finally, we have Gabby Barrett’s “I Hope.”<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> But we will see I guess.</p>
+<p>Finally, we have Gabby Barrett’s “I Hope.”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> But we will see I guess.</p>
 <pre class="r"><code>IHope &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Barret/I-Hope.txt&quot;, header = FALSE)
 
 str(IHope)</code></pre>
@@ -347,6 +265,7 @@ str(metro)</code></pre>
 ## 362236                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Look at the couple in the corner booth\nLooks a lot like me and you\nShe&#39;s looking out at the window\nHe&#39;s staring down at his shoes\nShe gets another glass of Cabernet\nShe&#39;s searching hard for something to say\nHe&#39;s got that little too late look on his already gone face\nLook through each other like a piece of glass\nIs that what happens when the years fly past?\nLately I&#39;ve been feeling like that\nIs it time for a coming to Jesus\nBaby tell me that won&#39;t be us, us\nIs that all we are to each other?\nCould it be our last supper?\nTell me you&#39;re uncomfortably numb\nI can&#39;t imagine I&#39;m the only one\nIs goodbye on the tip of your tongue\nAny love left, gotta be some\nWhy&#39;d you bring me to my favorite place?\nA little wine and everything&#39;s OK\nAre we really gonna end this way?\nIs it time for a coming to Jesus\nBaby tell me that won&#39;t be us, us\nIs that all we are to each other?\nCould it be our last supper?\nYou break the bread and you break my heart\nYou raise the glass as we fall apart\nGuess it&#39;s time for a coming to Jesus\nLooks like that just might be us, us\nIs that all we are to each other?\nLooks like it&#39;s out last supper\nLook at the couple in the corner booth\nLooks a lot like me and you
 ## 362237                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                When I fly off this mortal earth\nAnd I&#39;m measured up by depth and girth\nThe Father says now what&#39;s he worth\nMay he see Jesus death and birth\nDon&#39;t measure me by dollar signs\nOr bricks and mortar you may find\nBy Christ alone will I be found\nWorthy of that golden crown\nWorthy of that golden crown\nThe value of this life I&#39;ve lived\nHow did I love, did I forgive\nWhere did my treasure truly lay\nHow did I start and end each day\nDon&#39;t measure me by battles won\nOr some good deed that I have done\nBy Christ alone will I be found\nWorthy of that golden crown\nWorthy of that golden crown\nMay be a pauper or a king\nHave nothing or have everything\nThe question begs, do you belong\nDo you sing a resurrection song\nMeasured by the master&#39;s hand\nOn only one truth can we stand\nBy Christ alone will we be found\nWorthy of that golden crown\nWorthy of that golden crown
 ## 362238                                                                              I heard from a friend of a friend of a friend that\nYou finally got rid of that girlfriend\nYou finally came out of that love coma boy\nI heard Mary Jane at the powder-puff beauty shop\nSayin&#39; that blond in her tube top\nShe left our Jimmy for a boy in Illinois\nSomeone give me an amen,\nSomeone give me an amen.\nCan I get a thank God Hallelujah\nYou finally saw what she was doing to ya\nYour mama called it, she was right\nGlad to see you saw the light.\nWhole town yeah we hooped and hollered.\nShe drove away nobody stopped her\nNa na na na na, I&#39;ll say it again\nSomeone give me an amen.\nYeah right, like I really coulda said something\nYou wouldn&#39;t heard it if the train was coming\nYou had your head so high in the clouds\nOh I, I had a really good reason\nFor hiding my feelings but now I can finally spit it out\nSomeone give me an amen.\nSomeone give me an amen.\nCan I get a thank God Hallelujah\nYou finally saw what she was doing to ya\nYour mama called it, she was right\nGlad to see you saw the light.\nWhole town yeah we hooped and hollered.\nShe drove away nobody stopped her\nNa na na na na, I&#39;ll say it again\nSomeone give me an amen.\nI&#39;m standing right here in front of you\nI think I love you too\nCan I get a thank God Hallelujah\nBaby do you believe it, do you?\nYour mama called it, she was right\nGlad to see you saw the light.\nWhole town yeah they hooped and hollered.\nThe preacher&#39;s son and the farmer&#39;s daughter.\nNa na na na na, I&#39;ll say it again\nSomeone give me an amen,\nSomeone give me an amen\nNa na na na na na na na na na na\nNa na na na na na na na na na na</code></pre>
+<p>Another way that all of the above material could be organized, is by placing each set of lyrics in their own cell in the csv file. Then we would add rows denoting important information about the song, such as title, author, genre etc.</p>
 </div>
 <div id="works-cited" class="section level1 unnumbered">
 <h1>Works Cited</h1>
@@ -354,8 +273,26 @@ str(metro)</code></pre>
 <div id="ref-barr19">
 <p>Barrett, Gabby. 2019. “Gabby Barrett’s ’I Hope’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549839/gabby-barrett-i-hope-lyrics.</p>
 </div>
-<div id="ref-hunt19">
-<p>Hunt, Sam. 2019. “Sam Hunt’s ’Kinfolks’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics.</p>
+<div id="ref-ihope19a">
+<p>Barrett, Gabrielle, Jon Nite, and Zachary Kale. 2019. “I Hope Lyrics.” <em>Sony/ATV Music Publishing LLC</em>.</p>
+</div>
+<div id="ref-homesick19a">
+<p>Brown, Kane, Matt McGinn, Robert Brock Berryhill, and Taylor Phillips. 2019. “Homesick Lyrics.” <em>Warner Chappell Music, Inc, Universal Music Publishing Group, Kobalt Music Publishing Ltd</em>.</p>
+</div>
+<div id="ref-wantstonight19a">
+<p>Bryan, Luke, Hillary Lindsey, Ross Copperman, and Jon Nite. 2019. “What She Wants Tonight.” <em>Capitol Nashville</em>.</p>
+</div>
+<div id="ref-slowdance19a">
+<p>Davis, Jordan, and Lonnie Fowler. 2019. “Slow Dance in a Parking Lot Lyrics.” <em>Warner Chappell Music, Inc, Ole Media Management Lp</em>.</p>
+</div>
+<div id="ref-kinfolks19a">
+<p>Flowers, Jerry, Josh Osborne, Sam Hunt, and Zach Crowell. 2019. “Sam Hunt’s ’Kinfolks’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics.</p>
+</div>
+<div id="ref-homemade19a">
+<p>Goldsmith, Ben, Bobby Pinson, Drew Parker, and Jared Mullins. 2019. “Homemade Lyrics.” <em>Warner Chappell Music, Inc, BMG Rights Management</em>.</p>
+</div>
+<div id="ref-iwish19a">
+<p>Green, Riley, Buford Breen, and Lendon Bonds. 2019. “I Wish Grandpas Never Died.” <em>BMLG</em>.</p>
 </div>
 <div id="ref-kagg20">
 <p>Kaggle. 2020. “Kaggle: Your Home for Data Science.” https://www.kaggle.com/.</p>
@@ -366,6 +303,21 @@ str(metro)</code></pre>
 <div id="ref-mish17">
 <p>Mishra, Gyanendra. 2017. “380,000+ Lyrics from MetroLyrics.” Data Analytics. <em>Kaggle</em>. https://kaggle.com/gyani95/380000-lyrics-from-metrolyrics.</p>
 </div>
+<div id="ref-bones19a">
+<p>Morris, Marin, Jimmy Robbins, and Laura Veltz. 2019. “The Bones Lyrics.” <em>Warner Chappell Music, Inc, Round Hill Music BVig Loud Songs</em>. Downtown Music Publishing.</p>
+</div>
+<div id="ref-nobody19a">
+<p>Osborne, Joshua, Ross Copperman, Shane McAnally, and Tommy Lee James. 2019. “Nobody but You Lyrics.” <em>Sony/ATV Music PUblishing LLC, KObalt Music Publishing Ltd., Warner Chappell Music, Inc</em>.</p>
+</div>
+<div id="ref-morehearts19a">
+<p>Southerland, Drrick Adam, Ingrid Andress, and Sam Mackenzie Ellis. 2019. “More Hearts Than Mine Lyrics.” <em>Universal Music Publishing Group</em>.</p>
+</div>
+<div id="ref-oneman19a">
+<p>Tursi, Brad Francis, Josh OOsborne, Matthew Thomas Ramsey, and Trevor Joseph Rosen. 2019. “One Man Band Lyrics.” <em>Kobalt Music Publishing Ltd., Downtown Music PUblishing, Universal Music Publishing Group</em>.</p>
+</div>
+<div id="ref-weback19a">
+<p>Warren, Brad, Brett Warren, Jordan Schmidt, and Tyler Hubbard. 2019. “We Back Lyrics.” <em>Warner Chappell Music, Inc</em>.</p>
+</div>
 </div>
 </div>
 <div class="footnotes">
@@ -373,7 +325,8 @@ str(metro)</code></pre>
 <ol>
 <li id="fn1"><p>See, <span class="citation">Kaggle (2020)</span><a href="#fnref1" class="footnote-back">↩</a></p></li>
 <li id="fn2"><p>See, <span class="citation">Lyrics (2020)</span><a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>See, <span class="citation">Hunt (2019)</span><a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>See, <span class="citation">Barrett (2019)</span><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>See, <span class="citation">Warren et al. (2019)</span><a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>See, <span class="citation">Kaggle (2020)</span><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>See, <span class="citation">Gabby Barrett (2019)</span><a href="#fnref5" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

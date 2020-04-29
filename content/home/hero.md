@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "NLP and Sources of Moral Knowledge"
+title = "In the Pursuit of Moral Knowledge"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
 hero_media = "happyface.jpeg"
@@ -51,8 +51,8 @@ hero_media = "happyface.jpeg"
   label = '<a class="js-github-release" href="https://sourcethemes.com/academic/updates" data-repo="gcushen/hugo-academic">Latest release<!-- V --></a>'
 +++
 
-Natural language processing, topic modeling, sentiment
-analysis and moral knowledge.
+Using natural language processing, topic modeling, and sentiment
+analysis in an attempt to data mine moral knowledge.
 
 <!-- Place this tag where you want the button to render. -->
 <a class="github-button" href="https://github.com/redapemusic35/Emotional-Data-and-Moral-Learning/generate" data-icon="octicon-repo-template" aria-label="Use this template redapemusic35/Emotional-Data-and-Moral-Learning on GitHub">Use this template</a>

@@ -1,0 +1,137 @@
+---
+title: "Sentiment Analysis and Country Music"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+This is one of the more taxing portions of the project. I aim to provide various methods of sentiment analysis on the documents here. 
+
+```{r echo = FALSE, results='hide',message=FALSE}
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet")
+hext <- read.csv("Country_keys.csv")
+hext4 <- read.csv("Country_word_topics.csv")
+hext5 <- list.files(path = "sample-data/top100/Country")
+
+```
+
+```{r echo = FALSE, results='hide',message=FALSE}
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+hext <- read.csv("Country_keys.csv")
+hext4 <- read.csv("Country_word_topics.csv")
+list_of_files <- list.files(path = "sample-data/top100/Country/", recursive = TRUE,
+			    pattern = "\\.csv$",
+			    full.names = TRUE)
+df <- list_of_files %>%
+  purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
+  purrr::map_df(read_csv,
+		col_names = FALSE,
+		skip = 1,
+		.id = "FileName")
+
+
+str(df)
+head(df)
+tail(df)
+
+(dfsentiment <- with(
+		     df,
+		     sentiment_by(
+				  get_sentences(X1),
+				  list(FileName)
+				  )
+		     ))
+
+dfsentiment
+plot(dfsentiment)
+
+```
+
+```{r echo = FALSE, results='hide',message=FALSE}
+library(magrittr)
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+list_of_files2 <- list.files(path = "sample-data/top100/Rap/", recursive = TRUE,
+			    pattern = "\\.csv$",
+			    full.names = TRUE)
+df2 <- list_of_files2 %>%
+  purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
+  purrr::map_df(read_csv,
+		col_names = FALSE,
+		skip = 1,
+		.id = "FileName2")
+
+str(df2)
+head(df2)
+tail(df2)
+
+(dfsentiment2 <- with(
+		     df2,
+		     sentiment_by(
+				  get_sentences(X1),
+				  list(FileName2)
+				  )
+		     ))
+
+plot(dfsentiment2)
+dfsentiment2
+
+df3 <- df2 %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  sentiment_by(X1_split, list(FileName2))
+
+df3
+plot(df3)
+```
+```{r echo=FALSE}
+library(magrittr)
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+setwd("~/mallet/")
+
+Bones <- read_lines("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-output-dir/Country/Hunt/text/Bones1.txt")
+
+str(Bones)
+Bones
+```
+
+

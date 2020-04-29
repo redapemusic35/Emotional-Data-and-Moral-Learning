@@ -10,7 +10,18 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
-```{r}
+Here, we have a range of topics denoted in factors from 0 to 40.
+
+```r chunk_blame, echo = TRUE}
+setwd("/home/redapemusic35/mallet")
+words <- read.csv("Country_keys.csv", header = TRUE, sep = ",")
+head(words)
+tail(words)
+```
+
+I graph them below. Along the y access is shown the percentage of probability that the set of words corresponding with one of the topics 0 through 40. Along the x axis is show the topic number.
+
+```{r chunk_name, echo = FALSE} 
 require(graphics)
 library(ggrepel)
 library(gridExtra)
@@ -25,7 +36,10 @@ with(all3, scatter.smooth(Topics, Order, lpars =
   list(col = "red", lwd = 3, lty = 3)))
 
 ```
-```{r}
+
+Next I will combine the two graphs by inserting the individual terms making up a particular topic.
+
+```r combined words and topics, echo = FALSE}
 library(ggrepel)
 library(gridExtra)
 data(mtcars)
@@ -45,9 +59,23 @@ color = factor(Topics),
 label = Words,
 ))
 ```
+
 Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.
 
-```{r}
+Below I do the same with the top 14 country songs from the billboard top 100. Some interesting features to note include possibly the kinds of terms making up the topic. But also, what is interesting is the distribution of the topics. There is a much tighter clustering than in the Hip Hip set. However I am not sure what the significance of the distribution is. One possibility I think might be the substance of the topic and the fact that there does seem to be a much higher chance the what the document is about, can be seen in the cluster of terms comprising the dominant topic.
+
+First, the keys themselves:
+
+```r Country Keys, echo = FALSE}
+
+setwd("~/mallet/")
+keys11 <- read.csv("Edge.csv", header = TRUE, sep = ",")
+
+head(keys11$Type)
+tail(keys11$Type)
+```
+
+```r country words, echo = FALSE}
 library(ggrepel)
 library(gridExtra)
 data(mtcars)
@@ -67,8 +95,20 @@ color = factor(Topic),
 label = Words,
 ))
 ```
+
+I should point out that in HH, I suppressed any and all terms which constituted less than 5% percentage of the topic distribution. As such, in HH only shows 4 topics overall while Country shows considerably more. Additionally, you will notice that on the right side of the graph just above is a graph which is titled "factor(Topic)." These are those topics which are denoted by the terms on the graph. For HH, all topics with greater than 5% percentage and for Country greater than 2%.
+
 The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words.
 
 In the next section, SA in the menu, I will show some preliminary sentiment analysis on these texts.
+
+```r Morris echo = FALSE}
+
+setwd("/home/redapemusic35/")
+
+Morris <- read.csv("/VimWiki/subjects/digital-humanities/stanford-output-dir/Country/Morris/Morris/bones.txt", header = FALSE, sep = ",")
+head(Morris)
+
+```
 
 # Notes

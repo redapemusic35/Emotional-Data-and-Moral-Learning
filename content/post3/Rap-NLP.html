@@ -44,8 +44,8 @@ hext4 &lt;- read.csv(&quot;Country_word_topics.csv&quot;)
 hext5 &lt;- list.files(path = &quot;sample-data/top100/Country/&quot;)
 
 head(hext5)</code></pre>
-<pre><code>## [1] &quot;bones.csv&quot;    &quot;bones.txt&quot;    &quot;Catch.csv&quot;    &quot;Catch.txt&quot;    &quot;Homemade.csv&quot;
-## [6] &quot;Homemade.txt&quot;</code></pre>
+<pre><code>## [1] &quot;bones.txt&quot;        &quot;Catch.csv&quot;        &quot;Catch.txt&quot;        &quot;combined_csv.csv&quot;
+## [5] &quot;Homemade.csv&quot;     &quot;Homemade.txt&quot;</code></pre>
 <pre class="r"><code>library(sentimentr)
 require(data.table)</code></pre>
 <pre><code>## Loading required package: data.table</code></pre>
@@ -79,6 +79,32 @@ df &lt;- list_of_files %&gt;%
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   X1 = col_character()
+## )</code></pre>
+<pre><code>## Warning: 6 parsing failures.
+## row col  expected    actual                                    file
+##   8  -- 1 columns 2 columns &#39;sample-data/top100/Country//Catch.csv&#39;
+##  10  -- 1 columns 2 columns &#39;sample-data/top100/Country//Catch.csv&#39;
+##  13  -- 1 columns 2 columns &#39;sample-data/top100/Country//Catch.csv&#39;
+##  17  -- 1 columns 2 columns &#39;sample-data/top100/Country//Catch.csv&#39;
+##  35  -- 1 columns 2 columns &#39;sample-data/top100/Country//Catch.csv&#39;
+## ... ... ......... ......... .......................................
+## See problems(...) for more details.</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   X2 = col_character(),
+##   X3 = col_character(),
+##   X4 = col_character(),
+##   X5 = col_character(),
+##   X6 = col_character(),
+##   X7 = col_character(),
+##   X8 = col_character(),
+##   X9 = col_character(),
+##   X10 = col_character(),
+##   X11 = col_character(),
+##   X12 = col_character(),
+##   X13 = col_character(),
+##   X14 = col_character()
 ## )</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -133,29 +159,44 @@ df &lt;- list_of_files %&gt;%
 ##   X1 = col_character()
 ## )</code></pre>
 <pre class="r"><code>str(df)</code></pre>
-<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 313 obs. of  2 variables:
-##  $ FileName: chr  &quot;bones&quot; &quot;bones&quot; &quot;bones&quot; &quot;bones&quot; ...
-##  $ X1      : chr  &quot;When the bones are good  the rest don‘t matter Yeah  the paint could peel  the glass could shatter Let it rain &quot;| __truncated__ &quot;Call it dumb luck  but baby  you and I Can‘t even mess it up  although we both try No  it don‘t always go the w&quot;| __truncated__ &quot;When the bones are good  the rest don‘t matter Yeah  the paint could peel  the glass could shatter Let it rain &quot;| __truncated__ &quot;Bones are good  the rest  the rest don‘t matter (baby  it don’t really matter) Paint could peel  the glass coul&quot;| __truncated__ ...</code></pre>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 647 obs. of  15 variables:
+##  $ FileName: chr  &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; ...
+##  $ X1      : chr  &quot;I wasn&#39;t trying to feel nothing at all.&quot; &quot;I just came to meet my friends.&quot; &quot;And try to drink a long week off.&quot; &quot;I didn&#39;t wanna stay too late.&quot; ...
+##  $ X2      : chr  NA NA NA NA ...
+##  $ X3      : chr  NA NA NA NA ...
+##  $ X4      : chr  NA NA NA NA ...
+##  $ X5      : chr  NA NA NA NA ...
+##  $ X6      : chr  NA NA NA NA ...
+##  $ X7      : chr  NA NA NA NA ...
+##  $ X8      : chr  NA NA NA NA ...
+##  $ X9      : chr  NA NA NA NA ...
+##  $ X10     : chr  NA NA NA NA ...
+##  $ X11     : chr  NA NA NA NA ...
+##  $ X12     : chr  NA NA NA NA ...
+##  $ X13     : chr  NA NA NA NA ...
+##  $ X14     : chr  NA NA NA NA ...</code></pre>
 <pre class="r"><code>head(df)</code></pre>
-<pre><code>## # A tibble: 6 x 2
-##   FileName X1                                                                   
-##   &lt;chr&gt;    &lt;chr&gt;                                                                
-## 1 bones    When the bones are good  the rest don‘t matter Yeah  the paint could…
-## 2 bones    Call it dumb luck  but baby  you and I Can‘t even mess it up  althou…
-## 3 bones    When the bones are good  the rest don‘t matter Yeah  the paint could…
-## 4 bones    Bones are good  the rest  the rest don‘t matter (baby  it don’t real…
-## 5 bones    When the bones are good  the rest don‘t matter Yeah  the paint could…
-## 6 bones    Yeah  ooh</code></pre>
+<pre><code>## # A tibble: 6 x 15
+##   FileName X1    X2    X3    X4    X5    X6    X7    X8    X9    X10   X11  
+##   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 Catch    I wa… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 2 Catch    I ju… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 3 Catch    And … &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 4 Catch    I di… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 5 Catch    I wa… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 6 Catch    I wa… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## # … with 3 more variables: X12 &lt;chr&gt;, X13 &lt;chr&gt;, X14 &lt;chr&gt;</code></pre>
 <pre class="r"><code>tail(df)</code></pre>
-<pre><code>## # A tibble: 6 x 2
-##   FileName              X1                                                      
-##   &lt;chr&gt;                 &lt;chr&gt;                                                   
-## 1 Wish-Grandpas-Never-… never got sold And I wish even cars had truck beds And …
-## 2 Wish-Grandpas-Never-… named Copperhead And coolers never run out of cold Bud …
-## 3 Wish-Grandpas-Never-… school home teams never lost And back road drinking kid…
-## 4 Wish-Grandpas-Never-… I wish the price of gas was low and cotton was high I w…
-## 5 Wish-Grandpas-Never-… didn&#39;t have no closing time And I wish grandpas never d…
-## 6 Wish-Grandpas-Never-… never died</code></pre>
+<pre><code>## # A tibble: 6 x 15
+##   FileName X1    X2    X3    X4    X5    X6    X7    X8    X9    X10   X11  
+##   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 Wish-Gr… neve… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 2 Wish-Gr… name… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 3 Wish-Gr… scho… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 4 Wish-Gr… I wi… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 5 Wish-Gr… didn… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 6 Wish-Gr… neve… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## # … with 3 more variables: X12 &lt;chr&gt;, X13 &lt;chr&gt;, X14 &lt;chr&gt;</code></pre>
 <pre class="r"><code>(dfsentiment &lt;- with(
              df,
              sentiment_by(
@@ -164,22 +205,23 @@ df &lt;- list_of_files %&gt;%
                   )
              ))</code></pre>
 <pre><code>##                     FileName word_count         sd ave_sentiment
-##  1:                    Catch        363 0.13566774    0.14241942
+##  1:                    Catch        355 0.10165806    0.13005710
 ##  2:                 Homemade        265 0.17208540    0.11016212
 ##  3:     Hope-Youre-Happy-Now        208 0.34239805    0.20356317
 ##  4:                   I-Hope        452 0.18937447    0.14704509
 ##  5:                 Kinfolks        334 0.27901835    0.19164162
-##  6:              More-Hearts        293 0.27851366   -0.17603473
-##  7:           Nobody-But-You        452 0.18106702    0.13077462
-##  8:                   OneMan        304 0.14134781   -0.06241856
-##  9:               Slow-Dance        264 0.17216306   -0.02121040
-## 10:            Wants-Tonight        365 0.07900684    0.00669603
-## 11:                  We-Back        386 0.21174447   -0.06803546
-## 12: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
-## 13:                    bones        300 0.14610191    0.14119901
-## 14:                 homesick        259 0.23792616   -0.07044142</code></pre>
+##  6:       Marin Morris Bones        300 0.14610191    0.14119901
+##  7:              More-Hearts        293 0.27851366   -0.17603473
+##  8:           Nobody-But-You        452 0.18106702    0.13077462
+##  9:                   OneMan        304 0.14134781   -0.06241856
+## 10:               Slow-Dance        264 0.17216306   -0.02121040
+## 11:            Wants-Tonight        365 0.07900684    0.00669603
+## 12:                  We-Back        386 0.21174447   -0.06803546
+## 13: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
+## 14:             combined_csv        363 0.03993284    0.13309164
+## 15:                 homesick        259 0.23792616   -0.07044142</code></pre>
 <pre class="r"><code>plot(dfsentiment)</code></pre>
-<p><img src="/post3/emo-data_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/post3/Rap-NLP_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre class="r"><code>library(magrittr)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;magrittr&#39;</code></pre>
@@ -311,10 +353,10 @@ df2 &lt;- list_of_files2 %&gt;%
 ## 13:             dababy        706 0.2066512 -0.0737457818
 ## 14:             thebox        529 0.2065956 -0.0815764396</code></pre>
 <pre class="r"><code>plot(dfsentiment2)</code></pre>
-<p><img src="/post3/emo-data_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/post3/Rap-NLP_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>df3 &lt;- df2 %&gt;%
   dplyr::mutate(X1_split = get_sentences(X1)) %$%
   sentiment_by(X1_split, list(FileName2))
 
 plot(df3)</code></pre>
-<p><img src="/post3/emo-data_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="/post3/Rap-NLP_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>

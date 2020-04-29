@@ -1,0 +1,46 @@
+---
+title: "Proposed NLP Intro to Moral Knowledge"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+## Sources
+
+In her book "Moral Knowledge," Sarah @mcgr19a defends a view which she calls *The Moral Inheritance View*. According to the moral inheritance view, (miv) "by the time the typical moral agent begins to engage in reasoning that recognizably approximates the method of reflective equilibrium, she already has substantial moral knowledge" [@mcgr19a, 59]. Reflective Equilibrium, RE, is the process by which an individual develops a set of principles, in our case these are moral principles, by which to live by. Additionally, the moral individual also develops a set of judgments by which she uses to justify her acceptance of these principles [@mcgr19a, 13]. Her rejection of RE then, hinges on the idea that many of the principles and judgments that we use to justify those principles are developed before we are capable of even knowing what those principles and judgments are. As such, most of our moral knowledge does not come from moral reasoning whereby we are able to, have already, or typically attempt to identify all of our moral judgments and formulate rules or principles which account for our judgments [@mcgr19a, 13].
+
+If we develop our moral judgments prior to a time that we are capable of reflecting on those judgments, then from where do these come from? An overarching premise in McGrath's book is that our moral judgments and principles come from other moral agents.
+
+> One obvious possibility is this: in the usual case, the fact that a person will have at least some substantial moral knowledge by the time she is in a position to engage in anything like reflective equilibrium reasoning is guaranteed by the fact that she will have absorbed some such knowledge from her social environment [@mcgr19a, 59].
+
+What are the sources for moral knowledge then? While they can include reflection, and reflective equilibrium, it does not seem that this is how the majority of them are developed. That leaves observation, inference, and possibly perception. For instance I hurt a significant other because I am caught in a lie to them. This might encourage me not to tell lies.[^1]
+
+[^1]: For instance, see, chapter 4 of @mcgr19a.
+
+## Our Dependence on Others
+
+On McGrath's vision of moral knowledge, moral knowledge is analogous to general knowledge. "Let's begin by noting that, if in fact we arrive at moral knowledge in all the ways that we arrive at non-moral knowledge, this provides some reason to think that the Moral Inheritance View is true" [@mcgr19a, 60]. How does general knowledge work? How do we come to have it? By others.[^2] As such, McGrath thinks that regardless of our "age or intellect," we depend on others for most of what we know about the world [@mcgr19a, 60]. An example would be our trust in the expertise of the medical community. As such, if our beliefs come from sources that are thought reliable by members of a particular community, then we often consider that these beliefs count as knowledge. 
+
+[^2]: John @grec15a mentions this extensively. That knowledge is primarily a social endeavor. In fact, @grec17a argues that what determines whether an individual has knowledge, is the recognition of that which is called knowledge by that individual's community.
+
+## Knowledge Via Testimony, Trust and Expertise
+
+Although I am not sure how confident I am on what I hope to show, my question hinges on the idea that it is possible to use data analysis to discover what contributes to our moral knowledge and what my take away from it.
+
+# In Continuance
+
+In the following sections, I will explain the methods that I used to source and clean the data that I will be using for my moral knowledge and natural language processing proof of concept.
+
+
+
+# Works Cited

@@ -1,5 +1,5 @@
 ---
-title: "3 - Hip Hop Music"
+title: "Hip Hop Music Top Sources"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 links:
@@ -68,7 +68,7 @@ str(country)</code></pre>
 ##  $ Order: num  0.01 0.04 0.02 0.04 0.02 0.02 0.02 0.01 0.02 0.01 ...</code></pre>
 <pre class="r"><code>ggplot(country, aes(x = Topic, y = Order)) +
   geom_point()</code></pre>
-<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/post1/Rap-NLP-Sources_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>First, we see that upon reading in our data frame, that it consists of 20 objects, here each object being a unique topic understood as a cluster of words. Further, each topic is assigned a percentage representing its relationship to the overall document. For instance, ‘you’re kiss forget forgive calls ain’t’ has a relationship of just under .25 percent of the document while “home made ice crave love good store didn’t christ shirt” comprises almost 50%. However, because the scale here goes to 2, it is more like almost 25% while the former is around 10% or so.</p>
 <pre class="r"><code>library(ggplot2)
 library(plotrix)
@@ -82,7 +82,7 @@ str(country)</code></pre>
 ##  $ Topic: int  0 1 2 3 4 5 6 7 8 9 ...
 ##  $ Order: num  0.01 0.04 0.02 0.04 0.02 0.02 0.02 0.01 0.02 0.01 ...</code></pre>
 <pre class="r"><code>plot(country)</code></pre>
-<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post1/Rap-NLP-Sources_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="initial-hip-hop-topic-analysis" class="section level3">
 <h3>Initial Hip-Hop Topic Analysis</h3>
@@ -183,7 +183,7 @@ HipHop2</code></pre>
   color = factor(Label),
   label = Words,
   ))</code></pre>
-<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<p><img src="/post1/Rap-NLP-Sources_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 I had to do things a bit differently here. The first Hip-Hop chart I turned on its side. This is because, as you’ll no doubt notice upon looking at the second chart, is that the topics push the scatter plot off the page.</p>
 <pre class="r"><code>library(ggplot2)
 
@@ -195,7 +195,7 @@ str(HipHop)</code></pre>
 ##  $ Label: num  0.0277 0.0355 0.0385 0.0253 0.0251 ...</code></pre>
 <pre class="r"><code>ggplot(HipHop, aes(x = Id, y = Label)) +
   geom_point()</code></pre>
-<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<p><img src="/post1/Rap-NLP-Sources_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 The second chart consists solely of the topic models themselves.</p>
 <pre class="r"><code>library(ggplot2)
 
@@ -207,7 +207,7 @@ str(HipHop)</code></pre>
 ##  $ Label: num  0.0277 0.0355 0.0385 0.0253 0.0251 ...</code></pre>
 <pre class="r"><code>ggplot(HipHop, aes(x = Id, y = Label)) +
   geom_point()</code></pre>
-<p><img src="/post1/emo-data-HipHop_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post1/Rap-NLP-Sources_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Like the country music chart, each grouping of words, or topic, lines up with each point on the first chart starting from top to bottom.</p>
 </div>
 <div id="works-cited" class="section level1 unnumbered">

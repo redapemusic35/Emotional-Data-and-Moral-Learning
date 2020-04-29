@@ -1,5 +1,5 @@
 ---
-title: "Country Topic Models"
+title: "Rap Topic Models"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 diagram: true
@@ -12,13 +12,11 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 Using Andrew @mcca02 Mallet software, I will conduct some topic analysis on several country songs from Billboard's Top100 March 13, 2020.
 
-
-
-```{r}
+```r Country, echo = FALSE}
 library(ggrepel)
 ```
 
-```{r}
+```r Country, echo = FALSE}
 library(gridExtra)
 data(mtcars)
 library(ggplot2)
@@ -42,7 +40,7 @@ label = Words,
 Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.
 
 
-```{r}
+```r Country, echo = FALSE}
 library(ggrepel)
 library(gridExtra)
 data(mtcars)
