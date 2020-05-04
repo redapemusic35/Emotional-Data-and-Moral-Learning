@@ -27,10 +27,11 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 <p>if judging that eating meat is wrong is really a matter of expressing one’s own emotional disapproval towards eating meat, then so long as I currently feel no disapproval towards meat eating, the mere fact that someone else judges that meat eating is wrong seems to be neither here nor there. <span class="citation">(McGrath 2019, 79)</span></p>
 </blockquote>
 <p>As such, on the one hand, we might push back against the individual who says that song lyrics cannot corrupt morally, meaning that they cannot undermine someone’s moral knowledge, because there were never any moral facts to be known in the first place. As such, it is impossible to have moral knowledge and therefore impossible to undermine it.</p>
-<p>Part of what I hope to suggest in the following sections, is that this is a dangerous idea. Whether or not someone believes that there are moral facts or there are not, this says nothing about whether it is possible to affect the way we feel. For instance, I may say that hording n95 masks is reprehensible. Another may respond by saying that I am merely expressing my opinion which itself is formed by the emotions that are invoked in me when I hear or experience someone hording. However, we do not know specifically why I might feel the way I do about hording. According to McGrath, our moral views are inherited from our social environment <span class="citation">(McGrath 2019, 8)</span>. As such, I may think that hording is wrong because I inherited this view from my social environment. As such, the reason that I feel the way I do about hording, is because of this social environment.</p>
-<p>In the next few sections, I will be looking at different methods to determine the emotional content of the song lyrics which we have been looking at this far. What I think emerges when we do this, is that some songs attribute positive emotional sentiments to subjects which seems likely that everyone might agree are fairly reprehensible. However, a part of what I find important about sentiment analysis, are these associations between expressed sentiments in songs, and the topics which these sentiments are associated with. Whether or not we adopt the sentiments we do because of associations like these remains to be seen. So if a song is about murder for instance, and the sentiments expressed in such a song are purely positive, then does this mean that a social environment which consists of such a song, is one wherein the associations between murder and emotions are positive ones? Would someone coming from such an environment be more dispositioned to feel positive emotions, and thereby approve of murder?</p>
+<p>Part of what I suggest in the following sections, is that this is a dangerous idea. Whether or not someone believes that there are moral facts or there are not, this says nothing about whether it is possible to affect the way we feel about situations / scenarios and actions. For instance, I may say that hording n95 masks is reprehensible. Another may respond by saying that I am merely expressing my opinion which itself is formed by the emotions that are invoked in me when I hear or experience someone hording. However, we do not know specifically why I might feel the way I do about hording. According to McGrath, our moral views are inherited from our social environment <span class="citation">(McGrath 2019, 8)</span>. As such, I may think that hording is wrong because I inherited this view from my social environment. As such, the reason that I feel the way I do about hording, is because of this social environment.</p>
+<p>In the next few sections, I will be looking at different methods to determine the emotional content of the song lyrics which we have been looking at this far. What I think emerges when we do this, is that some songs attribute positive emotional sentiments to subjects which seem likely that everyone might agree are fairly reprehensible. However, a part of what I find important about sentiment analysis, are those associations between expressed sentiments in songs, and the topics which these sentiments are associated with. Whether or not we adopt the sentiments we do because of associations like these remains to be seen. So if a song is about murder for instance, and the sentiments expressed in such a song are purely positive, then does this mean that a social environment which consists of such a song, is one wherein the associations between murder and emotions are positive ones? Would someone coming from such an environment be more dispositioned to feel positive emotions, and thereby approve of murder?</p>
 <div id="sources" class="section level2">
 <h2>Sources</h2>
+<p>For my sources, I refer to those files that I have used throughout the project. These include individual text files, .txt, composed of song lyrics which I copied from either google searches or the billboard top100 list on March 13. The csv files shown were used in other aspects of the project but consist of the same lyric data as the txt files. I merely keep them in the same folders as the txt files because it makes it easier to manipulate the data. Essentially, I can point R to one folder and perform many different kinds of code on the files in that folder.</p>
 <div id="country-songs" class="section level3">
 <h3>“Country” Songs</h3>
 <pre><code>##  [1] &quot;bones.txt&quot;                    &quot;Catch.csv&quot;                   
@@ -47,6 +48,10 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## [23] &quot;Wants-Tonight.csv&quot;            &quot;Wants-Tonight.txt&quot;           
 ## [25] &quot;We-Back.csv&quot;                  &quot;We-Back.txt&quot;                 
 ## [27] &quot;Wish-Grandpas-Never-Died.csv&quot; &quot;Wish-Grandpas-Never-Died.txt&quot;</code></pre>
+</div>
+<div id="hip-hop-songs" class="section level3">
+<h3>“Hip Hop” Songs</h3>
+<p>Here, you will probably notice that there are some files labled “filelist2” etc. These were used to populate some list in another aspect of the project. However, I do not want to delete them because I forget exactly where or how they were used.</p>
 <pre><code>##  [1] &quot;Ballin.csv&quot;             &quot;Ballin.txt&quot;             &quot;Commerical.csv&quot;        
 ##  [4] &quot;Commerical.txt&quot;         &quot;dababy.csv&quot;             &quot;dababy.txt&quot;            
 ##  [7] &quot;EmotionallyScarred.csv&quot; &quot;EmotionallyScarred.txt&quot; &quot;filelist.txt&quot;          
@@ -58,6 +63,7 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## [25] &quot;PTSD.txt&quot;               &quot;Roxanne.csv&quot;            &quot;Roxanne.txt&quot;           
 ## [28] &quot;Sum2Prove.csv&quot;          &quot;Sum2Prove.txt&quot;          &quot;thebox.csv&quot;            
 ## [31] &quot;thebox.txt&quot;             &quot;Woah.csv&quot;               &quot;Woah.txt&quot;</code></pre>
+<p>In the next few frames, I am merely showing some of the contents of the files themselves. For instance, the frame immediately following shows the filenames of “Catch” as well as the kind of data that is used for the analysis, which is a “tibble.” Many of the terms are I am not sure about so I do ask for some forgiveness in this aspect. I expect to have a better understanding (hopefully), of some of the more theoretical aspects behind the process as my time spent on this project progresses. The two frames following the immediate one merely consist in the first and last six lines of data processed through this particular bit of code (remember that I plan on having an area which provides instructions on how to recreate my analysis yourself).</p>
 <pre><code>## tibble [312 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ FileName: chr [1:312] &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; ...
 ##  $ X1      : chr [1:312] &quot;I wasn&#39;t trying to feel nothing at all.&quot; &quot;I just came to meet my friends.&quot; &quot;And try to drink a long week off.&quot; &quot;I didn&#39;t wanna stay too late.&quot; ...
@@ -80,6 +86,7 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## 4 Wish-Grandpas-Neve… I wish the price of gas was low and cotton was high… &lt;NA&gt; 
 ## 5 Wish-Grandpas-Neve… didn&#39;t have no closing time And I wish grandpas nev… &lt;NA&gt; 
 ## 6 Wish-Grandpas-Neve… never died                                           &lt;NA&gt;</code></pre>
+<p>Finally, some fun preliminary observations. For instance, the frame immediately following organizes the data according to song shown in the second column and titled “Filename” following the numbered order of the song. The column after “Filename” which is labeled “word_count” shows the number of words in that song. The final column “ave_sentiment” shows the average sentiment expressed in that song lyric. Average sentiment is represented by a 9 place decimal number between -1 and 1 with -1 being negative emotion and 1 the opposite. 0 is neutral.</p>
 <pre><code>##                     FileName word_count         sd ave_sentiment
 ##  1:                    Catch        370 0.10151536    0.12896848
 ##  2:                 Homemade        265 0.17208540    0.11016212
@@ -94,11 +101,12 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## 11:                  We-Back        386 0.21174447   -0.06803546
 ## 12: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
 ## 13:                 homesick        259 0.23792616   -0.07044142</code></pre>
-<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>The frame following shows a pretty graph of the above data and ranked according to expressed sentiment most negative at the bottom of the graph and most positive at the top. I should point out here, that the smallish grey dots ranging in opacity represent individual sentences ordered graphically according to the range of negative or positive sentiment expressed in that particular sentence. As such, the red diamond represents the average expressed sentiment of all of the sentences. Where the dots are considerably darker, represent multiple sentences expressing the same sentiment. Because these converge in terms of the sentiment expressed, they overlap on the graph and this is shown by a gradual darkening of the point.</p>
+<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
-<div id="hip-hop-songs" class="section level3">
+<div id="hip-hop-songs-1" class="section level3">
 <h3>“Hip Hop” Songs</h3>
-<p>First, the below frames show various attributes of our data. These are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song “Ballin” since “Ballin” is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song “Woah” since “Woah” is the last file read by R.</p>
+<p>First, like we did with the country songs, the below frames show various attributes of our data. Remember that these are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song “Ballin” since “Ballin” is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song “Woah” since “Woah” is the last file read by R.</p>
 <pre><code>## tibble [576 × 2] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ FileName2: chr [1:576] &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; ...
 ##  $ X1       : chr [1:576] &quot;I put the new Forgi&#39;s on the G I trap until the bloody bottoms is&quot; &quot;underneath &#39;Cause all my niggas got it out the streets I keep a hunnid&quot; &quot;racks  inside my jeans&quot; &quot;I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t answer&quot; ...</code></pre>
@@ -120,7 +128,7 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## 4 Woah      Matter of fact  none of you guys get high as me  whoa      
 ## 5 Woah      Post my drip up daily just so they can see  whoa           
 ## 6 Woah      Turn me up some more so my haters can hear it  whoa</code></pre>
-<p>The next frame show each file in the data set. Next to those are 3 columns of data. The first column is the word count of each file, the last column is the average sentiment by the file.</p>
+<p>As before, the next frame show each file in the data set. Next to those are 3 columns of data. The first column is the word count of each file, the last column is the average sentiment by file.</p>
 <pre><code>##              FileName2 word_count        sd ave_sentiment
 ##  1:             Ballin        572 0.1918181  0.0389249158
 ##  2:         Commerical        888 0.2738402  0.0694408104
@@ -136,11 +144,21 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## 12:               Woah        679 0.2611224  0.0543196846
 ## 13:             dababy        706 0.2066512 -0.0737457818
 ## 14:             thebox        529 0.2065956 -0.0815764396</code></pre>
-<p>The above but in a nice graph.</p>
-<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p>Blah test</p>
-<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-10-1.png" width="672" /><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p>The above but in a nice graph. You might notice that some of the sentiments expressed here go beyond -1. I find this interesting because as you might remember when we did the topic modeling, the topics expressed by the hip-hop lyrics were drastically more widespread and varied. This seems to also be the case concerning the expressed sentiments, namely that the emotions expressed are more widespread and varied than those expressed in the country songs. I do not think that this finding means anything, it might just be because the hip-hop songs use more words in general and so the program interprets this as more meanings. But in truth, I have not thought much about this.</p>
 <p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Here is another fun, preliminary aspect of the method. What the below frames shows, are the various emotions expressed by the documents. To the left, you will find the song titles while the top of each chart shows the expressed emotion. Once again, the grey points, or dots represent the individual sentences in that document which account for the attributed emotional score.</p>
+<p>A couple of points that I find interesting initially, but I have not yet thought about this too much, is that the chart titled “anger,” “disgust,” “sadness,” and “fear,” shows a clustering of sentences (complete with fairly far reaching outliers) that is more loose than that shown by the more positive emotions of “joy,” “trust,” and “anticipation.” For instance, one of the sentences expresses “fear” at 100%! And the same goes for sadness!! And disgust!!! And anger!!!!</p>
+<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-12-1.png" width="672" /><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<p>I wonder what a similar chart will show of the country set…</p>
+<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-13-1.png" width="672" /><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p>Initially, it seems as though the opposite holds true. The clustering of sentences expressing “joy,” “anticipation,” “trust,” is more loose whereas those expressing “anger” etc shows a tighter clustering.</p>
+<p>The last thing that I will do on this page is show the profanity rating of each song just because I can.</p>
+<p>First up, hip-hop songs…</p>
+<p>Look at the song titled “Life is Good.” Apparently there is a sentence therein which expresses what I take to be the phrase; “Life is good (expletive).” Cheery.</p>
+<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Next, country…</p>
+<p><img src="/post3/Country-NLP_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>As you might have expected as I have, nothing.</p>
 </div>
 </div>
 <div id="works-cited" class="section level1 unnumbered">

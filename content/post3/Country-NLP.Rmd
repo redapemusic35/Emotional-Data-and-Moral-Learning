@@ -27,14 +27,14 @@ It is plausible, one could argue, that another reason that looking at topics wou
 
 As such, on the one hand, we might push back against the individual who says that song lyrics cannot corrupt morally, meaning that they cannot undermine someone's moral knowledge, because there were never any moral facts to be known in the first place. As such, it is impossible to have moral knowledge and therefore impossible to undermine it.
 
-Part of what I hope to suggest in the following sections, is that this is a dangerous idea. Whether or not someone believes that there are moral facts or there are not, this says nothing about whether it is possible to affect the way we feel. For instance, I may say that hording n95 masks is reprehensible. Another may respond by saying that I am merely expressing my opinion which itself is formed by the emotions that are invoked in me when I hear or experience someone hording. However, we do not know specifically why I might feel the way I do about hording. According to McGrath, our moral views are inherited from our social environment [@mcgr19, 8]. As such, I may think that hording is wrong because I inherited this view from my social environment. As such, the reason that I feel the way I do about hording, is because of this social environment.
+Part of what I suggest in the following sections, is that this is a dangerous idea. Whether or not someone believes that there are moral facts or there are not, this says nothing about whether it is possible to affect the way we feel about situations / scenarios and actions. For instance, I may say that hording n95 masks is reprehensible. Another may respond by saying that I am merely expressing my opinion which itself is formed by the emotions that are invoked in me when I hear or experience someone hording. However, we do not know specifically why I might feel the way I do about hording. According to McGrath, our moral views are inherited from our social environment [@mcgr19, 8]. As such, I may think that hording is wrong because I inherited this view from my social environment. As such, the reason that I feel the way I do about hording, is because of this social environment.
 
-In the next few sections, I will be looking at different methods to determine the emotional content of the song lyrics which we have been looking at this far. What I think emerges when we do this, is that some songs attribute positive emotional sentiments to subjects which  seems likely that everyone might agree are fairly reprehensible. However, a part of what I find important about sentiment analysis, are these associations between expressed sentiments in songs, and the topics which these sentiments are associated with. Whether or not we adopt the sentiments we do because of associations like these remains to be seen. So if a song is about murder for instance, and the sentiments expressed in such a song are purely positive, then does this mean that a social environment which consists of such a song, is one wherein the associations between murder and emotions are positive ones? Would someone coming from such an environment be more dispositioned to feel positive emotions, and thereby approve of murder?
+In the next few sections, I will be looking at different methods to determine the emotional content of the song lyrics which we have been looking at this far. What I think emerges when we do this, is that some songs attribute positive emotional sentiments to subjects which  seem likely that everyone might agree are fairly reprehensible. However, a part of what I find important about sentiment analysis, are those associations between expressed sentiments in songs, and the topics which these sentiments are associated with. Whether or not we adopt the sentiments we do because of associations like these remains to be seen. So if a song is about murder for instance, and the sentiments expressed in such a song are purely positive, then does this mean that a social environment which consists of such a song, is one wherein the associations between murder and emotions are positive ones? Would someone coming from such an environment be more dispositioned to feel positive emotions, and thereby approve of murder?
 
 
 ## Sources
 
-
+For my sources, I refer to those files that I have used throughout the project. These include individual text files, .txt, composed of song lyrics which I copied from either google searches or the billboard top100 list on March 13. The csv files shown were used in other aspects of the project but consist of the same lyric data as the txt files. I merely keep them in the same folders as the txt files because it makes it easier to manipulate the data. Essentially, I can point R to one folder and perform many different kinds of code on the files in that folder. 
 
 ```{r echo = FALSE, message = FALSE}
 library(dplyr)
@@ -57,6 +57,9 @@ hext6 <- list.files(path = "~/mallet/sample-data/top100/Rap")
 hext5
 ```
 
+### "Hip Hop" Songs
+
+Here, you will probably notice that there are some files labled "filelist2" etc. These were used to populate some list in another aspect of the project. However, I do not want to delete them because I forget exactly where or how they were used.
 
 ```{r echo = FALSE, message = FALSE}
 
@@ -64,6 +67,8 @@ hext5
 hext6
 
 ```
+
+In the next few frames, I am merely showing some of the contents of the files themselves. For instance, the frame immediately following shows the filenames of "Catch" as well as the kind of data that is used for the analysis, which is a "tibble." Many of the terms are I am not sure about so I do ask for some forgiveness in this aspect. I expect to have a better understanding (hopefully), of some of the more theoretical aspects behind the process as my time spent on this project progresses. The two frames following the immediate one merely consist in the first and last six lines of data processed through this particular bit of code (remember that I plan on having an area which provides instructions on how to recreate my analysis yourself).
 
 ```{r echo = FALSE, message = FALSE}
 library(sentimentr)
@@ -92,6 +97,11 @@ df <- list_of_files %>%
 str(df)
 head(df)
 tail(df)
+```
+Finally, some fun preliminary observations. For instance, the frame immediately following organizes the data according to song shown in the second column and titled "Filename" following the numbered order of the song. The column after "Filename" which is labeled "word_count" shows the number of words in that song. The final column "ave_sentiment" shows the average sentiment expressed in that song lyric. Average sentiment is represented by a 9 place decimal number between -1 and 1 with -1 being negative emotion and 1 the opposite. 0 is neutral.
+
+```{r echo = FALSE, message = FALSE}
+
 
 (dfsentiment <- with(
 		     df,
@@ -100,6 +110,14 @@ tail(df)
 				  list(FileName)
 				  )
 		     ))
+
+```
+
+The frame following shows a pretty graph of the above data and ranked according to expressed sentiment most negative at the bottom of the graph and most positive at the top. I should point out here, that the smallish grey dots ranging in opacity represent individual sentences ordered graphically according to the range of negative or positive sentiment expressed in that particular sentence. As such, the red diamond represents the average expressed sentiment of all of the sentences. Where the dots are considerably darker, represent multiple sentences expressing the same sentiment. Because these converge in terms of the sentiment expressed, they overlap on the graph and this is shown by a gradual darkening of the point.
+
+
+```{r echo = FALSE, message = FALSE}
+
 
 plot(dfsentiment)
 ```
@@ -129,7 +147,7 @@ df2 <- list_of_files2 %>%
 
 ### "Hip Hop" Songs
 
-First, the below frames show various attributes of our data. These are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song "Ballin" since "Ballin" is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song "Woah" since "Woah" is the last file read by R.
+First, like we did with the country songs, the below frames show various attributes of our data. Remember that these are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song "Ballin" since "Ballin" is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song "Woah" since "Woah" is the last file read by R.
 
 ```{r echo = FALSE, message = FALSE}
 
@@ -144,7 +162,7 @@ head(df2)
 tail(df2)
 ```
 
-The next frame show each file in the data set. Next to those are 3 columns of data. The first column is the word count of each file, the last column is the average sentiment by the file.
+As before, the next frame show each file in the data set. Next to those are 3 columns of data. The first column is the word count of each file, the last column is the average sentiment by file.
 
 ```{r echo = FALSE, message = FALSE}
 
@@ -158,7 +176,7 @@ The next frame show each file in the data set. Next to those are 3 columns of da
 		     ))
 ```
 
-The above but in a nice graph.
+The above but in a nice graph. You might notice that some of the sentiments expressed here go beyond -1. I find this interesting because as you might remember when we did the topic modeling, the topics expressed by the hip-hop lyrics were drastically more widespread and varied. This seems to also be the case concerning the expressed sentiments, namely that the emotions expressed are more widespread and varied than those expressed in the country songs. I do not think that this finding means anything, it might just be because the hip-hop songs use more words in general and so the program interprets this as more meanings. But in truth, I have not thought much about this.
 
 ```{r echo = FALSE, message = FALSE}
 
@@ -166,7 +184,9 @@ The above but in a nice graph.
 plot(dfsentiment2)
 ```
 
-Blah test
+Here is another fun, preliminary aspect of the method. What the below frames shows, are the various emotions expressed by the documents. To the left, you will find the song titles while the top of each chart shows the expressed emotion. Once again, the grey points, or dots represent the individual sentences in that document which account for the attributed emotional score.
+
+A couple of points that I find interesting initially, but I have not yet thought about this too much, is that the chart titled "anger," "disgust," "sadness," and "fear," shows a clustering of sentences (complete with fairly far reaching outliers) that is more loose than that shown by the more positive emotions of "joy," "trust," and "anticipation." For instance, one of the sentences expresses "fear" at 100%! And the same goes for sadness!! And disgust!!! And anger!!!!
 
 ```{r echo = FALSE, message = FALSE}
 
@@ -183,6 +203,30 @@ plot(df3)
 plot(df4)
 ```
 
+I wonder what a similar chart will show of the country set...
+
+```{r echo = FALSE, message = FALSE}
+df7 <- df %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  emotion_by(X1_split, list(FileName))
+
+df8 <- df %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  sentiment_by(X1_split, list(FileName))
+
+plot(df7)
+plot(df8)
+
+```
+
+Initially, it seems as though the opposite holds true. The clustering of sentences expressing "joy," "anticipation," "trust," is more loose whereas those expressing "anger" etc shows a tighter clustering.
+
+The last thing that I will do on this page is show the profanity rating of each song just because I can.
+
+First up, hip-hop songs... 
+
+Look at the song titled "Life is Good." Apparently there is a sentence therein which expresses what I take to be the phrase; "Life is good (expletive)." Cheery.
+
 ```{r echo = FALSE, message = FALSE}
 
 df6 <- df2 %>%
@@ -192,5 +236,19 @@ df6 <- df2 %>%
 plot(df6)
 
 ```
+
+Next, country...
+
+```{r echo = FALSE, message = FALSE}
+
+df9 <- df %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  profanity_by(X1_split, list(FileName))
+
+plot(df9)
+
+```
+
+As you might have expected as I have, nothing.
 
 # Works Cited
