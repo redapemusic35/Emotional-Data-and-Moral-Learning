@@ -1,5 +1,5 @@
 ---
-title: "Sentiment Analysis and Country Music"
+title: "Natural Language Processing"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 links:
@@ -15,22 +15,57 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
-This is one of the more taxing portions of the project. I aim to provide various methods of sentiment analysis on the documents here. 
+Previously, we looked at individual terms which made up the topics of the songs comprising our data sets. These "topics," more often than not are terms which we might say that that song is about. While doing so was certainly illuminating, it was difficult to see what about these terms constituted moral knowledge. For instance, if one topic was comprised of terms like murder, death, anger and whatnot, this does not necessarily mean that the song says that these things are good, or admirable, or desirable character traits. 
 
-```{r echo = FALSE, results='hide',message=FALSE}
+[Moral Cognitivism and Moral Non-cognitivism](https://plato.stanford.edu/entries/moral-cognitivism/) are ethical views more commonly associated with metaethics than they are with standard ethical theories. Moral non-cognitivists will often say that there is no such thing as moral facts, meaning that phrases like "that was a good action," or "John is a good person," means nothing more than "that action made me *feel* good" or "John is a person who gives me pleasant feelings." 
+
+> Non-cognitivists agree ... that there are no moral properties or moral facts... Roughly put, non-cognitivists think that moral statements have no substantial truth conditions...[people when expressing moral beliefs] are expressing non-cognitive attitudes more similar to desires, approval or disapproval. [@van18a]
+
+It is plausible, one could argue, that another reason that looking at topics would not tell us whether a song lyric contains moral knowledge or not, is because there are no moral facts. So, a set of song lyrics which consist of topics like murder and so on are not really expressing immoral facts, for instance, but maybe they are just expressions of what someone finds admirable or attractive.
+
+> if judging that eating meat is wrong is really a matter of expressing one's own emotional disapproval towards eating meat, then so long as I currently feel no disapproval towards meat eating, the mere fact that someone else judges that meat eating is wrong seems to be neither here nor there. [@mcgr19, 79]
+
+As such, on the one hand, we might push back against the individual who says that song lyrics cannot corrupt morally, meaning that they cannot undermine someone's moral knowledge, because there were never any moral facts to be known in the first place. As such, it is impossible to have moral knowledge and therefore impossible to undermine it.
+
+Part of what I hope to suggest in the following sections, is that this is a dangerous idea. Whether or not someone believes that there are moral facts or there are not, this says nothing about whether it is possible to affect the way we feel. For instance, I may say that hording n95 masks is reprehensible. Another may respond by saying that I am merely expressing my opinion which itself is formed by the emotions that are invoked in me when I hear or experience someone hording. However, we do not know specifically why I might feel the way I do about hording. According to McGrath, our moral views are inherited from our social environment [@mcgr19, 8]. As such, I may think that hording is wrong because I inherited this view from my social environment. As such, the reason that I feel the way I do about hording, is because of this social environment.
+
+In the next few sections, I will be looking at different methods to determine the emotional content of the song lyrics which we have been looking at this far. What I think emerges when we do this, is that some songs attribute positive emotional sentiments to subjects which  seems likely that everyone might agree are fairly reprehensible. However, a part of what I find important about sentiment analysis, are these associations between expressed sentiments in songs, and the topics which these sentiments are associated with. Whether or not we adopt the sentiments we do because of associations like these remains to be seen. So if a song is about murder for instance, and the sentiments expressed in such a song are purely positive, then does this mean that a social environment which consists of such a song, is one wherein the associations between murder and emotions are positive ones? Would someone coming from such an environment be more dispositioned to feel positive emotions, and thereby approve of murder?
+
+
+## Sources
+
+
+
+```{r echo = FALSE, message = FALSE}
 library(dplyr)
 library(tidytext)
 library(tidyverse)
 library(graphics)
 library(ggplot2)
-setwd("~/mallet")
+setwd("~/mallet/")
 hext <- read.csv("Country_keys.csv")
 hext4 <- read.csv("Country_word_topics.csv")
-hext5 <- list.files(path = "sample-data/top100/Country")
+hext5 <- list.files(path = "~/mallet/sample-data/top100/Country")
+hext6 <- list.files(path = "~/mallet/sample-data/top100/Rap")
+```
+
+### "Country" Songs
+
+```{r echo = FALSE, message = FALSE}
+
+
+hext5
+```
+
+
+```{r echo = FALSE, message = FALSE}
+
+
+hext6
 
 ```
 
-```{r echo = FALSE, results='hide',message=FALSE}
+```{r echo = FALSE, message = FALSE}
 library(sentimentr)
 require(data.table)
 library(vroom)
@@ -66,12 +101,10 @@ tail(df)
 				  )
 		     ))
 
-dfsentiment
 plot(dfsentiment)
-
 ```
 
-```{r echo = FALSE, results='hide',message=FALSE}
+```{r echo = FALSE, message = FALSE}
 library(magrittr)
 library(sentimentr)
 require(data.table)
@@ -92,10 +125,29 @@ df2 <- list_of_files2 %>%
 		col_names = FALSE,
 		skip = 1,
 		.id = "FileName2")
+```
+
+### "Hip Hop" Songs
+
+First, the below frames show various attributes of our data. These are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song "Ballin" since "Ballin" is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song "Woah" since "Woah" is the last file read by R.
+
+```{r echo = FALSE, message = FALSE}
+
 
 str(df2)
+```
+
+```{r echo = FALSE, message = FALSE}
+
+
 head(df2)
 tail(df2)
+```
+
+The next frame show each file in the data set. Next to those are 3 columns of data. The first column is the word count of each file, the last column is the average sentiment by the file.
+
+```{r echo = FALSE, message = FALSE}
+
 
 (dfsentiment2 <- with(
 		     df2,
@@ -104,34 +156,41 @@ tail(df2)
 				  list(FileName2)
 				  )
 		     ))
+```
+
+The above but in a nice graph.
+
+```{r echo = FALSE, message = FALSE}
+
 
 plot(dfsentiment2)
-dfsentiment2
+```
+
+Blah test
+
+```{r echo = FALSE, message = FALSE}
+
 
 df3 <- df2 %>%
   dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  emotion_by(X1_split, list(FileName2))
+
+df4 <- df2 %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
   sentiment_by(X1_split, list(FileName2))
 
-df3
 plot(df3)
-```
-```{r echo=FALSE}
-library(magrittr)
-library(sentimentr)
-require(data.table)
-library(vroom)
-library(readr)
-library(dplyr)
-library(tidytext)
-library(tidyverse)
-library(graphics)
-library(ggplot2)
-setwd("~/mallet/")
-
-Bones <- read_lines("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-output-dir/Country/Hunt/text/Bones1.txt")
-
-str(Bones)
-Bones
+plot(df4)
 ```
 
+```{r echo = FALSE, message = FALSE}
 
+df6 <- df2 %>%
+  dplyr::mutate(X1_split = get_sentences(X1)) %$%
+  profanity_by(X1_split, list(FileName2))
+
+plot(df6)
+
+```
+
+# Works Cited

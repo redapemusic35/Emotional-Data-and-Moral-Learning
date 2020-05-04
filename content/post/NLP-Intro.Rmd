@@ -1,5 +1,5 @@
 ---
-title: "Proposed NLP Intro to Moral Knowledge"
+title: "Introduction to NLP, Data Mining and Moral Knowledge"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 links:
@@ -17,21 +17,45 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 ## Sources
 
-In her book "Moral Knowledge," Sarah @mcgr19a defends a view which she calls *The Moral Inheritance View*. According to the moral inheritance view, (miv) "by the time the typical moral agent begins to engage in reasoning that recognizably approximates the method of reflective equilibrium, she already has substantial moral knowledge" [@mcgr19a, 59]. Reflective Equilibrium, RE, is the process by which an individual develops a set of principles, in our case these are moral principles, by which to live by. Additionally, the moral individual also develops a set of judgments by which she uses to justify her acceptance of these principles [@mcgr19a, 13]. Her rejection of RE then, hinges on the idea that many of the principles and judgments that we use to justify those principles are developed before we are capable of even knowing what those principles and judgments are. As such, most of our moral knowledge does not come from moral reasoning whereby we are able to, have already, or typically attempt to identify all of our moral judgments and formulate rules or principles which account for our judgments [@mcgr19a, 13].
+Some moral theorists are beginning to recognize the prominence which emotions have for those actions which an individual, moral person, performs. As such, when it comes to moral knowledge, I believe that it is prudent that we not only care about what a potential moral person knows, but we also care about how that person feels in a given circumstance, given the importance their emotions may have in motivating or guiding their actions. 
+
+On this later point, narratives are important because they effect the way a subject feels in a hypothetical situation [@decr15]. On this point then, I treat song lyrics as a type of narrative and then address the question of whether or not we can identify points in which the audience of a given narrative, might be morally influenced one way or the other.[^1] Therefore, looking at literature in the philosophy
+of music, particularly at the phenomenons of
+emotional expression and contagion, I believe
+that a case can be made which shows just how
+this might work, that narratives are a source
+of moral knowledge.[^2]
+
+[^1]: Noel @carr10 addresses an analogous question with fictional narratives in art, film, and literature. He argues that the emotive and other affective responses of "readers, viewers, and listeners" converge and resonate with the emotional states that the narrative attributes to the characters of that narrative. If he is right, then I think that this also has implications for how listeners identify with characters as they are portrayed in a song's lyrics.
+[^2]: In his "Empathy and Moral Development," Martin @hoff00 defends a theory which "attempts to account for human action in five types of moral encounters or dilemmas" (3) According to this view, these five human action types share the same "empathic motive base" (4) where he defines empathy as "an affective response more appropriate to another's situation than one's own" (4).
+
+What makes my project unique I believe, is that I will attempt to combine ith with various emerging methods of language analysis. Particularly:
+
+1. Natural Language Processing
+2. Topic Modeling
+
+and
+
+3. Sentiment Analysis
+
+Ultimately, I do not think that I will have reached any definitive conclusions regarding moral sources and music lyrics. What I hope to have done however, is offer some reflections on how we might use big data to determine which narratives contribute to moral knowledge and which ones undermine or take away from moral our moral knowledge.
+
+
+In her book "Moral Knowledge," Sarah @mcgr19a defends a view which she calls *The Moral Inheritance View*. According to the moral inheritance view, (miv) "by the time the typical moral agent begins to engage in reasoning that recognizably approximates the method of reflective equilibrium, she already has substantial moral knowledge" [@mcgr19a, 59]. Reflective Equilibrium, RE, is the process by which an individual develops a set of principles, in our case these are moral principles, by which to live by. Additionally, the moral individual also develops a set of judgments by which she uses to justify her acceptance of these principles [@mcgr19a, 13]. Her rejection of RE then, hinges on the idea that many of the principles and judgments that we use to justify those principles are developed before we are capable of even knowing what those principles and judgments are. As such, most of our moral knowledge does not come from moral reasoning whereby we are able to, or have already, or typically attempt to identify all of our moral judgments and formulate rules or principles which account for these judgments [@mcgr19a, 13].
 
 If we develop our moral judgments prior to a time that we are capable of reflecting on those judgments, then from where do these come from? An overarching premise in McGrath's book is that our moral judgments and principles come from other moral agents.
 
 > One obvious possibility is this: in the usual case, the fact that a person will have at least some substantial moral knowledge by the time she is in a position to engage in anything like reflective equilibrium reasoning is guaranteed by the fact that she will have absorbed some such knowledge from her social environment [@mcgr19a, 59].
 
-What are the sources for moral knowledge then? While they can include reflection, and reflective equilibrium, it does not seem that this is how the majority of them are developed. That leaves observation, inference, and possibly perception. For instance I hurt a significant other because I am caught in a lie to them. This might encourage me not to tell lies.[^1]
+What are the sources for moral knowledge then? While they can include reflection, and reflective equilibrium, it does not seem that this is how the majority of them are developed. That leaves observation, inference, and possibly perception, but most importantly it leaves other people. As such, other people are the largest contributing factor to our moral knowledge.[^3]
 
-[^1]: For instance, see, chapter 4 of @mcgr19a.
+[^3]: For instance, see, chapter 4 of @mcgr19a.
 
 ## Our Dependence on Others
 
-On McGrath's vision of moral knowledge, moral knowledge is analogous to general knowledge. "Let's begin by noting that, if in fact we arrive at moral knowledge in all the ways that we arrive at non-moral knowledge, this provides some reason to think that the Moral Inheritance View is true" [@mcgr19a, 60]. How does general knowledge work? How do we come to have it? By others.[^2] As such, McGrath thinks that regardless of our "age or intellect," we depend on others for most of what we know about the world [@mcgr19a, 60]. An example would be our trust in the expertise of the medical community. As such, if our beliefs come from sources that are thought reliable by members of a particular community, then we often consider that these beliefs count as knowledge. 
+On McGrath's vision of moral knowledge, moral knowledge is analogous to general knowledge. "Let's begin by noting that, if in fact we arrive at moral knowledge in all the ways that we arrive at non-moral knowledge, this provides some reason to think that the Moral Inheritance View is true" [@mcgr19a, 60]. How does general knowledge work? How do we come to have it? By others.[^4] As such, McGrath thinks that regardless of our "age or intellect," we depend on others for most of what we know about the world [@mcgr19a, 60]. An example would be our trust in the expertise of the medical community. As such, if our beliefs come from sources that are thought reliable by members of a particular community, then we often consider that these beliefs count as knowledge. Whether this kind of knowledge getting is only unique to non-moral knowledge has long been a divisive question. However, McGrath argues that we can think of others as a source for moral knowledge in the same way that we do for non-moral knowledge.
 
-[^2]: John @grec15a mentions this extensively. That knowledge is primarily a social endeavor. In fact, @grec17a argues that what determines whether an individual has knowledge, is the recognition of that which is called knowledge by that individual's community.
+[^4]: John @grec15a mentions this extensively. That knowledge is primarily a social endeavor. In fact, @grec17a argues that what determines whether an individual has knowledge, is the recognition of that which is called knowledge by that individual's community.
 
 ## Knowledge Via Testimony, Trust and Expertise
 

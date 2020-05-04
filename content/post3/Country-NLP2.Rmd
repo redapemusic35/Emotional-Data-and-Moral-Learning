@@ -1,5 +1,5 @@
 ---
-title: "Natural Language Processing"
+title: "Average Sentiment on a Song by Song Basis"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 links:
@@ -15,23 +15,24 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
+Here are some of my initial attempts at performing sentiment analyses on my data sets. 
 
+Below, what you'll see are two sets of graphs. The first shows the sentiment on a per song basis of all of the files that I have categorized as country music. The first song, at the top of the graph "I Hope You're Happy Now," is the most positive whereas the song "More Hearts Than Mine," is the least.
 
-```{r}
+Here, the sentiment probability ranges from -1 being the most negative to 1 being the most positive with 0 being neutral.
+
+```{r echo = FALSE, results='hide',message=FALSE}
 library(dplyr)
 library(tidytext)
 library(tidyverse)
 library(graphics)
 library(ggplot2)
-setwd("~/mallet/")
+setwd("~/mallet")
 hext <- read.csv("Country_keys.csv")
 hext4 <- read.csv("Country_word_topics.csv")
-hext5 <- list.files(path = "sample-data/top100/Country/")
-
-head(hext5)
 ```
 
-```{r}
+```{r echo = FALSE, message = FALSE}
 library(sentimentr)
 require(data.table)
 library(vroom)
@@ -41,7 +42,7 @@ library(tidytext)
 library(tidyverse)
 library(graphics)
 library(ggplot2)
-setwd("~/mallet/")
+setwd("~/mallet")
 hext <- read.csv("Country_keys.csv")
 hext4 <- read.csv("Country_word_topics.csv")
 list_of_files <- list.files(path = "sample-data/top100/Country/", recursive = TRUE,
@@ -54,11 +55,6 @@ df <- list_of_files %>%
 		skip = 1,
 		.id = "FileName")
 
-
-str(df)
-head(df)
-tail(df)
-
 (dfsentiment <- with(
 		     df,
 		     sentiment_by(
@@ -67,10 +63,14 @@ tail(df)
 				  )
 		     ))
 
+
 plot(dfsentiment)
+
 ```
 
-```{r}
+First up, you'll notice that the song "I Hope You're Happy Now" expresses the most positive emotions with an average overall sentiment of 0.20356317 and "Breaking More Hearts than Mine" expressing the most negative at -0.17603473. Each of the grey transparent points in the graph represent the individual sentences in the lyric sets. On the next page, we will do some closer analysis on each sentence.
+
+```{r echo = FALSE, results='hide',message=FALSE}
 library(magrittr)
 library(sentimentr)
 require(data.table)
@@ -85,6 +85,7 @@ setwd("~/mallet/")
 list_of_files2 <- list.files(path = "sample-data/top100/Rap/", recursive = TRUE,
 			    pattern = "\\.csv$",
 			    full.names = TRUE)
+
 df2 <- list_of_files2 %>%
   purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
   purrr::map_df(read_csv,
@@ -92,9 +93,7 @@ df2 <- list_of_files2 %>%
 		skip = 1,
 		.id = "FileName2")
 
-str(df2)
-head(df2)
-tail(df2)
+
 
 (dfsentiment2 <- with(
 		     df2,
@@ -104,11 +103,18 @@ tail(df2)
 				  )
 		     ))
 
-plot(dfsentiment2)
-
 df3 <- df2 %>%
   dplyr::mutate(X1_split = get_sentences(X1)) %$%
   sentiment_by(X1_split, list(FileName2))
 
+
+```
+Next, we do the same to the group of songs that I have categorized as Hip-Hop.
+
+```{r echo = FALSE}
+
+
+df3
 plot(df3)
 ```
+

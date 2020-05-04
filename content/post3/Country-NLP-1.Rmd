@@ -1,0 +1,254 @@
+---
+title: "Sentiment Analysis and Country Music 2"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+This is one of the more taxing portions of the project. However, I believe that it is the most illuminating in a project of this type. First, one of the concerns I had with attempting to find moral knowledge among song lyrics, I was worried that the temptation would be to count the overall negative and positive words among a song's lyrics.
+
+For instance, among some of my earlier attempts, I noticed that a song's lyrics might include many terms which I thought were quite negative, such as song's about murder and prison sentences. However, Stanford's Core NLP sometimes attributed positive scores to these examples. I was perplexed, thinking that either I ran the program wrong, or that the program was exhibiting a potential fault. I don't think that this is the case anymore, but rather that I was looking at the lyrics and understanding the content in terms of weights of various terms, rather than attempting to understand their context.
+
+This I think leads us to one of the primary benefits that sentiment analysis affords us. Essentially, sentiment analysis understands how terms are used in the context of the data set. 
+
+I am not sure how exactly, but here is a link that examples some of the differences among [sentiment analysis methods](https://nlp.stanford.edu/pubs/StanfordCoreNlp2014.pdf).
+
+
+
+In this portion, I will only focus on three sets of examples, "The Bones" by Maren Morris, "Homesick" by Kane Brown, and a random example passage for comparison's sake.
+
+
+First, the lyrics to "The Bones."
+
+```{r echo = FALSE}
+library(syuzhet)
+library(tokenizers)
+
+Bones1_v <- get_text_as_string(path = "/home/redapemusic35/mallet/sample-data/top100/Country/bones.txt")
+homesick1_v <- get_text_as_string(path = "/home/redapemusic35/mallet/sample-data/top100/Country/homesick.txt")
+
+Bones2_v <- tokenize_sentences(Bones1_v, lowercase = FALSE, strip_punct = FALSE, simplify = FALSE)
+homesick2_v <- tokenize_sentences(homesick1_v, lowercase = FALSE, strip_punct = FALSE, simplify = FALSE)
+
+Bones2_v
+
+my_example_text <- "I begin this story with a neutral statement.  
+  Basically this is a very silly test.  
+  You are testing the Syuzhet package using short, inane sentences.  
+  I am actually very happy today. 
+  I have finally finished writing this package.  
+  Tomorrow I will be very sad. 
+  I won't have anything left to do. 
+  I might get angry and decide to do something horrible.  
+  I might destroy the entire package and start from scratch.  
+  Then again, I might find it satisfying to have completed my first R package. 
+  Honestly this use of the Fourier transformation is really quite elegant.  
+  You might even say it's beautiful!"
+s_v <- get_sentences(my_example_text)
+
+
+```
+
+Next, the lyrics to "Homesick." In this set, I had to fix a lot of contractions, words like "I'm" and "ain't" and "we'll." You might notice that some of the lyrics seem a bit off, this is why.
+
+```{r echo = FALSE}
+
+fix.contractions <- function(doc) {
+  doc <- gsub("won't", "will not", doc)
+  doc <- gsub("can't", "can not", doc)
+  doc <- gsub("n't", " not", doc)
+  doc <- gsub("'re", " are", doc)
+  doc <- gsub("'ve", " have", doc)
+  doc <- gsub("'m", " am", doc)
+  doc <- gsub("'d", " would", doc)
+  doc <- gsub("flyin'", "flying", doc)
+  doc <- gsub("'s", "", doc)
+  doc <- gsub("Puttin'", "Putting", doc)
+  doc <- gsub("I'll", "I will", doc)
+  doc <- gsub("payin'", "paying", doc)
+  doc <- gsub("we'll", "we will", doc)
+  doc <- gsub("We'll", "We will", doc)
+  doc <- gsub("singin'", "singing", doc)
+  doc <- gsub("you'll", "you will", doc)
+  doc <- gsub("'em", "them", doc)
+  doc <- gsub("dancin'", "dancing", doc)
+  doc <- gsub("playin'", "playing", doc)
+  doc <- gsub("ain't", "have not", doc)
+  doc <- gsub("Ain't", "Have not", doc)
+  doc <- gsub("They'll", "They will", doc)
+  doc <- gsub("they'll", "they will", doc)
+  doc <- gsub("gettin'", "getting", doc)
+  doc <- gsub("ain't", "am not", doc)
+  doc <- gsub("Gettin'", "getting", doc)
+  doc <- gsub("'cause", "be cause", doc)
+  doc <- gsub("ain", "is not", doc)
+  doc <- gsub("'bout", "about", doc)
+  return(doc)
+}
+
+
+homesick2_cont <- sapply(homesick2_v, fix.contractions)
+
+
+homesick2_cont
+```
+
+Finally, my example text. Disclosure, the code used on this page, as well as the example below I adopted from Matthew @jock17's excellent introduction to the [Syuzhet package for R](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html).
+
+```{r echo = FALSE}
+
+s_v
+
+```
+
+I next get the song sentiments and do provide some lists which show the sentences which are joyful and those expressing anger. What is great about "nrc" is that I could display those sentences expressing anger, anticipation, disgust, fear, joy, sadness, surprise, and trust.
+
+```{r echo = FALSE}
+
+
+Bones3_v <- get_sentences(Bones1_v)
+homesick3_v <- get_sentences(homesick2_cont)
+
+nrc_data <- get_nrc_sentiment(Bones3_v)
+nrc_data1 <- get_nrc_sentiment(homesick3_v)
+```
+
+Sentences expressing anger
+
+```{r echo = FALSE}
+angry_items <- which(nrc_data$anger > 0)
+Bones3_v[angry_items]
+angry_items1 <- which(nrc_data1$anger > 0)
+homesick3_v[angry_items1]
+```
+
+Sentences expressing joy in "The Bones."
+
+```{r echo = FALSE}
+joy_items <- which(nrc_data$joy > 0)
+Bones3_v[joy_items]
+```
+
+Joy in "Homesick."
+
+```{r echo = FALSE}
+
+
+joy_items1 <- which(nrc_data1$joy > 0)
+homesick3_v[joy_items1]
+```
+
+Anticipation in "The Bones."
+
+```{r echo = FALSE}
+anticipation_items <- which(nrc_data$anticipation > 0)
+Bones3_v[anticipation_items]
+
+```
+
+Regarding "The Bones," I am having difficulty seeing what is attributed as anticipation is such. For instance consider line 3; "Call it dumb luck, but baby, you and I cannot even mess it up, although we both try." The anticipation expressed here, seems to me subtle if I am being generous.
+
+Anticipation in "Homesick."
+
+```{r echo = FALSE}
+
+
+
+anticipation_items1 <- which(nrc_data1$anticipation > 0)
+homesick3_v[anticipation_items1]
+```
+
+Here is a table of all the expressed sentiments and their relative weights in the song "The Bones."
+
+```{r echo = FALSE}
+pander::pandoc.table(nrc_data[, 1:8], split.table = Inf)
+
+valence <- (nrc_data[, 9]*-1) + nrc_data[, 10]
+```
+
+Here is a table of all the expressed sentiments and their relative weights in the song "Homesick."
+
+```{r echo = FALSE}
+
+
+pander::pandoc.table(nrc_data1[, 1:8], split.table = Inf)
+
+valence1 <- (nrc_data1[, 9]*-1) + nrc_data1[, 10]
+```
+
+Better displays of the above information. This graph shows the percentages of the shown emotions. For instance, joy is the most expressed emotion in the song "The Bones" at about 24%.
+
+```{r echo = FALSE}
+barplot(
+	sort(colSums(prop.table(nrc_data[, 1:8]))),
+	horiz = TRUE,
+	cex.names = 0.7,
+	las = 1,
+	main = "Emotions in The Bones", xlab = "Percentage"
+	)
+```
+```{r echo = FALSE}
+
+
+barplot(
+	sort(colSums(prop.table(nrc_data1[, 1:8]))),
+	horiz = TRUE,
+	cex.names = 0.7,
+	las = 1,
+	main = "Emotions in Homesick", xlab = "Percentage"
+	)
+```
+
+The graph below is an emotional valence chart. What it shows are the emotions expressed as the lyrics progress throughout the song. Further, the graph compares the emotional valence, of the expressions of sentiment in each song as they progress. The red line represents the emotional valence in "The Bones," while the blue line represents the emotional valence in "Homesick."
+
+```{r echo = FALSE}
+
+
+
+
+Bones_sent <- get_sentiment(Bones3_v, method="syuzhet")
+homesick_sent <- get_sentiment(homesick3_v, method="syuzhet")
+s_v1 <- get_sentiment(s_v, method="syuzhet")
+
+pwdw <- round(length(Bones_sent)*.1)
+poa_rolled <- zoo::rollmean(Bones_sent, k=pwdw)
+bwdw <- round(length(homesick_sent)*.1)
+bov_rolled <- zoo::rollmean(homesick_sent, k=pwdw)
+cwdw <- round(length(s_v1)*.1)
+cov_rolled <- zoo::rollmean(s_v1, k=cwdw)
+
+poa_list <- rescale_x_2(poa_rolled)
+bov_list <- rescale_x_2(bov_rolled)
+cov_list <- rescale_x_2(cov_rolled)
+
+str(poa_list)
+class(poa_list)
+
+plot(poa_list$x,
+     poa_list$z,
+     type="l",
+     col="blue",
+     xlab="Narrative Time",
+     ylab="Emotional Valence")
+lines(bov_list$x, bov_list$z, col="red")
+lines(cov_list$x, cov_list$z, col="black", lwd=3)
+
+poa_sample <- seq(1, length(poa_list$x), by=round(length(poa_list$x)/50))
+bov_sample <- seq(1, length(bov_list$x), by=round(length(bov_list$x)/50))
+
+
+
+
+
+```
+

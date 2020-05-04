@@ -17,9 +17,9 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 I used a variety of sources to determine what data I should use to analyze. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music. 
 
-Over at [Kaggle.com](https://www.kaggle.com/), there exists an incredibly large source for various data sets, for everything one can think of [^2]. One that I have made use of in this project is @mish17's [380,000+ lyrics from MetroLyrics](https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data) [^3]. This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. @mish17 compiled the data using a python script from [MetroLyrics](https://www.metrolyrics.com/). He does include a link to the script, which unfortunately is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.
+Over at [Kaggle.com](https://www.kaggle.com/), there exists an incredibly large source for various data sets, for everything one can think of [^1]. One that I have made use of in this project is @mish17's [380,000+ lyrics from MetroLyrics](https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data) [^2]. This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. @mish17 compiled the data using a python script from [MetroLyrics](https://www.metrolyrics.com/). He does include a link to the script, which unfortunately, is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.
 
-Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than @mish17's MetroLyrics data set. As such, On March 13, I went over to [BillBoard.com](https://www.billboard.com/charts/hot-100/2020-03-14), and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with [Kaggle](https://www.kaggle.com/) as soon as I get a chance.[^1]
+Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than @mish17's MetroLyrics data set. As such, On March 13, I went over to [BillBoard.com](https://www.billboard.com/charts/hot-100/2020-03-14), and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with [Kaggle](https://www.kaggle.com/) as soon as I get a chance.[^3]
 
 [^1]: I will point out that I have recently expanded this selection to include the top 14 of the top 100 for the Country and Hip Hop music categories.
 
@@ -47,41 +47,46 @@ Files
 11. Jason Aldean's [We Back](https://www.youtube.com/watch?v=23nlI9t4TlM), @weback19a
 12. Riley Green's [I Wish Grandpas Never Died](https://www.youtube.com/watch?v=XE9lhjfbCJo), @iwish19a
 
-During the week of March 13, 2020, Sam Hunt's [Kinfolks](https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics) stood at number 46 of Billboard's [Hot 100](https://www.billboard.com/charts/hot-100/2020-03-14?rank=46). As a country song, it was the first that I ran across.[^2]
+During the week of March 13, 2020, Sam Hunt's [Kinfolks](https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics) stood at number 46 of Billboard's [Hot 100](https://www.billboard.com/charts/hot-100/2020-03-14?rank=46). As a country song, it was the first that I ran across.[^4]
 
-```{r}
-Kinfolks <- read.csv("/home/redapemusic35/mallet/sample-data/top100/Country/Kinfolks.csv", header = FALSE)
+```{r echo = FALSE}
+Kinfolks <- read.csv("/home/redapemusic35/mallet/Country and Rap.csv", header = TRUE, stringsAsFactors = FALSE)
 
 
 str(Kinfolks)
 head(Kinfolks)
 tail(Kinfolks)
 ```
-Purely for the sake of clarity, I have revealed some of the lines that I would normally hide. For instance, 'str(Kinfolks)' shows that the document contains 23 objects with each object being a row in a csv file. Further, you might notice the 'variable' instance. What this says is that there is only one column of information.
+For the sake of clarity, I have revealed some of the lines that I would normally hide. For instance, 'str(Kinfolks)' shows that the document contains 23 objects with each object being a row in a csv file. Further, you might notice the 'variable' instance. What this says is that there is only one column of information.
 
 Next, 'head(Kinfolks)' and tail(Kinfolks)' respectively, print the first and last 6 rows of data. Here, it would probably be wise to separate the rows according to the song's standard sentence structure. As such, I will add doing so, to my TODO list.
 
 The section beginning with 'str()' shows what we are looking at. In this case, what we are looking at is a 'data.frame'. Further, it shows us that the data frame consists of 23 obs each have 1 variables. In this case, our variables are 'V1: Factor w/23 levels'. The data here, initially a csv file, has V1, etc as columns while factors are rows of data.
 I will next do some initial data preparation...
 
-```{r , echo = FALSE}
+```{r, echo = FALSE}
 library(magrittr)
-library(ggplot2) 
-library(gridExtra) 
-library(tidytext) 
-library(wordcloud2) 
+library(ggplot2)
+library(gridExtra)
+library(tidytext)
+library(wordcloud2)
 
 library(dplyr)
 library(readr)
-Kinfolks2 <- read_tsv("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt", col_types = cols(x = "i", treatment = "c"))
-
-Kinfolks3 <- read_lines("/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Hunt/Kinfolks.txt")
+Kinfolks2 <- read.csv("/home/redapemusic35/mallet/Country and Rap.csv", stringsAsFactors = FALSE)
 
 # Show column names
 names(Kinfolks2)
 
+Kinfolks3 <- Kinfolks2 %>%
+  select(lyric = artist, song, year, genre, lyrics)
+
 # Make it easy to look at data
-glimpse(Kinfolks2)
+glimpse(Kinfolks3[11,])
+
+dim(Kinfolks3)
+
+str(Kinfolks3[9, ]$lyrics, nchar.max = 300)
 
 fix.contractions <- function(doc) {
   doc <- gsub("won't", "will not", doc)
@@ -110,42 +115,48 @@ fix.contractions <- function(doc) {
   doc <- gsub("gettin'", "getting", doc)
   doc <- gsub("ain't", "am not", doc)
   doc <- gsub("Gettin'", "getting", doc)
+  doc <- gsub("'cause", "be cause", doc)
   return(doc)
 }
 
-Kinfolks2 <- sapply(Kinfolks2, fix.contractions)
 
-
-# Show how many observations and columns there are
-dim(Kinfolks2)
-
-# Other details of the created data file.
-str(Kinfolks2)
+Kinfolks3$lyrics <- sapply(Kinfolks3$lyrics, fix.contractions)
 
 # function to remove special characters
+
 removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
 
 # remove special characters
-Kinfolks <- sapply(Kinfolks2, removeSpecialChars)
+
+# Show how many observations and columns there are
+dim(Kinfolks3)
+
+# Other details of the created data file.
+str(Kinfolks3)
+
+# function to remove special characters
+
+# remove special characters
 
 # convert everything to lower case
-Kinfolks2 <- sapply(Kinfolks2, tolower)
+Kinfolks3$lyrics <- sapply(Kinfolks3$lyrics, tolower)
 
-str(Kinfolks2)
-summary(Kinfolks2)
-Kinfolks2
+str(Kinfolks3[9, ]$lyrics, nchar.max = 300)
+
+summary(Kinfolks3)
+
 ```
 
 ### Old Dominion
 
 Next up, at number 51, we have [Old Dominion's "One Man Band"](https://www.billboard.com/articles/news/lyrics/8532123/old-dominion-one-man-band-lyrics).
 
-```{r , echo = FALSE}
+```{r, echo = FALSE}
 library(magrittr)
-library(ggplot2) 
-library(gridExtra) 
-library(tidytext) 
-library(wordcloud2) 
+library(ggplot2)
+library(gridExtra)
+library(tidytext)
+library(wordcloud2)
 
 library(dplyr)
 library(readr)

@@ -1,0 +1,56 @@
+---
+title: "Average Sentiment on a Song by Song Basis"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+
+<p>Here are some of my initial attempts at performing sentiment analyses on my data sets.</p>
+<p>Below, what you’ll see are two sets of graphs. The first shows the sentiment on a per song basis of all of the files that I have categorized as country music. The first song, at the top of the graph “I Hope You’re Happy Now,” is the most positive whereas the song “More Hearts Than Mine,” is the least.</p>
+<p>Here, the sentiment probability ranges from -1 being the most negative to 1 being the most positive with 0 being neutral.</p>
+<pre><code>##                     FileName word_count         sd ave_sentiment
+##  1:                    Catch        370 0.10151536    0.12896848
+##  2:                 Homemade        265 0.17208540    0.11016212
+##  3:     Hope-Youre-Happy-Now        208 0.34239805    0.20356317
+##  4:                   I-Hope        452 0.18937447    0.14704509
+##  5:       Marin Morris Bones        300 0.14610191    0.14119901
+##  6:              More-Hearts        293 0.27851366   -0.17603473
+##  7:           Nobody-But-You        452 0.18106702    0.13077462
+##  8:                   OneMan        304 0.14134781   -0.06241856
+##  9:               Slow-Dance        264 0.17216306   -0.02121040
+## 10:            Wants-Tonight        365 0.07900684    0.00669603
+## 11:                  We-Back        386 0.21174447   -0.06803546
+## 12: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
+## 13:             combined_csv        363 0.03993284    0.13309164
+## 14:                 homesick        259 0.23792616   -0.07044142</code></pre>
+<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>First up, you’ll notice that the song “I Hope You’re Happy Now” expresses the most positive emotions with an average overall sentiment of 0.20356317 and “Breaking More Hearts than Mine” expressing the most negative at -0.17603473. Each of the grey transparent points in the graph represent the individual sentences in the lyric sets. On the next page, we will do some closer analysis on each sentence.</p>
+<p>Next, we do the same to the group of songs that I have categorized as Hip-Hop.</p>
+<pre><code>##              FileName2 word_count        sd ave_sentiment
+##  1:             Ballin        572 0.1918181  0.0389249158
+##  2:         Commerical        888 0.2738402  0.0694408104
+##  3: EmotionallyScarred        482 0.2060759  0.0287720756
+##  4:           HeatinUp        686 0.2004120  0.1088084398
+##  5:        HighFashion        627 0.1689924  0.1123666534
+##  6:       Life-is-good        720 0.3382555  0.0275426738
+##  7:    LiveOffMyCloset        818 0.3400008 -0.2498786117
+##  8:             MyOhMy        432 0.1636354 -0.0271772146
+##  9:               PTSD        631 0.2451725 -0.1035358715
+## 10:            Roxanne        332 0.2559432  0.0361194921
+## 11:          Sum2Prove        899 0.1560923 -0.0002338933
+## 12:               Woah        679 0.2611224  0.0543196846
+## 13:             dababy        706 0.2066512 -0.0737457818
+## 14:             thebox        529 0.2065956 -0.0815764396</code></pre>
+<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
