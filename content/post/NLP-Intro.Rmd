@@ -70,7 +70,7 @@ On McGrath's vision of moral knowledge then, moral knowledge is analogous to gen
 
 Although I am not sure how confident I am on what I hope to show, my question hinges on the idea that it is possible to use data analysis to discover what contributes to our moral knowledge and what my take away from it.
 
-In the following sections, I will explain the methods that I used to source and clean the data that I will be using for my moral knowledge and natural language processing proof of concept. [Continue here](/home/redapemusic35/Emotional-Data-and-Moral-Learning/content/post1/Country-NLP-Sources.Rmd/)
+In the following sections, I will explain the methods that I used to source and clean the data that I will be using for my moral knowledge and natural language processing proof of concept. [Continue here]{{< ref "../post1/Country-NLP-Sources.Rmd" >}}
 
 
 
