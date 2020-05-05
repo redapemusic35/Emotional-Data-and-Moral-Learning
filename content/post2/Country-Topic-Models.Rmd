@@ -1,5 +1,5 @@
 ---
-title: "Country Topic Models"
+title: "Country Topic Model"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 diagram: true
@@ -10,36 +10,20 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
-Here, we have a range of topics denoted in factors from 0 to 40.
+Here, we have a range of topics denoted in factors from 0 to 40. The order of the topic is shown in the column titled "Topic." Also of note, I am only showing the first six (0--5) and the last six (35--39) of the topics. The column to the left is merely the line number of the set while the column to the right shows the percentage of the topic among the set.
 
-```r chunk_blame, echo = TRUE}
+```{r  echo = FALSE, message = FALSE}
 setwd("/home/redapemusic35/mallet")
 words <- read.csv("Country_keys.csv", header = TRUE, sep = ",")
 head(words)
 tail(words)
 ```
 
-I graph them below. Along the y access is shown the percentage of probability that the set of words corresponding with one of the topics 0 through 40. Along the x axis is show the topic number.
-
-```{r chunk_name, echo = FALSE} 
-require(graphics)
-library(ggrepel)
-library(gridExtra)
-data(mtcars)
-library(ggplot2)
-setwd("~/mallet/")
-keys3 <- read.csv("Rap_keys1.csv", header = TRUE, sep = ",")
-Edges3 <- read.csv("Edges.csv", header = TRUE, sep = ",")
-all3 <- merge(keys3, Edges3, by = "Topics")
-
-with(all3, scatter.smooth(Topics, Order, lpars =
-  list(col = "red", lwd = 3, lty = 3)))
-
-```
+I graph them below. The y axis shows the probability in percentage that one of the topics 0 through 39 will be apart of the set. Along the x axis is show the topic number.
 
 Next I will combine the two graphs by inserting the individual terms making up a particular topic.
 
-```r combined words and topics, echo = FALSE}
+```{r combined words and topics, echo = FALSE, message = FALSE}
 library(ggrepel)
 library(gridExtra)
 data(mtcars)
@@ -50,6 +34,7 @@ Edges <- read.csv("Edges.csv", header = TRUE, sep = ",")
 all <- merge(keys, Edges, by = "Topics")
 
 ggplot(all, aes(Topics, Order)) +
+  ggtitle("Hip Hop") +
   geom_point(color = "red") +
   geom_text_repel(data = subset(all, Order > 0.04),
  segment.size = 0.15,
@@ -57,25 +42,26 @@ segment.alpha = 1.0,
 aes(
 color = factor(Topics),
 label = Words,
+
 ))
 ```
 
-Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.
+There is a 68% probability that topic 27 is apart of the set. 20% for topic number 18, 5% for topic 17 and 8% for topic 39. Anything less than 5% I chose not to show.
 
 Below I do the same with the top 14 country songs from the billboard top 100. Some interesting features to note include possibly the kinds of terms making up the topic. But also, what is interesting is the distribution of the topics. There is a much tighter clustering than in the Hip Hip set. However I am not sure what the significance of the distribution is. One possibility I think might be the substance of the topic and the fact that there does seem to be a much higher chance the what the document is about, can be seen in the cluster of terms comprising the dominant topic.
 
 First, the keys themselves:
 
-```r Country Keys, echo = FALSE}
-
+```{r Country Keys, echo = FALSE}
+library(topicmodels)
+library(tidytext)
 setwd("~/mallet/")
-keys11 <- read.csv("Edge.csv", header = TRUE, sep = ",")
+keys11 <- read.csv("Country-and-Rap.csv", header = TRUE, sep = ",")
 
-head(keys11$Type)
-tail(keys11$Type)
+keys11$lyrics
 ```
 
-```r country words, echo = FALSE}
+```{r country words, echo = FALSE}
 library(ggrepel)
 library(gridExtra)
 data(mtcars)
