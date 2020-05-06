@@ -52,7 +52,7 @@ Below I do the same with the top 14 country songs from the billboard top 100. So
 
 First, the keys themselves:
 
-```{r Country Keys, echo = FALSE}
+```{r Country Keys, echo = FALSE, message = FALSE}
 library(topicmodels)
 library(tidytext)
 setwd("~/mallet/")
@@ -61,7 +61,7 @@ keys11 <- read.csv("Country-and-Rap.csv", header = TRUE, sep = ",")
 keys11$lyrics
 ```
 
-```{r country words, echo = FALSE}
+```{r country words, echo = FALSE, message = FALSE}
 library(ggrepel)
 library(gridExtra)
 data(mtcars)
@@ -87,14 +87,5 @@ I should point out that in HH, I suppressed any and all terms which constituted 
 The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words.
 
 In the next section, SA in the menu, I will show some preliminary sentiment analysis on these texts.
-
-```r Morris echo = FALSE}
-
-setwd("/home/redapemusic35/")
-
-Morris <- read.csv("/VimWiki/subjects/digital-humanities/stanford-output-dir/Country/Morris/Morris/bones.txt", header = FALSE, sep = ",")
-head(Morris)
-
-```
 
 # Notes
