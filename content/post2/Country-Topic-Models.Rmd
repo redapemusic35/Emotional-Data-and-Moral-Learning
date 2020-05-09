@@ -1,5 +1,5 @@
 ---
-title: "Country Topic Model"
+title: "1 Topic Models"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 diagram: true
@@ -10,7 +10,61 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
-Here, we have a range of topics denoted in factors from 0 to 40. The order of the topic is shown in the column titled "Topic." Also of note, I am only showing the first six (0--5) and the last six (35--39) of the topics. The column to the left is merely the line number of the set while the column to the right shows the percentage of the topic among the set.
+Using Andrew @mcca02 Mallet software, I will conduct some topic analysis on several country songs from Billboard's Top100 March 13, 2020. Below, I have graphed a topic model using the top 14 Hip Hop songs from the BillBoard Top 100 charts.
+
+If you will remember, the topics are numbered between 0 and 39. Further, I only show here those topics which are represented in more than 5% of total topics. In this case, those topics that fit this classification are topics number: 17, 18, 27, and 39. If you look at the chart on the right, you will see that these are color coded corresponding to the terms matching that color.
+
+```{r Country, echo = FALSE, message = FALSE}
+library(ggrepel)
+```
+
+```{r Country3, echo = FALSE, message = FALSE}
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd("~/mallet/")
+keys <- read.csv("Rap_keys1.csv", header = TRUE, sep = ",")
+Edges <- read.csv("Edges.csv", header = TRUE, sep = ",")
+all <- merge(keys, Edges, by = "Topics")
+
+ggplot(all, aes(Topics, Order)) +
+  geom_point(color = "red") +
+  geom_text_repel(data = subset(all, Order > 0.04),
+ segment.size = 0.15,
+segment.alpha = 1.0,
+aes(
+color = factor(Topics),
+label = Words,
+))
+```
+
+<img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+Seems to get 68% of its words from topic number 27, 20% from topic number 18, 5% from topic 17 and 8% from topic 39. Anything less than 5% I chose not to show.
+
+
+```{r Country2, echo = FALSE, message = FALSE}
+library(ggrepel)
+library(gridExtra)
+data(mtcars)
+library(ggplot2)
+setwd("~/mallet/")
+keys1 <- read.csv("Country_keys.csv", header = TRUE, sep = ",")
+Edges1 <- read.csv("Country_word_topics.csv", header = TRUE, sep = ",")
+all1 <- merge(x = keys1, y = Edges1, by = "Topic")
+
+ggplot(all1, aes(Topic, Order)) +
+  geom_point(color = "red") +
+  geom_text_repel(data = subset(all1, Order > 0.04),
+ segment.size = 0.15,
+segment.alpha = 1.0,
+aes(
+color = factor(Topic),
+label = Words,
+))
+```
+
+<img src="/post2/Country-Topic-Models_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+Here, we have a range of topics denoted in factors from 0 to 39. The order of the topic is shown in the column titled "Topic." Also of note, I am only showing the first six (0--5) and the last six (35--39) of the topics. The column to the left is merely the line number of the set while the column to the right shows the percentage of the topic among the set.
 
 ```{r  echo = FALSE, message = FALSE}
 setwd("/home/redapemusic35/mallet")
@@ -50,7 +104,7 @@ There is a 68% probability that topic 27 is apart of the set. 20% for topic numb
 
 Below I do the same with the top 14 country songs from the billboard top 100. Some interesting features to note include possibly the kinds of terms making up the topic. But also, what is interesting is the distribution of the topics. There is a much tighter clustering than in the Hip Hip set. However I am not sure what the significance of the distribution is. One possibility I think might be the substance of the topic and the fact that there does seem to be a much higher chance the what the document is about, can be seen in the cluster of terms comprising the dominant topic.
 
-First, the keys themselves:
+First, some lyrics:
 
 ```{r Country Keys, echo = FALSE, message = FALSE}
 library(topicmodels)
@@ -72,6 +126,7 @@ Edges1 <- read.csv("Country_word_topics.csv", header = TRUE, sep = ",")
 all1 <- merge(x = keys1, y = Edges1, by = "Topic")
 
 ggplot(all1, aes(Topic, Order)) +
+  ggtitle("Country") +
   geom_point(color = "red") +
   geom_text_repel(data = subset(all1, Order > 0.02),
  segment.size = 0.15,
@@ -84,8 +139,8 @@ label = Words,
 
 I should point out that in HH, I suppressed any and all terms which constituted less than 5% percentage of the topic distribution. As such, in HH only shows 4 topics overall while Country shows considerably more. Additionally, you will notice that on the right side of the graph just above is a graph which is titled "factor(Topic)." These are those topics which are denoted by the terms on the graph. For HH, all topics with greater than 5% percentage and for Country greater than 2%.
 
-The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words.
+The thing that I find most interesting here, is that in the first graph there are no relationship words, love, friend, lonely, cheats, you, her, etcetera. However, in the second set, there are many relationship words. Relationship words are words such as "you," "cheats," "lonely," and maybe even "babe," as a term of endearment possibly. I might argue that the lack of relationship words is significant for moral knowledge and the undermining of moral knowledge. However, it is impossible to say what the significance of this asymmetry is regarding moral knowledge because we do not know what these data sets *say* about relationships.
 
-In the next section, SA in the menu, I will show some preliminary sentiment analysis on these texts.
+I suggest by understanding the sentiments that these lyrics place on relationship terms, we will have a better understanding of the various lyrics in moral knowledge. In the next section, SA in the menu, I will show some preliminary sentiment analysis on these texts.
 
 # Notes

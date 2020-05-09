@@ -17,43 +17,42 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 
 
-<p>I used a variety of sources to determine what data I should use to analyze. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music.</p>
-<p>Over at <a href="https://www.kaggle.com/">Kaggle.com</a>, there exists an incredibly large source for various data sets, for everything one can think of.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> One that I have made use of in this project is <span class="citation">Mishra (2017)</span>’s <a href="https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data">380,000+ lyrics from MetroLyrics</a>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. <span class="citation">Mishra (2017)</span> compiled the data using a python script from <a href="https://www.metrolyrics.com/">MetroLyrics</a>. He does include a link to the script, which unfortunately, is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.</p>
-<p>Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than <span class="citation">Mishra (2017)</span>’s MetroLyrics data set. As such, On March 13, I went over to <a href="https://www.billboard.com/charts/hot-100/2020-03-14">BillBoard.com</a>, and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with <a href="https://www.kaggle.com/">Kaggle</a> as soon as I get a chance.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>Here, I introduce the sources and the method I used in selecting these particular data sources. As you will see, I used a fairly narrow variety of sources to determine what data I should use to analyze. I have two sets of data which I categorize as Country music and Hip Hop music. Ultimately, there are many options for someone if they want to analyze music. I am working on the assumption that Country music and Hip Hop are two very well known genres of music which I think contain the most distinctive contents. I do not initially know how true this is, and as such, a point in this project will be to use data analysis in order to determine whether or not the content contained in Hip Hop is drastically different from that found in Country music.</p>
+<p>Over at <a href="https://www.kaggle.com/">Kaggle.com</a>, there exists an incredibly large source for various data sets, for everything one can think of.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> One that I have made use of in this project is <span class="citation">Mishra (2017)</span>’s <a href="https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics/data">380,000+ lyrics from MetroLyrics</a> [^2]. This set includes over 380,000 sets of lyrics from various songs all arranged by year, artist, genre, and song. <span class="citation">Mishra (2017)</span> compiled the data using a python script from <a href="https://www.metrolyrics.com/">MetroLyrics</a>. He does include a link to the script, which unfortunately, is currently broken. As such, I am unable to verify the veracity of the associations being made between songs, lyrics and artists. However, given some preliminary viewings of the data source, and judging by what others have said about this source, I am fairly confident that the lyrics are correct. However, there are some missing. It is possible to clean this up by running a script on the data that would ignore any lines which do not include lyrics. However, I am not confident that I could figure this out by the time the project is due. As such, I will just point it out for the time being, and specify my intention to correct this.</p>
+<p>Because what I am ultimately concerned with here is not the findings but the method itself, many of my analysis will only be on smaller sets of data than <span class="citation">Mishra (2017)</span>’s MetroLyrics data set. As such, On March 13, I went over to <a href="https://www.billboard.com/charts/hot-100/2020-03-14">BillBoard.com</a>, and looked up the top three Hip Hop songs for that week and the top three country songs for that week. I then looked up their artists, song titles and lyrics and incorporated these into my own data set which I intend on sharing with <a href="https://www.kaggle.com/">Kaggle</a> as soon as I get a chance.[^3]</p>
 <p>Here, I merely show the raw data. What this includes are raw text files which I created by copy pasting texts from the sources cited into a .txt
 and then using R programming language, read those into a data set.</p>
 <div id="country-music-files" class="section level5">
 <h5>Country Music Files</h5>
 <pre><code>##  [1] &quot;bones.txt&quot;                    &quot;Catch.csv&quot;                   
-##  [3] &quot;Catch.txt&quot;                    &quot;combined_csv.csv&quot;            
-##  [5] &quot;Homemade.csv&quot;                 &quot;Homemade.txt&quot;                
-##  [7] &quot;homesick.csv&quot;                 &quot;homesick.txt&quot;                
-##  [9] &quot;Hope-Youre-Happy-Now.csv&quot;     &quot;Hope-Youre-Happy-Now.txt&quot;    
-## [11] &quot;I-Hope.csv&quot;                   &quot;I-Hope.txt&quot;                  
-## [13] &quot;Kinfolks.csv&quot;                 &quot;Kinfolks.txt&quot;                
-## [15] &quot;Marin Morris Bones.csv&quot;       &quot;More-Hearts.csv&quot;             
-## [17] &quot;More-Hearts.txt&quot;              &quot;Nobody-But-You.csv&quot;          
-## [19] &quot;Nobody-But-You.txt&quot;           &quot;OneMan.csv&quot;                  
-## [21] &quot;OneMan.txt&quot;                   &quot;Slow-Dance.csv&quot;              
-## [23] &quot;Slow-Dance.txt&quot;               &quot;Wants-Tonight.csv&quot;           
-## [25] &quot;Wants-Tonight.txt&quot;            &quot;We-Back.csv&quot;                 
-## [27] &quot;We-Back.txt&quot;                  &quot;Wish-Grandpas-Never-Died.csv&quot;
-## [29] &quot;Wish-Grandpas-Never-Died.txt&quot;</code></pre>
+##  [3] &quot;Catch.txt&quot;                    &quot;Homemade.csv&quot;                
+##  [5] &quot;Homemade.txt&quot;                 &quot;homesick.csv&quot;                
+##  [7] &quot;homesick.txt&quot;                 &quot;Hope-Youre-Happy-Now.csv&quot;    
+##  [9] &quot;Hope-Youre-Happy-Now.txt&quot;     &quot;I-Hope.csv&quot;                  
+## [11] &quot;I-Hope.txt&quot;                   &quot;Kinfolks.csv&quot;                
+## [13] &quot;Kinfolks.txt&quot;                 &quot;Marin Morris Bones.csv&quot;      
+## [15] &quot;More-Hearts.csv&quot;              &quot;More-Hearts.txt&quot;             
+## [17] &quot;Nobody-But-You.csv&quot;           &quot;Nobody-But-You.txt&quot;          
+## [19] &quot;OneMan.csv&quot;                   &quot;OneMan.txt&quot;                  
+## [21] &quot;Slow-Dance.csv&quot;               &quot;Slow-Dance.txt&quot;              
+## [23] &quot;Wants-Tonight.csv&quot;            &quot;Wants-Tonight.txt&quot;           
+## [25] &quot;We-Back.csv&quot;                  &quot;We-Back.txt&quot;                 
+## [27] &quot;Wish-Grandpas-Never-Died.csv&quot; &quot;Wish-Grandpas-Never-Died.txt&quot;</code></pre>
 <ol style="list-style-type: decimal">
-<li>Marin Morris’ <a href="https://www.youtube.com/watch?v=gvPMVKUI9go">The Bones</a>, <span class="citation">Morris, Robbins, and Veltz (2019)</span></li>
-<li>Jake Owen’s <a href="https://www.youtube.com/watch?v=NiFCN66k7Cs">Homemade</a>, <span class="citation">Goldsmith et al. (2019)</span></li>
-<li>Kane Brown’s <a href="https://www.youtube.com/watch?v=ukHikH_10CA">Homesike</a>, <span class="citation">Brown et al. (2019)</span></li>
-<li>Gabby Barrett’s <a href="https://www.youtube.com/watch?v=qcCH6JpcK5w">I Hope She Cheats</a>, <span class="citation">Gabrielle Barrett, Nite, and Kale (2019)</span></li>
-<li>Sam Hunt’s <a href="https://www.youtube.com/watch?v=Wk7ITw2Bl8s">Kinfolks</a>, <span class="citation">Flowers et al. (2019)</span></li>
-<li>Ingrid Andress’ <a href="https://www.youtube.com/watch?v=Wpl3uG05Lk">More Hearts Than Mine</a>, <span class="citation">Southerland, Andress, and Ellis (2019)</span></li>
-<li>Blake Shelton’s <a href="https://www.youtube.com/watch?v=4h9o0Gujuoc">Nobody But You</a>, <span class="citation">Osborne et al. (2019)</span></li>
-<li>Old Dominion’s <a href="https://www.youtube.com/watch?v=0lxA1FXOiv0">One Man Band</a>, <span class="citation">Tursi et al. (2019)</span></li>
-<li>Jordan Davis’ <a href="https://www.youtube.com/watch?v=0D3V4s4zzxc">Slow Dance in a Parking Lot</a>, <span class="citation">Davis and Fowler (2019)</span></li>
-<li>Luke Bryan’s <a href="https://www.youtube.com/watch?v=q4webhCu8bY">What She Wants Tonight</a>, <span class="citation">Bryan et al. (2019)</span></li>
-<li>Jason Aldean’s <a href="https://www.youtube.com/watch?v=23nlI9t4TlM">We Back</a>, <span class="citation">Warren et al. (2019)</span></li>
-<li>Riley Green’s <a href="https://www.youtube.com/watch?v=XE9lhjfbCJo">I Wish Grandpas Never Died</a>, <span class="citation">Green, Breen, and Bonds (2019)</span></li>
+<li>Marin Morris’ <a href="https://www.youtube.com/watch?v=gvPMVKUI9go">The Bones</a>, <span class="citation">Morris (2019)</span></li>
+<li>Jake Owen’s <a href="https://www.youtube.com/watch?v=NiFCN66k7Cs">Homemade</a>, <span class="citation">Owen (2019)</span></li>
+<li>Kane Brown’s <a href="https://www.youtube.com/watch?v=ukHikH_10CA">Homesick</a>, <span class="citation">Brown (2019)</span></li>
+<li>Gabby Barrett’s <a href="https://www.youtube.com/watch?v=qcCH6JpcK5w">I Hope She Cheats</a>, <span class="citation">Barrett (2019)</span></li>
+<li>Sam Hunt’s <a href="https://www.youtube.com/watch?v=Wk7ITw2Bl8s">Kinfolks</a>, <span class="citation">Hunt (2019)</span></li>
+<li>Ingrid Andress’ <a href="https://www.youtube.com/watch?v=Wpl3uG05Lk">More Hearts Than Mine</a>, <span class="citation">Andress (2019)</span></li>
+<li>Blake Shelton’s <a href="https://www.youtube.com/watch?v=4h9o0Gujuoc">Nobody But You</a>, <span class="citation">Shelton and Stefani (2019)</span></li>
+<li>Old Dominion’s <a href="https://www.youtube.com/watch?v=0lxA1FXOiv0">One Man Band</a>, <span class="citation">Dominion (2019)</span></li>
+<li>Jordan Davis’ <a href="https://www.youtube.com/watch?v=0D3V4s4zzxc">Slow Dance in a Parking Lot</a>, <span class="citation">Davis (2019)</span></li>
+<li>Luke Bryan’s <a href="https://www.youtube.com/watch?v=q4webhCu8bY">What She Wants Tonight</a>, <span class="citation">Bryan (2019)</span></li>
+<li>Jason Aldean’s <a href="https://www.youtube.com/watch?v=23nlI9t4TlM">We Back</a>, <span class="citation">Aldean (2019)</span></li>
+<li>Riley Green’s <a href="https://www.youtube.com/watch?v=XE9lhjfbCJo">I Wish Grandpas Never Died</a>, <span class="citation">Green (2019)</span></li>
 </ol>
-<p>During the week of March 13, 2020, Sam Hunt’s <a href="https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics">Kinfolks</a> stood at number 46 of Billboard’s <a href="https://www.billboard.com/charts/hot-100/2020-03-14?rank=46">Hot 100</a>. As a country song, it was the first that I ran across.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>During the week of March 13, 2020, Sam Hunt’s <a href="https://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics">Kinfolks</a> stood at number 46 of Billboard’s <a href="https://www.billboard.com/charts/hot-100/2020-03-14?rank=46">Hot 100</a>. As a country song, it was the first that I ran across.[^4]</p>
 <pre><code>## &#39;data.frame&#39;:    14 obs. of  5 variables:
 ##  $ artist: chr  &quot;Sam Hunt&quot; &quot;Maren Morriss&quot; &quot;Brett Young&quot; &quot;Jake Owen&quot; ...
 ##  $ song  : chr  &quot;Kinfolks&quot; &quot;The Bones&quot; &quot;Catch&quot; &quot;Homemade&quot; ...
@@ -92,17 +91,6 @@ and then using R programming language, read those into a data set.</p>
 <p>Next, ‘head(Kinfolks)’ and tail(Kinfolks)’ respectively, print the first and last 6 rows of data. Here, it would probably be wise to separate the rows according to the song’s standard sentence structure. As such, I will add doing so, to my TODO list.</p>
 <p>The section beginning with ‘str()’ shows what we are looking at. In this case, what we are looking at is a ‘data.frame’. Further, it shows us that the data frame consists of 23 obs each have 1 variables. In this case, our variables are ‘V1: Factor w/23 levels’. The data here, initially a csv file, has V1, etc as columns while factors are rows of data.
 I will next do some initial data preparation…</p>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:gridExtra&#39;:
-## 
-##     combine</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <pre><code>## [1] &quot;artist&quot; &quot;song&quot;   &quot;year&quot;   &quot;genre&quot;  &quot;lyrics&quot;</code></pre>
 <pre><code>## Rows: 1
 ## Columns: 5
@@ -120,7 +108,7 @@ I will next do some initial data preparation…</p>
 ##  $ year  : int  2019 2019 2019 2019 2019 2019 2019 2019 2019 2019 ...
 ##  $ genre : chr  &quot;Country&quot; &quot;Country&quot; &quot;Country&quot; &quot;Country&quot; ...
 ##  $ lyrics: chr  &quot;I saw you going by  I had to say hello I do not mean to pry  but girl         \nI gotta know What is your name?&quot;| __truncated__ &quot;We are in the homestretch of the hard times. We took a hard left, but we are alright. Yeah, life sure can try t&quot;| __truncated__ &quot;I was not trying to feel like this I was not trying to feel nothing at all\nI just came to meet my friends And &quot;| __truncated__ &quot;Where I grew up, getting dressed up means. Buttoned down shirt and a good\npair of jeans. Was not. Sunday suppe&quot;| __truncated__ ...</code></pre>
-<pre><code>##  chr &quot;do not have to leave this town to see the world\n&#39;cause it something that i gotta do\ni do not wanna look back in thirty years\nand wonder who you are married to\nwanna say it now, wanna make it clear\nfor only you and god to hear\nwhen you love someone, they say you set them free\n&quot;| __truncated__</code></pre>
+<pre><code>##  chr &quot;do not have to leave this town to see the world\nbecause it something that i gotta do\ni do not wanna look back in thirty years\nand wonder who you are married to\nwanna say it now, wanna make it clear\nfor only you and god to hear\nwhen you love someone, they say you set them free\&quot;| __truncated__</code></pre>
 <pre><code>##     lyric               song                year         genre          
 ##  Length:14          Length:14          Min.   :2019   Length:14         
 ##  Class :character   Class :character   1st Qu.:2019   Class :character  
@@ -179,14 +167,10 @@ I will next do some initial data preparation…</p>
 ##  - attr(*, &quot;names&quot;)= chr [1:25] &quot;Been flying solo for so long Nobody singing the harmony Up there just me&quot; &quot;and my shadow No bass, no guitar, no tambourine&quot; &quot;And I found you like a melody You were singing in the same key as me We&quot; &quot;had them dancing in the streets&quot; ...</code></pre>
 <pre><code>##    Length     Class      Mode 
 ##        25 character character</code></pre>
-<p>Finally, we have Gabby Barrett’s “I Hope.”<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> But we will see I guess.</p>
-<pre class="r"><code>IHope &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/stanford-input-dir/Country/Barret/I-Hope.txt&quot;, header = FALSE)
-
-str(IHope)</code></pre>
+<p>Finally, we have Gabby Barrett’s “I Hope.”[^4] But we will see I guess.</p>
 <pre><code>## &#39;data.frame&#39;:    31 obs. of  2 variables:
 ##  $ V1: Factor w/ 31 levels &quot;a phone In the middle of a highway driving alone&quot;,..: 14 1 21 29 16 25 26 6 11 31 ...
 ##  $ V2: Factor w/ 5 levels &quot;&quot;,&quot; and you just ain&#39;t him&quot;,..: 1 1 1 5 1 1 1 1 1 1 ...</code></pre>
-<pre class="r"><code>head(IHope)</code></pre>
 <pre><code>##                                                                           V1
 ## 1    I hope she makes you smile The way it made me smile On the other end of
 ## 2                           a phone In the middle of a highway driving alone
@@ -201,7 +185,6 @@ str(IHope)</code></pre>
 ## 4  yeah
 ## 5      
 ## 6</code></pre>
-<pre class="r"><code>tail(IHope)</code></pre>
 <pre><code>##                                                                           V1 V2
 ## 26 you know she&#39;s the one by the end of the night I hope you never ever felt   
 ## 27   more free Tell your friends that you&#39;re so happy I hope she comes along   
@@ -211,9 +194,6 @@ str(IHope)</code></pre>
 ## 31    on me And then I hope she cheats Like you did on me Like you did on me</code></pre>
 <p>Another concern that I have initially, is the quality of the lyrics as I paste them. It appears that there might be a quite a bit of clean up work they will require.</p>
 <p>As I have already mentioned, because I am only looking at possible methods, I will attempt several, but my concern is not the results. In addition to the individual song lyrics, I am also going to try my hand at analyzing a larger set of data.</p>
-<pre class="r"><code>metro &lt;- read.csv(&quot;/home/redapemusic35/VimWiki/subjects/digital-humanities/projects/lyrics.csv&quot;, header = FALSE)
-
-str(metro)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    362238 obs. of  6 variables:
 ##  $ V1: Factor w/ 362238 levels &quot;0&quot;,&quot;1&quot;,&quot;10&quot;,&quot;100&quot;,..: 362238 1 2 111113 222224 295572 306683 317794 328905 340016 ...
 ##  $ V2: Factor w/ 250473 levels &quot;0-0&quot;,&quot;0-0-0&quot;,..: 191464 59590 216948 90249 246454 24807 9377 155307 232346 188182 ...
@@ -221,7 +201,6 @@ str(metro)</code></pre>
 ##  $ V4: Factor w/ 18232 levels &quot;009-sound-system&quot;,..: 3082 4787 4787 4787 4787 4787 4787 4787 4787 4787 ...
 ##  $ V5: Factor w/ 13 levels &quot;Country&quot;,&quot;Electronic&quot;,..: 4 11 11 11 11 11 11 11 11 11 ...
 ##  $ V6: Factor w/ 244875 levels &quot;&quot;,&quot;\n-I just like it, let me have this dance,\nYa your jumping, had a crazy sound,\nAn it&#39;ll start running,to look&quot;| __truncated__,..: 137894 151023 160965 115533 152017 159629 89882 199633 210058 17795 ...</code></pre>
-<pre class="r"><code>head(metro)</code></pre>
 <pre><code>##      V1              V2   V3              V4    V5
 ## 1 index            song year          artist genre
 ## 2     0       ego-remix 2009 beyonce-knowles   Pop
@@ -236,7 +215,6 @@ str(metro)</code></pre>
 ## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              If you search\nFor tenderness\nIt isn&#39;t hard to find\nYou can have the love\nYou need to live\nBut if you look\nFor truthfulness\nYou might just\nAs well be blind\nIt always seems to be\nSo hard to give\nChorus:\nHonesty\nIs such a lonely word\nEveryone is so untrue\nHonesty\nIs hardly ever heard\nAnd mostly\nWhat I need from you\nI can always\nFind someone\nTo say\nThey sympathize\nIf I wear my heart\nOut on my sleeve\nBut I don&#39;t want\nSome pretty face\nTo tell me\nPretty lies\nAll I want\nIs someone\nTo believe\n(Chorus)\nI can find a lover\nI can find a friend\nI can have security\nUntil the bitter end\nAnyone can comfort me\nWith promises again\nI know, I know\nWhen I&#39;m deep\nInside of me\nDon&#39;t be\nToo concerned\nI won&#39;t ask\nFor nothin&#39;\nWhile I&#39;m gone\nBut when I want\nSincerity\nTell me where else\nCan I turn\nWhen\nYou&#39;re the one\nThat I depend upon\n(Chorus)
 ## 5 Oh oh oh I, oh oh oh I\n[Verse 1:]\nIf I wrote a book about where we stand\nThen the title of my book would be &quot;Life with Superman&quot;\nThat&#39;s how you make me feel I count you as a privilege\nThis love is so ideal\nI&#39;m honored to be in it\nI know you feel the same I see it everyday\nIn all the things you do\nIn all the things you say\n[Chorus:]\nYou are my rock\nBaby you&#39;re the truth\nYou are my rock\nI love to rock with you\nYou are my rock\nYou&#39;re everything I need\nYou are my rock\nSo baby rock with me\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI love to rock with you\nOh oh oh I\n[Verse 2:]\nIf I were to try to count the ways\nYou make me smile\nI&#39;d run out of fingers\nBefore I run out of timeless things to talk about\nSugar you keeps it going on\nMake me wanna keep my lovin strong\nMake me wanna try my best\nTo give you what you want and what you need\nGive you my whole heart, not just a little piece\nMore than a minimum,\nI&#39;m talking everything\nMore than a single wish,\nI&#39;m talking every dream\n[Chorus:]\nYou are my rock\nBaby you&#39;re the truth\nYou are my rock\nI love to rock with you\nYou are my rock\nYou&#39;re everything I need\nYou are my rock\nSo baby rock with me\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI wanna rock with you\n[Bridge:]\nIf there&#39;s options I don&#39;t want them\nThey&#39;re not worth my time\nCause if it&#39;s not you, oh no thank you I like us just fine\nYou&#39;re a rock in the sand\nYou&#39;re a smile in a cry\nYou&#39;re my joy through the pain\nYou&#39;re the truth through the lies\nNo matter what I do I know that I can count on you\nOh oh oh I, oh oh oh I\n[Chorus:]\nYou are my rock\nBaby you&#39;re the truth\nYou are my rock\nI love to rock with you\nYou are my rock\nYou&#39;re everything I need\nYou are my rock\nSo baby rock with me\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI love to rock with you\nOh oh oh I, oh oh oh I\nI wanna kiss ya, feel ya, please ya just right\nI wanna touch ya, love ya, baby all night\nReward ya, for all the things you do\nYou are my rock\nI love to rock with you\nI wanna rock with you
 ## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Party the people, the people the party it&#39;s popping no sitting around,\nI see you looking you looking I see you I look at what you started now\nLet&#39;s hook up little one on one up come on give some of the that stuff,\nLet me freshin&#39; it with no ruff (let&#39;s go)\nLet&#39;s hook up when we start we won&#39;t stop,\nBaby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nI am, Black Culture\nI am, Black Culture\nI am, Black Culture\nI am, Black Culture\nParty the people, the people the party, it&#39;s popping no sitting around,\nI see you looking you looking I see you I look at what you started now\nLet&#39;s hook up come one give some of the that stuff,\nLet me freshin&#39; it up little one on one with no ruff (let&#39;s go)\nLet&#39;s hook up, when we start we won&#39;t stop,\nBaby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nYou are, Black Culture\nYou are, Black Culture\nYou are, Black Culture\nYou are, Black Culture\nLet&#39;s hook up come on give some of the that stuff,\nLet me freshin&#39; it up little one on one with no ruff (let&#39;s go)\nLet&#39;s hook up, when we start we won&#39;t stop,\nBaby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nLet&#39;s hook up come on give some of the that stuff, Let me freshin&#39; it up little one on one with no ruff (let&#39;s go) Let&#39;s hook up, when we start we won&#39;t stop, Baby, baby don&#39;t stop come on give me some of that stuff (let&#39;s go)\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture\nWe are, Black Culture</code></pre>
-<pre class="r"><code>tail(metro)</code></pre>
 <pre><code>##            V1                          V2   V3         V4      V5
 ## 362233 362231                swingin-door 2012 edens-edge Country
 ## 362234 362232   who-am-i-drinking-tonight 2012 edens-edge Country
@@ -256,63 +234,50 @@ str(metro)</code></pre>
 <div id="works-cited" class="section level1 unnumbered">
 <h1>Works Cited</h1>
 <div id="refs" class="references">
-<div id="ref-barr19">
-<p>Barrett, Gabby. 2019. “Gabby Barrett’s ’I Hope’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549839/gabby-barrett-i-hope-lyrics.</p>
+<div id="ref-alde19">
+<p>Aldean, Jason. 2019. “We Back by Jason Aldean | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-ihope19a">
-<p>Barrett, Gabrielle, Jon Nite, and Zachary Kale. 2019. “I Hope Lyrics.” <em>Sony/ATV Music Publishing LLC</em>.</p>
+<div id="ref-andr19">
+<p>Andress, Ingrid. 2019. “More Hearts Than Mine by Ingrid Andress | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-homesick19a">
-<p>Brown, Kane, Matt McGinn, Robert Brock Berryhill, and Taylor Phillips. 2019. “Homesick Lyrics.” <em>Warner Chappell Music, Inc, Universal Music Publishing Group, Kobalt Music Publishing Ltd</em>.</p>
+<div id="ref-barr19a">
+<p>Barrett, Gabby. 2019. “I Hope by Gabby Barrett | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-wantstonight19a">
-<p>Bryan, Luke, Hillary Lindsey, Ross Copperman, and Jon Nite. 2019. “What She Wants Tonight.” <em>Capitol Nashville</em>.</p>
+<div id="ref-brow19">
+<p>Brown, Kane. 2019. “Homesick by Kane Brown | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-slowdance19a">
-<p>Davis, Jordan, and Lonnie Fowler. 2019. “Slow Dance in a Parking Lot Lyrics.” <em>Warner Chappell Music, Inc, Ole Media Management Lp</em>.</p>
+<div id="ref-brya19">
+<p>Bryan, Luke. 2019. “What She Wants Tonight by Luke Bryan | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-kinfolks19a">
-<p>Flowers, Jerry, Josh Osborne, Sam Hunt, and Zach Crowell. 2019. “Sam Hunt’s ’Kinfolks’ Lyrics.” <em>Billboard</em>. http://www.billboard.com/articles/news/lyrics/8549716/sam-hunt-kinfolks-lyrics.</p>
+<div id="ref-davi19">
+<p>Davis, Jordan. 2019. “Slow Dance in A Parking Lot by Jordan Davis | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-homemade19a">
-<p>Goldsmith, Ben, Bobby Pinson, Drew Parker, and Jared Mullins. 2019. “Homemade Lyrics.” <em>Warner Chappell Music, Inc, BMG Rights Management</em>.</p>
+<div id="ref-old19">
+<p>Dominion, Old. 2019. “One Man Band by Old Dominion | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-iwish19a">
-<p>Green, Riley, Buford Breen, and Lendon Bonds. 2019. “I Wish Grandpas Never Died.” <em>BMLG</em>.</p>
+<div id="ref-gree19">
+<p>Green, Riley. 2019. “I Wish Grandpas Never Died by Riley Green | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-kagg20">
-<p>Kaggle. 2020. “Kaggle: Your Home for Data Science.” https://www.kaggle.com/.</p>
-</div>
-<div id="ref-lyri20">
-<p>Lyrics, Metro. 2020. “Song Lyrics | MetroLyrics.” https://www.metrolyrics.com/.</p>
+<div id="ref-hunt19a">
+<p>Hunt, Sam. 2019. “Kinfolks by Sam Hunt | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
 <div id="ref-mish17">
 <p>Mishra, Gyanendra. 2017. “380,000+ Lyrics from MetroLyrics.” Data Analytics. <em>Kaggle</em>. https://kaggle.com/gyani95/380000-lyrics-from-metrolyrics.</p>
 </div>
-<div id="ref-bones19a">
-<p>Morris, Marin, Jimmy Robbins, and Laura Veltz. 2019. “The Bones Lyrics.” <em>Warner Chappell Music, Inc, Round Hill Music BVig Loud Songs</em>. Downtown Music Publishing.</p>
+<div id="ref-morr19b">
+<p>Morris, Maren. 2019. “The Bones by Maren Morris | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-nobody19a">
-<p>Osborne, Joshua, Ross Copperman, Shane McAnally, and Tommy Lee James. 2019. “Nobody but You Lyrics.” <em>Sony/ATV Music PUblishing LLC, KObalt Music Publishing Ltd., Warner Chappell Music, Inc</em>.</p>
+<div id="ref-owen19">
+<p>Owen, Jake. 2019. “Homemade by Jake Owen | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
-<div id="ref-morehearts19a">
-<p>Southerland, Drrick Adam, Ingrid Andress, and Sam Mackenzie Ellis. 2019. “More Hearts Than Mine Lyrics.” <em>Universal Music Publishing Group</em>.</p>
-</div>
-<div id="ref-oneman19a">
-<p>Tursi, Brad Francis, Josh OOsborne, Matthew Thomas Ramsey, and Trevor Joseph Rosen. 2019. “One Man Band Lyrics.” <em>Kobalt Music Publishing Ltd., Downtown Music PUblishing, Universal Music Publishing Group</em>.</p>
-</div>
-<div id="ref-weback19a">
-<p>Warren, Brad, Brett Warren, Jordan Schmidt, and Tyler Hubbard. 2019. “We Back Lyrics.” <em>Warner Chappell Music, Inc</em>.</p>
+<div id="ref-shel19">
+<p>Shelton, Blake, and Gwen Stefani. 2019. “Nobody but You by Blake Shelton Duet with Gwen Stefani | Billboard the Hot 100 Chart.” <em>Billboard</em>. /charts/hot-100/2020-03-14.</p>
 </div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>See, <span class="citation">Warren et al. (2019)</span><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>See, <span class="citation">Kaggle (2020)</span><a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>See, <span class="citation">Lyrics (2020)</span><a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>See, <span class="citation">Gabby Barrett (2019)</span><a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>See, <span class="citation">Gabby Barrett (2019)</span><a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>I will point out that I have recently expanded this selection to include the top 14 of the top 100 for the Country and Hip Hop music categories.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

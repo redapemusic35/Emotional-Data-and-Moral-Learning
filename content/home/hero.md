@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "In the Pursuit of Moral Knowledge"
+title = "In the Pursuit of Moral Knowledge:"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
 hero_media = "happyface.jpeg"
@@ -36,23 +36,23 @@ hero_media = "happyface.jpeg"
 # Call to action links (optional).
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
-[cta]
-  url = "https://sourcethemes.com/academic/docs/install/"
-  label = "Get Started"
-  icon_pack = "fas"
-  icon = "download"
+# [cta]
+#  url = "https://sourcethemes.com/academic/docs/install/"
+#  label = "Get Started"
+#  icon_pack = "fas"
+#  icon = "download"
   
-[cta_alt]
-  url = "https://sourcethemes.com/academic/"
-  label = "View Documentation"
+# [cta_alt]
+#  url = "https://sourcethemes.com/academic/"
+#  label = "View Documentation"
 
 # Note. An optional note to show underneath the links.
 [cta_note]
   label = '<a class="js-github-release" href="https://sourcethemes.com/academic/updates" data-repo="gcushen/hugo-academic">Latest release<!-- V --></a>'
 +++
 
-Using natural language processing, topic modeling, and sentiment
-analysis in an attempt to data mine moral knowledge.
+Using natural language processing, topic modeling and sentiment
+analysis, to data mine moral knowledge from song lyrics.
 
 <!-- Place this tag where you want the button to render. -->
 <a class="github-button" href="https://github.com/redapemusic35/Emotional-Data-and-Moral-Learning/generate" data-icon="octicon-repo-template" aria-label="Use this template redapemusic35/Emotional-Data-and-Moral-Learning on GitHub">Use this template</a>

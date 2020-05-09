@@ -30,7 +30,7 @@
 
 [[main]]
   name = "Sentiment Analysis"
-  url = "#posts3"
+  url = "post3"
   weight = 50
 
 [[main]]
