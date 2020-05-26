@@ -1,0 +1,212 @@
+---
+# Course title, summary, and position.
+linktitle: Crawling the Web 1
+summary: Getting Sources.
+weight: 1
+
+# Page metadata.
+title: Crawling the Web 1
+date: "2018-09-09T00:00:00Z"
+lastmod: "2018-09-09T00:00:00Z"
+draft: false  # Is this a draft? true/false
+toc: true  # Show table of contents? true/false
+type: docs  # Do not modify.
+
+# Add menu entry to sidebar.
+# - name: Declare this menu item as a parent with ID `name`.
+# - weight: Position of link in menu.
+menu:
+  example:
+    name: Crawling the Web 1
+    weight: 1
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+<div id="TOC">
+true
+</div>
+
+<div id="what-it-is" class="section level2">
+<h2>What It Is</h2>
+<p>I started by learning to use <a href="https://scrapy.org/">Scrapy</a> which is “[a]n open source and collaborative framwork for exracting the data you need from websites. In a past, simple, yet extensible way” <span class="citation">(Hub n.d.)</span>. However, throughout doing so, I’ve consistently found easier methods. Granted, I should stop with the tutorials and focusing more on learning python, R, machine learning and the like. However, I am already an old man, well almost middle age, and I do not feel as though I have the time to do so and still complete this project. Even so, I do feel as though I am doing this backwards, starting with a question, can moral knowledge be found in music lyrics? And then learning the programming that I think would help to answer this question. Either way, throughout this process, I continually find more and more similar projects, not in the way of moral knowledge mind you, but projects using data mining and sentiment analysis on music lyrics. Here are a few: <a href="https://www.johnwmillr.com/trucks-and-beer/">Trucks and Beer</a> is a really fun one. Further, I discovered this project by reading his excellent <a href="https://genius.com/">Genuis Lyrics</a> python crawler.</p>
+<p>Before I tell you all about that however, I would like to say that when I began this project, I kept getting asked what criteria I was using in order to determine what constituted hip-hop, country, etc. My reply was a consistent, I’m old and I don’t know what the crazy kids this day are calling what. For instance, what’s ‘genre blending’? At the time, I just said I was going with my gut and what sounded like country to me, I denoted as such, and the same for hip-hop. However, thanks to <a href="https://github.com/guoguo12/billboard-charts">guoguo12’s</a> excellent billboard.py script, I no longer have to depend on my own judgment. I can just defer it to the people who classify such things. As such, I first download a particular chart that I am interested in, for my current purposes, this includes two charts:</p>
+<p>However, I have just found a much better and cleaner method for getting data from Billboard which is ultimately what I would like. First, using <a href="https://github.com/guoguo12/billboard-charts">guoguo12/billboard-charts</a>,</p>
+<p>For much of this project, I mainly use python3 and R. It depends on your python installation. I believe that all other python versions have been discontinued but I am not sure about this.</p>
+<pre><code>1. Country Top 100
+2. R and B and Hip-Hop Top 100</code></pre>
+<p>First, do <code>pip3 install billboard.py</code> assuming you have python installed of course. If you do not, look at <a href="https://www.python.org/">this</a>. This gives me my two charts.</p>
+<pre><code>
+&gt;&gt;&gt; import billboard
+&gt;&gt;&gt; chart = billboard.ChartData(&#39;country-songs&#39;)
+
+# Then to ensure that you&#39;ve downloaded the correct chart
+
+&gt;&gt;&gt; chart.title
+
+# Which should return something like:
+
+&#39;Country Songs&#39;
+
+# Then print the chart
+
+&gt;&gt;&gt; print(chart)
+
+&gt;&gt;&gt; print(chart)
+country-chart from 2020-05-23
+-----------------------------
+1. &#39;The Bones&#39; by Maren Morris 
+2. &#39;Chasin&#39; You&#39; by Morgan Wallis
+# ...</code></pre>
+<p>There are other things which you could do with this script as well. Looking at the frames below, <code>&gt;&gt;&gt;</code> as in <code>&gt;&gt;&gt; import billboar</code> refers to using the command line to run python. Rather than running an entire script, what I did was run individual commands in order to find various billboard lists that I thought I might want to use. To do so, just:</p>
+<pre><code>$ python3</code></pre>
+<p>This opens up a python shell where you can enter the commands below in almost any order, depends on what you hope to accomplish. I wanted to do several things, look at a chart:</p>
+<pre><code>&gt;&gt;&gt; import billboard
+&gt;&gt;&gt; chart = billboard.ChartData(&#39;hot-100&#39;)
+&gt;&gt;&gt; chart.title
+&#39;The Hot 100&#39;</code></pre>
+<p>Next, you can look at the chart entries, which are of type <code>ChartEntry</code> and have attributes resembling the following:</p>
+<pre><code>&gt;&gt;&gt; song = chart[0]  # Get no. 1 song on chart
+&gt;&gt;&gt; song.title
+&#39;Nice For What&#39;
+&gt;&gt;&gt; song.artist
+&#39;Drake&#39;
+&gt;&gt;&gt; song.weeks  # Number of weeks on chart
+2</code></pre>
+<p>To print the entire chart, do</p>
+<pre><code>print(chart)</code></pre>
+<p>It will look like this:</p>
+<pre><code>hot-100 chart from 2018-04-28
+-----------------------------
+1. &#39;Nice For What&#39; by Drake
+2. &#39;God&#39;s Plan&#39; by Drake
+3. &#39;Meant To Be&#39; by Bebe Rexha &amp; Florida Georgia Line
+4. &#39;Psycho&#39; by Post Malone Featuring Ty Dolla $ign
+5. &#39;The Middle&#39; by Zedd, Maren Morris &amp; Grey
+# ...</code></pre>
+<p>In order to find the chart that you want to view, do</p>
+<pre><code>&gt;&gt;&gt; billboard.charts()
+[&#39;hot-100&#39;, &#39;billboard-200&#39;, &#39;artist-100&#39;, &#39;social-50&#39;, ...</code></pre>
+<p>This will list all chart names.</p>
+<p>Once I have the chart that I am going to use, the hard part begins. Now I have to import all of the lyrics, and figure out some way to put them where I can run analysis on them. Luckily, I received some help in this matter as seen by following the link below.</p>
+<ol style="list-style-type: decimal">
+<li>I use <a href="https://github.com/guoguo12/billboard-charts/issues/68">musixmatch api as seen here</a> to search song lyrics.</li>
+</ol>
+<div id="creating-my-files" class="section level3">
+<h3>Creating My Files</h3>
+<p>You need to have python 3 installed. I then use this script:</p>
+<pre><code>import requests
+from bs4 import BeautifulSoup as Parse
+
+
+def make_soup(url):
+    &quot;&quot;&quot;
+    Parse a web page info html
+     &quot;&quot;&quot;
+    user_agent = {
+        &#39;User-Agent&#39;: &quot;Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36&quot;
+    }
+    r = requests.get(url, headers=user_agent)
+    html = Parse(r.content, &quot;html.parser&quot;)
+    return html
+
+
+def format_url(string):
+    &quot;&quot;&quot;
+    Replace les spaces with &#39;%20&#39;
+    &quot;&quot;&quot;
+    return string.replace(&quot; &quot;, &quot;%20&quot;)
+
+
+def get_song_url(html):
+    song_url = html.find(&quot;a&quot;, {&quot;class&quot;: &quot;title&quot;})[&quot;href&quot;]
+    return song_url
+
+
+def find_Lyrics(titre, artiste):
+    url = f&quot;https://www.musixmatch.com/fr/search/{artiste}%20{titre}/tracks&quot;
+
+    url = format_url(url)
+    pageweb = make_soup(url)
+
+    # Recupere le lien de la chanson
+    song_url = pageweb.find(&quot;a&quot;, {&quot;class&quot;: &quot;title&quot;})[&quot;href&quot;]
+    song_url = &quot;https://www.musixmatch.com&quot; + song_url
+
+
+# Recupere les paroles
+    pageweb = make_soup(song_url)
+    paroles = list()
+    for span in pageweb.find_all(&quot;span&quot;, {&quot;class&quot;: &quot;lyrics__content__ok&quot;}):
+        # open file and print to it
+        file1 = open(&#39;/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-txt-files/newlyrics.txt&#39;, &#39;a&#39;)
+    print(span.text, file=file1)
+
+
+find_Lyrics(&quot;To Hell &amp; Back&quot;, &quot;Maren Morris&quot;)</code></pre>
+<pre><code>$ pip install scrapy
+</code></pre>
+<p>The way I used the script, which is what I found easiest organizationally, is that I saved it as a <code>.py</code> file, in my case: <code>~/VimWiki/subjects/projects/tutorial/tutorial/spiders/musixmatchapi.py</code>. I primarily use vimwiki, this allows me to work out of the same folders, and use a separate screen on the left to navigate to other folders when I need to.</p>
+<p>But, after saving the above script, I then run the command like this:</p>
+<pre><code>$ python3 ~/VimWiki/subjects/tutorial/tutorial/spiders/musixmatchapi.py 
+</code></pre>
+<p>This returns something like:</p>
+<pre><code>But then you get that money, you still feel broke
+
+Once I get a little older, I won&#39;t worry
+Then you get older and it don&#39;t feel like it should
+I&#39;m thinking once I learn to grow right where I&#39;m planted
+Maybe that&#39;s when life starts getting good
+...
+</code></pre>
+<p>… in a text file.</p>
+<p>In my case, the path is:</p>
+<pre><code>
+path/to/file/newlyrics.txt</code></pre>
+<p>I add more and more files depending on the chart that I am using. There is probably an easier way to create searches using the data from the chart, but I do not know what it entails. I will post a question on <a href="https://stackoverflow.com/questions/">stackoverflow</a> eventually.</p>
+<p>Once I have all the files I want, I do</p>
+<pre><code>$ path/to/py/file.py</code></pre>
+<p>Which I have named as <code>txt-csv3.py</code>.</p>
+<p>Which runs this script:</p>
+<pre><code>#! /usr/bin/python
+
+import os
+import csv
+
+dirpath = &#39;/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-txt-files&#39;
+output = &#39;/home/redapemusic35/VimWiki/subjects/projects/lyrics/mycsv7.csv&#39;
+with open(output, &#39;w&#39;) as outfile:
+    csvout = csv.writer(outfile)
+    csvout.writerow([&#39;FileName&#39;, &#39;Content&#39;])
+
+    files = os.listdir(dirpath)
+
+    for filename in files:
+        with open(dirpath + &#39;/&#39; + filename) as afile:
+            csvout.writerow([filename, afile.read()])
+            afile.close()
+
+    outfile.close()
+
+# This program takes all of the txt files in
+
+
+# /lyrics/country-txt-files and converts them to a
+
+
+# csv file where the first column consists of the name
+
+
+# of the file and the second column consists of the lyrics.</code></pre>
+<p>It takes all of the txt files that I have in a folder, and creates a csv file where <code>Filename</code> is the name of the column which includes all of the file names and <code>Content</code> prints all of the lyrics, each in their own cell.</p>
+<p>What will happen next is that I will do some data cleaning on the lyrics, doing things like removing punctuation and deliminating sentence structure. I will cover this in another post.</p>
+</div>
+</div>
+<div id="works-cited" class="section level1 unnumbered">
+<h1>Works Cited</h1>
+<div id="refs" class="references">
+<div id="ref-hub00">
+<p>Hub, Scraping. n.d. “Scrapy | A Fast and Powerful Scraping and Web Crawling Framework.” <em>Scrapy</em>. Accessed May 21, 2020. <a href="https://scrapy.org/" class="uri">https://scrapy.org/</a>.</p>
+</div>
+</div>
+</div>

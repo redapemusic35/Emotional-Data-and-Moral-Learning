@@ -18,7 +18,7 @@ type: docs  # Do not modify.
 menu:
   example:
     name: 4
-    weight: 1
+    weight: 3
 ---
 
 ## Flexibility

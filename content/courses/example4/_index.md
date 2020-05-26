@@ -18,7 +18,7 @@ type: docs  # Do not modify.
 menu:
   example:
     name: Overview 3
-    weight: 1
+    weight: 4
 ---
 
 ## What It Is
