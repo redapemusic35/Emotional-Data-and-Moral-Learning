@@ -1,0 +1,155 @@
+---
+title: "Test"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+links:
+  - icon_pack: fab
+    name: Docs
+    url: courses/example1
+  - icon_pack: fab
+    name: Slides
+    url: slides/example
+  - icon_pack: fab
+    name: Project
+    url: project1/internal-project
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+```{r echo = FALSE, message = FALSE}
+library(magrittr)
+library(ggplot2)
+library(gridExtra)
+library(tidytext)
+library(wordcloud2)
+library(dplyr)
+library(readr)
+library(tidyr)
+library(stringr)
+library(janeaustenr)
+library(scales)
+library(gutenbergr)
+
+lyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
+hiphoplyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/mycsv8.csv", header = TRUE, stringsAsFactors = FALSE)
+
+countrytext_df <- tibble(line = 1:50, text = lyrics$Content)
+hiphoptext_df <- tibble(line = 1:50, text = hiphoplyrics$Content)
+
+countrytext_df
+hiphoptext_df
+
+countrytext_df %>%
+  unnest_tokens(word, text)
+hiphoptext_df %>%
+  unnest_tokens(word, text)
+
+original_books <- countrytext_df %>%
+  group_by(line) %>%
+  mutate(linenumber = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",ignore_case = TRUE)))) %>%
+  ungroup()
+
+original_books
+
+original_books2 <- hiphoptext_df %>%
+  group_by(line) %>%
+  mutate(linenumber = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",ignore_case = TRUE)))) %>%
+  ungroup()
+
+original_books
+```
+
+```{r}
+original_books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",ignore_case = TRUE)))) %>%
+  ungroup()
+
+tidy_books <- original_books %>%
+  unnest_tokens(word, text)
+
+tidy_books <- tidy_books %>%
+  anti_join(stop_words)
+
+countrytidy_books <- original_books %>%
+  unnest_tokens(word, text)
+
+countrytidy_books
+
+hiphoptidy_books <- original_books2 %>%
+  unnest_tokens(word, text)
+
+hiphoptidy_books
+
+data(stop_words)
+
+countrytidy_books <- countrytidy_books %>%
+  anti_join(stop_words)
+
+data(stop_words)
+
+hiphoptidy_books <- hiphoptidy_books %>%
+  anti_join(stop_words)
+
+countrytidy_books %>%
+  count(word, sort = TRUE)
+
+hiphoptidy_books %>%
+  count(word, sort = TRUE)
+
+frequency <- bind_rows(mutate(countrytidy_books, author = "Country"),
+                       mutate(hiphoptidy_books, author = "Hip-Hop"),
+		       mutate(tidy_books, author = "Jane Austen")) %>% 
+  mutate(word = str_extract(word, "[a-z']+")) %>%
+  count(author, word) %>%
+  group_by(author) %>%
+  mutate(proportion = n / sum(n)) %>% 
+  select(-n) %>% 
+  spread(author, proportion) %>% 
+  gather(author, proportion, `Country`:`Hip-Hop`)
+
+
+ggplot(frequency, aes(x = proportion, y = `Jane Austen`, color = abs(`Jane Austen` - proportion))) +
+  geom_abline(color = "gray40", lty = 2) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.3, height = 0.3) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  scale_color_gradient(limits = c(0, 0.001), low = "darkslategray4", high = "gray75") +
+  facet_wrap(~author, ncol = 2) +
+  theme(legend.position="none") +
+  labs(y = "Jane Austen", x = NULL)
+```
+
+```{r echo = FALSE, message = FALSE}
+
+frequency <- bind_rows(mutate(countrytidy_books, author = "Country"),
+                       mutate(hiphoptidy_books, author = "Hip-Hop"),
+		       mutate(tidy_books, author = "Jane Austen")) %>% 
+  mutate(word = str_extract(word, "[a-z']+")) %>%
+  count(author, word) %>%
+  group_by(author) %>%
+  mutate(proportion = n / sum(n)) %>% 
+  select(-n) %>% 
+  spread(author, proportion) %>% 
+  gather(author, proportion, `Jane Austen`:`Hip-Hop`)
+
+ggplot(frequency, aes(x = proportion, y = `Country`, color = abs(`Country` - proportion))) +
+  geom_abline(color = "gray40", lty = 2) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.3, height = 0.3) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  scale_color_gradient(limits = c(0, 0.001), low = "darkslategray4", high = "gray75") +
+  facet_wrap(~author, ncol = 2) +
+  theme(legend.position="none") +
+  labs(y = "Country", x = NULL)
+```
+
+
+
+
+
+# Works Cited
