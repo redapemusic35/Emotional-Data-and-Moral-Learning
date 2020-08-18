@@ -34,7 +34,7 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## 11:                  We-Back        386 0.21174447   -0.06803546
 ## 12: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
 ## 13:                 homesick        259 0.23792616   -0.07044142</code></pre>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>First up, you’ll notice that the song “I Hope You’re Happy Now” expresses the most positive emotions with an average overall sentiment of 0.20356317 and “Breaking More Hearts than Mine” expressing the most negative at -0.17603473. Each of the grey transparent points in the graph represent the individual sentences in the lyric sets. On the next page, we will do some closer analysis on each sentence.</p>
 <p>Next, we do the same to the group of songs that I have categorized as Hip-Hop.</p>
 <pre><code>##              FileName2 word_count        sd ave_sentiment
@@ -52,7 +52,7 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ## 12:               Woah        679 0.2611224  0.0543196846
 ## 13:             dababy        706 0.2066512 -0.0737457818
 ## 14:             thebox        529 0.2065956 -0.0815764396</code></pre>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 Previously, we looked at individual terms which made up the topics of the songs comprising our data sets. These “topics,” more often than not are terms which we might say that that song is about. While doing so was certainly illuminating, it was difficult to see what about these terms constituted moral knowledge. For instance, if one topic was comprised of terms like murder, death, anger and whatnot, this does not necessarily mean that the song says that these things are good, or admirable, or desirable character traits.</p>
 <p><a href="https://plato.stanford.edu/entries/moral-cognitivism/">Moral Cognitivism and Moral Non-cognitivism</a> are ethical views more commonly associated with metaethics than they are with standard ethical theories. Moral non-cognitivists will often say that there is no such thing as moral facts, meaning that phrases like “that was a good action,” or “John is a good person,” means nothing more than “that action made me <em>feel</em> good” or “John is a person who gives me pleasant feelings.”</p>
 <blockquote>
@@ -103,7 +103,11 @@ Previously, we looked at individual terms which made up the topics of the songs 
 <pre><code>## tibble [312 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ FileName: chr [1:312] &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; ...
 ##  $ X1      : chr [1:312] &quot;I wasn&#39;t trying to feel nothing at all.&quot; &quot;I just came to meet my friends.&quot; &quot;And try to drink a long week off.&quot; &quot;I didn&#39;t wanna stay too late.&quot; ...
-##  $ X       : chr [1:312] NA NA NA NA ...</code></pre>
+##  $ X       : chr [1:312] NA NA NA NA ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   X1 = col_character()
+##   .. )</code></pre>
 <pre><code>## # A tibble: 6 x 3
 ##   FileName X1                                      X    
 ##   &lt;chr&gt;    &lt;chr&gt;                                   &lt;chr&gt;
@@ -138,14 +142,18 @@ Previously, we looked at individual terms which made up the topics of the songs 
 ## 12: Wish-Grandpas-Never-Died        315 0.72382297   -0.08582954
 ## 13:                 homesick        259 0.23792616   -0.07044142</code></pre>
 <p>The frame following shows a pretty graph of the above data and ranked according to expressed sentiment most negative at the bottom of the graph and most positive at the top. I should point out here, that the smallish grey dots ranging in opacity represent individual sentences ordered graphically according to the range of negative or positive sentiment expressed in that particular sentence. As such, the red diamond represents the average expressed sentiment of all of the sentences. Where the dots are considerably darker, represent multiple sentences expressing the same sentiment. Because these converge in terms of the sentiment expressed, they overlap on the graph and this is shown by a gradual darkening of the point.</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="hip-hop-songs-1" class="section level3">
 <h3>“Hip Hop” Songs</h3>
 <p>First, like we did with the country songs, the below frames show various attributes of our data. Remember that these are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song “Ballin” since “Ballin” is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song “Woah” since “Woah” is the last file read by R.</p>
 <pre><code>## tibble [576 × 2] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ FileName2: chr [1:576] &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; ...
-##  $ X1       : chr [1:576] &quot;I put the new Forgi&#39;s on the G I trap until the bloody bottoms is&quot; &quot;underneath &#39;Cause all my niggas got it out the streets I keep a hunnid&quot; &quot;racks  inside my jeans&quot; &quot;I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t answer&quot; ...</code></pre>
+##  $ X1       : chr [1:576] &quot;I put the new Forgi&#39;s on the G I trap until the bloody bottoms is&quot; &quot;underneath &#39;Cause all my niggas got it out the streets I keep a hunnid&quot; &quot;racks  inside my jeans&quot; &quot;I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t answer&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   X1 = col_character()
+##   .. )</code></pre>
 <pre><code>## # A tibble: 6 x 2
 ##   FileName2 X1                                                                  
 ##   &lt;chr&gt;     &lt;chr&gt;                                                               
@@ -181,19 +189,19 @@ Previously, we looked at individual terms which made up the topics of the songs 
 ## 13:             dababy        706 0.2066512 -0.0737457818
 ## 14:             thebox        529 0.2065956 -0.0815764396</code></pre>
 <p>The above but in a nice graph. You might notice that some of the sentiments expressed here go beyond -1. I find this interesting because as you might remember when we did the topic modeling, the topics expressed by the hip-hop lyrics were drastically more widespread and varied. This seems to also be the case concerning the expressed sentiments, namely that the emotions expressed are more widespread and varied than those expressed in the country songs. I do not think that this finding means anything, it might just be because the hip-hop songs use more words in general and so the program interprets this as more meanings. But in truth, I have not thought much about this.</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Here is another fun, preliminary aspect of the method. What the below frames shows, are the various emotions expressed by the documents. To the left, you will find the song titles while the top of each chart shows the expressed emotion. Once again, the grey points, or dots represent the individual sentences in that document which account for the attributed emotional score.</p>
 <p>A couple of points that I find interesting initially, but I have not yet thought about this too much, is that the chart titled “anger,” “disgust,” “sadness,” and “fear,” shows a clustering of sentences (complete with fairly far reaching outliers) that is more loose than that shown by the more positive emotions of “joy,” “trust,” and “anticipation.” For instance, one of the sentences expresses “fear” at 100%! And the same goes for sadness!! And disgust!!! And anger!!!!</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-16-1.png" width="672" /><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-16-1.png" width="672" /><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
 <p>I wonder what a similar chart will show of the country set…</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-17-1.png" width="672" /><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-17-1.png" width="672" /><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
 <p>Initially, it seems as though the opposite holds true. The clustering of sentences expressing “joy,” “anticipation,” “trust,” is more loose whereas those expressing “anger” etc shows a tighter clustering.</p>
 <p>The last thing that I will do on this page is show the profanity rating of each song just because I can.</p>
 <p>First up, hip-hop songs…</p>
 <p>Look at the song titled “Life is Good.” Apparently there is a sentence therein which expresses what I take to be the phrase; “Life is good (expletive).” Cheery.</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Next, country…</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>As you might have expected as I have, nothing.</p>
 <p>This is one of the more taxing portions of the project. However, I believe that it is the most illuminating in a project of this type. First, one of the concerns I had with attempting to find moral knowledge among song lyrics, I was worried that the temptation would be to count the overall negative and positive words among a song’s lyrics.</p>
 <p>For instance, among some of my earlier attempts, I noticed that a song’s lyrics might include many terms which I thought were quite negative, such as song’s about murder and prison sentences. However, Stanford’s Core NLP sometimes attributed positive scores to these examples. I was perplexed, thinking that either I ran the program wrong, or that the program was exhibiting a potential fault. I don’t think that this is the case anymore, but rather that I was looking at the lyrics and understanding the content in terms of weights of various terms, rather than attempting to understand their context.</p>
@@ -450,6 +458,16 @@ Previously, we looked at individual terms which made up the topics of the songs 
 ## [11] &quot;Honestly this use of the Fourier transformation is really quite elegant.&quot;    
 ## [12] &quot;You might even say it&#39;s beautiful!&quot;</code></pre>
 <p>I next get the song sentiments and do provide some lists which show the sentences which are joyful and those expressing anger. What is great about “nrc” is that I could display those sentences expressing anger, anticipation, disgust, fear, joy, sadness, surprise, and trust.</p>
+<pre><code>## Warning: `filter_()` is deprecated as of dplyr 0.7.0.
+## Please use `filter()` instead.
+## See vignette(&#39;programming&#39;) for more help
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: `group_by_()` is deprecated as of dplyr 0.7.0.
+## Please use `group_by()` instead.
+## See vignette(&#39;programming&#39;) for more help
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
 ## Please use `tibble()` instead.
 ## This warning is displayed once every 8 hours.
@@ -716,22 +734,22 @@ Previously, we looked at individual terms which made up the topics of the songs 
 ##    0          0            0       0      0       0         0         0   
 ## --------------------------------------------------------------------------</code></pre>
 <p>Better displays of the above information. This graph shows the percentages of the shown emotions. For instance, joy is the most expressed emotion in the song “The Bones” at about 24%.</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-33-1.png" width="672" />
-<img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>The graph below is an emotional valence chart. What it shows are the emotions expressed as the lyrics progress throughout the song. Further, the graph compares the emotional valence, of the expressions of sentiment in each song as they progress. The red line represents the emotional valence in “The Bones,” while the blue line represents the emotional valence in “Homesick.”</p>
 <pre><code>## List of 3
 ##  $ x: num [1:30] 0.0333 0.0667 0.1 0.1333 0.1667 ...
 ##  $ y: num [1:30] 0.404 0.788 0.596 0 -0.327 ...
 ##  $ z: num [1:30] 0.101 0.681 0.391 -0.507 -1 ...</code></pre>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>Here, I introduce similar analyses on lyrics in the Hip Hop category. What might be possible here, is to determine sentiment is applied on similar topics our not. My initial thought is that it will not be. Given that there were a larger percentage of relationship terms in the country category than the Hip Hop category, it will be interesting to see whether those sentences expressing joy in the Hip Hop category involve topics which have to do with objects, for instance cars, money etc, then it would be directed at relationships. For instance, those sentences expressing joy in “Homesick,” were directed at others. I look forward to seeing what sentences expressing joy in Hip Hop songs are directed towards. This is very similar to the section wherein I showed some specific sentences which expressed anger, or joy.</p>
 <p>In the following frame, I show a bar graph showing those percentages which each emotion is expressed in first the song “Ballin’” and then “Life is Good.”</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-36-1.png" width="672" />
-<img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>I then do the same with the songs “The Bones,” and “Homesick.”</p>
-<p><img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-38-1.png" width="672" />
-<img src="/post3/Country-NLP2_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+<img src="/post4/Country-NLP2_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>It is telling to me, that those emotions which hold the highest percentages in these four songs, are opposite one another. For instance, fear and sadness are at the top of Ballin’ while anger and fear is at the top of “Life is Good.” However, in the songs “Homesick,” and “The Bones,” you have sadness (Homesick, which we would expect), and joy, while in “The Bones,” we have joy and surprise being expressed the most.</p>
 <p>Finally, because fear has a really high percentage in both “Ballin” and “Life is Good,” I wanted to see which sentences contributed towards this.</p>
 <pre><code>##  [1] &quot;I trap until the bloody bottoms is underneath.&quot;                                                                    
@@ -764,16 +782,16 @@ Previously, we looked at individual terms which made up the topics of the songs 
 <h1>Works Cited</h1>
 <div id="refs" class="references">
 <div id="ref-jock17">
-<p>Jockers, Matthew. 2017. “Introduction to the Syuzhet Package.” <em>Introduction to the Syuzhet Package</em>. https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html.</p>
+<p>Jockers, Matthew. 2017. “Introduction to the Syuzhet Package.” <em>Introduction to the Syuzhet Package</em>. <a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html" class="uri">https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html</a>.</p>
 </div>
 <div id="ref-mcgr19">
 <p>McGrath, Sarah. 2019. <em>Moral Knowledge</em>. Oxford: Oxford University Press.</p>
 </div>
 <div id="ref-rink20">
-<p>Rinker, Tyler. 2020. “Trinker/Sentimentr.” <em>Github</em>. https://github.com/trinker/sentimentr.</p>
+<p>Rinker, Tyler. 2020. “Trinker/Sentimentr.” <em>Github</em>. <a href="https://github.com/trinker/sentimentr" class="uri">https://github.com/trinker/sentimentr</a>.</p>
 </div>
 <div id="ref-van18">
-<p>van Roojen, Mark. 2018. “Moral Cognitivism Vs. Non-Cognitivism.” <em>The Stanford Encyclopedia of Philosophy</em>. https://plato.stanford.edu/archives/fall2018/entries/moral-cognitivism/.</p>
+<p>van Roojen, Mark. 2018. “Moral Cognitivism Vs. Non-Cognitivism.” <em>The Stanford Encyclopedia of Philosophy</em>. <a href="https://plato.stanford.edu/archives/fall2018/entries/moral-cognitivism/" class="uri">https://plato.stanford.edu/archives/fall2018/entries/moral-cognitivism/</a>.</p>
 </div>
 </div>
 </div>

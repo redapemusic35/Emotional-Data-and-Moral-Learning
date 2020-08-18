@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.9)  28 MAY 2020 10:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.9)  8 JUN 2020 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -301,29 +301,6 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen155
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks25
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-)) (/usr/local/texlive/2019/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count270
-\FV@InFile=\read2
-\FV@TabBox=\box47
-\c@FancyVerbLine=\count271
-\FV@StepNumber=\count272
-\FV@OutFile=\write3
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/framed/framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip54
-\fb@frw=\dimen157
-\fb@frh=\dimen158
-\FrameRule=\dimen159
-\FrameSep=\dimen160
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
@@ -334,9 +311,11 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
-)
-\Gin@req@height=\dimen161
-\Gin@req@width=\dimen162
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen157
+\Gin@req@width=\dimen158
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/grffile/grffile.sty
 Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
 y)
@@ -344,38 +323,38 @@ Package grffile Info: This package is an empty stub for compatibility on input
 line 40.
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count273
-\l__pdf_internal_box=\box48
+\l__kernel_color_stack_int=\count270
+\l__pdf_internal_box=\box47
 )
 No file Country-top-100.aux.
 \openout1 = `Country-top-100.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Info: Redefining \microtypecontext on input line 110.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Info: Redefining \microtypecontext on input line 70.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 110.
+LaTeX Info: Redefining \showhyphens on input line 70.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -383,8 +362,8 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-\AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring OFF on input line 110.
+\AtBeginShipoutBox=\box48
+Package hyperref Info: Link coloring OFF on input line 70.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/latex/refcount/refcount.sty
@@ -394,13 +373,13 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count274
+\c@section@level=\count271
 )
-LaTeX Info: Redefining \ref on input line 110.
-LaTeX Info: Redefining \pageref on input line 110.
-LaTeX Info: Redefining \nameref on input line 110.
-\@outlinefile=\write4
-\openout4 = `Country-top-100.out'.
+LaTeX Info: Redefining \ref on input line 70.
+LaTeX Info: Redefining \pageref on input line 70.
+LaTeX Info: Redefining \nameref on input line 70.
+\@outlinefile=\write3
+\openout3 = `Country-top-100.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -438,16 +417,16 @@ LaTeX Info: Redefining \nameref on input line 110.
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count275
-\scratchdimen=\dimen163
-\scratchbox=\box50
-\nofMPsegments=\count276
-\nofMParguments=\count277
+\scratchcounter=\count272
+\scratchdimen=\dimen159
+\scratchbox=\box49
+\nofMPsegments=\count273
+\nofMParguments=\count274
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count278
-\MPscratchDim=\dimen164
-\MPnumerator=\count279
-\makeMPintoPDFobject=\count280
+\MPscratchCnt=\count275
+\MPscratchDim=\dimen160
+\MPnumerator=\count276
+\makeMPintoPDFobject=\count277
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -457,41 +436,41 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-12.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
+2.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-12.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
+2.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-112.
+72.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-112.
+72.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 112.
+(Font)              <12> on input line 72.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 112.
+(Font)              <8> on input line 72.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 112.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 112
-.
+(Font)              <6> on input line 72.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 72.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 112
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 72.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -499,482 +478,18 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-05.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+63.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 206.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-221.
+172.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [2]
-Overfull \hbox (275.74281pt too wide) in paragraph at lines 296--296
-[]\T1/lmtt/m/n/10 ##  $ FileName: chr  "shelton-stefani-nobody-but-you.txt" "la
-mbert-bluebird.txt" "mccollum-pretty-heart.txt" "stell-everywhere-but-on.txt" .
-..[] 
- []
-
-
-Overfull \hbox (2365.23674pt too wide) in paragraph at lines 296--296
-[]\T1/lmtt/m/n/10 ##  $ Content : chr  "And wonder who you\TS1/lmtt/m/n/10 '\T1
-/lmtt/m/n/10 re married to\n\nWanna say it now, wanna make it clear\nFor only y
-ou and God to hear\nWhen y"| __truncated__ "34 was bad, so I just turn to 35\nY
-eah, I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m a keeper\nI keep digging down for the
- deep\nLike the records I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m pl"| __truncated__
- "And you loved me the best you could\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m the
- one who dropped the ball\nGot you high and let you fall\nLet the b"| __truncat
-ed__ "Put some days, put some miles in the rearview\nA few state lines \TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 tween me and you\nJust a little space and tim"| __tru
-ncated__ ...[] 
- []
-
-
-Overfull \hbox (8050.97021pt too wide) in paragraph at lines 335--335
-[]\T1/lmtt/m/n/10 ## [1] "And wonder who you\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 r
-e married to\n\nWanna say it now, wanna make it clear\nFor only you and God to 
-hear\nWhen you love someone, they say you set \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10
- em free\nBut that ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t gonna work for me\n\n
-I don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna live without you\nI don\TS1/lmtt
-/m/n/10 '\T1/lmtt/m/n/10 t wanna even breathe\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/
-m/n/10 t wanna dream about you\nWanna wake up with you next to me\nI don\TS1/lm
-tt/m/n/10 '\T1/lmtt/m/n/10 t wanna go down any other road now\nI don\TS1/lmtt/m
-/n/10 '\T1/lmtt/m/n/10 t wanna love nobody but you\nLooking in your eyes now, i
-f I had to die now\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna love nobody 
-but you (You)\n\nAll the wasted days, all the wasted nights\nI blame it all on 
-being young\nGot no regrets, \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 cause they got m
-e here\nBut I don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna waste another one\n\
-nI been thinkin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 about what I want in my life\
-nIt begins and ends the same\nIf I had to choose what I couldn\TS1/lmtt/m/n/10 
-'\T1/lmtt/m/n/10 t lose\nThere\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 d only be one t
-hing\n\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna live without you\nI don\
-TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna even breathe\nI don\TS1/lmtt/m/n/10 '\
-T1/lmtt/m/n/10 t wanna dream about you\nWanna wake up with you next to me\nI do
-n\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna go down any other road now\nI don\TS
-1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna love nobody but you\nLooking in your eye
-s now, if I had to die now\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna love
- nobody but you (You)\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna love nobo
-dy but you (You)\n\nI wanna say it now, wanna make it clear\nFor only you and G
-od to hear\n\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna live without you (
-I don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna live)\nI don\TS1/lmtt/m/n/10 '\T
-1/lmtt/m/n/10 t wanna even breathe\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wa
-nna dream about you\nWanna wake up with you next to me (Next to me)\nI don\TS1/
-lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna go down any other road now\nI don\TS1/lmtt
-/m/n/10 '\T1/lmtt/m/n/10 t wanna love nobody but you (I don\TS1/lmtt/m/n/10 '\T
-1/lmtt/m/n/10 t wanna love nobody)\nLookin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 in
- your eyes now, if I had to die now\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t w
-anna love nobody but you (You)\n\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wann
-a love nobody (You)\nI don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna love nobody
- but you\n"[] 
- []
-
-
-Overfull \hbox (6885.4736pt too wide) in paragraph at lines 335--335
-[]\T1/lmtt/m/n/10 ## [2] "34 was bad, so I just turn to 35\nYeah, I\TS1/lmtt/m/
-n/10 '\T1/lmtt/m/n/10 m a keeper\nI keep digging down for the deep\nLike the re
-cords I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m playing\nThey might keep you waiting
-\nBut you know I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m only playing for keeps\n\nA
-nd if the house just keeps on winning\nI got a wildcard up my sleeve\nAnd if lo
-ve keeps giving me lemons\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll just mix \TS1/
-lmtt/m/n/10 '\T1/lmtt/m/n/10 em in my drink\nAnd if the whole wide world stops 
-singing\nAnd all the stars go dark\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll keep 
-a light on in my soul\nKeep bluebird in my heart\n\nWell, I\TS1/lmtt/m/n/10 '\T
-1/lmtt/m/n/10 m a giver\nYeah, and I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m still g
-iving \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 em hell\nForgiving\TS1/lmtt/m/n/10 '\T1
-/lmtt/m/n/10 s pretty hard\nSo I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ve made an ar
-t\nOut of forgettin\TS1/lmtt/m/n/10 ' '\T1/lmtt/m/n/10 em well\nYeah, I\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 m a rhymer\nI can turn 20 cents into a 10\nAnd if I g
-et confused and I start to lose\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll rhyme a 
-dime \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 til it all makes sense\n\nAnd if the hou
-se just keeps on winning\nI got a wildcard up my sleeve\nAnd if love keeps givi
-ng me lemons\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll just mix \TS1/lmtt/m/n/10 '
-\T1/lmtt/m/n/10 em in my drink\nAnd if the whole wide world stops singing\nAnd 
-all the stars go dark\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll turn the light on 
-in my soul\nAnd keep the bluebird in my heart\n\nAnd if the house just keeps on
- winning\nI got a wildcard up my sleeve\nAnd if love starts giving me lemons\nJ
-ust mix \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 em in my drink\nAnd if the whole wide
- world stops singing\nAnd all the stars go dark\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/
-n/10 ll keep a light on in my soul\nKeep a bluebird in my heart\nI\TS1/lmtt/m/n
-/10 '\T1/lmtt/m/n/10 ll keep a light on in my soul\nKeep a bluebird in my heart
-\nKeep a bluebird in my heart\n\nAnd the bluebird sings\n"[] 
- []
-
-
-Overfull \hbox (6155.72572pt too wide) in paragraph at lines 335--335
-[]\T1/lmtt/m/n/10 ## [3] "And you loved me the best you could\nI\TS1/lmtt/m/n/1
-0 '\T1/lmtt/m/n/10 m the one who dropped the ball\nGot you high and let you fal
-l\nLet the best thing I ever had slip away\n\nAnd what does that say about me?\
-nI could do you like I did\nThat I could break an angel\TS1/lmtt/m/n/10 '\T1/lm
-tt/m/n/10 s wings\nWhat does that say about me\nThat I stood there like a fence
-post\nAs you drove off in your car\nWhat does that say about me\nNow that I bro
-ke\nYour pretty heart\nYour pretty heart\n\nI been drinking like a drunkard\nIn
- these Austin neon lights\nBurning smokes and wondering\nIf there\TS1/lmtt/m/n/
-10 '\T1/lmtt/m/n/10 s anything I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ve done right
-\nWell I wish that I could go back\nHang on to what I had\nGuess that\TS1/lmtt/
-m/n/10 '\T1/lmtt/m/n/10 s all, babe\nNothing but a dream\n\nWhat does that say 
-about me?\nI could do you like I did\nThat I could break an angel\TS1/lmtt/m/n/
-10 '\T1/lmtt/m/n/10 s wings\nWhat does that say about me?\nThat I stood there l
-ike a fencepost\nAs you drove off in your car\nWhat does that say about me?\nNo
-w that I broke\nYour pretty heart\nYour pretty heart\n\nWhat does that say abou
-t me?\nI could do you like I did\nThat I could break an angel\TS1/lmtt/m/n/10 '
-\T1/lmtt/m/n/10 s wings\nWhat does that say about me?\nThat I stood there like 
-a fencepost\nAs you drove off in your car\nWhat does that say about me?\nNow th
-at I broke\nYour pretty heart\nYour pretty heart\nYour pretty heart\nYour prett
-y heart\n"[] 
- []
-
-
-Overfull \hbox (7672.97131pt too wide) in paragraph at lines 335--335
-[]\T1/lmtt/m/n/10 ## [4] "Put some days, put some miles in the rearview\nA few 
-state lines \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 tween me and you\nJust a little s
-pace and time and I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 d be fine\n\nBut I\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 ve been from Savannah to Long Beach\nTrying to keep y
-our memory out of reach\nBut there you were in the Delta nights\nThe Santa Fe s
-un, the Colorado sky\nI could add another push pin to the map\nBut that don\TS1
-/lmtt/m/n/10 '\T1/lmtt/m/n/10 t stop me from missing you and looking back\nGues
-s there\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s just one place I haven\TS1/lmtt/m/n/
-10 '\T1/lmtt/m/n/10 t gone\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ve moved everywh
-ere but on\n\nMy mail\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s still going to mama\TS
-1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s house\n\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 Cause
- I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m still long gone trying to figure out\nWho
- I am without you and why I still think about you\nJust biding my time making e
-nds meet\nLoading trucks, pouring coffee, pouring concrete\nPlanning my next mo
-ve for getting over you, yeah\n\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ve been fro
-m Savannah to Long Beach\nTrying to keep your memory out of reach\nBut there yo
-u were in the Delta nights\nThe Santa Fe sun, the Colorado sky\nI could add ano
-ther push pin to the map\nBut that don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t stop 
-me from missing you and looking back\nGuess there\TS1/lmtt/m/n/10 '\T1/lmtt/m/n
-/10 s just one place I haven\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t gone\nI\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 ve moved everywhere but on\n\nIf I had it my way, thi
-s ol\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 highway would have fixed me up somehow\n
-Would have led me home by now\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ve been from 
-Savannah to Long Beach\nTrying to keep your memory out of reach\nBut there you 
-were in the Delta nights\nThe Santa Fe sun, the Colorado sky\nI could add anoth
-er push pin to the map\nBut that don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t stop me
- from missing you and looking back\nGuess there\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/1
-0 s just one place I haven\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t gone\nI\TS1/lmtt/
-m/n/10 '\T1/lmtt/m/n/10 ve moved everywhere but on\nI\TS1/lmtt/m/n/10 '\T1/lmtt
-/m/n/10 ve moved everywhere but on\n"[] 
- []
-
-
-Overfull \hbox (5887.9765pt too wide) in paragraph at lines 335--335
-[]\T1/lmtt/m/n/10 ## [5] "And words by themselves can\TS1/lmtt/m/n/10 '\T1/lmtt
-/m/n/10 t right all the wrongs\n\nIn a world that\TS1/lmtt/m/n/10 '\T1/lmtt/m/n
-/10 s gone crazy\nYou don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t know what\TS1/lmtt
-/m/n/10 '\T1/lmtt/m/n/10 s true\nMost people don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/
-10 t change\nBut some people do\n\nSome people quit drinking too much\nAnd some
- people quit lying\nSome people decide to grow up\nBut it\TS1/lmtt/m/n/10 '\T1/
-lmtt/m/n/10 s never good timing\nMost wouldn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t
- forgive\nWhat I put you through\nBut I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m here
- tonight\nHoping some people do\n\nSome people say sorry to hear it\TS1/lmtt/m/
-n/10 '\T1/lmtt/m/n/10 s okay\nBut I know it\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s 
-not, so you don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t have to say\nThat you unders
-tand \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 cause I know you don\TS1/lmtt/m/n/10 '\T
-1/lmtt/m/n/10 t\nNeither do I, but that don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t 
-mean that I won\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t\n\nTry every day\nTo show yo
-u the truth\nMost people don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t change\nBut som
-e people do\n\nSome people quit drinking too much\nAnd some people quit lying\n
-Some people decide to grow up\nBut it\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s never 
-good timing\nMost wouldn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t forgive\nWhat I put
- you through\nBut I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m here tonight\nHoping som
-e people do\n\nSo whether you kiss me\nOr you close the door\nJust know that I\
-TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m better\nThan I was before\n\nSome people qui
-t drinking too much\nAnd some people quit lying\nSome people decide to grow up\
-nBut it\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s never good timing\nMost wouldn\TS1/l
-mtt/m/n/10 '\T1/lmtt/m/n/10 t forgive\nWhat I put you through\nBut I\TS1/lmtt/m
-/n/10 '\T1/lmtt/m/n/10 m here tonight\nHoping some people do\n\nI\TS1/lmtt/m/n/
-10 '\T1/lmtt/m/n/10 m hoping some people do\n"[] 
- []
-
-
-Overfull \hbox (8759.71815pt too wide) in paragraph at lines 335--335
-[]\T1/lmtt/m/n/10 ## [6] "You and your girl had a fight\nAnd now she\TS1/lmtt/m
-/n/10 '\T1/lmtt/m/n/10 s saying goodbye\nShe ran upstairs and packed her bags\n
-\nIt could be raining\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on your perfect vacatio
-n\nYou could be stressed about your work situation\nAin\TS1/lmtt/m/n/10 '\T1/lm
-tt/m/n/10 t gotta listen to me but all I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m say
-in\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 \n\nAin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t 
-nothin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 that a beer can\TS1/lmtt/m/n/10 '\T1/l
-mtt/m/n/10 t fix\nAin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t no pain it can\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 t wash away\nFrom the moment that it hits your lips\n
-Makes those clouds look a little less grey\n\nOh you could be lonely, or heartb
-roken\nOr hungover from the night before\nTurn that frown into a smile real qui
-ck\nThere ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t nothin\TS1/lmtt/m/n/10 ' \T1/l
-mtt/m/n/10 that a beer can\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t fix\n\nYou\TS1/lm
-tt/m/n/10 '\T1/lmtt/m/n/10 re on a lake and you\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/1
-0 re fishin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 \nIt\TS1/lmtt/m/n/10 '\T1/lmtt/m/n
-/10 s hot and all that you\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 re gettin\TS1/lmtt/
-m/n/10 '\T1/lmtt/m/n/10 \nIs a little nibble here and there\nYou\TS1/lmtt/m/n/1
-0 '\T1/lmtt/m/n/10 re sittin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 watchin\TS1/lmtt
-/m/n/10 ' \T1/lmtt/m/n/10 your team\nLosin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 th
-at championship ring\nAnd you\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 re feelin\TS1/lm
-tt/m/n/10 ' \T1/lmtt/m/n/10 like life ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t fa
-ir\n\nIt could be raining\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on your perfect vac
-ation\nYou could be stressed about your work situation\nAin\TS1/lmtt/m/n/10 '\T
-1/lmtt/m/n/10 t nothin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 that a beer can\TS1/lm
-tt/m/n/10 '\T1/lmtt/m/n/10 t fix\nAin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t no pai
-n it can\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wash away\nFrom the moment that it 
-hits your lips\nMakes those clouds look a little less grey\n\nOh you could be l
-onely, heartbroken\nOr hungover from the night before\nTurn that frown into a s
-mile real quick\nThere ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t nothin\TS1/lmtt/m
-/n/10 ' \T1/lmtt/m/n/10 that a beer can\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t fix\
-n\nIt could be raining\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on your perfect vacati
-on\nYou could be stressed about your work situation\nAin\TS1/lmtt/m/n/10 '\T1/l
-mtt/m/n/10 t gotta save it for no special occasion\nAin\TS1/lmtt/m/n/10 '\T1/lm
-tt/m/n/10 t nothin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 that a beer can\TS1/lmtt/m
-/n/10 '\T1/lmtt/m/n/10 t fix\nAin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t no pain it
- can\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wash away, no\nFrom the moment that it 
-hits your lips\nMakes those clouds look a little less grey\n\nOoh you could be 
-lonely (Lonely)\nHeartbroken (Heartbroken)\nOr hungover from the night before\n
-Turn that frown into a smile real quick\nIt might take one or it might take six
-\nDrank it down, it\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll do the trick\nThere ain
-\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t nothin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 th
-at a beer can\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t fix\n"[] 
- []
-
-
-Overfull \hbox (6465.47482pt too wide) in paragraph at lines 350--350
-[]\T1/lmtt/m/n/10 ## [1] "That I feel most alive\nBut the news has all been bad
-\nAnd the whole world seems so sad\nI ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t ha
-d much else going on\nSo I sat down and wrote this song\n\nI miss my mom, I mis
-s my dad\nI miss the road, I miss my band\nGiving hugs and shaking hands\nIt\TS
-1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s a mystery I suppose\nJust how long this thing 
-goes\nBut there\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be crowds and there\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 ll be shows\nAnd there will be light after dark\nSome
-day when we aren\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t six feet apart\n\nFirst thi
-ng that I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m gonna do\nIs slide on in some corn
-er booth\nAnd take the whole damn family out\nAnd buy my buddies all a round\nP
-ay some extra on the tab\nCatch a movie, catch a cab\nWatch a ballgame from the
- stands\nProbably over-wash my hands\n\nI miss my mom, I miss my dad\nI miss th
-e road, I miss my band\nGiving hugs and shaking hands\nWell, it\TS1/lmtt/m/n/10
- '\T1/lmtt/m/n/10 s a mystery I suppose\nJust how long this thing goes\nBut the
-re\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be crowds and there\TS1/lmtt/m/n/10 '\T1
-/lmtt/m/n/10 ll be shows\nAnd there will be light after dark\nSomeday when we a
-ren\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t six feet apart\n\nI miss my mom, I miss 
-my dad\nI miss the road, I miss my band\nGiving hugs and shaking hands\nWell, i
-t\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s a mystery I suppose\nJust how long this th
-ing goes\nBut there\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be crowds and there\TS1
-/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be shows\nThere will be light after dark\nSome
-day when we aren\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t six feet apart\n\nThere wil
-l be light after dark\nSomeday when we aren\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t 
-six feet apart\n"[] 
- []
-
-
-Overfull \hbox (7536.47171pt too wide) in paragraph at lines 350--350
-[]\T1/lmtt/m/n/10 ## [2] "When I caught you looking\n\nA little smile, a little
- how you been\nA little touch, a little reminisce\nIt always starts off innocen
-t\n\nBut after a few drinks\nIt\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s always the s
-ame thing\nWe find ourselves lost in conversation at the bar\nThen after a few 
-songs\nThe kind that you hold on\nWe find ourselves leaning up against my car\n
-Shoulda stopped at one\nSaid goodbye, given up at two\nIf we didn\TS1/lmtt/m/n/
-10 '\T1/lmtt/m/n/10 t wanna wind up falling into my bed like we always do\nAfte
-r a few\nOh, after a few\n\nWe always take it way too far\nWhere it\TS1/lmtt/m/
-n/10 '\T1/lmtt/m/n/10 s too much to resist\nWe always make it way too hard\nTo 
-walk away after that third kiss\nWe pretend that we\TS1/lmtt/m/n/10 '\T1/lmtt/m
-/n/10 ll be fine\nThrough the sting of the morning light\n\TS1/lmtt/m/n/10 '\T1
-/lmtt/m/n/10 Cause it happens every time\n\nAfter a few drinks\nIt\TS1/lmtt/m/n
-/10 '\T1/lmtt/m/n/10 s always the same thing\nWe find ourselves lost in convers
-ation at the bar\nThen after a few songs\nThe kind that you hold on\nWe find ou
-rselves leaning up against my car\nShoulda stopped at one\nSaid goodbye, given 
-up at two\nIf we didn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wanna wind up falling 
-into my bed like we always do\nAfter a few\nOh yeah, after a few\n\nLittle smil
-e, little how you been\nLittle touch, little reminisce\nWe both know how it end
-s\n\nAfter a few drinks\nIt\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s always the same 
-thing\nWe find ourselves lost in conversation at the bar\nThen after a few song
-s\nThe kind that you hold on\nWe find ourselves leaning up against my car\nShou
-lda stopped at one\nSaid goodbye, given up at two\nIf we didn\TS1/lmtt/m/n/10 '
-\T1/lmtt/m/n/10 t wanna wind up falling into my bed like we always do\nAfter a 
-few\nOh, after a few\n"[] 
- []
-
-
-Overfull \hbox (6271.22539pt too wide) in paragraph at lines 350--350
-[]\T1/lmtt/m/n/10 ## [3] "Buzzing all night like neon in the dark\nI found myse
-lf in this\n\nCouldn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wait to turn 21\nThe da
-y I did I got too drunk\nSpinnin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 round dizzy 
-on the patio\nFound out real quick how to take it slow\nGot whiskey bent on whi
-skey sours\nRan my mouth to an out of towner\nLearned a big lesson when I met t
-he bouncer\n\nI found myself in this bar\nMaking mistakes and making new friend
-s\nI was growing up and nothing made sense\nBuzzing all night like neon in the 
-dark\nI found myself in this bar\n\nI found myself in this\n\nSaw her in the co
-rner sippin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 something tall\nCracked a few jok
-es we hit it off\nYear down the road I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m watch
-ing her\nWalk through the door with some new jerk\nWe had it good and it hurt s
-o bad\nBut I had to stand my ground\nChased my pride with another round\n\nI fo
-und myself in this bar\nMaking mistakes and making new friends\nI was growing u
-p and nothing made sense\nLearning how to live with a broken heart\nI found mys
-elf in this bar\n\nThose nights, what I would give for one more\nBud Lights and
- kissin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on the front porch\nDidn\TS1/lmtt/m/n
-/10 '\T1/lmtt/m/n/10 t even know what I was looking for\n\nBut I found myself i
-n this bar\nI found myself in this bar\nI found myself in this bar\nAin\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 t it strange the things you keep tucked in your heart
-?\nI found myself in this bar\n"[] 
- []
-
-
-Overfull \hbox (6465.47482pt too wide) in paragraph at lines 350--350
-[]\T1/lmtt/m/n/10 ## [4] "Man, she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s hard to f
-ind\nAnd towns\nEverywhere along the map\nWell, I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n
-/10 ve traveled there and back\nAnd I wonder where she\TS1/lmtt/m/n/10 '\T1/lmt
-t/m/n/10 s at\n\nYeah, maybe she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s in Dallas\n
-Cheering for the Cowboys\nMaybe laying low down in Mexico\nI know she loves the
- sunshine\nYeah, maybe she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s in Vegas\nAt a ta
-ble dealing Blackjack\nHey, if you wouldn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t mi
-nd\nIf you see her out tonight\nTell her she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s
- mine\n\nLife\nIt\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s a crazy ride, isn\TS1/lmtt
-/m/n/10 '\T1/lmtt/m/n/10 t it?\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m loving eve
-ry minute\nBut it\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 d be better with her in it, 
-yeah\n\nMaybe she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s living in a small town\nAn
-d she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s taught to fear the Bible\nBut she\TS1/
-lmtt/m/n/10 '\T1/lmtt/m/n/10 s got a couple friends that she runs around with\n
-Dancin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 with the Devil\nMaybe she\TS1/lmtt/m/n
-/10 '\T1/lmtt/m/n/10 s sittin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 in a caf√\TS1/l
-mtt/m/n/10 ©\T1/lmtt/m/n/10 \nIn a lonely crowded city\nHey, if you wouldn\TS1/
-lmtt/m/n/10 '\T1/lmtt/m/n/10 t mind\nIf you see her out tonight\nTell her she\T
-S1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s mine\n\nTell her I\TS1/lmtt/m/n/10 '\T1/lmtt/
-m/n/10 m comin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 \nI\TS1/lmtt/m/n/10 '\T1/lmtt/m
-/n/10 m runnin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 \nYeah, I\TS1/lmtt/m/n/10 '\T1/
-lmtt/m/n/10 m sorry I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m late\nThat I want her\
-nI love her\nAnd I just can\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t wait to meet her
- someday\n\nHell, maybe she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s a hippie\nHangin
-\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on the west coast\nWith flowers in her hair\
-nProb\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ly doesn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/1
-0 t care\n\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 Bout nothin\TS1/lmtt/m/n/10 ' \T1/l
-mtt/m/n/10 but a good time\nMaybe she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s living
- up in New York\nWorking down on Wall Street\nHey, if you wouldn\TS1/lmtt/m/n/1
-0 '\T1/lmtt/m/n/10 t mind\nIf you see her out tonight\nTell her she\TS1/lmtt/m/
-n/10 '\T1/lmtt/m/n/10 s mine\n\nYeah, tell her she\TS1/lmtt/m/n/10 '\T1/lmtt/m/
-n/10 s mine\nTell her she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s mine\nHey, if you 
-wouldn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t mind\nIf you see her out tonight\nTel
-l her she\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s mine\n"[] 
- []
-
-
-Overfull \hbox (7725.47116pt too wide) in paragraph at lines 350--350
-[]\T1/lmtt/m/n/10 ## [5] "For everything I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 d b
-een through\nAnd each day, I knew I needed change\nBut there was no way, no way
-\n\nAnd then God whispered your name\nAnd that\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10
- s when everything changed\nAnd love came out of the rain\nAnd talk about being
- saved\n\nSuddenly I wanna live\nMore than I ever did\nI\TS1/lmtt/m/n/10 '\T1/l
-mtt/m/n/10 m never gonna be the same\nOh, when God whispered your name\n\nI can
- see the sunshine\nFor the first time in a while\nGirl, it\TS1/lmtt/m/n/10 '\T1
-/lmtt/m/n/10 s like I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ve been baptized\nBy the
- warmth of your smile\nWell, call it fate or faith or call it crazy either way\
-nIt\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s amazin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 
-, amazin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 grace\n\nOh, when God whispered your
- name\nAnd that\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s when everything changed\nLov
-e came out of the rain\nTalk about being saved\n\nWell, suddenly I wanna live\n
-More than I ever did\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m never gonna be the s
-ame\nWhen God whispered your name\n\nIt\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s just
- what I needed to hear, baby\nIt couldn\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t have
- been more loud and clear\n\nOh, when God whispered your name\nAnd that\TS1/lmt
-t/m/n/10 '\T1/lmtt/m/n/10 s when everything changed\nLove came out of the rain 
-(out of the rain)\nAnd talk about being saved\n\nOh, suddenly I wanna live\nMor
-e than I ever did\nI\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m never gonna be the same
-\nWhen God whispered your name, oh yeah\n\nHallelujah, Hallelujah\nHallelujah\n
-Ooh, Hallelujah, baby\nHallelujah, Hallelujah (oh yeah)\nHallelujah (ooh, yeah)
-\nI can see the sunlight shinin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 through your 
-pretty eyes, baby\nHallelujah, Hallelujah\nI like a man who leaves, time feels 
-like hell\n\nHallelujah\nGot my hands up high, I got my hands up to the sky\nHa
-llelujah, Hallelujah (ooh, I\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 m sayin\TS1/lmtt/
-m/n/10 ' \T1/lmtt/m/n/10 thank you)\nHallelujah\nHallelujah, Hallelujah\nHallel
-ujah\n"[] 
- []
-
-
-Overfull \hbox (8465.71901pt too wide) in paragraph at lines 350--350
-[]\T1/lmtt/m/n/10 ## [6] "Sippin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on a frozen 
-drink\n\nTiki bars tik\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 n pourin\TS1/lmtt/m/n/1
-0 ' \T1/lmtt/m/n/10 all weekend\nClouds ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t 
-leakin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 no rain\nTwo pieces shakin\TS1/lmtt/m/
-n/10 ' \T1/lmtt/m/n/10 white caps breakin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 \nWe
- ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t feelin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/1
-0 no pain, it goes like\n\nOne margarita\nTwo margarita\nThree margarita, shot!
-\nDon\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t worry \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/1
-0 bout tomorrow\nLeave all your sorrow out on the floatin\TS1/lmtt/m/n/10 ' \T1
-/lmtt/m/n/10 dock\nWhen that sun lays down\nWe\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10
- ll be on our way\nOne more barefoot round\nOne more last chance to say\nHey Se
-√\TS1/lmtt/m/n/10 ±\T1/lmtt/m/n/10 orita! don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 
-t you think we need\nA salt and a Buffett song!\nOne margarita\nTwo margarita\n
-Three margarita\nWe\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be gone!\n\nIce blue sk
-ies, shades on the eyes\nTo tuck the bloodshot away\nHair of the dog, shouldn\T
-S1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t take long\nBut who cares, we got all day\nPal
-m trees leanin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 , sunburn screenin\TS1/lmtt/m/n
-/10 '\T1/lmtt/m/n/10 \nBut we\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll all be alrigh
-t, after\n\nOne margarita\nTwo margarita\nThree margarita, shot!\nDon\TS1/lmtt/
-m/n/10 '\T1/lmtt/m/n/10 t worry \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 bout tomorrow
-\nLeave all your sorrow\nOut here on the floatin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n
-/10 dock\nWhen the sun lays down\nWe\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be on 
-our way\nOne more barefoot round\nOne more last chance to say\nHey Se√\TS1/lmtt
-/m/n/10 ±\T1/lmtt/m/n/10 orita! don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t you thin
-k we need\nA salt and a Marley song\nOne margarita\nTwo margarita\nThree margar
-ita\nWe\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be gone!\nWe\TS1/lmtt/m/n/10 '\T1/l
-mtt/m/n/10 ll be gone!\n\nTiki bars tik\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 n, pou
-rin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 all weekend\nClouds ain\TS1/lmtt/m/n/10 '
-\T1/lmtt/m/n/10 t leakin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 no rain\nTwo pieces 
-shakin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 , white caps breakin\TS1/lmtt/m/n/10 '\
-T1/lmtt/m/n/10 \nWe ain\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t feelin\TS1/lmtt/m/n/
-10 ' \T1/lmtt/m/n/10 no pain, feelin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 no pain\
-nIt goes like\n\nOne margarita\nTwo margarita\nThree margarita, shot!\nDon\TS1/
-lmtt/m/n/10 '\T1/lmtt/m/n/10 t worry \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 bout tom
-orrow\nLeave all your sorrow\nOut here on the floatin\TS1/lmtt/m/n/10 ' \T1/lmt
-t/m/n/10 dock\nWhen the sun lays down, we\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll b
-e on our way\nOne barefoot round\nOne more last chance to say\nHey Se√\TS1/lmtt
-/m/n/10 ±\T1/lmtt/m/n/10 orita! don\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 t you thin
-k we need\nA salt and a Chesney song!\n\nOne margarita\nTwo margarita\nThree ma
-rgarita\nWe\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be gone!\nWe\TS1/lmtt/m/n/10 '\
-T1/lmtt/m/n/10 ll be gone!\nWe\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be gone!\n"[
-] 
- []
-
-[3]
-Overfull \hbox (1147.24028pt too wide) in paragraph at lines 401--401
-[]\T1/lmtt/m/n/10 ##  chr "I call beautiful, babe\nTell \TS1/lmtt/m/n/10 '\T1/l
-mtt/m/n/10 em, Blanc\n\nThe way your hair\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 s in
- a mess\nIn the morning when you open your eyes\nThe way an hour goes by when y
-ou say\nThat you\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll be ready in five\n(Yeah, u
-h)\n\nThe little dimple on the side of your smile\nWhen you\TS1/lmtt/m/n/10 '\T
-1/lmtt/m/n/10 re laughing at a movie\nThat you\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10
- "| __truncated__[] 
- []
-
-[4]
-Overfull \hbox (275.74281pt too wide) in paragraph at lines 468--468
-[]\T1/lmtt/m/n/10 ##  $ FileName: chr  "shelton-stefani-nobody-but-you.txt" "la
-mbert-bluebird.txt" "mccollum-pretty-heart.txt" "stell-everywhere-but-on.txt" .
-..[] 
- []
-
-
-Overfull \hbox (2365.23674pt too wide) in paragraph at lines 468--468
-[]\T1/lmtt/m/n/10 ##  $ Content : chr  "And wonder who you are married to\n\nWa
-nna say it now, wanna make it clear\nFor only you and God to hear\nWhen "| __tr
-uncated__ "34 was bad, so I just turn to 35\nYeah, I am a keeper\nI keep diggin
-g down for the deep\nLike the records I am "| __truncated__ "And you loved me t
-he best you could\nI am the one who dropped the ball\nGot you high and let you 
-fall\nLet the "| __truncated__ "Put some days, put some miles in the rearview\n
-A few state lines \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 tween me and you\nJust a li
-ttle space and tim"| __truncated__ ...[] 
- []
-
-
-Overfull \hbox (1147.24028pt too wide) in paragraph at lines 485--485
-[]\T1/lmtt/m/n/10 ##  chr "sun settin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on good
-bye\nyeah, it hard to believe\nit was not me tryin\TS1/lmtt/m/n/10 ' \T1/lmtt/m
-/n/10 to leave this time\n\nit ai not always the cowboy\nthat ai not got a lot 
-of hang around\nai not got no settle down in their boots\ngone just what they d
-o\nthat restless, runnin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 , searchin\TS1/lmtt/m
-/n/10 ' \T1/lmtt/m/n/10 for somethin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 \nleavin\
-TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 "| __truncated__[] 
- []
-
-
-Overfull \hbox (8234.71968pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [1] "and wonder who you are married to\n\nwanna say it no
+)
+Overfull \hbox (8234.71968pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [2] "and wonder who you are married to\n\nwanna say it no
 w, wanna make it clear\nfor only you and god to hear\nwhen you love someone, th
 ey say you set them free\nbut that ai not gonna work for me\n\ni do not wanna l
 ive without you\ni do not wanna even breathe\ni do not wanna dream about you\nw
@@ -1000,8 +515,8 @@ u\n"[]
  []
 
 
-Overfull \hbox (7021.9732pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [2] "34 was bad, so i just turn to 35\nyeah, i am a keepe
+Overfull \hbox (7021.9732pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [3] "34 was bad, so i just turn to 35\nyeah, i am a keepe
 r\ni keep digging down for the deep\nlike the records i am playing\nthey might 
 keep you waiting\nbut you know i am only playing for keeps\n\nand if the house 
 just keeps on winning\ni got a wildcard up my sleeve\nand if love keeps giving 
@@ -1023,8 +538,8 @@ keep a bluebird in my heart\n\nand the bluebird sings\n"[]
  []
 
 
-Overfull \hbox (6124.22581pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [3] "and you loved me the best you could\ni am the one wh
+Overfull \hbox (6124.22581pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [4] "and you loved me the best you could\ni am the one wh
 o dropped the ball\ngot you high and let you fall\nlet the best thing i ever ha
 d slip away\n\nand what does that say about me?\ni could do you like i did\ntha
 t i could break an angel wings\nwhat does that say about me\nthat i stood there
@@ -1044,8 +559,8 @@ y heart\n"[]
  []
 
 
-Overfull \hbox (7762.22105pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [4] "put some days, put some miles in the rearview\na few
+Overfull \hbox (7762.22105pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [5] "put some days, put some miles in the rearview\na few
  state lines \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 tween me and you\njust a little 
 space and time and i would be fine\n\nbut i have been from savannah to long bea
 ch\ntrying to keep your memory out of reach\nbut there you were in the delta ni
@@ -1069,8 +584,8 @@ top me from missing you and looking back\nguess there just one place i have not
  []
 
 
-Overfull \hbox (5929.97638pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [5] "and words by themselves can not right all the wrongs
+Overfull \hbox (5929.97638pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [6] "and words by themselves can not right all the wrongs
 \n\nin a world that gone crazy\nyou do not know what true\nmost people do not c
 hange\nbut some people do\n\nsome people quit drinking too much\nand some peopl
 e quit lying\nsome people decide to grow up\nbut it never good timing\nmost wou
@@ -1089,8 +604,8 @@ ping some people do\n\ni am hoping some people do\n"[]
  []
 
 
-Overfull \hbox (8932.96765pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [6] "you and your girl had a fight\nand now she saying go
+Overfull \hbox (8932.96765pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [7] "you and your girl had a fight\nand now she saying go
 odbye\nshe ran upstairs and packed her bags\n\nit could be raining\TS1/lmtt/m/n
 /10 ' \T1/lmtt/m/n/10 on your perfect vacation\nyou could be stressed about you
 r work situation\nai not gotta listen to me but all i am sayin\TS1/lmtt/m/n/10 
@@ -1123,8 +638,8 @@ mtt/m/n/10 '\T1/lmtt/m/n/10 ll do the trick\nthere ai not nothin\TS1/lmtt/m/n/1
  []
 
 
-Overfull \hbox (8712.46829pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [7] "that one kiss, i knew\nthere was nothing i would not
+Overfull \hbox (8712.46829pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [8] "that one kiss, i knew\nthere was nothing i would not
  do\njust to give you\n\nthat house on the hill with a 4-plank around it\nevery
  last breath \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 til the last star is counted\nju
 st say the word girl, paint me, you are perfect\ni will not quit \TS1/lmtt/m/n/
@@ -1155,8 +670,8 @@ n the sun\nwhatever you need and you want, i will not stop \TS1/lmtt/m/n/10 '\T
  []
 
 
-Overfull \hbox (5998.22618pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [8] "was the first time you ever scared me\n\ngod knows i
+Overfull \hbox (5998.22618pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ##  [9] "was the first time you ever scared me\n\ngod knows i
  do not know\nexactly what i am doin\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 , but\ngo
 od news, we got her to get through it\n\ni hope you look just like your momma\n
 and love her like i do\nyou\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 ll see close to pe
@@ -1180,8 +695,8 @@ irl\nand you will learn how to be a lady\njust how to be a lady\n"[]
  []
 
 
-Overfull \hbox (5819.7267pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ##  [9] "sun settin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on good
+Overfull \hbox (5819.7267pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [10] "sun settin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 on good
 bye\nyeah, it hard to believe\nit was not me tryin\TS1/lmtt/m/n/10 ' \T1/lmtt/m
 /n/10 to leave this time\n\nit ai not always the cowboy\nthat ai not got a lot 
 of hang around\nai not got no settle down in their boots\ngone just what they d
@@ -1207,8 +722,8 @@ es away\nit ai not always the cowboy\n"[]
  []
 
 
-Overfull \hbox (12119.70839pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [10] "i call beautiful, babe\ntell them, blanc\n\nthe way 
+Overfull \hbox (12119.70839pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [11] "i call beautiful, babe\ntell them, blanc\n\nthe way 
 your hair in a mess\nin the morning when you open your eyes\nthe way an hour go
 es by when you say\nthat you will be ready in five\n(yeah, uh)\n\nthe little di
 mple on the side of your smile\nwhen you are laughing at a movie\nthat you have
@@ -1244,8 +759,8 @@ way god made you)\n"[]
  []
 
 
-Overfull \hbox (5677.97711pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [11] "i said, \"you know and i know\"\nyou are perfect for
+Overfull \hbox (5677.97711pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [12] "i said, \"you know and i know\"\nyou are perfect for
  me\neverything i will ever need\ni ai not playing what i am sayin\TS1/lmtt/m/n
 /10 '\T1/lmtt/m/n/10 \n\nwhen i got what i got i do not miss what i had\nthe ol
 d me before you belongs to the past\nin the back of your mind you might think\n
@@ -1266,8 +781,8 @@ ot\nwhen i got what i got, girl, i do not\n"[]
  []
 
 
-Overfull \hbox (9379.21635pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [12] "drop a deer from a stand, catch a fish with a bobber
+Overfull \hbox (9379.21635pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [13] "drop a deer from a stand, catch a fish with a bobber
 \ndrink a beer out the can, liquor out the bottle\nhow the good lord intended i
 t, yes he did\n\ni love my country\ni love my country\nsix strings and fiddles\
 nwhiskey from kentucky\n\nwe keep it funky\nwe like how it sounds\nmonday to su
@@ -1295,8 +810,8 @@ try up loud\nyeah, way up loud\n\nthat a country-ass lick right there, boy\n"[]
  []
 
 
-Overfull \hbox (8239.96967pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [13] "because we ai not gonna get to one day\nthat why we 
+Overfull \hbox (8239.96967pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [14] "because we ai not gonna get to one day\nthat why we 
 drink\n\nbecause the sun up\nbecause it sundown\nbecause my wound up needs a li
 ttle unwound\nbecause we have been workin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 all
  day but we are done now\nyeah, that why we drink\n\nbecause they are ice cold\
@@ -1324,8 +839,8 @@ alcohol abuse, if you pour one down the sink\nyeah, that why we drink\n\nyea-ee
  []
 
 
-Overfull \hbox (6423.47495pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [14] "but then you get that money, you still feel broke\n\
+Overfull \hbox (6423.47495pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [15] "but then you get that money, you still feel broke\n\
 nonce i get a little older, i will not worry\nthen you get older and it do not 
 feel like it should\ni am thinking once i learn to grow right where i am plante
 d\nmaybe that when life starts getting good\n\nonce i get a car that do not sta
@@ -1345,8 +860,8 @@ ealise my life already good\nthank god that my life already good\n"[]
  []
 
 
-Overfull \hbox (10597.21281pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [15] "oh baby i, i hope you hear a song\nthat makes you si
+Overfull \hbox (10597.21281pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [16] "oh baby i, i hope you hear a song\nthat makes you si
 ng along and gets you thinking about\nher then the last several miles turns int
 o a blur, yeah\n\ni hope you both feel the sparks by the end of the drive\ni ho
 pe you know she the one by the end of the night\ni hope you never ever felt mor
@@ -1376,8 +891,8 @@ nand then i hope she cheats\nlike you did on me\n\nlike you did on me\n"[]
  []
 
 
-Overfull \hbox (9604.9657pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [16] "way out here\nwhere we are from\nwe do not say, \"oo
+Overfull \hbox (9604.9657pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [17] "way out here\nwhere we are from\nwe do not say, \"oo
 h-la-la, p„\TS1/lmtt/m/n/10 ©\T1/lmtt/m/n/10 rignon\"\ndo not need no bottle se
 rvice budget (no)\ngot no money but we love it (woo)\n\nraisin\TS1/lmtt/m/n/10 
 ' \T1/lmtt/m/n/10 plastic cups to a life of luxury\nc\TS1/lmtt/m/n/10 '\T1/lmtt
@@ -1413,8 +928,8 @@ rinkin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 beer on a champagne night\n"[]
  []
 
 
-Overfull \hbox (8444.71907pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [17] "on saturday night\nthen i say, \"how you been?\"\n\"
+Overfull \hbox (8444.71907pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [18] "on saturday night\nthen i say, \"how you been?\"\n\"
 good how \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 bout you?\"\nfunny how i see you onc
 e after a few months\nget you locked out right back to\n\ntell the folks you kn
 ow i know all about\nsome new guy takin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 you o
@@ -1441,8 +956,8 @@ you\nbut some girls never do\n"[]
  []
 
 
-Overfull \hbox (9599.71571pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [18] "and i do not know where it all went wrong\ni know i 
+Overfull \hbox (9599.71571pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [19] "and i do not know where it all went wrong\ni know i 
 coulda kissed you harder\nand yeah, you coulda followed through\nshoulda talked
  a little bit softer\nbut we meant every \"i love you\"\n\ni do not know what t
 his is or what it is not\nbut it feels like we have got unfinished business\n\n
@@ -1470,8 +985,8 @@ nstill, wonder\nwhat could have been?\n"[]
  []
 
 
-Overfull \hbox (7006.22325pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [19] "she says no one i would know\n\nmaybe i am crazy, ma
+Overfull \hbox (7006.22325pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [20] "she says no one i would know\n\nmaybe i am crazy, ma
 ybe i am not\nmaybe she guilty, maybe she caught\n\nshe bringing back cheatin\T
 S1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 songs\nthe kinda hurt that gets you singing al
 ong\nsomething circa-1973\nshe lying with him and she lying to me\nshe bringing
@@ -1499,8 +1014,8 @@ S1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 songs\n"[]
  []
 
 
-Overfull \hbox (9216.46683pt too wide) in paragraph at lines 543--543
-[]\T1/lmtt/m/n/10 ## [20] "what it gonna be waitin\TS1/lmtt/m/n/10 ' \T1/lmtt/m
+Overfull \hbox (9216.46683pt too wide) in paragraph at lines 238--238
+[]\T1/lmtt/m/n/10 ## [21] "what it gonna be waitin\TS1/lmtt/m/n/10 ' \T1/lmtt/m
 /n/10 on that test?\nnever thought that they would be\nputting those life plans
  on the shelf\na couple american babies raisin\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/1
 0 one up their self\n\none beer turns into a lit cigarette burnin\TS1/lmtt/m/n/
@@ -1539,15 +1054,15 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.543 \end{verbatim}
+l.238 \end{verbatim}
                      
 Here is how much of TeX's memory you used:
- 12722 strings out of 480994
- 188161 string characters out of 5912128
- 616762 words of memory out of 5000000
- 27969 multiletter control sequences out of 15000+600000
- 559870 words of font info for 72 fonts, out of 8000000 for 9000
+ 12206 strings out of 480994
+ 180365 string characters out of 5912128
+ 603970 words of memory out of 5000000
+ 27469 multiletter control sequences out of 15000+600000
+ 563673 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,5n,42p,2905b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,4n,42p,2905b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

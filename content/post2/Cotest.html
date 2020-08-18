@@ -1,0 +1,125 @@
+---
+title: "1 Topic Models"
+date: 2020-03-13T14:19:53-05:00
+draft: false
+diagram: true
+links:
+  - icon_pack: fab
+    name: Methods
+    url: courses/example2
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+
+
+<pre class="r"><code>library(LDAvis)
+help(createJSON, package = &quot;LDAvis&quot;)
+
+createJSON</code></pre>
+<pre><code>## function (phi = matrix(), theta = matrix(), doc.length = integer(), 
+##     vocab = character(), term.frequency = integer(), R = 30, 
+##     lambda.step = 0.01, mds.method = jsPCA, cluster, plot.opts = list(xlab = &quot;PC1&quot;, 
+##         ylab = &quot;PC2&quot;), ...) 
+## {
+##     dp &lt;- dim(phi)
+##     dt &lt;- dim(theta)
+##     N &lt;- sum(doc.length)
+##     W &lt;- length(vocab)
+##     D &lt;- length(doc.length)
+##     K &lt;- dt[2]
+##     if (dp[1] != K) 
+##         stop(&quot;Number of rows of phi does not match \n      number of columns of theta; both should be equal to the number of topics \n      in the model.&quot;)
+##     if (D != dt[1]) 
+##         stop(&quot;Length of doc.length not equal \n      to the number of rows in theta; both should be equal to the number of \n      documents in the data.&quot;)
+##     if (dp[2] != W) 
+##         stop(&quot;Number of terms in vocabulary does \n      not match the number of columns of phi (where each row of phi is a\n      probability distribution of terms for a given topic).&quot;)
+##     if (length(term.frequency) != W) 
+##         stop(&quot;Length of term.frequency \n      not equal to the number of terms in the vocabulary.&quot;)
+##     if (any(nchar(vocab) == 0)) 
+##         stop(&quot;One or more terms in the vocabulary\n      has zero characters -- all terms must have at least one character.&quot;)
+##     phi.test &lt;- all.equal(rowSums(phi), rep(1, K), check.attributes = FALSE)
+##     theta.test &lt;- all.equal(rowSums(theta), rep(1, dt[1]), check.attributes = FALSE)
+##     if (!isTRUE(phi.test)) 
+##         stop(&quot;Rows of phi don&#39;t all sum to 1.&quot;)
+##     if (!isTRUE(theta.test)) 
+##         stop(&quot;Rows of theta don&#39;t all sum to 1.&quot;)
+##     topic.frequency &lt;- colSums(theta * doc.length)
+##     topic.proportion &lt;- topic.frequency/sum(topic.frequency)
+##     o &lt;- order(topic.proportion, decreasing = TRUE)
+##     phi &lt;- phi[o, ]
+##     theta &lt;- theta[, o]
+##     topic.frequency &lt;- topic.frequency[o]
+##     topic.proportion &lt;- topic.proportion[o]
+##     mds.res &lt;- mds.method(phi)
+##     if (is.matrix(mds.res)) {
+##         colnames(mds.res) &lt;- c(&quot;x&quot;, &quot;y&quot;)
+##     }
+##     else if (is.data.frame(mds.res)) {
+##         names(mds.res) &lt;- c(&quot;x&quot;, &quot;y&quot;)
+##     }
+##     else {
+##         warning(&quot;Result of mds.method should be a matrix or data.frame.&quot;)
+##     }
+##     mds.df &lt;- data.frame(mds.res, topics = seq_len(K), Freq = topic.proportion * 
+##         100, cluster = 1, stringsAsFactors = FALSE)
+##     term.topic.frequency &lt;- phi * topic.frequency
+##     term.frequency &lt;- colSums(term.topic.frequency)
+##     stopifnot(all(term.frequency &gt; 0))
+##     term.proportion &lt;- term.frequency/sum(term.frequency)
+##     phi &lt;- t(phi)
+##     topic.given.term &lt;- phi/rowSums(phi)
+##     kernel &lt;- topic.given.term * log(sweep(topic.given.term, 
+##         MARGIN = 2, topic.proportion, `/`))
+##     distinctiveness &lt;- rowSums(kernel)
+##     saliency &lt;- term.proportion * distinctiveness
+##     default.terms &lt;- vocab[order(saliency, decreasing = TRUE)][1:R]
+##     counts &lt;- as.integer(term.frequency[match(default.terms, 
+##         vocab)])
+##     Rs &lt;- rev(seq_len(R))
+##     default &lt;- data.frame(Term = default.terms, logprob = Rs, 
+##         loglift = Rs, Freq = counts, Total = counts, Category = &quot;Default&quot;, 
+##         stringsAsFactors = FALSE)
+##     topic_seq &lt;- rep(seq_len(K), each = R)
+##     category &lt;- paste0(&quot;Topic&quot;, topic_seq)
+##     lift &lt;- phi/term.proportion
+##     find_relevance &lt;- function(i) {
+##         relevance &lt;- i * log(phi) + (1 - i) * log(lift)
+##         idx &lt;- apply(relevance, 2, function(x) order(x, decreasing = TRUE)[seq_len(R)])
+##         indices &lt;- cbind(c(idx), topic_seq)
+##         data.frame(Term = vocab[idx], Category = category, logprob = round(log(phi[indices]), 
+##             4), loglift = round(log(lift[indices]), 4), stringsAsFactors = FALSE)
+##     }
+##     lambda.seq &lt;- seq(0, 1, by = lambda.step)
+##     if (missing(cluster)) {
+##         tinfo &lt;- lapply(as.list(lambda.seq), find_relevance)
+##     }
+##     else {
+##         tinfo &lt;- parallel::parLapply(cluster, as.list(lambda.seq), 
+##             find_relevance)
+##     }
+##     tinfo &lt;- unique(do.call(&quot;rbind&quot;, tinfo))
+##     tinfo$Total &lt;- term.frequency[match(tinfo$Term, vocab)]
+##     rownames(term.topic.frequency) &lt;- paste0(&quot;Topic&quot;, seq_len(K))
+##     colnames(term.topic.frequency) &lt;- vocab
+##     tinfo$Freq &lt;- term.topic.frequency[as.matrix(tinfo[c(&quot;Category&quot;, 
+##         &quot;Term&quot;)])]
+##     tinfo &lt;- rbind(default, tinfo)
+##     ut &lt;- sort(unique(tinfo$Term))
+##     m &lt;- sort(match(ut, vocab))
+##     tmp &lt;- term.topic.frequency[, m]
+##     r &lt;- row(tmp)[tmp &gt;= 0.5]
+##     c &lt;- col(tmp)[tmp &gt;= 0.5]
+##     dd &lt;- data.frame(Term = vocab[m][c], Topic = r, Freq = round(tmp[cbind(r, 
+##         c)]), stringsAsFactors = FALSE)
+##     dd[, &quot;Freq&quot;] &lt;- dd[, &quot;Freq&quot;]/term.frequency[match(dd[, &quot;Term&quot;], 
+##         vocab)]
+##     token.table &lt;- dd[order(dd[, 1], dd[, 2]), ]
+##     RJSONIO::toJSON(list(mdsDat = mds.df, tinfo = tinfo, token.table = token.table, 
+##         R = R, lambda.step = lambda.step, plot.opts = plot.opts, 
+##         topic.order = o))
+## }
+## &lt;bytecode: 0x55d780906670&gt;
+## &lt;environment: namespace:LDAvis&gt;</code></pre>
+<div id="notes" class="section level1">
+<h1>Notes</h1>
+</div>

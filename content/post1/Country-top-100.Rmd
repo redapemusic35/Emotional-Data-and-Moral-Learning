@@ -19,61 +19,23 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 
 One of the books that I have been working my way through, is a collection of papers on the phenomenon of empathy [@copl11b]. The collection of papers all seek to articulate the phenomenon of empathy as a means of "mind reading," meaning that empathy helps us to understand or to predict what another might do. Empathy "has been seen as important in relation to our capacity to gain a grasp of the content of other people's minds, and to predict and explain what they will think, feel, and do" [@copl11b, ix]. Further, empathy has been seen as important for our ethical relations with one another: "in relation to our capacity to respond to others ethically---enabling us not only to gain a grasp of the other's suffering, but also to respond in an ethically appropriate way" [ix].
 
-I have attempted to argue elsewhere in this project, that @stum10 has a similar treatment of mind reading according to which she argues that narratives provide a way to have what she calls "second personal knowledge." If Coplan is right, then using this understanding of second personal knowledge, as facilitated by narrative, it might be thought that empathy is a vehicle through which we can come to know others second personally, and that narratives provide a way in which we might come to know others empathically. 
+I have attempted to argue elsewhere in this project, that @stum10 has a similar treatment of mind reading according to which she argues that narratives provide a way to have what she calls "second personal knowledge" which is a kind of *knowledge by acquaintance*. If Coplan is right, then using this understanding of second personal knowledge, knowledge of a person by acquaintance, as it might be facilitated by narrative, it might be thought that narrative is a vehicle through which we can come to know others second personally, we come to know what they feel and predict what they may do as a result because of a narratives capacity to induce empathy. Narratives provide a way in which we might come to know others empathically. 
 
 There are two ways in which I might be acquainted with another; the first is that I might know certain facts about that person. That they like strawberry flavored ice cream, ride a bike to class 3 days a week, and have never been outside of the country. However, there is another way in which I can come to know a person, and this is through acquaintance, second personally. Further, it seems as though this kind of knowledge can only be had through acquaintance, and that narratives can provide a vehicle by which this acquaintance happens. As such, narratives help us to know others second personally by acquainting us with that person.
 
-Why is all of this important? Well, in @copl11b's book, No&euml;l @carr10 writes about the emotive responses of audiences to fictional characters in narratives. He outlines a number of ways in which the emotions of the audiences either converge, are congruent with, or resonate with those of the characters.
+Why is all of this important? Well, in @copl11b's book, No&euml;l @carr10 writes about the emotive responses of audiences to fictional characters in narratives. He outlines a number of ways in which the emotions of the audiences either converge, are congruent with, or resonate with those of the characters [@carr10, 162].
 
-Some relationships between characters and their audiences which he examines:
+Here are some relationships between characters and their audiences which he examines:
 
 1. Coincidentally occurring emotions; emotions coincidentally occurring simultaneously. This includes:
    1. the antipathy element of solidarity, simultaneously expressing anger or outrage towards some event or circumstance.
    2. Vectrially converging emotions---these can encompass certain episodes of sympathetic feeling; expressing sympathy towards or for another.
-2. Mirror reflexes---affective states---these are not fully articulated emotions, but can contribute to their formation. They include merely expressing the same emotions as another, say what might occur in one's facial expressions which communicates that they understand the pain another narrates in a conversation.
+2. Mirror reflexes---affective states---these are not fully articulated emotions, but can contribute to their formation. They include merely expressing the same emotions as another, say what might occur in one's facial expressions which communicates that they understand the pain another shares in a conversation.
 
-Central to this project, is the idea that it is possible that some types of music may disseminate moral knowledge while others may undermine moral knowledge. To understand whether we might have reason to accept this assertion, I first consider the way music lyrics as narratives, acquaint us with the characters, or the perceived characters that those lyrics are about. Second, we might wonder whether those lyrics facilitate good relationships, assuming that moral knowledge has something to say about what our relationships with others should be like. So to understand how important relationships among people may be in country music, I will run some topic analyses on billboard's country top 50 for May 23, 2020.
+Central to my emotional data project on a whole, is the idea that it is possible that some types of music may disseminate moral knowledge while others may undermine moral knowledge. To understand whether we might have reason to accept this assertion, I first consider the way music lyrics as narratives, acquaint us with the characters, or the perceived characters that those lyrics are about. Second, we might wonder whether these lyrics facilitate good relationships, in the current case we might say "induce empathy," assuming that moral knowledge has something to say about what our relationships with others should be like. So to understand how important relationships among people may be in country music, I will run some topic analyses on billboard's country top 50 for May 23, 2020.
 
 ##### Country Music Files
-
-```{r List Files}
-
-data <- read.delim("/home/redapemusic35/VimWiki/subjects/projects/tutorial/countrycharts.txt")
-data2 <- read.delim("/home/redapemusic35/VimWiki/subjects/projects/tutorial/hip-hop-charts.txt")
-summary(data)
-summary(data2)
-
-```
-
-Next, I will import the lyrics to these songs:
-
-```{r echo = FALSE, message = FALSE}
-
-files <- list.files(path = "/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-txt-files/", pattern = NULL, all.files = FALSE, full.names = FALSE, recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE)
-files2 <- list.files(path = "/home/redapemusic35/VimWiki/subjects/projects/lyrics/hip-hop-txt-files/", pattern = NULL, all.files = FALSE, full.names = FALSE, recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE)
-head(files)
-head(files2)
-
-```
-
-
-```{r echo = FALSE, message = FALSE}
-
-lyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
-hiphoplyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/mycsv8.csv", header = TRUE, stringsAsFactors = FALSE)
-hiphoplyrics2 <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/mycsv8.csv", header = TRUE, stringsAsFactors = FALSE)
-head(lyrics$FileName)
-tail(lyrics$FileName)
-head(lyrics$Content)
-tail(lyrics$Content)
-head(hiphoplyrics$FileName)
-head(hiphoplyrics$Content)
-
-hiphoplyrics2$FileName <- as.factor(hiphoplyrics2$FileName)
-str(hiphoplyrics)
-```
-
-```{r echo = FALSE, message = FALSE}
+```{r}
 library(magrittr)
 library(ggplot2)
 library(gridExtra)
@@ -84,15 +46,53 @@ library(readr)
 library(tidyr)
 library(stringr)
 library(janeaustenr)
+library(scales)
 
-names(lyrics)
+```
+```{r List Files, echo = FALSE, messages = FALSE}
 
-glimpse(lyrics[30,])
+data <- read.delim("/home/redapemusic35/VimWiki/subjects/projects/tutorial/countrycharts.txt")
+data2 <- read.delim("/home/redapemusic35/VimWiki/subjects/projects/tutorial/hip-hop-charts.txt")
+summary(data)
+summary(data2)
 
-dim(lyrics)
+```
 
-str(lyrics[10, ]$Content, nchar.max = 300)
-str(hiphoplyrics[10, ]$Content, nchar.max = 300)
+```{r echo = FALSE, messages = FALSE}
+
+files <- list.files(path = "/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-txt-files/", pattern = NULL, all.files = FALSE, full.names = FALSE, recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE)
+files2 <- list.files(path = "/home/redapemusic35/VimWiki/subjects/projects/lyrics/hip-hop-txt-files/", pattern = NULL, all.files = FALSE, full.names = FALSE, recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE)
+# head(files)
+# head(files2)
+```
+
+
+```{r echo = FALSE, message = FALSE}
+
+lyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
+hiphoplyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/hiphoplyrics.csv", header = TRUE, stringsAsFactors = FALSE)
+hiphoplyrics2 <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/hiphoplyrics.csv", header = TRUE, stringsAsFactors = FALSE)
+# head(lyrics$FileName)
+# tail(lyrics$FileName)
+# head(lyrics$Content)
+# tail(lyrics$Content)
+# head(hiphoplyrics$FileName)
+# head(hiphoplyrics$Content)
+
+# hiphoplyrics2$FileName <- as.factor(hiphoplyrics2$FileName)
+# str(hiphoplyrics)
+```
+
+```{r echo = FALSE, message = FALSE}
+
+# names(lyrics)
+
+# glimpse(lyrics[30,])
+
+# dim(lyrics)
+
+# str(lyrics[10, ]$Content, nchar.max = 300)
+# str(hiphoplyrics[10, ]$Content, nchar.max = 300)
 
 fix.contractions <- function(doc) {
   doc <- gsub("won't", "will not", doc)
@@ -114,8 +114,8 @@ fix.contractions <- function(doc) {
   doc <- gsub("'em", "them", doc)
   doc <- gsub("dancin'", "dancing", doc)
   doc <- gsub("playin'", "playing", doc)
-  doc <- gsub("ain't", "have not", doc)
-  doc <- gsub("Ain't", "Have not", doc)
+  doc <- gsub("ain't", "is not", doc)
+  doc <- gsub("Ain't", "Is not", doc)
   doc <- gsub("They'll", "They will", doc)
   doc <- gsub("they'll", "they will", doc)
   doc <- gsub("gettin'", "getting", doc)
@@ -129,8 +129,8 @@ fix.contractions <- function(doc) {
   return(doc)
 }
 
-lyrics$Content <- sapply(lyrics$Content, fix.contractions)
-hiphoplyrics$Content <- sapply(hiphoplyrics$Content, fix.contractions)
+lyrics <- sapply(lyrics, fix.contractions)
+hiphoplyrics <- sapply(hiphoplyrics, fix.contractions)
 
 # function to remove special characters
 
@@ -139,47 +139,44 @@ removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
 # remove special characters
 
 # Show how many observations and columns there are
-dim(lyrics)
-dim(hiphoplyrics)
+# dim(lyrics)
+# dim(hiphoplyrics)
 # Other details of the created data file.
-str(lyrics)
-str(hiphoplyrics)
+# str(lyrics)
+# str(hiphoplyrics)
 # function to remove special characters
 
 # remove special characters
 
 # convert everything to lower case
-lyrics$Content <- sapply(lyrics$Content, tolower)
-hiphoplyrics$Content <- sapply(hiphoplyrics$Content, tolower)
+lyrics <- sapply(lyrics, tolower)
+hiphoplyrics <- sapply(hiphoplyrics, tolower)
 
-str(lyrics[9, ]$Content, nchar.max = 300)
-str(hiphoplyrics[9, ]$Content, nchar.max = 300)
+# str(lyrics[9, ]$Content, nchar.max = 300)
+# str(hiphoplyrics[9, ]$Content, nchar.max = 300)
 
-lyrics$Content
-summary(lyrics)
-hiphoplyrics$Content
-summary(hiphoplyrics$Content)
+# lyrics$Content
+head(lyrics)
+
+
+# hiphoplyrics$Content
+head(hiphoplyrics)
+
+
 
 ```
 
 ## Topic Analysis on Country's Top Songs
 
-One particularly interesting aspect of this discussion is Carroll's idea that sympathy for a character governs whether the audience will empathize with that character [@carr10, 174], meaning that in order for an audience to empathize with a character, they most first be able to sympathize with that character. Further, what determines whether the audience will sympathize with a character, is whether the audience is capable of having altruistic attitudes towards the characters in question. In order to experience emotions of altruism, the audience perceives them as morally good. However, sometimes what causes us to determine whether someone is morally good, is that their interests align with ours, or whether that person's interests align with those of her community in a way in which our own would in a similar situation. Carroll calls these kinds of factors factors of kinship, group membership, group interests etc. We like people who get along well, and care about those in their community who are good, and we resonate and therefore sympathize with them.
+One particularly interesting aspect of this discussion is Carroll's idea that sympathy for a character governs whether the audience will empathize with that character [@carr10, 174]. In other words, in order for an audience to empathize with a character, they most first be able to sympathize with that character. Further, what determines whether the audience will sympathize with a character, is whether the audience is capable of having altruistic attitudes towards the characters in question. In order to experience emotions of altruism, the audience perceives them as morally good. However, sometimes what causes us to determine whether someone is morally good, is that their interests align with ours, or whether that person's interests align with those of her community in a way in which our own would in a similar situation. Carroll calls these kinds of factors factors of kinship, group membership, group interests etc. We like people who get along well, and care about those in their community who are good, and we resonate and therefore sympathize with them.
 
-After cleaning the data considerably, I have a frame of data which consists of two columns. The first frame has 1,160 lines of data while the second has 2,733. Each line in the first frame is a tokenized version of all of the lyrics in either the country, first frame, or hip-hop, second frame. A token is merely a word from a lyric while the right column consists of the number of instances of that token in the entire corpus.
+After cleaning the data considerably, I have two frames of data each of which consists of two columns. The first frame has 1,160 lines of data while the second has 2,733. Each line in the first frame is a tokenized version of all of the lyrics in either the country, first frame, or hip-hop, second frame. A token is merely a word from a lyric while the right column consists of the number of instances of that token in the entire corpus whether hip-hop or country.
 
 ```{r echo = FALSE, message = FALSE}
-library(magrittr)
-library(ggplot2)
-library(gridExtra)
-library(tidytext)
-library(wordcloud2)
-library(dplyr)
-library(readr)
-library(scales)
+
 
 setwd("/home/redapemusic35/VimWiki/subjects/projects/lyrics/")
-lyrics <- read.csv("country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
+# lyrics <- read.csv("country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
 
 fix.contractions <- function(doc) {
   doc <- gsub("won't", "will not", doc)
@@ -219,41 +216,40 @@ fix.contractions <- function(doc) {
 
 
 # function to remove special characters
-lyrics$Content <- sapply(lyrics$Content, fix.contractions)
-lyrics$FileName <- sapply(lyrics$FileName, fix.contractions)
+# lyrics <- sapply(lyrics$Content, fix.contractions)
 
-hiphoplyrics$Content <- sapply(hiphoplyrics$Content, fix.contractions)
-hiphoplyrics$FileName <- sapply(hiphoplyrics$FileName, fix.contractions)
+# hiphoplyrics <- sapply(hiphoplyrics$Content, fix.contractions)
+# hiphoplyrics <- sapply(hiphoplyrics$FileName, fix.contractions)
 
 # remove special characters
 
 
-removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
+# removeSpecialChars <- function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
 
-lyrics$Content <- sapply(lyrics$Content, removeSpecialChars)
-lyrics$FileName <- sapply(lyrics$FileName, removeSpecialChars)
+# lyrics$Content <- sapply(lyrics$Content, removeSpecialChars)
+# lyrics$FileName <- sapply(lyrics$FileName, removeSpecialChars)
 
-hiphoplyrics$Content <- sapply(hiphoplyrics$Content, removeSpecialChars)
-hiphoplyrics$FileName <- sapply(hiphoplyrics$FileName, removeSpecialChars)
+# hiphoplyrics$Content <- sapply(hiphoplyrics$Content, removeSpecialChars)
+# hiphoplyrics$FileName <- sapply(hiphoplyrics$FileName, removeSpecialChars)
 
 # convert everything to lower case
-lyrics$Content <- sapply(lyrics$Content, tolower)
-lyrics$Filename <- sapply(lyrics$FileName, tolower)
+# lyrics$Content <- sapply(lyrics$Content, tolower)
+# lyrics$Filename <- sapply(lyrics$FileName, tolower)
 
-hiphoplyrics$Content <- sapply(hiphoplyrics$Content, tolower)
-hiphoplyrics$Filename <- sapply(hiphoplyrics$FileName, tolower)
+# hiphoplyrics$Content <- sapply(hiphoplyrics$Content, tolower)
+# hiphoplyrics$Filename <- sapply(hiphoplyrics$FileName, tolower)
 
-content <- lyrics$Content
-name <- lyrics$FileName
+content <- lyrics
+name <- lyrics
 
-hiphopcontent <- hiphoplyrics$Content
-hiphopname <- hiphoplyrics$FileName
+hiphopcontent <- hiphoplyrics
+hiphopname <- hiphoplyrics
 
-lyrics_df <- tibble(name = 1:50, text = content)
+lyrics_df <- tibble(name = 1:100, text = content)
 lyrics2_df <- lyrics_df %>%
   unnest_tokens(word, text)
 
-hiphoplyrics_df <- tibble(name = 1:50, text = hiphopcontent)
+hiphoplyrics_df <- tibble(name = 1:100, text = hiphopcontent)
 hiphoplyrics2_df <- hiphoplyrics_df %>%
   unnest_tokens(word, text)
 
@@ -276,9 +272,9 @@ hiphoplyrics2_df %>%
   count(word, sort = TRUE)
 ```
 
-What I show here, are two distinct data frames. The first includes those words which are used most frequently in the top 50 country songs of the billboard country charts, taken May 23, 2020. Ignoring "ai" which shows to have been repeated 127 times in 50 sets of lyrics, the most frequent word used in these lyrics is "love" at 107 usage instance in 50 song lyrics. The next, "yeah" should likely be articulated as a "stop-word." Stop-words are words like "and," "the," "it," and are typically not thought as contributing to the content meaning in a data source.
+What I show here, are two distinct data frames. The first includes those words which are used most frequently in the top 50 country songs of the billboard country charts, taken May 23, 2020. Ignoring "ai" (which I believe is a malformed version of the word "ain't) which shows to have been repeated 127 times in 50 sets of lyrics, the most frequent word used in these lyrics is "love" at 107 usage instance in 50 song lyrics. The next, "yeah" should likely be articulated as a *stop-word* as should "ai." Stop-words are words like "and," "the," "it," and are typically not thought of as contributing to the content meaning in a data source.
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 lyrics2_df %>%
   count(word, sort = TRUE) %>%
   filter(n > 30) %>%
@@ -308,7 +304,7 @@ To do so, I will compare the language used in Jane Austen's "Sense and Sensibili
 
 Obviously the data sets built from the novels above are quite a bit larger than those of the country and hip-hop data sets. However, the algorithm I use, as I will show, does a very good job, nevertheless in distinguishing between each of these. Yet, for other reasons, what follows next may not be the best comparison made, i.e., we might naturally expect differences in language in this way given that each of these are written in different historical periods. Yet, as I will show, it is still the case that the language used in the country set is more similar to that used in each of the novels. 
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 library(gutenbergr)
 original_books <- austen_books() %>%
  group_by(book) %>%
@@ -374,9 +370,9 @@ In the first frame, I have broken up Jane Austen's "Sense and Sensibility" into 
 
 In the fourth frame, I count the number of instances of a particular word in the H.G. Well's novels. You will see here that the word "time" occurs the most frequently at 454 instances. Finally, in the fifth frame, the words "time," and "miss" are the most frequently occurring in the Bronte Sister's novels.
 
-In the frame immediately following this one, I compare the Jane Austen novels against the Bronte Sister and H.G. Wells' novels. Those words closest to the dotted line running though the middle of the frame are those words with the most similarly usage frequency. I.e., the words "miss" and "time" have a similar usage frequency in the Jane Austen and Bronte Sister's novels. It is likely that this is to be expected given that the lives of Jane Austen and the Bronte Sisters overlapped---though they wrote in different styles---while H.G. Wells wrote in the late 19th and early 20th century [@robi00]. Additionally, those words further from the dotted line in the middle, are words that found more in one text than in the other. Consequently, looking at the Bronte Sisters, words like "Elizabeth" are found more in Jane Austen novels than they are in novels written by the Bronte Sisters. Looking at H.G. Wells, words like "miss" are found more in Jane Austen novels than in H.G. Wells while words like "smoke" are found more in H.G. Wells than in Jane Austen.
+In the frame immediately following this one, I compare the Jane Austen novels against the Bronte Sister's and H.G. Wells' novels. Those words closest to the dotted line running though the middle of the frame are those words with the most similarly usage frequency. I.e., the words "miss" and "time" have a similar usage frequency in the Jane Austen and Bronte Sister's novels. It is likely that this is to be expected given that the lives of Jane Austen and the Bronte Sisters overlapped---though they wrote in different styles---while H.G. Wells wrote in the late 19th and early 20th century [@robi00]. Additionally, those words further from the dotted line in the middle, are words that found more in one text than in the other. Consequently, looking at the Bronte Sisters, words like "Elizabeth" are found more in Jane Austen novels than they are in novels written by the Bronte Sisters. Looking at H.G. Wells, words like "miss" are found more in Jane Austen novels than in H.G. Wells while words like "smoke" are found more in H.G. Wells than in Jane Austen.
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 ggplot(frequency, aes(x=proportion, y=`Jane Austen`, 
                   color=abs(`Jane Austen` - proportion))) +
 geom_abline(color="gray40", lty=2) +
@@ -391,7 +387,7 @@ theme(legend.position="none") +
 labs(y="Jane Austen", x=NULL)
 ```
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 originalbooks <- austen_books() %>%
   group_by(book) %>%
   mutate(linenumber = row_number(),
@@ -438,14 +434,14 @@ frequency <- bind_rows(mutate(lyrics2_df, author = "lyrics"),
 # frequency
 ```
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 
 
-lyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
-hiphoplyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/mycsv8.csv", header = TRUE, stringsAsFactors = FALSE)
+# lyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/country-lyrics.csv", header = TRUE, stringsAsFactors = FALSE)
+# hiphoplyrics <- read.csv("/home/redapemusic35/VimWiki/subjects/projects/lyrics/mycsv8.csv", header = TRUE, stringsAsFactors = FALSE)
 
-countrytext_df <- tibble(line = 1:50, text = lyrics$Content)
-hiphoptext_df <- tibble(line = 1:50, text = hiphoplyrics$Content)
+countrytext_df <- tibble(line = 1:100, text = lyrics)
+hiphoptext_df <- tibble(line = 1:100, text = hiphoplyrics)
 
 # countrytext_df
 # hiphoptext_df
@@ -472,7 +468,7 @@ original_books2 <- hiphoptext_df %>%
 # original_books
 ```
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 original_books <- austen_books() %>%
   group_by(book) %>%
   mutate(linenumber = row_number(),
@@ -500,7 +496,7 @@ hiphoptidy_books <- original_books2 %>%
 countrytidy_books <- countrytidy_books %>%
   anti_join(stop_words)
 
-data(stop_words)
+# data(stop_words)
 
 hiphoptidy_books <- hiphoptidy_books %>%
   anti_join(stop_words)
@@ -535,7 +531,7 @@ ggplot(frequency, aes(x = proportion, y = `Jane Austen`, color = abs(`Jane Auste
   labs(y = "Jane Austen", x = NULL)
 ```
 
-```{r echo = FALSE, message = FALSE}
+```{r echo = FALSE, messages = FALSE}
 
 frequency <- bind_rows(mutate(countrytidy_books, author = "Country"),
                        mutate(hiphoptidy_books, author = "Hip-Hop"),
@@ -562,9 +558,37 @@ ggplot(frequency, aes(x = proportion, y = `Country`, color = abs(`Country` - pro
 
 If Stump is right, or if I am right in representing her argument, one way in which we can know someone, is by having the same, or similar feelings as the person in response to the same object. However, for this to happen, I question whether the language must be a shared language. 
 
-In one of my earlier posts, I stated that it seems that country music uses more relationship words than hip-hop, and that positive emotional sentiments are often expressed in the presence of relationships whereas negative emotional sentiments are expressed when those relationships become threatened. 
+For instance, in the frame following this one, I make more comparisons in the ways in which language is used between country, hip-hop, the Bronte Sisters, Jane Austen and H.G. Wells.
 
-Conversely, it seems that the opposite is true in many contemporary and popular hip-hop songs. Positive emotional sentiments are expressed in context of objects rather than people whereas negative emotional sentiments are expressed in terms of human relationships. Although I have not shown the emotive correlations between these sets of data, in other posts, for instance under the menu heading "Sentiment Analysis," I have. However, it would be important to do so on these texts to see what kind of relationships, if any, there are between those words used, and the emotive expressions which accompany them. 
+```{r echo = FALSE, messages = FALSE}
+
+frequency <- bind_rows(mutate(countrytidy_books, author = "Country"),
+                       mutate(hiphoptidy_books, author = "Hip-Hop"),mutate(tidy_bronte, author="Bronte Sisters")) %>% 
+  mutate(word = str_extract(word, "[a-z']+")) %>%
+  count(author, word) %>%
+  group_by(author) %>%
+  mutate(proportion = n / sum(n)) %>% 
+  select(-n) %>% 
+  spread(author, proportion) %>% 
+  gather(author, proportion, `Hip-Hop`:`Country`)
+
+ggplot(frequency, aes(x = proportion, y = `Bronte Sisters`, color = abs(`Bronte Sisters` - proportion))) +
+  geom_abline(color = "gray40", lty = 2) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.3, height = 0.3) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  scale_color_gradient(limits = c(0, 0.001), low = "darkslategray4", high = "gray75") +
+  facet_wrap(~author, ncol = 2) +
+  theme(legend.position="none") +
+  labs(y = "Bronte Sisters", x = NULL)
+```
+
+One thing to notice about the above frame, and this is similar through this post, is that those data sets which have more similar word usage are typically noted by a denser plot while those with less similar word usages are noted by more transparent plots. As such, looking at the previous frame, we see that the Bronte Sisters have a more similar word usage to Country music than does Hip-Hop.
+
+# Conclusion
+
+In one of my earlier posts, I stated that it seems that country music uses more relationship words than hip-hop, and that positive emotional sentiments are often expressed in the presence of relationships whereas negative emotional sentiments are expressed when those relationships become threatened. Conversely, it seems that the opposite is true in many contemporary and popular hip-hop songs. Positive emotional sentiments are expressed in context of objects rather than people whereas negative emotional sentiments are expressed in terms of human relationships. Although I have not shown the emotive correlations between these sets of data, in other posts, for instance under the menu heading "Sentiment Analysis," I have. However, it would be important to do so on these texts to see what kind of relationships, if any, there are between those words used, and the emotive expressions which accompany them. 
 
 Therefore, if we are to say that morality is about relationships between people, then one way to possibly measure moral knowledge in a narrative, would be to determine whether the narrative is about relationships, and whether it expresses what we might think ought to be expressed in the same or similar context. 
 

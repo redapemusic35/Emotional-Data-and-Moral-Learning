@@ -103,7 +103,11 @@ Previously, we looked at individual terms which made up the topics of the songs 
 <pre><code>## tibble [312 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ FileName: chr [1:312] &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; &quot;Catch&quot; ...
 ##  $ X1      : chr [1:312] &quot;I wasn&#39;t trying to feel nothing at all.&quot; &quot;I just came to meet my friends.&quot; &quot;And try to drink a long week off.&quot; &quot;I didn&#39;t wanna stay too late.&quot; ...
-##  $ X       : chr [1:312] NA NA NA NA ...</code></pre>
+##  $ X       : chr [1:312] NA NA NA NA ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   X1 = col_character()
+##   .. )</code></pre>
 <pre><code>## # A tibble: 6 x 3
 ##   FileName X1                                      X    
 ##   &lt;chr&gt;    &lt;chr&gt;                                   &lt;chr&gt;
@@ -145,7 +149,11 @@ Previously, we looked at individual terms which made up the topics of the songs 
 <p>First, like we did with the country songs, the below frames show various attributes of our data. Remember that these are not complete as they merely give us a brief look at the data. What we see is that the data is defined in terms of each file. Therefore, the first six lines of the data file consists in the first six lines of the song “Ballin” since “Ballin” is the file which the program read first. The next frame consists of the last six lines of our data frame which equals that last six lines of the song “Woah” since “Woah” is the last file read by R.</p>
 <pre><code>## tibble [576 × 2] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ FileName2: chr [1:576] &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; &quot;Ballin&quot; ...
-##  $ X1       : chr [1:576] &quot;I put the new Forgi&#39;s on the G I trap until the bloody bottoms is&quot; &quot;underneath &#39;Cause all my niggas got it out the streets I keep a hunnid&quot; &quot;racks  inside my jeans&quot; &quot;I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t answer&quot; ...</code></pre>
+##  $ X1       : chr [1:576] &quot;I put the new Forgi&#39;s on the G I trap until the bloody bottoms is&quot; &quot;underneath &#39;Cause all my niggas got it out the streets I keep a hunnid&quot; &quot;racks  inside my jeans&quot; &quot;I remember hittin&#39; the mall with the whole team Now a nigga can&#39;t answer&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   X1 = col_character()
+##   .. )</code></pre>
 <pre><code>## # A tibble: 6 x 2
 ##   FileName2 X1                                                                  
 ##   &lt;chr&gt;     &lt;chr&gt;                                                               
@@ -450,6 +458,16 @@ Previously, we looked at individual terms which made up the topics of the songs 
 ## [11] &quot;Honestly this use of the Fourier transformation is really quite elegant.&quot;    
 ## [12] &quot;You might even say it&#39;s beautiful!&quot;</code></pre>
 <p>I next get the song sentiments and do provide some lists which show the sentences which are joyful and those expressing anger. What is great about “nrc” is that I could display those sentences expressing anger, anticipation, disgust, fear, joy, sadness, surprise, and trust.</p>
+<pre><code>## Warning: `filter_()` is deprecated as of dplyr 0.7.0.
+## Please use `filter()` instead.
+## See vignette(&#39;programming&#39;) for more help
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: `group_by_()` is deprecated as of dplyr 0.7.0.
+## Please use `group_by()` instead.
+## See vignette(&#39;programming&#39;) for more help
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
 ## Please use `tibble()` instead.
 ## This warning is displayed once every 8 hours.
@@ -764,16 +782,16 @@ Previously, we looked at individual terms which made up the topics of the songs 
 <h1>Works Cited</h1>
 <div id="refs" class="references">
 <div id="ref-jock17">
-<p>Jockers, Matthew. 2017. “Introduction to the Syuzhet Package.” <em>Introduction to the Syuzhet Package</em>. https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html.</p>
+<p>Jockers, Matthew. 2017. “Introduction to the Syuzhet Package.” <em>Introduction to the Syuzhet Package</em>. <a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html" class="uri">https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html</a>.</p>
 </div>
 <div id="ref-mcgr19">
 <p>McGrath, Sarah. 2019. <em>Moral Knowledge</em>. Oxford: Oxford University Press.</p>
 </div>
 <div id="ref-rink20">
-<p>Rinker, Tyler. 2020. “Trinker/Sentimentr.” <em>Github</em>. https://github.com/trinker/sentimentr.</p>
+<p>Rinker, Tyler. 2020. “Trinker/Sentimentr.” <em>Github</em>. <a href="https://github.com/trinker/sentimentr" class="uri">https://github.com/trinker/sentimentr</a>.</p>
 </div>
 <div id="ref-van18">
-<p>van Roojen, Mark. 2018. “Moral Cognitivism Vs. Non-Cognitivism.” <em>The Stanford Encyclopedia of Philosophy</em>. https://plato.stanford.edu/archives/fall2018/entries/moral-cognitivism/.</p>
+<p>van Roojen, Mark. 2018. “Moral Cognitivism Vs. Non-Cognitivism.” <em>The Stanford Encyclopedia of Philosophy</em>. <a href="https://plato.stanford.edu/archives/fall2018/entries/moral-cognitivism/" class="uri">https://plato.stanford.edu/archives/fall2018/entries/moral-cognitivism/</a>.</p>
 </div>
 </div>
 </div>

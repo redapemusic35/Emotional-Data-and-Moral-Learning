@@ -1,0 +1,260 @@
+---
+title: "Moral Testimony as Narrative"
+categories: []
+date: '2019-02-05T00:00:00Z'
+slides:
+  highlight_style: dracula
+  theme: black
+summary: An introduction to using Academic's Slides feature.
+tags: []
+authors: []
+bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+---
+
+# Moral Testimony as Narrative
+
+### By:[Montaque Reynolds](https://www.mreynolds.true-convenience.com) 
+---
+ 
+It has been argued that moral testimony is neither necessary nor sufficient for moral knowledge. 
+
+{{< speaker_note >}} 
+Some authors (e.g., @hill09) have argued that while testimony is a sufficient source for non-moral knowledge, it is neither necessary, nor
+sufficient. In response to this criticism, I draw on
+a distinction between narrative and standard testimony, which I further develop from Eleonore @stum10. Narrative testimony transmits moral knowledge by way of communicating emotive and motivating reasons for a character's actions while testimony more closely reflects standard testimonial knowledge. First, the literature regarding the asymmetry between moral and non-moral testimony will illuminate several features which will highlight some ways to distinguish between moral and non-moral testimony. I argue that standard responses to arguments against moral testimony fail to account for these distinctions, especially considerations of unique emotive and motivating reasons supporting moral views.
+{{< /speaker_note >}}
+
+---
+
+#### The Asymmetry Problem. [@mcgr19, ch. 3]
+
+> For although we think that it is natural, inevitable, and perfectly appropriate for a normal adult to rely on authority for most of what he believes about geography and many other subject matters, we do *not* similarly think that it is natural, inevitable and perfectly appropriate for a normal adult to rely on authority for his *moral* views. [@mcgr19, 66]
+
+{{< speaker_note >}}
+According to Sarah McGrath, moral expertise can be defined in the following way: “Leading physicists are *full-blooded experts* about their specialties, in the following sense: a perfectly normal, intelligent layperson has compelling reason to *blindly defer* to the physicists about physics, adopting the physicist’s views as her own, even in the absence of appreciation of the evidence for those views, and even if those views contradict the layperson’s own sense of how things are” [@mcgr19, 75, see also, David Estlund 2008, distinguishes moral expert from non-moral expert; Williams 1995; argues that there are no moral experts in the same sense as there are non-moral experts]. In this way, "[a] full-blooded expert about *X* is not merely someone who knows more about *X* than the non-expert, but someone to whom it is rational for the non-expert to defer in arriving at her views about *X*.
+{{< /speaker_note >}}
+
+---
+
+* For some individual *S*, if *S* is a moral expert, then there exists some individual *T* who is perfectly normal *and* *T* has compelling reason to defer their moral opinions to *S*.
+
+{{< speaker_note >}}
+For McGrath then, the question about moral expertise and moral testimony, is really a question about moral deference where we defer our moral opinions to others. 
+* While many argue that egalitarianism---werein we all have the same moral reasoning abilities and access to the same set of facts--- is to be blamed for the non-existance of moral experts, McGrath dissagrees because either it is not true that we have the same access to moral facts, or the same access to moral reasoning capacity.
+* As McGrath notes, Enoch 2014, vindicates moral deference and expertise by arguing that moral deference is sometimes the only acceptable way to respond to moral uncertainty [@enoc14, 231]. For Enoch, this is no different than relying on opaque evidence rather than transparent evidence. For instance, we often defer to non-moral experts. When we do so, we reason based on what is best referred to as opaque evidence [@mcgr19, 90]. Opaque evidence suggests that something is true without giving any reason as to why it is true. 
+{{< /speaker_note >}}
+
+---
+
+1. There are non-moral experts.
+
+ <p class="fragment">1. If there are individuals who may be cited as a source of reasons supporting another's non-moral view, then there are non-moral experts.</p>
+ <p class="fragment">2. There are individuals who may be cited as a source of reasons supporting another's non-moral view.</p>
+ <p class="fragment">3. Therefore, there are non-moral experts.</p>
+
+{{< speaker_note >}}
+But this does not explain the asymmetry between moral and non-moral expertise because it is not clear why we may rely on opaque evidence for non-moral reasoning but not moral reasoning. However, a point referenced by Enoch is that we expect our emotional responses to be central to moral reasoning: “Furthermore, given some palusible connections between the making of moral judgments and certain emotional responses, this may also be an *emotional* achievement: I respond to the wrong making features of the war in the appropriate way, emotionally and otherwise. But if I have to rely on alon’s expert judgment, I have missed this achievement” [@enoc14, 254; see also David Enoch 2015, *Taking Moral Seriously: A Defense of Robust Realism*.] 
+{{< /speaker_note >}}
+
+---
+
+> "[o]ne respect in which holding a moral belief on the basis of opaque evidence is suboptimal that does *not* carry over to the non-moral case is this: when you hold a moral belief on the basis of opaque evidence, you are not in a position to offer the kind of interpersonal justification that you might be expected to offer, when your moral belief manifests itself in judgment in characteristic ways" [mcgr19, 91].
+
+{{< speaker_note >}}
+* However, McGrath anticipates this move: "[o]ne respect in which holding a moral belief on the basis of opaque evidence is suboptimal that does *not* carry over to the non-moral case is this: when you hold a moral belief on the basis of opaque evidence, you are not in a position to offer the kind of interpersonal justification that you might be expected to offer, when your moral belief manifests itself in judgment in characteristic ways" [mcgr19, 91].
+* When someone defers their moral opinions to another, the right-making features of one’s moral reasoning is missed, that of having the appropriate emotional response. Not only do we care about whether our moral reasoning involves the appropriate emotional responses as our evidence, but also whether we correctly reason from these particular facts about our own appropriate emotional responses in our moral evaluations. However, while moral knowledge through testimony may very well miss imparting the right making features of moral knowledge as “having the appropriate emotional response to those decisions,” I will show that moral knowledge by way of narrative can address this particular concern. But first:
+{{< /speaker_note >}}
+
+---
+
+2. Non-moral testimony by non-moral experts is a sufficient source for non-moral knowledge.
+
+ <p class="fragment">4. Non-moral knowledge consists of knowledge of reasons by which a non-moral agent may support her non-moral views.</p>
+ <p class="fragment">5. Non-moral testimony by non-moral experts is sufficient for sharing non-moral reasons.</p>
+ <p class="fragment">6. Non-moral testimony by non-moral experts then, is a sufficient source for non-moral knowledge.</p>
+
+---
+
+3. If one is a sufficient source of moral knowledge for another's moral views, then he or she is a moral expert (in some cases, an agent can defer their moral views to another).  
+
+<p class="fragment">1b. Moral knowledge consists of knowledge of reasons by which another may support their own moral views.</p>
+<p class="fragment">2b. Testimony by moral agents (moral testimony), is the way in which one may share her moral reasons with another.</p>
+<p class="fragment">3b. If one is a moral expert, then he or she is a sufficient source of reasons supporting another's moral views.</p>
+
+
+---
+
+4. Moral testimony is not a sufficient source for moral knowledge (one cannot defer their moral views to another).
+
+<p class="fragment">4b. There are *no* individuals who are a sufficient source of reasons supporting another's moral views (claim).</p>
+<p class="fragment">5b. Therefore, there are no moral experts (from 3b and 4b).</p>
+<p class="fragment">6b. Moral testimony then, is not a sufficient source for moral knowledge.</p>
+
+---
+
+> If there were a theoretical science of ethics, then we would expect to find experts in that science, who stand to it as physicists stand to physics and as biologists stand to biology. In particular, we would expect to find moral experts, whose status as such makes it reasonable for non-experts to blindly defer to their pronouncements about morality, in the same way that it is reasonable for non-specialists to blindly defer to physicists about physics and to biologists about biology. 
+
+---
+
+> But in fact, there is not group of people who stand to morality as the physicists stands to physics and as the biologists stand to biology. Therefore, there is no theoretical science of ethics. [@will95, 205]
+
+{{< speaker_note >}}I take McGrath as understanding the problem of testimony to be in fact, a broader problem of deferring one's moral views. As such, the asymmetry problem is not necessarily with 3, or with 4, but rather the move from 3 to 4. 
+{{< /speaker_note >}}
+
+---
+
+2. Testimony is not a sufficient source for moral knowledge.
+
+{{< speaker_note >}}
+1. There are concerns about whether it is acceptable to form moral views on the basis of testimony.
+2. There are concerns about whether testimony is capable of delivering moral knowledge.
+3. What we care about concerning moral knowledge, really is moral action.
+4. Moral action, is action that is done for those reasons which make the action right.
+5. This includes having the right emotional response in regards to the situation.
+6. Defering our moral opinions is akin to acting on opaque reasons versus transparent reasons.
+7. As such, deference shows an inability to act for those reasons which make the action right.
+8. As such, defering our moral opinions is insufficient for moral action.
+* But this does not mean that what we care about in moral action, is acting for moral reasons, which means acting for those reasons which make the action right. These reasons are emotive as well as cognitive.
+{{< /speaker_note >}}
+
+---
+
+3. What 1 and 2 have in common is the broader concern of deferring our moral views to others.
+   1. Testimony is a route by which we learn the views of others.
+   2. Testimony is not the only route by which we learn the views of others.
+   3. Moral testimony then is a route by which we learn the moral views of others.
+   4. Moral testimony is not the only route through which we learn the moral views of others.
+
+---
+
+4. Deference is the phenomenon in which a person holds a view (whether through testimony or something else) solely because another person holds that view.
+
+---
+
+1. Does the fact that someone else holds a moral view---say, a view to the effect that a given practice is morally wrong---ever give us a good reason to adopt that view in cases in which we are not in a position to appreciate whatever reasons exist for thinking that it is true?
+
+---
+
+> Initially, Al suspends judgment about whether `\(\phi\)`-ing is wrong, because he knows that he is ignorant about various non-moral facts about `\(\phi\)`-ing and its consequences that he takes to be bear on its morality. He then learns that his wife is morally opposed to `\(\phi\)`-ing. Becuase he knows that he and his wife share the same basic moral outlook but that she is well informed about the relevant non-moral facts, he defers to her judgment. [@mcgr19, 70]
+
+---
+
+2. I reverse my initial judgment upon realization that my wife holds a differing opinion, on the expectation that it is likely my wife as access to relevant information not available to me.
+
+---
+
+> The situation is the same as in Case 1, except for the fact that Al initially judges that `\(\phi\)`-ing is morally permissible on the basis of the information available to him (as opposed to merely suspending judgment about its status). He reverses his judgment upon learning that his wife thinks otherwise, because he reasonably assumes that the fact that they arrived at different views is due to the fact that she has relevant non-moral information that he lacks. [@mcgr19, 70]
+
+{{< speaker_note >}}This case in modified in more than one way from the above. It is not clear that a part of my reasons for deferring to the other individual, is because we share the same moral outlook. However, while this is not explicit, it is implied given the status of the relationship I share with this other individual.
+{{< /speaker_note >}}
+
+---
+
+3. Cases wherein my judgment is compromised
+
+> Al knows that he has all of the non-moral information about `\(\phi\)`-ing that his wife has, and that they share the same basic moral outlook. If he made up his own mind, Al would judge that `\(\phi\)`-ing is morally permissible. Nevertheless, he defers to his wife's view that `\(\phi\)`-ing is wrong, becuase he knows that, with respect to this particular issue, his judgment is compromised in a way that hers is not. [70]
+
+---
+
+> Left to his own devices, Al would judge that `\(\phi\)`-ing  is morally permissible. Nevertheless, he defers to his wife's judgment that `\(\phi\)`-ing is wrong, not because he believes that there is something aobut this fissue in particular that puts her in a better position to judge, but as part of a general practice of deferring to her moral views in cases in which they are disposed to disagree. [71]
+
+{{< speaker_note >}}
+McGrath contributes Al's compromise to several facts which include:
+1. Moral sensibility compromise having served in a brutal war.
+2. Depression has deadened his natural affective responses in a way that affects his moral judgment.
+* However, between cases 1 and 2 and cases 3 and 4, McGrath seems to argue that there are two potential broader reasons for deferring in moral cases. On the one hand, one might defer because of access to (non-moral) reasons. On the other hand, one could defer because of access not to reasons, but because of affect and sentiment, not having these faculties.
+{{< /speaker_note >}}
+
+---
+
+5. 5, deals with moral expertise.
+
+---
+
+> Al has all of  the non-moral information relevant to the morality of `\(\phi\)`-ing that his wife has, and he has no reason to think that his own judgment is impaired or compromised, either with respect to this issue or moral generally. Indeed, he regards himself as a perfectly competent (although fallible) judge of moral matters. 
+
+
+---
+
+> On the basis of this information and his own careful consideration of the issue, it seems to him that `\(\phi\)`-ing is perfectly permissible. Nevertheless, he judges that `\(\phi\)`-ing is wrong because he knows that this is what his wife thinks, and he has adopted a general practice of deferring to her moral views in cases in which he is disposed to judge differently. He has adopted this policy because he believes that his wife is a *moral expert*.
+
+{{< speaker_note >}}
+* In a certain sense, another might have access to reasons which you do not, because they are an expert. Additionally, another might be able to reason in a way in which you are unable, we might say that this person is also an expert. For instance, say your child has the ability to configure complex mathematical problems in their head which you could never hope to replicate.
+* Ultimately then, there are two ways in which someone might be a moral expert, they have access to potential reasons which you do not, lets imagine that they have read everything that has ever been written about moral reasons. Therefore they have access to all the moral reasons that have been thought of. However, we can further imagine that this person is a sociopath. As such they do not have the ability to have the proper affections which we associate with moral behaviors.
+{{< /speaker_note >}}
+
+---
+
+# Moral Knowledge from Narraties
+
+---
+
+* Knowledge is a competence to know. [@mira15, 1]
+
+{{< speaker_note >}}
+* Following Sarah McGrath and Lisa Miracchi, I hold that “knowledge is an exercise of a competence to know” [@mira15, 1]. McGrath, in addition defends a knowledge first moral knowledge. In this way, moral knowledge too, is a competence. [See, McGrath 2019, Jonathan Ichikawa 2015, Lisa Miracchi 2015] Subsequent to her defence of this view, is the idea that moral knowledge may be gained in all of the ways in which non-moral knowledge may be gained; and lost in all of the ways in which it may be lost. However, it is not clear how we may gain moral knowledge by way of testimony and be justified in doing so, in a similar way as we would given non-moral knowledge and testimony. In addition, if we understand that those mental faculties involved in moral reasoning include cognition which is the process involved in understanding and non-moral knowledge, knowledge of facts etc; affect which concerns our emotional responses to those objects of our cognition [@huit11]; and conation which connects cognition and emotion to behavior, we can understand how emotion is central to moral action. The standard criticisms of moral testimony fail to make this connection as being a central reason why moral testimony is not sufficient for moral action. I argue that by understanding moral narratives as another form of moral testimony, we can understand how moral testimony *is* sufficient for moral action.
+* For instance, @huit11, in giving an account of the human mind, argue
+that there are at least three components which are important for
+knowledge and perception.
+{{< /speaker_note >}}
+
+---
+
+> Cognition refers to the process of coming to know and understand; of
+ encoding, perceiving, storing, processing, and retrieving information.
+
+---
+
+Affect concerns associating individual response to knowledge and other
+kinds of information.
+
+<p class="fragment">Affect refers to the emotional interpretation of perceptions, information, or knowledge. It is generally associated with one's attachment (positive or negative) to people, objects, ideas, etc. and is associated with the question "How do I feel about this knowledge or information?"</p>
+
+---
+
+Finally, conation associates behavior with knowledge and emotion.
+
+<p class="fragment">Conation refers to the connection of knowledge and affect to behavior and is associated with the issue of "why." It is the personal, intentional, planful, deliberate, goal-oriented, or striving component of motivation, the proactive (as opposed to reactive or habitual) aspect of behavior...[William G. Huitt 2005; Hilgard 1980, Huitt 1996; Tallon 1997]</p>
+
+
+---
+
+Narratives are an important component of moral reasoning because bringing "philosophical concerns to bear on literary texts" can:
+
+> give us access to a side of reality that can be captured better in narratives than in non-narrative prose. . ." [@stum10, 29].
+
+{{< speaker_note >}}
+In her book "Wandering in Darkness," Eleonore Stump introduces a concept
+she calls Fransican Knowledge, which is a perceptual knowledge of
+persons communicated primarily through narrative. I will examine
+narrative as a potential way in which we can receive and transmit moral
+testimony second-personally, facilitating a personal knowledge of others. Stump distinguishes Fransican knowledge, knowing others by being acquainted with them, from Dominican
+knowledge, knowledge *that*, or knowledge of propositions regarding
+others. As we will see in this section, this understanding of narrative facilitates an even stronger thesis regarding the sufficiency of moral testimony and moral knowledge as a response to standard arguments against moral testimony.
+
+Remember that according to the standard argument, not only is moral deference not
+necessary for moral knowledge, it is also not sufficient for moral
+knowledge. This is because moral knowledge is not sufficient for moral action. What is missing when we defer our moral opinions, is our ability to act for those reasons which make our action the right action. 
+
+Accordingly, moral deference always fails in some way or
+other to transmit moral knowledge. In section 3, I show what I think are
+some problems motivating this criticism, namely that none thus far
+acknowledge the role which the emotions can play in transmitting moral
+knowledge. I will argue that these criticisms fail to account for the
+emotive/ motivational facts about human cognition. I then argue that
+narrative is another kind of moral testimony which does engage this
+peculiar feature of human cognition. As such, if we think of moral
+testimony as comprised of both non-narrative moral testimony coupled
+with standard moral testimony, then we have a stronger account of moral
+testimony as a sufficient source of moral knowledge.
+{{< /speaker_note >}}
+
+---
+
+<h2> Thanks for watching! </h2>
+<h4><a href="https://raw.github.com/farseer90718/vim-reveal/master/test/vim-reveal.md">Original markdown file for this presentation.</a></h4>
+# Questions?
+
+[Ask](https://spectrum.chat/academic)
+
+[Documentation](https://sourcethemes.com/academic/docs/managing-content/#create-slides)

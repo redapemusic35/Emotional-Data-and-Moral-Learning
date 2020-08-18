@@ -1,0 +1,169 @@
+---
+title: Internal Project
+summary: An example of using the in-built project page.
+tags:
+- Deep Learning
+date: "2016-04-27T00:00:00Z"
+
+# Optional external URL for project (replaces project detail page).
+external_link: ""
+
+image:
+  caption: Photo by rawpixel on Unsplash
+  focal_point: Smart
+
+links:
+- icon: twitter
+  icon_pack: fab
+  name: Follow
+  url: https://twitter.com/georgecushen
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+
+# Slides (optional).
+#   Associate this project with Markdown slides.
+#   Simply enter your slide deck's filename without extension.
+#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
+#   Otherwise, set `slides = ""`.
+slide: example
+---
+
+```{r echo = FALSE, message=FALSE}
+library(sentimentr)
+require(data.table)
+library(vroom)
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(graphics)
+library(ggplot2)
+data(stop_words)
+library(magrittr)
+library(stringr)
+
+setwd("~/VimWiki/subjects/projects/lyrics/")
+hext <- read.csv("country-lyrics.csv", stringsAsFactors=FALSE)
+hext
+hext2 <- read.csv("hiphoplyrics.csv", stringsAsFactors=FALSE)
+hext2
+
+text_df <- tibble(line = 1:50, text = hext2)
+text_df
+
+tidy_rap <- text_df %>%
+  unnest_tokens(word, text)
+tidy_rap
+
+tidy_rap <- tidy_rap %>%
+  anti_join(stop_words)
+
+tidy_rap %>%
+  count(word, sort = TRUE)
+
+tidy_rap %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 50) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+
+text_df2 <- tibble(line = 1:50, text = hext)
+text_df2
+
+tidy_country <- text_df2 %>%
+  unnest_tokens(word, text)
+tidy_country
+
+tidy_country <- tidy_country %>%
+  anti_join(stop_words)
+
+tidy_country %>%
+  count(word, sort = TRUE)
+
+tidy_country %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 50) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+
+hext_rap <- hext2 %>%
+  get_sentences() %$%
+  sentiment_by(text, list(doc_id))
+
+plot(hext_rap)
+
+plot(uncombine(hext_rap))
+
+
+countrytext_df <- tibble(line = 1:50, text = hext)
+countrytext_df
+
+tidy_country <- countrytext_df %>%
+  unnest_tokens(word, text)
+tidy_country
+
+tidy_country <- tidy_rap %>%
+  anti_join(stop_words)
+
+tidy_country %>%
+  count(word, sort = TRUE)
+
+tidy_country %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 50) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+
+text_df2 <- tibble(line = 1:50, text = hext)
+text_df2
+
+tidy2_country <- text_df2 %>%
+  unnest_tokens(word, text)
+tidy2_country
+
+tidy2_country <- tidy_country %>%
+  anti_join(stop_words)
+
+tidy2_country %>%
+  count(word, sort = TRUE)
+
+# ought to be country bar plot
+
+tidy2_country %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 50) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+hext2_country <- hext %>%
+  get_sentences() %$%
+  sentiment_by(text, list(doc_id))
+
+# country plot
+
+plot(hext2_country)
+
+# valence
+
+plot(uncombine(hext2_country))
+
+```
+
+
