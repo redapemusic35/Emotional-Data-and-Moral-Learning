@@ -1,5 +1,5 @@
 ---
-title: "Moral Testimony as Narrative"
+title: "Blah Testimony as Narrative"
 categories: []
 date: '2019-02-05T00:00:00Z'
 slides:
@@ -19,11 +19,11 @@ bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
  
 It has been argued that moral testimony is neither necessary nor sufficient for moral knowledge. 
 
-{{< speaker_note >}} 
+ 
 Some authors (e.g., @hill09) have argued that while testimony is a sufficient source for non-moral knowledge, it is neither necessary, nor
 sufficient. In response to this criticism, I draw on
 a distinction between narrative and standard testimony, which I further develop from Eleonore @stum10. Narrative testimony transmits moral knowledge by way of communicating emotive and motivating reasons for a character's actions while testimony more closely reflects standard testimonial knowledge. First, the literature regarding the asymmetry between moral and non-moral testimony will illuminate several features which will highlight some ways to distinguish between moral and non-moral testimony. I argue that standard responses to arguments against moral testimony fail to account for these distinctions, especially considerations of unique emotive and motivating reasons supporting moral views.
-{{< /speaker_note >}}
+
 
 ---
 
@@ -136,7 +136,7 @@ But this does not explain the asymmetry between moral and non-moral expertise be
 
 ---
 
-> Initially, Al suspends judgment about whether $\phi$-ing is wrong, because he knows that he is ignorant about various non-moral facts about $\phi$-ing and its consequences that he takes to be bear on its morality. He then learns that his wife is morally opposed to $\phi$-ing. Becuase he knows that he and his wife share the same basic moral outlook but that she is well informed about the relevant non-moral facts, he defers to her judgment. [@mcgr19, 70]
+> Initially, Al suspends judgment about whether `\(\phi\)`-ing is wrong, because he knows that he is ignorant about various non-moral facts about `\(\phi\)`-ing and its consequences that he takes to be bear on its morality. He then learns that his wife is morally opposed to `\(\phi\)`-ing. Becuase he knows that he and his wife share the same basic moral outlook but that she is well informed about the relevant non-moral facts, he defers to her judgment. [@mcgr19, 70]
 
 ---
 
@@ -144,7 +144,7 @@ But this does not explain the asymmetry between moral and non-moral expertise be
 
 ---
 
-> The situation is the same as in Case 1, except for the fact that Al initially judges that $\phi$-ing is morally permissible on the basis of the information available to him (as opposed to merely suspending judgment about its status). He reverses his judgment upon learning that his wife thinks otherwise, because he reasonably assumes that the fact that they arrived at different views is due to the fact that she has relevant non-moral information that he lacks. [@mcgr19, 70]
+> The situation is the same as in Case 1, except for the fact that Al initially judges that `\(\phi\)`-ing is morally permissible on the basis of the information available to him (as opposed to merely suspending judgment about its status). He reverses his judgment upon learning that his wife thinks otherwise, because he reasonably assumes that the fact that they arrived at different views is due to the fact that she has relevant non-moral information that he lacks. [@mcgr19, 70]
 
 {{< speaker_note >}}This case in modified in more than one way from the above. It is not clear that a part of my reasons for deferring to the other individual, is because we share the same moral outlook. However, while this is not explicit, it is implied given the status of the relationship I share with this other individual.
 {{< /speaker_note >}}
@@ -153,11 +153,11 @@ But this does not explain the asymmetry between moral and non-moral expertise be
 
 3. Cases wherein my judgment is compromised
 
-> Al knows that he has all of the non-moral information about $\phi$-ing that his wife has, and that they share the same basic moral outlook. If he made up his own mind, Al would judge that $\phi$-ing is morally permissible. Nevertheless, he defers to his wife's view that $\phi$-ing is wrong, becuase he knows that, with respect to this particular issue, his judgment is compromised in a way that hers is not. [70]
+> Al knows that he has all of the non-moral information about `\(\phi\)`-ing that his wife has, and that they share the same basic moral outlook. If he made up his own mind, Al would judge that `\(\phi\)`-ing is morally permissible. Nevertheless, he defers to his wife's view that `\(\phi\)`-ing is wrong, becuase he knows that, with respect to this particular issue, his judgment is compromised in a way that hers is not. [70]
 
 ---
 
-> Left to his own devices, Al would judge that $\phi$-ing  is morally permissible. Nevertheless, he defers to his wife's judgment that $\phi$-ing is wrong, not because he believes that there is something aobut this fissue in particular that puts her in a better position to judge, but as part of a general practice of deferring to her moral views in cases in which they are disposed to disagree. [71]
+> Left to his own devices, Al would judge that `\(\phi\)`-ing  is morally permissible. Nevertheless, he defers to his wife's judgment that `\(\phi\)`-ing is wrong, not because he believes that there is something aobut this fissue in particular that puts her in a better position to judge, but as part of a general practice of deferring to her moral views in cases in which they are disposed to disagree. [71]
 
 {{< speaker_note >}}
 McGrath contributes Al's compromise to several facts which include:
@@ -172,12 +172,12 @@ McGrath contributes Al's compromise to several facts which include:
 
 ---
 
-> Al has all of  the non-moral information relevant to the morality of $\phi$-ing that his wife has, and he has no reason to think that his own judgment is impaired or compromised, either with respect to this issue or moral generally. Indeed, he regards himself as a perfectly competent (although fallible) judge of moral matters. 
+> Al has all of  the non-moral information relevant to the morality of `\(\phi\)`-ing that his wife has, and he has no reason to think that his own judgment is impaired or compromised, either with respect to this issue or moral generally. Indeed, he regards himself as a perfectly competent (although fallible) judge of moral matters. 
 
 
 ---
 
-> On the basis of this information and his own careful consideration of the issue, it seems to him that $\phi$-ing is perfectly permissible. Nevertheless, he judges that $\phi$-ing is wrong because he knows that this is what his wife thinks, and he has adopted a general practice of deferring to her moral views in cases in which he is disposed to judge differently. He has adopted this policy because he believes that his wife is a *moral expert*.
+> On the basis of this information and his own careful consideration of the issue, it seems to him that `\(\phi\)`-ing is perfectly permissible. Nevertheless, he judges that `\(\phi\)`-ing is wrong because he knows that this is what his wife thinks, and he has adopted a general practice of deferring to her moral views in cases in which he is disposed to judge differently. He has adopted this policy because he believes that his wife is a *moral expert*.
 
 {{< speaker_note >}}
 * In a certain sense, another might have access to reasons which you do not, because they are an expert. Additionally, another might be able to reason in a way in which you are unable, we might say that this person is also an expert. For instance, say your child has the ability to configure complex mathematical problems in their head which you could never hope to replicate.
@@ -259,13 +259,3 @@ testimony as a sufficient source of moral knowledge.
 [Ask](https://spectrum.chat/academic)
 
 [Documentation](https://sourcethemes.com/academic/docs/managing-content/#create-slides)
-
-Fictional narratives are often used to engage the emotions of the
-readers and explicate cognitive content [see important papers respresenting this argument include Graham @mcfe11's *Interpersonal vs. Artistic* and Noël @carr10's *On Some Affective Relations between Audiences and the Characters in Popular Fictions*]. (in this case, moral knowledge)
-in a more robust way:
-
-Narratives are an important component of moral reasoning because bringing "philosophical concerns to bear on literary texts" can:
-
-> give us access to a side of reality that can be captured better in narratives than in non-narrative prose. . ." [@stum10, 29].
-
-

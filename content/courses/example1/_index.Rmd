@@ -19,7 +19,7 @@ menu:
   example:
     name: Crawling the Web 1
     weight: 1
-bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
+bibliography: /home/redapemusic35/Second-vimwiki/Exported-Items.bib
 ---
 
 ## What It Is

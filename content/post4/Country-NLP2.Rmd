@@ -1,5 +1,5 @@
 ---
-title: "Average Sentiment on a Song by Song Basis"
+title: " Test the Average Sentiment on a Song by Song Basis"
 date: 2020-03-13T14:19:53-05:00
 draft: false
 links:
@@ -83,31 +83,28 @@ library(graphics)
 library(ggplot2)
 setwd("~/mallet/")
 list_of_files2 <- list.files(path = "sample-data/top100/Rap/", recursive = TRUE,
-			    pattern = "\\.csv$",
-			    full.names = TRUE)
+                             pattern = "\\.csv$",
+                             full.names = TRUE)
 
 df2 <- list_of_files2 %>%
   purrr::set_names(nm = (basename(.) %>% tools::file_path_sans_ext())) %>%
   purrr::map_df(read_csv,
-		col_names = FALSE,
-		skip = 1,
-		.id = "FileName2")
-
-
+                col_names = FALSE,
+                skip = 1,
+                .id = "FileName2")
 
 (dfsentiment2 <- with(
-		     df2,
-		     sentiment_by(
-				  get_sentences(X1),
-				  list(FileName2)
-				  )
-		     ))
+                      df2,
+                      sentiment_by(
+                                   get_sentences(X1),
+                                   list(FileName2)
+                      )
+                      )
+)
 
 df3 <- df2 %>%
   dplyr::mutate(X1_split = get_sentences(X1)) %$%
   sentiment_by(X1_split, list(FileName2))
-
-
 ```
 
 Next, we do the same to the group of songs that I have categorized as Hip-Hop.

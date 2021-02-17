@@ -15,6 +15,8 @@ links:
 bibliography: /home/redapemusic35/VimWiki/Exported-Items.bib
 ---
 
+In this project, using some philosophical concepts of moral moral psychology and moral knowledge, I will attempt to combine techniques in data science with the of theories in moral knowledge, moral testimony, sentimentalism.
+
 Here are some of my initial attempts at performing sentiment analyses on my data sets. 
 
 Below, what you'll see are two sets of graphs. The first shows the sentiment on a per song basis of all of the files that I have categorized as country music. The first song, at the top of the graph "I Hope You're Happy Now," is the most positive whereas the song "More Hearts Than Mine," is the least.
